@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,7 +64,7 @@
 }
 </script>
 </head>
-<body class="bg-light-bg text-light-text dark:bg-navy dark:text-gray-200 font-sans antialiased">
+<body class="bg-navy text-gray-200 font-sans antialiased"></body>
 
     <!-- Header -->
     <header class="sticky top-0 z-40 w-full">
@@ -99,11 +99,7 @@
                     </div>
                     <a href="#" class="whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300">Blog</a>
                     <a href="booking.html" class="whitespace-nowrap rounded-full bg-mint px-6 py-2.5 text-sm font-medium tracking-wide text-navy transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] hover:-translate-y-0.5">Book a Call</a>
-                    <button id="theme-toggle" class="p-2 rounded-full text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-bg dark:focus:ring-offset-navy focus:ring-mint" aria-label="Toggle theme">
-                        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path></svg>
-                        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
-                    </button>
-                </div>
+                    </div>
                 <!-- Mobile & Tablet -->
                 <div class="flex w-full items-center justify-between lg:hidden">
                     <a href="index.html" class="text-xl font-serif font-bold tracking-wider uppercase text-white">Home Pathway</a>
@@ -203,7 +199,7 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto"><h2 class="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">Every Journey is Unique. Which Path Are You On?</h2><p class="mt-4 mb-10 text-lg leading-8 text-slate-300">Tell us a bit about your situation so we can provide the specific guidance you need.</p></div>
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-mint/10 hover:border-mint/30"><img src="https://placehold.co/600x400/050b1a/FFFFFF?text=Human+Connection" alt="A young couple laughing uncontrollably, sitting on the floor surrounded by a few moving boxes, holding up a set of keys. Pure excitement." class="h-48 w-full object-cover rounded-t-2xl"><div class="p-6"><h3 class="font-serif text-2xl font-bold text-white">Starting Your First Chapter</h3><p class="mt-6 text-slate-300 text-sm leading-relaxed">The excitement of a new home, without the overwhelm of the unknown.</p></div><div class="absolute inset-0 bg-navy/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><a href="#" class="bg-mint text-navy font-bold text-md px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] transform hover:-translate-y-0.5">Start Assessment</a></div></div>
+                    <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all cursor-pointer" onclick="showAssessment('first-chapter')"></div>
                     <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-mint/10 hover:border-mint/30"><img src="https://placehold.co/600x400/050b1a/FFFFFF?text=Human+Connection" alt="A chaotic but happy family photo—parents and two young kids piling onto a sofa, laughing, full of energy and life." class="h-48 w-full object-cover rounded-t-2xl"><div class="p-6"><h3 class="font-serif text-2xl font-bold text-white">Growing Into More Space</h3><p class="mt-6 text-slate-300 text-sm leading-relaxed">Making room for new memories as your family and lifestyle evolve.</p></div><div class="absolute inset-0 bg-navy/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><a href="#" class="bg-mint text-navy font-bold text-md px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] transform hover:-translate-y-0.5">Start Assessment</a></div></div>
                     <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-mint/10 hover:border-mint/30"><img src="https://placehold.co/600x400/050b1a/FFFFFF?text=Human+Connection" alt="A couple in their 30s/40s exploring a vibrant city street, looking at a map on a phone and smiling, coffee cups in hand. Adventurous." class="h-48 w-full object-cover rounded-t-2xl"><div class="p-6"><h3 class="font-serif text-2xl font-bold text-white">Finding Your Way Home</h3><p class="mt-6 text-slate-300 text-sm leading-relaxed">Expert local guidance for those moving to a city they don't know yet.</p></div><div class="absolute inset-0 bg-navy/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><a href="#" class="bg-mint text-navy font-bold text-md px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] transform hover:-translate-y-0.5">Start Assessment</a></div></div>
                     <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-mint/10 hover:border-mint/30"><img src="https://placehold.co/600x400/050b1a/FFFFFF?text=Human+Connection" alt="An older couple (60s) looking relaxed and free, walking on a beach or through a lovely garden, holding hands and smiling peacefully." class="h-48 w-full object-cover rounded-t-2xl"><div class="p-6"><h3 class="font-serif text-2xl font-bold text-white">Simplifying for the Best Years</h3><p class="mt-6 text-slate-300 text-sm leading-relaxed">Transitioning from a large family home to a space that serves you better.</p></div><div class="absolute inset-0 bg-navy/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><a href="#" class="bg-mint text-navy font-bold text-md px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] transform hover:-translate-y-0.5">Start Assessment</a></div></div>
@@ -341,5 +337,19 @@
             document.addEventListener('keydown', function(event) { if (event.key === 'Escape' && !storyModal.classList.contains('hidden')) { closeStoryModal(); } });
         });
     </script>
+    <script>
+function showAssessment(type) {
+    const insights = {
+        'first-chapter': "First-time transitions require a 'No-Surprise' roadmap. We'll focus on financial readiness first.",
+        'growing': "Upsizing is about timing. We'll synchronize your sale and purchase for a one-move transition.",
+        'relocation': "Distance moves require local eyes. We'll be your boots-on-the-ground for neighborhood vetting.",
+        'divorce': "Discretion is our priority. We focus on clear timelines and impartial valuations for your fresh start.",
+        'senior': "We specialize in 'Gentle Transitions,' coordinating with family for a stress-free right-sizing move.",
+        'lifestyle': "Lifestyle shifts are about community. We'll deep-dive into the local 'vibe' of your new area."
+    };
+    alert("HomePathways Insight: " + (insights[type] || "Let's build your custom transition roadmap."));
+    window.location.href = 'booking.html';
+}
+</script>
 </body>
 </html>
