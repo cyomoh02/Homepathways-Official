@@ -49,47 +49,77 @@
         let currentQ = 0;
         let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
 
-        function showQuestion() {
-            const q = questions[currentQ];
-            document.getElementById('category-tag').innerText = q.cat;
-            document.getElementById('question-text').innerText = q.q;
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            q.o.forEach((opt) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
-                btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
-                btn.onclick = () => { 
-                    scores[q.cat]++; 
-                    currentQ++; 
-                    if (currentQ < questions.length) {
-                        showQuestion();
-                    } else {
-                        showLeadCapture();
-                    }
-                };
-                optionsDiv.appendChild(btn);
-            });
-            document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
-        }
-
-        function showLeadCapture() {
-            document.getElementById('quiz-container').innerHTML = `
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
-                    <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Psychological, and Logical readiness.</p>
-                    <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 focus:border-amber-400 outline-none text-white transition-colors">
-                    <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
-                </div>`;
-        }
-
         function submitLead() {
-            const email = document.getElementById('userEmail').value;
-            if(!email) return alert("Please enter your email.");
-            const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
+    const email = document.getElementById('userEmail').value;
+    if(!email) return alert("Please enter your email.");
+
+    // 1. Switch to the "Deep Analysis" Loading UI
+    showLoadingState();
+
+    // 2. Prepare the data for the final report
+    const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
+
+    // 3. The 60-Second "Artificial Labor" Countdown
+    let timeLeft = 60;
+    const messages = [
+        "Scanning your emotional readiness markers...",
+        "Identifying psychological 'sanctuary' requirements...",
+        "Mapping logical financial milestones...",
+        "Synthesizing your heart-to-home connection...",
+        "Finalizing your non-judging transition roadmap..."
+    ];
+
+    const progressInterval = setInterval(() => {
+        timeLeft--;
+        
+        // Update the progress bar visually (based on 60 seconds)
+        const percent = ((60 - timeLeft) / 60) * 100;
+        const loadingBar = document.getElementById('loading-bar');
+        if (loadingBar) loadingBar.style.width = percent + "%";
+        
+        // Cycle through the empathetic messages every 12 seconds (60/5 = 12)
+        if (timeLeft % 12 === 0) {
+            const msgIndex = Math.floor((60 - timeLeft) / 12);
+            const loadingText = document.getElementById('loading-text');
+            if(loadingText && messages[msgIndex]) {
+                loadingText.innerText = messages[msgIndex];
+            }
+        }
+
+        // When time is up, go to the report
+        if (timeLeft <= 0) {
+            clearInterval(progressInterval);
             window.location.href = 'report.html' + urlParams;
         }
+    }, 1000);
+}
+
+function showLoadingState() {
+    document.getElementById('quiz-container').innerHTML = `
+        <div class="text-center py-12">
+            <div class="mb-10 relative inline-block">
+                <div class="animate-spin rounded-full h-28 w-28 border-t-2 border-b-2 border-amber-400"></div>
+                <div class="absolute top-0 left-0 h-28 w-28 rounded-full bg-amber-400/5 animate-pulse flex items-center justify-center">
+                    <svg class="w-10 h-10 text-amber-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
+            <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic tracking-wide">Scanning your emotional readiness markers...</p>
+            
+            <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
+                <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
+            </div>
+            
+            <div class="space-y-2">
+                <p class="text-slate-500 text-[10px] uppercase tracking-[0.3em]">Precision Analysis Engine Active</p>
+                <p class="text-slate-600 text-xs italic">Please keep this window open while we build your roadmap.</p>
+            </div>
+        </div>
+    `;
+}
 
         showQuestion();
     </script>
