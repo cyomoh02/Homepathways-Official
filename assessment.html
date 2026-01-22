@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePathways | Transition Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-navy text-gray-200 font-sans antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+        <div id="quiz-container" class="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div class="w-full bg-slate-800 rounded-full h-2 mb-8">
+                <div id="progress" class="bg-gold h-2 rounded-full transition-all duration-500" style="width: 5%"></div>
+            </div>
+
+            <div id="question-box">
+                <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight"></h2>
+                <div id="options" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for Card 1: First-Time Buyer
+        const questions = [
+            { t: "Mood", q: "How are you feeling right now about buying a home?", cat: "Emotional", o: ["Excited!", "Nervous", "Overwhelmed", "Frustrated"] },
+            { t: "Pain Point", q: "What is the biggest pain point in your current living situation?", cat: "Logical", o: ["Equity building", "Lack of freedom", "Space is too small", "Instability"] },
+            { t: "Fear", q: "What is the one thing keeping you up at night?", cat: "Psychological", o: ["Monthly payments", "Hidden repairs", "Process confusion", "Commitment fear"] },
+            // ... (I will generate the full 21-question set based on your provided themes)
+        ];
+
+        let currentQ = 0;
+        let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
+
+        function showQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('question-text').innerText = q.q;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.o.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:border-gold/50 hover:bg-slate-800 transition-all group flex justify-between items-center";
+                btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-gold">→</span>`;
+                btn.onclick = () => next(q.cat);
+                optionsDiv.appendChild(btn);
+            });
+            document.getElementById('progress').style.width = ((currentQ + 1) / 21 * 100) + "%";
+        }
+
+        function next(category) {
+            scores[category]++;
+            currentQ++;
+            if (currentQ < questions.length) {
+                showQuestion();
+            } else {
+                showLeadCapture();
+            }
+        }
+
+        function showLeadCapture() {
+            document.getElementById('quiz-container').innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">Your Custom Roadmap is Ready</h2>
+                    <p class="text-slate-400 mb-8">Enter your email to receive your non-judging report on your Logical, Emotional, and Psychological readiness.</p>
+                    <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-4 rounded-xl bg-slate-950 border border-slate-800 mb-4 focus:border-gold outline-none">
+                    <button onclick="submitLead()" class="w-full bg-gold text-navy font-bold py-4 rounded-xl hover:bg-white transition-colors">Get My Report</button>
+                </div>`;
+        }
+
+        function submitLead() {
+    const email = document.getElementById('userEmail').value;
+    if(!email) return alert("Please enter your email.");
+
+    // This is the link to your GHL Webhook (we will set this up later)
+    // For now, it redirects to your report with the scores attached
+    const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
+    
+    alert("Analyzing your results...");
+    window.location.href = 'report.html' + urlParams;
+}
+
+        showQuestion();
+    </script>
+</body>
+</html>

@@ -427,16 +427,9 @@
     </script>
     <script>
 function showAssessment(type) {
-    const insights = {
-        'first-chapter': "First-time transitions require a 'No-Surprise' roadmap. We'll focus on financial readiness first.",
-        'growing': "Upsizing is about timing. We'll synchronize your sale and purchase for a one-move transition.",
-        'relocation': "Distance moves require local eyes. We'll be your boots-on-the-ground for neighborhood vetting.",
-        'divorce': "Discretion is our priority. We focus on clear timelines and impartial valuations for your fresh start.",
-        'senior': "We specialize in 'Gentle Transitions,' coordinating with family for a stress-free right-sizing move.",
-        'lifestyle': "Lifestyle shifts are about community. We'll deep-dive into the local 'vibe' of your new area."
-    };
-    alert("HomePathways Insight: " + (insights[type] || "Let's build your custom transition roadmap."));
-    window.location.href = 'booking.html';
+    // This sends the user to your new assessment page 
+    // and tells that page which persona clicked (e.g., first-chapter)
+    window.location.href = 'assessment.html?type=' + type;
 }
 </script>
 </body>
