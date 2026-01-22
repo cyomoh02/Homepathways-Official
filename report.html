@@ -13,7 +13,7 @@
             <span class="text-amber-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Your Transition Insights</span>
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Your Heart is the Compass. <br>We Provide the Map.</h1>
             <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                Thank you for being so open. This report isn't about "right" or "wrong" answers—it's a reflection of your current state so we can navigate your next move with total clarity.
+                This report isn't a test—it's a reflection of your current state so we can navigate your next move with total clarity.
             </p>
         </div>
 
@@ -27,7 +27,7 @@
                     </svg>
                     <span id="emotional-val" class="absolute text-2xl font-bold text-white">0</span>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed">Reflecting your feelings of excitement, connection, and readiness for change.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Your feelings of excitement and readiness for change.</p>
             </div>
 
             <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl text-center group hover:border-amber-400/30 transition-all">
@@ -39,7 +39,7 @@
                     </svg>
                     <span id="psych-val" class="absolute text-2xl font-bold text-white">0</span>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed">Gauging your mindset around safety, belonging, and the sense of "home."</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Your mindset around safety and the sense of "sanctuary."</p>
             </div>
 
             <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl text-center group hover:border-amber-400/30 transition-all">
@@ -51,16 +51,14 @@
                     </svg>
                     <span id="logical-val" class="absolute text-2xl font-bold text-white">0</span>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed">Assessing your practical preparations, timeline, and financial strategy.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Your practical preparation and financial strategy.</p>
             </div>
         </div>
 
         <div class="bg-slate-900/20 rounded-3xl p-10 border border-slate-800/50 mb-16">
             <h2 class="text-2xl font-bold text-white mb-6">A Message from Sean</h2>
-            <div class="space-y-6 text-slate-300 leading-relaxed text-lg italic">
-                <p>"Seeing these results, I want you to know that the mix of emotions you're feeling is exactly what makes a house a home. Whether the logical side feels heavy or the emotional side feels overwhelming, my role is to walk beside you so neither one feels lonely."</p>
-                <p>"Your transition isn't just a transaction. It's about moving toward the life you've imagined. Let's take these insights and build a roadmap that honors your pace and your peace of mind."</p>
-            </div>
+            <div id="dynamic-message" class="space-y-6 text-slate-300 leading-relaxed text-lg italic">
+                </div>
         </div>
 
         <div class="text-center">
@@ -69,16 +67,14 @@
             </a>
             <p class="mt-6 text-slate-500 text-sm">No pressure, just a 15-minute conversation to clarify your path.</p>
         </div>
-
     </div>
 
     <script>
-        // Logic to grab scores from URL
         const params = new URLSearchParams(window.location.search);
-        const e = parseInt(params.get('e')) || 7; // Defaults for preview
-        const p = parseInt(params.get('p')) || 7;
-        const l = parseInt(params.get('l')) || 7;
-        const total = 7; // Max possible per category (21/3)
+        const e = parseInt(params.get('e')) || 0;
+        const p = parseInt(params.get('p')) || 0;
+        const l = parseInt(params.get('l')) || 0;
+        const total = 7; // Max score per category
 
         function setCircle(id, valId, val) {
             const circle = document.getElementById(id);
@@ -88,7 +84,35 @@
             document.getElementById(valId).innerText = val;
         }
 
-        // Animate on load
+        // --- Dynamic Messaging Engine ---
+        const messageBox = document.getElementById('dynamic-message');
+        let finalMessage = "";
+
+        // Scenario 1: Heart-Led (Emotional is highest)
+        if (e >= p && e >= l) {
+            finalMessage = `
+                <p>"Seeing your results, it's clear that you have a deep emotional connection to this move. For you, this isn't about property—it's about the life that happens inside those walls."</p>
+                <p>"Because your heart is leading the way, my role is to protect that excitement while ensuring the practical details remain steady. Let's find a home that truly reflects who you are."</p>
+            `;
+        } 
+        // Scenario 2: Safety-Led (Psychological is highest)
+        else if (p >= e && p >= l) {
+            finalMessage = `
+                <p>"Your results show that you value 'Home' as a sanctuary above all else. Your focus on safety, belonging, and peace of mind is a beautiful foundation for this transition."</p>
+                <p>"I hear your need for security. We will move at your pace, ensuring every step feels safe and every decision feels right, so your next front door feels like a deep breath of relief."</p>
+            `;
+        } 
+        // Scenario 3: Strategy-Led (Logical is highest)
+        else {
+            finalMessage = `
+                <p>"You have a very clear, logical approach to this journey. You value data, strategy, and understanding the 'why' behind every financial and logistical milestone."</p>
+                <p>"I appreciate this clarity. It allows us to build a precise roadmap that treats your home as both a vital sanctuary and a powerful financial asset. Let's get the numbers and the plan working for you."</p>
+            `;
+        }
+
+        messageBox.innerHTML = finalMessage;
+
+        // Animate the charts after a short delay
         setTimeout(() => {
             setCircle('emotional-circle', 'emotional-val', e);
             setCircle('psych-circle', 'psych-val', p);
