@@ -8,7 +8,7 @@
 </head>
 <body class="bg-[#0A0F1D] text-gray-200 font-sans antialiased">
     <div class="max-w-3xl mx-auto px-4 py-12">
-        <div id="quiz-container" class="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl min-h-[500px] flex flex-col justify-center">
+        <div id="quiz-container" class="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl min-h-[550px] flex flex-col justify-center">
             
             <div id="top-progress-container" class="w-full bg-slate-800 rounded-full h-1.5 mb-10">
                 <div id="progress" class="bg-amber-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -23,162 +23,192 @@
     </div>
 
     <script>
-    // 1. Grab the Persona Type from the URL
-    const params = new URLSearchParams(window.location.search);
-    const personaType = params.get('type') || 'first-chapter';
+        const params = new URLSearchParams(window.location.search);
+        const personaType = params.get('type') || 'first-chapter';
 
-    // 2. Define the Question Banks
-    const allQuestions = {
-        'first-chapter': [
-            { q: "Which word best describes your mood about buying a home?", cat: "Emotional", o: ["Excited!", "Nervous", "Overwhelmed", "Frustrated"] },
-            { q: "What is the biggest pain point in your current living situation?", cat: "Logical", o: ["Equity building", "Zero freedom", "Space is too small", "Instability"] },
-            { q: "What is the one thing keeping you up at night about this purchase?", cat: "Psychological", o: ["Monthly payments", "Hidden repairs", "Process confusion", "Commitment fear"] },
-            { q: "Have you dipped your toes into the financial side yet?", cat: "Logical", o: ["Pre-approval ready", "Used calculators", "Afraid to check credit", "No idea on budget"] },
-            { q: "If a pipe leaks or a wall needs painting, what’s your reaction?", cat: "Psychological", o: ["Love DIY!", "Handle minor stuff", "Need help/YouTube", "Move-in ready only"] },
-            { q: "How long do you see yourself living in this first home?", cat: "Logical", o: ["1–3 years", "5–7 years", "10+ years", "Forever"] },
-            { q: "What is the most important 'lifestyle feature' you need?", cat: "Emotional", o: ["Walkability", "Outdoor space", "Short commute", "Peace & quiet"] },
-            { q: "Where do you stand regarding a down payment?", cat: "Logical", o: ["Full 20% saved", "5-10% saved", "Gift from family", "Researching options"] },
-            { q: "Who else is involved in this big decision?", cat: "Emotional", o: ["Just me", "Partner/Spouse", "Partner & Kids", "Parents/Friends"] },
-            { q: "Perfect house at the top of your budget—what do you do?", cat: "Psychological", o: ["Make the offer", "Hesitate/Bills fear", "Consult my agent", "Walk away"] },
-            { q: "What is your absolute 'Deal Breaker'?", cat: "Logical", o: ["Bad commute", "No parking", "High strata fees", "Safety concerns"] },
-            { q: "Moved in 3 months—what are you doing Saturday morning?", cat: "Emotional", o: ["Coffee on my deck", "Hosting brunch", "Garden project", "Sleeping in"] },
-            { q: "How much does private outdoor space impact your well-being?", cat: "Psychological", o: ["Essential", "Nice to have", "Don't care", "No yard work"] },
-            { q: "How much does 'clutter' affect your daily stress levels?", cat: "Logical", o: ["Significant", "Moderate", "Minor", "Not at all"] },
-            { q: "Do you view this home as a financial asset or a sanctuary?", cat: "Logical", o: ["Financial asset", "Personal sanctuary", "Both equally", "Neither yet"] },
-            { q: "Comfort level with a rental suite to help with mortgage?", cat: "Psychological", o: ["Very comfortable", "Maybe", "Uncomfortable", "Absolutely not"] },
-            { q: "Idea of living in a construction zone during renovations?", cat: "Psychological", o: ["Exciting project", "Tolerable", "Stressful", "Deal-breaker"] },
-            { q: "Importance of 'Community Vibe' to your sense of belonging?", cat: "Emotional", o: ["Very important", "Somewhat", "Neutral", "Privacy matters"] },
-            { q: "Need for easy access to parks and natural trails?", cat: "Emotional", o: ["Daily need", "Weekly use", "Occasionally", "Not important"] },
-            { q: "How safe must you feel to fully relax in your own home?", cat: "Psychological", o: ["Extremely safe", "Generally safe", "Adaptable", "Prefer secure"] },
-            { q: "How ready are you for the responsibility of homeownership?", cat: "Emotional", o: ["100% Ready", "Mostly ready", "A bit nervous", "Just researching"] }
-        ],
-        'growing': [
-            { q: "What is the primary reason you are looking for a larger home?", cat: "Logical", o: ["Growing family", "Working from home", "Need more privacy", "More hosting space"] },
-            { q: "How do you feel about the neighborhood you're leaving?", cat: "Emotional", o: ["I'll miss it", "Ready for a change", "Neutral", "Glad to leave"] },
-            { q: "What is your biggest fear about the 'Sell-Buy' transition?", cat: "Psychological", o: ["Being homeless", "Owning two homes", "Missing the timing", "Financial strain"] },
-            { q: "How much equity do you estimate is in your current home?", cat: "Logical", o: ["Significant", "Moderate", "I'm not sure", "Very little"] },
-            { q: "How does your current home's 'clutter' affect your mood?", cat: "Psychological", o: ["Daily stress", "Manageable", "I don't notice", "Makes me want to move"] },
-            { q: "What is the most important school-related factor for your move?", cat: "Logical", o: ["Walking distance", "Top-rated district", "Not a priority", "Secondary schools"] },
-            { q: "How do your kids (or future kids) feel about moving?", cat: "Emotional", o: ["Excited", "Anxious", "They don't know yet", "N/A"] },
-            { q: "What is your 'Must-Have' in the new, larger home?", cat: "Logical", o: ["Extra bedroom", "Large backyard", "Gourmet kitchen", "Home office"] },
-            { q: "Perfect house, but it needs $50k in work. Your reaction?", cat: "Psychological", o: ["Let's do it!", "I'm hesitant", "No renovations", "Need a credit"] },
-            { q: "How long do you plan to stay in this 'Up-Move' home?", cat: "Logical", o: ["5–10 years", "15+ years", "Until kids leave", "Forever home"] },
-            { q: "Who is the 'Chief Decision Maker' in this transition?", cat: "Emotional", o: ["Me", "Partner", "Family vote", "Equal partnership"] },
-            { q: "What is the biggest 'Logical' obstacle right now?", cat: "Logical", o: ["Current home repairs", "Interest rates", "Finding the house", "Packing/Moving"] },
-            { q: "Saturday morning in your NEW home. What are you doing?", cat: "Emotional", o: ["Watching kids play", "Organizing my office", "Coffee in peace", "Hosting family"] },
-            { q: "Does the thought of a larger mortgage keep you awake?", cat: "Psychological", o: ["Yes, a lot", "Occasionally", "I'm prepared", "Not at all"] },
-            { q: "How much does a 'Chef’s Kitchen' matter to your lifestyle?", cat: "Emotional", o: ["Essential", "Nice to have", "Don't care", "I don't cook"] },
-            { q: "How important is a 'quiet' street to your family’s peace?", cat: "Psychological", o: ["Critical", "Prefer it", "Neutral", "I like activity"] },
-            { q: "Where are you in the 'Selling' process of your current home?", cat: "Logical", o: ["Listed already", "Prepping to list", "Just researching", "Wait for new home"] },
-            { q: "If you found the perfect home today, are you ready to act?", cat: "Psychological", o: ["100% Ready", "Need to sell first", "Need to talk to bank", "Not quite yet"] },
-            { q: "How do you feel about the physical act of moving your stuff?", cat: "Emotional", o: ["Exhausted already", "Fine with help", "Exciting fresh start", "Stressed"] },
-            { q: "What is the secondary 'Why' behind this move?", cat: "Logical", o: ["Asset growth", "Better community", "Lifestyle shift", "Proximity to work"] },
-            { q: "How confident do you feel about navigating this dual transition?", cat: "Emotional", o: ["Very confident", "Need guidance", "A bit worried", "Completely lost"] }
-        ]
-        'relocation': [
-            { q: "What is the primary driver behind your relocation?", cat: "Logical", o: ["New job/Career", "Closer to family", "Lifestyle change", "Lower cost of living"] },
-            { q: "How do you feel about leaving your current community?", cat: "Emotional", o: ["Heartbroken", "Excited to start over", "Neutral", "Anxious"] },
-            { q: "How familiar are you with your new destination city?", cat: "Logical", o: ["Know it well", "Visited a few times", "Never been there", "Researching online"] },
-            { q: "What is your biggest fear about moving to a new area?", cat: "Psychological", o: ["Picking the wrong area", "Making no friends", "Safety concerns", "Cost of living jump"] },
-            { q: "How much do you trust a local expert to be your 'eyes and ears'?", cat: "Psychological", o: ["Completely", "Need to see for myself", "A little skeptical", "Just need data"] },
-            { q: "What is your timeline for physically being in the new home?", cat: "Logical", o: ["Within 30 days", "3–6 months", "6+ months", "Flexible"] },
-            { q: "How does your family (or partner) feel about this move?", cat: "Emotional", o: ["Fully on board", "Reluctant", "Divided", "N/A"] },
-            { q: "Will you need temporary housing when you arrive?", cat: "Logical", o: ["Yes, for sure", "Maybe", "No, want a direct move", "Unsure"] },
-            { q: "What neighborhood 'vibe' are you looking for most?", cat: "Emotional", o: ["Urban/Walkable", "Quiet Suburb", "Rural/Privacy", "Family-centric"] },
-            { q: "How important is proximity to your new workplace?", cat: "Logical", o: ["Must be close", "Willing to commute", "Work from home", "N/A"] },
-            { q: "What is your reaction to buying a home 'sight unseen' via video?", cat: "Psychological", o: ["Comfortable with it", "Need one visit", "Very nervous", "Absolutely not"] },
-            { q: "What is the biggest 'Logical' hurdle in this move?", cat: "Logical", o: ["Selling current home", "Shipping belongings", "School registration", "Job transition"] },
-            { q: "Saturday morning in your NEW city. What are you doing?", cat: "Emotional", o: ["Exploring local parks", "Finding a coffee shop", "Unpacking/Settling", "Meeting neighbors"] },
-            { q: "How much does 'belonging' to a new community matter to you?", cat: "Psychological", o: ["Critical", "Prefer privacy", "Somewhat", "Secondary to house"] },
-            { q: "How are you handling the logistics of the physical move?", cat: "Logical", o: ["Professional movers", "DIY/U-Haul", "Selling everything", "Not sure yet"] },
-            { q: "What is your 'Safe Haven' requirement in a new city?", cat: "Psychological", o: ["Gated/Secure", "Low crime stats", "Friendly street", "Proximity to police"] },
-            { q: "If you could change one thing about your move, what would it be?", cat: "Emotional", o: ["The distance", "The timing", "The cost", "Nothing!"] },
-            { q: "How do you plan to research local schools or amenities?", cat: "Logical", o: ["Online reviews", "Agent's advice", "Personal visits", "Friends' referrals"] },
-            { q: "Does the thought of being 'the new person' excite or drain you?", cat: "Psychological", o: ["Excites me!", "Drains me", "Bit of both", "Neutral"] },
-            { q: "What is your primary goal for the first 6 months in the new city?", cat: "Logical", o: ["Financial stability", "Social connection", "Home renovation", "Exploring"] },
-            { q: "On a scale of 1-10, how ready are you for this 'New Chapter'?", cat: "Emotional", o: ["10/10 Ready", "Feeling hesitant", "Ready but scared", "Just beginning"] }
-        ],
-    };
+        const allQuestions = {
+            'first-chapter': [
+                { q: "Which word best describes your mood about buying a home?", cat: "Emotional", o: ["Excited!", "Nervous", "Overwhelmed", "Frustrated"] },
+                { q: "What is the biggest pain point in your current living situation?", cat: "Logical", o: ["Equity building", "Zero freedom", "Space is too small", "Instability"] },
+                { q: "What is the one thing keeping you up at night about this purchase?", cat: "Psychological", o: ["Monthly payments", "Hidden repairs", "Process confusion", "Commitment fear"] },
+                { q: "Have you dipped your toes into the financial side yet?", cat: "Logical", o: ["Pre-approval ready", "Used calculators", "Afraid to check credit", "No idea on budget"] },
+                { q: "If a pipe leaks or a wall needs painting, what’s your reaction?", cat: "Psychological", o: ["Love DIY!", "Handle minor stuff", "Need help/YouTube", "Move-in ready only"] },
+                { q: "How long do you see yourself living in this first home?", cat: "Logical", o: ["1–3 years", "5–7 years", "10+ years", "Forever"] },
+                { q: "What is the most important 'lifestyle feature' you need?", cat: "Emotional", o: ["Walkability", "Outdoor space", "Short commute", "Peace & quiet"] },
+                { q: "Where do you stand regarding a down payment?", cat: "Logical", o: ["Full 20% saved", "5-10% saved", "Gift from family", "Researching options"] },
+                { q: "Who else is involved in this big decision?", cat: "Emotional", o: ["Just me", "Partner/Spouse", "Partner & Kids", "Parents/Friends"] },
+                { q: "Perfect house at the top of your budget—what do you do?", cat: "Psychological", o: ["Make the offer", "Hesitate/Bills fear", "Consult my agent", "Walk away"] },
+                { q: "What is your absolute 'Deal Breaker'?", cat: "Logical", o: ["Bad commute", "No parking", "High strata fees", "Safety concerns"] },
+                { q: "Moved in 3 months—what are you doing Saturday morning?", cat: "Emotional", o: ["Coffee on my deck", "Hosting brunch", "Garden project", "Sleeping in"] },
+                { q: "How much does private outdoor space impact your well-being?", cat: "Psychological", o: ["Essential", "Nice to have", "Don't care", "No yard work"] },
+                { q: "How much does 'clutter' affect your daily stress levels?", cat: "Logical", o: ["Significant", "Moderate", "Minor", "Not at all"] },
+                { q: "Do you view this home as a financial asset or a sanctuary?", cat: "Logical", o: ["Financial asset", "Personal sanctuary", "Both equally", "Neither yet"] },
+                { q: "Comfort level with a rental suite to help with mortgage?", cat: "Psychological", o: ["Very comfortable", "Maybe", "Uncomfortable", "Absolutely not"] },
+                { q: "Idea of living in a construction zone during renovations?", cat: "Psychological", o: ["Exciting project", "Tolerable", "Stressful", "Deal-breaker"] },
+                { q: "Importance of 'Community Vibe' to your sense of belonging?", cat: "Emotional", o: ["Very important", "Somewhat", "Neutral", "Privacy matters"] },
+                { q: "Need for easy access to parks and natural trails?", cat: "Emotional", o: ["Daily need", "Weekly use", "Occasionally", "Not important"] },
+                { q: "How safe must you feel to fully relax in your own home?", cat: "Psychological", o: ["Extremely safe", "Generally safe", "Adaptable", "Prefer secure"] },
+                { q: "How ready are you for the responsibility of homeownership?", cat: "Emotional", o: ["100% Ready", "Mostly ready", "A bit nervous", "Just researching"] }
+            ],
+            'growing': [
+                { q: "What is the primary reason you are looking for a larger home?", cat: "Logical", o: ["Growing family", "Working from home", "Need more privacy", "More hosting space"] },
+                { q: "How do you feel about the neighborhood you're leaving?", cat: "Emotional", o: ["I'll miss it", "Ready for a change", "Neutral", "Glad to leave"] },
+                { q: "What is your biggest fear about the 'Sell-Buy' transition?", cat: "Psychological", o: ["Being homeless", "Owning two homes", "Missing the timing", "Financial strain"] },
+                { q: "How much equity do you estimate is in your current home?", cat: "Logical", o: ["Significant", "Moderate", "I'm not sure", "Very little"] },
+                { q: "How does your current home's 'clutter' affect your mood?", cat: "Psychological", o: ["Daily stress", "Manageable", "I don't notice", "Makes me want to move"] },
+                { q: "What is the most important school-related factor for your move?", cat: "Logical", o: ["Walking distance", "Top-rated district", "Not a priority", "Secondary schools"] },
+                { q: "How do your kids (or future kids) feel about moving?", cat: "Emotional", o: ["Excited", "Anxious", "They don't know yet", "N/A"] },
+                { q: "What is your 'Must-Have' in the new, larger home?", cat: "Logical", o: ["Extra bedroom", "Large backyard", "Gourmet kitchen", "Home office"] },
+                { q: "Perfect house, but it needs $50k in work. Your reaction?", cat: "Psychological", o: ["Let's do it!", "I'm hesitant", "No renovations", "Need a credit"] },
+                { q: "How long do you plan to stay in this 'Up-Move' home?", cat: "Logical", o: ["5–10 years", "15+ years", "Until kids leave", "Forever home"] },
+                { q: "Who is the 'Chief Decision Maker' in this transition?", cat: "Emotional", o: ["Me", "Partner", "Family vote", "Equal partnership"] },
+                { q: "What is the biggest 'Logical' obstacle right now?", cat: "Logical", o: ["Current home repairs", "Interest rates", "Finding the house", "Packing/Moving"] },
+                { q: "Saturday morning in your NEW home. What are you doing?", cat: "Emotional", o: ["Watching kids play", "Organizing my office", "Coffee in peace", "Hosting family"] },
+                { q: "Does the thought of a larger mortgage keep you awake?", cat: "Psychological", o: ["Yes, a lot", "Occasionally", "I'm prepared", "Not at all"] },
+                { q: "How much does a 'Chef’s Kitchen' matter to your lifestyle?", cat: "Emotional", o: ["Essential", "Nice to have", "Don't care", "I don't cook"] },
+                { q: "How important is a 'quiet' street to your family’s peace?", cat: "Psychological", o: ["Critical", "Prefer it", "Neutral", "I like activity"] },
+                { q: "Where are you in the 'Selling' process of your current home?", cat: "Logical", o: ["Listed already", "Prepping to list", "Just researching", "Wait for new home"] },
+                { q: "If you found the perfect home today, are you ready to act?", cat: "Psychological", o: ["100% Ready", "Need to sell first", "Need to talk to bank", "Not quite yet"] },
+                { q: "How do you feel about the physical act of moving your stuff?", cat: "Emotional", o: ["Exhausted already", "Fine with help", "Exciting fresh start", "Stressed"] },
+                { q: "What is the secondary 'Why' behind this move?", cat: "Logical", o: ["Asset growth", "Better community", "Lifestyle shift", "Proximity to work"] },
+                { q: "How confident do you feel about navigating this dual transition?", cat: "Emotional", o: ["Very confident", "Need guidance", "A bit worried", "Completely lost"] }
+            ],
+            'relocation': [
+                { q: "What is the primary driver behind your relocation?", cat: "Logical", o: ["New job/Career", "Closer to family", "Lifestyle change", "Lower cost of living"] },
+                { q: "How do you feel about leaving your current community?", cat: "Emotional", o: ["Heartbroken", "Excited to start over", "Neutral", "Anxious"] },
+                { q: "How familiar are you with your new destination city?", cat: "Logical", o: ["Know it well", "Visited a few times", "Never been there", "Researching online"] },
+                { q: "What is your biggest fear about moving to a new area?", cat: "Psychological", o: ["Picking the wrong area", "Making no friends", "Safety concerns", "Cost of living jump"] },
+                { q: "How much do you trust a local expert to be your 'eyes and ears'?", cat: "Psychological", o: ["Completely", "Need to see for myself", "A little skeptical", "Just need data"] },
+                { q: "What is your timeline for physically being in the new home?", cat: "Logical", o: ["Within 30 days", "3–6 months", "6+ months", "Flexible"] },
+                { q: "How does your family (or partner) feel about this move?", cat: "Emotional", o: ["Fully on board", "Reluctant", "Divided", "N/A"] },
+                { q: "Will you need temporary housing when you arrive?", cat: "Logical", o: ["Yes, for sure", "Maybe", "No, want a direct move", "Unsure"] },
+                { q: "What neighborhood 'vibe' are you looking for most?", cat: "Emotional", o: ["Urban/Walkable", "Quiet Suburb", "Rural/Privacy", "Family-centric"] },
+                { q: "How important is proximity to your new workplace?", cat: "Logical", o: ["Must be close", "Willing to commute", "Work from home", "N/A"] },
+                { q: "What is your reaction to buying a home 'sight unseen' via video?", cat: "Psychological", o: ["Comfortable with it", "Need one visit", "Very nervous", "Absolutely not"] },
+                { q: "What is the biggest 'Logical' hurdle in this move?", cat: "Logical", o: ["Selling current home", "Shipping belongings", "School registration", "Job transition"] },
+                { q: "Saturday morning in your NEW city. What are you doing?", cat: "Emotional", o: ["Exploring local parks", "Finding a coffee shop", "Unpacking/Settling", "Meeting neighbors"] },
+                { q: "How much does 'belonging' to a new community matter to you?", cat: "Psychological", o: ["Critical", "Prefer privacy", "Somewhat", "Secondary to house"] },
+                { q: "How are you handling the logistics of the physical move?", cat: "Logical", o: ["Professional movers", "DIY/U-Haul", "Selling everything", "Not sure yet"] },
+                { q: "What is your 'Safe Haven' requirement in a new city?", cat: "Psychological", o: ["Gated/Secure", "Low crime stats", "Friendly street", "Proximity to police"] },
+                { q: "If you could change one thing about your move, what would it be?", cat: "Emotional", o: ["The distance", "The timing", "The cost", "Nothing!"] },
+                { q: "How do you plan to research local schools or amenities?", cat: "Logical", o: ["Online reviews", "Agent's advice", "Personal visits", "Friends' referrals"] },
+                { q: "Does the thought of being 'the new person' excite or drain you?", cat: "Psychological", o: ["Excites me!", "Drains me", "Bit of both", "Neutral"] },
+                { q: "What is your primary goal for the first 6 months in the new city?", cat: "Logical", o: ["Financial stability", "Social connection", "Home renovation", "Exploring"] },
+                { q: "On a scale of 1-10, how ready are you for this 'New Chapter'?", cat: "Emotional", o: ["10/10 Ready", "Feeling hesitant", "Ready but scared", "Just beginning"] }
+            ],
+            'senior': [
+                { q: "What is your #1 goal for the next 5-10 years?", cat: "Psychological", o: ["Stay in my home", "Stay independent", "Not be a burden", "Feel safe"] },
+                { q: "How do you feel about the maintenance of your current home?", cat: "Logical", o: ["It's too much", "I'm managing", "Getting expensive", "Family helps"] },
+                { q: "Have you or a loved one had a fall (or a near-fall) recently?", cat: "Psychological", o: ["Yes, recently", "I worry about it", "No issues", "Family worries"] },
+                { q: "Where are your bedroom and full bath located?", cat: "Logical", o: ["Upstairs", "Main floor with steps", "Accessible entry", "Basement"] },
+                { q: "How do you feel about the idea of a 'Senior Living' community?", cat: "Emotional", o: ["Absolutely not", "Open to social side", "Too expensive", "Maybe later"] },
+                { q: "Do you ever feel lonely or isolated in your current home?", cat: "Emotional", o: ["Yes, often", "Sometimes", "Strong network", "Prefer solitude"] },
+                { q: "Who is most concerned about your current living situation?", cat: "Psychological", o: ["Me", "Spouse", "Adult children", "My doctor"] },
+                { q: "How manageable are daily tasks like meal prep or cleaning?", cat: "Logical", o: ["I love it", "Takes all my energy", "Use frozen/takeout", "Have help"] },
+                { q: "What does 'Independence' mean to you most?", cat: "Psychological", o: ["Own decisions", "Living alone", "Not asking for help", "Self-sufficient"] },
+                { q: "When you look at your home, how do you feel?", cat: "Emotional", o: ["Overwhelmed", "Sad/Memories", "Tired", "Excited to travel"] },
+                { q: "What is the biggest hurdle stopping you from moving?", cat: "Logical", o: ["The clutter", "Nowhere to go", "Family resistance", "Financial costs"] },
+                { q: "What is your ideal 'Next Chapter' home layout?", cat: "Logical", o: ["Condo/Townhome", "One-story house", "55+ Community", "With family/ADU"] },
+                { q: "How do you feel about the physical task of decluttering?", cat: "Psychological", o: ["Already started", "Dreading it", "Need physical help", "Wait for kids"] },
+                { q: "How important is staying in your current neighborhood?", cat: "Emotional", o: ["Very (Friends/Doctor)", "Somewhat", "Ready for adventure", "Affordability first"] },
+                { q: "Are you planning to buy your next home with cash?", cat: "Logical", o: ["Yes", "Need home valuation", "Small mortgage", "Will rent"] },
+                { q: "How much space do you truly need for guests/grandkids?", cat: "Emotional", o: ["None (Hotel)", "One spare room", "Family dinners", "Sleepovers"] },
+                { q: "What would make you feel 'lighter' right now?", cat: "Psychological", o: ["No maintenance", "Travel funds", "Closer to family", "Less baggage"] },
+                { q: "If you stayed, what is the one MUST-CHANGE feature?", cat: "Logical", o: ["Safer bathroom", "The stairs", "More people", "Clear clutter"] },
+                { q: "How often do you drive outside of your local area?", cat: "Logical", o: ["Daily", "Avoid highways", "Don't drive", "Walk everywhere"] },
+                { q: "Are pets part of your current daily joy?", cat: "Emotional", o: ["Yes, dog(s)", "Yes, cat(s)", "No pets", "Maybe later"] },
+                { q: "How ready are you to right-size your life for safety?", cat: "Psychological", o: ["100% Ready", "Next 6-12 months", "1-2 years", "Not sure"] }
+            ],
+            'lifestyle': [
+                { q: "What is the primary reason for settling this estate?", cat: "Logical", o: ["Probate requirement", "Family agreement", "Financial need", "Maintenance burden"] },
+                { q: "How many heirs/decision-makers are involved?", cat: "Emotional", o: ["Just me", "Two of us", "Large group", "Legal professional"] },
+                { q: "What is the current condition of the estate property?", cat: "Logical", o: ["Fully updated", "Needs minor work", "Major repairs", "Unknown"] },
+                { q: "How quickly does the estate need to be settled?", cat: "Logical", o: ["ASAP", "3-6 months", "1 year+", "No rush"] },
+                { q: "How are the family dynamics during this process?", cat: "Emotional", o: ["Unified", "Stressful", "Neutral", "Complex/Legal only"] },
+                { q: "Is the goal to maximize value or prioritize speed?", cat: "Logical", o: ["Maximum value", "Fastest sale", "Balanced", "Unsure"] },
+                { q: "What is your biggest psychological hurdle right now?", cat: "Psychological", o: ["Emotional attachment", "Administrative stress", "Family conflict", "Legal confusion"] },
+                { q: "Has a professional valuation already been performed?", cat: "Logical", o: ["Yes", "In progress", "Not yet", "Don't need one"] },
+                { q: "How do you feel when entering the property?", cat: "Emotional", o: ["Connected", "Overwhelmed", "Numb/Practical", "Frustrated"] },
+                { q: "What is the plan for the contents of the home?", cat: "Logical", o: ["Already cleared", "Estate sale needed", "Donating everything", "Still full"] },
+                { q: "How much professional guidance do you currently have?", cat: "Logical", o: ["Lawyer/Accountant", "Just a Realtor", "Full team", "I'm doing it alone"] },
+                { q: "What is the 'Sanctuary' state for this property?", cat: "Psychological", o: ["Sold/Settled", "Rented out", "Family keep-it", "Renovated first"] },
+                { q: "How much does the property's history weigh on you?", cat: "Emotional", o: ["Heavily", "Moderate", "Minor", "Not at all"] },
+                { q: "Are there ongoing costs making the sale urgent?", cat: "Logical", o: ["Taxes/Mortgage", "Maintenance fees", "Insurance", "No costs"] },
+                { q: "What is the most important 'Legacy' for this property?", cat: "Psychological", o: ["Financial gain", "Honoring the owner", "Community use", "Quick resolution"] },
+                { q: "How involved are you in the daily property management?", cat: "Logical", o: ["Daily", "Weekly", "Hired help", "I live far away"] },
+                { q: "Do you feel like you have 'Permission' to sell?", cat: "Psychological", o: ["Yes, fully", "A bit guilty", "No", "Legal duty only"] },
+                { q: "What is the neighbor's perception of the property?", cat: "Emotional", o: ["Watching closely", "Helpful", "Complaining", "Neutral"] },
+                { q: "How transparent is the communication between heirs?", cat: "Logical", o: ["100% Open", "Mostly open", "Guarded", "None"] },
+                { q: "Is there a need for partial distribution of assets?", cat: "Logical", o: ["Yes", "Maybe", "No", "Unsure"] },
+                { q: "How ready are you to close this chapter completely?", cat: "Emotional", o: ["Ready now", "Getting there", "Not ready", "Just starting"] }
+            ]
+        };
 
-    // 3. Selection Logic
-    const questions = allQuestions[personaType] || allQuestions['first-chapter'];
+        const questions = allQuestions[personaType] || allQuestions['first-chapter'];
+        let currentQ = 0;
+        let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
 
-    let currentQ = 0;
-    let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
+        function showQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('category-tag').innerText = q.cat;
+            document.getElementById('question-text').innerText = q.q;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            q.o.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
+                btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
+                btn.onclick = () => { scores[q.cat]++; currentQ++; (currentQ < questions.length) ? showQuestion() : showLeadCapture(); };
+                optionsDiv.appendChild(btn);
+            });
+            document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
+        }
 
-    function showQuestion() {
-        const q = questions[currentQ];
-        document.getElementById('category-tag').innerText = q.cat;
-        document.getElementById('question-text').innerText = q.q;
-        const optionsDiv = document.getElementById('options');
-        optionsDiv.innerHTML = '';
-        
-        q.o.forEach((opt) => {
-            const btn = document.createElement('button');
-            btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
-            btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
-            btn.onclick = () => { 
-                scores[q.cat]++; 
-                currentQ++; 
-                if (currentQ < questions.length) {
-                    showQuestion();
-                } else {
-                    showLeadCapture();
+        function showLeadCapture() {
+            document.getElementById('top-progress-container').classList.add('hidden');
+            document.getElementById('quiz-container').innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
+                    <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Psychological, and Logical readiness.</p>
+                    <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 focus:border-amber-400 outline-none text-white transition-colors">
+                    <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
+                </div>`;
+        }
+
+        function submitLead() {
+            const email = document.getElementById('userEmail').value;
+            if(!email) return alert("Please enter your email.");
+            showLoadingState();
+            const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
+            let timeLeft = 60;
+            const messages = ["Scanning emotional readiness...", "Mapping financial milestones...", "Synthesizing heart-to-home connection...", "Finalizing your roadmap..."];
+            const progressInterval = setInterval(() => {
+                timeLeft--;
+                const percent = ((60 - timeLeft) / 60) * 100;
+                const loadingBar = document.getElementById('loading-bar');
+                if (loadingBar) loadingBar.style.width = percent + "%";
+                if (timeLeft % 12 === 0) {
+                    const msgIndex = Math.floor((60 - timeLeft) / 12);
+                    const loadingText = document.getElementById('loading-text');
+                    if(loadingText && messages[msgIndex]) loadingText.innerText = messages[msgIndex];
                 }
-            };
-            optionsDiv.appendChild(btn);
-        });
-        document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
-    }
+                if (timeLeft <= 0) { clearInterval(progressInterval); window.location.href = 'report.html' + urlParams; }
+            }, 1000);
+        }
 
-    function showLeadCapture() {
-        document.getElementById('top-progress-container').classList.add('hidden');
-        document.getElementById('quiz-container').innerHTML = `
-            <div class="text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
-                <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Psychological, and Logical readiness.</p>
-                <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 focus:border-amber-400 outline-none text-white transition-colors">
-                <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
-            </div>`;
-    }
-
-    function submitLead() {
-        const email = document.getElementById('userEmail').value;
-        if(!email) return alert("Please enter your email.");
-        showLoadingState();
-        const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
-        let timeLeft = 60;
-        const messages = ["Scanning emotional readiness...", "Mapping financial milestones...", "Synthesizing heart-to-home connection...", "Finalizing your roadmap..."];
-        const progressInterval = setInterval(() => {
-            timeLeft--;
-            const percent = ((60 - timeLeft) / 60) * 100;
-            const loadingBar = document.getElementById('loading-bar');
-            if (loadingBar) loadingBar.style.width = percent + "%";
-            if (timeLeft % 15 === 0) {
-                const msgIndex = Math.floor((60 - timeLeft) / 15);
-                const loadingText = document.getElementById('loading-text');
-                if(loadingText && messages[msgIndex]) loadingText.innerText = messages[msgIndex];
-            }
-            if (timeLeft <= 0) {
-                clearInterval(progressInterval);
-                window.location.href = 'report.html' + urlParams;
-            }
-        }, 1000);
-    }
-
-    function showLoadingState() {
-        document.getElementById('quiz-container').innerHTML = `
-            <div class="text-center py-12">
-                <div class="mb-10 animate-spin rounded-full h-28 w-28 border-t-2 border-b-2 border-amber-400 mx-auto"></div>
-                <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
-                <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic">Scanning your emotional readiness markers...</p>
-                <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
-                    <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
-                </div>
-            </div>`;
-    }
-
-    showQuestion();
-</script>
+        function showLoadingState() {
+            document.getElementById('quiz-container').innerHTML = `
+                <div class="text-center py-12">
+                    <div class="mb-10 animate-spin rounded-full h-28 w-28 border-t-2 border-b-2 border-amber-400 mx-auto"></div>
+                    <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
+                    <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic">Scanning your emotional readiness markers...</p>
+                    <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
+                        <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
+                    </div>
+                </div>`;
+        }
+        showQuestion();
+    </script>
 </body>
 </html>
