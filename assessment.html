@@ -23,8 +23,13 @@
     </div>
 
     <script>
-        // Data for Card 1: First-Time Buyer Assessment (21 Questions)
-        const questions = [
+    // 1. Grab the Persona Type from the URL
+    const params = new URLSearchParams(window.location.search);
+    const personaType = params.get('type') || 'first-chapter';
+
+    // 2. Define the Question Banks
+    const allQuestions = {
+        'first-chapter': [
             { q: "Which word best describes your mood about buying a home?", cat: "Emotional", o: ["Excited!", "Nervous", "Overwhelmed", "Frustrated"] },
             { q: "What is the biggest pain point in your current living situation?", cat: "Logical", o: ["Equity building", "Zero freedom", "Space is too small", "Instability"] },
             { q: "What is the one thing keeping you up at night about this purchase?", cat: "Psychological", o: ["Monthly payments", "Hidden repairs", "Process confusion", "Commitment fear"] },
@@ -46,111 +51,111 @@
             { q: "Need for easy access to parks and natural trails?", cat: "Emotional", o: ["Daily need", "Weekly use", "Occasionally", "Not important"] },
             { q: "How safe must you feel to fully relax in your own home?", cat: "Psychological", o: ["Extremely safe", "Generally safe", "Adaptable", "Prefer secure"] },
             { q: "How ready are you for the responsibility of homeownership?", cat: "Emotional", o: ["100% Ready", "Mostly ready", "A bit nervous", "Just researching"] }
-        ];
+        ],
+        'growing': [
+            { q: "What is the primary reason you are looking for a larger home?", cat: "Logical", o: ["Growing family", "Working from home", "Need more privacy", "More hosting space"] },
+            { q: "How do you feel about the neighborhood you're leaving?", cat: "Emotional", o: ["I'll miss it", "Ready for a change", "Neutral", "Glad to leave"] },
+            { q: "What is your biggest fear about the 'Sell-Buy' transition?", cat: "Psychological", o: ["Being homeless", "Owning two homes", "Missing the timing", "Financial strain"] },
+            { q: "How much equity do you estimate is in your current home?", cat: "Logical", o: ["Significant", "Moderate", "I'm not sure", "Very little"] },
+            { q: "How does your current home's 'clutter' affect your mood?", cat: "Psychological", o: ["Daily stress", "Manageable", "I don't notice", "Makes me want to move"] },
+            { q: "What is the most important school-related factor for your move?", cat: "Logical", o: ["Walking distance", "Top-rated district", "Not a priority", "Secondary schools"] },
+            { q: "How do your kids (or future kids) feel about moving?", cat: "Emotional", o: ["Excited", "Anxious", "They don't know yet", "N/A"] },
+            { q: "What is your 'Must-Have' in the new, larger home?", cat: "Logical", o: ["Extra bedroom", "Large backyard", "Gourmet kitchen", "Home office"] },
+            { q: "Perfect house, but it needs $50k in work. Your reaction?", cat: "Psychological", o: ["Let's do it!", "I'm hesitant", "No renovations", "Need a credit"] },
+            { q: "How long do you plan to stay in this 'Up-Move' home?", cat: "Logical", o: ["5–10 years", "15+ years", "Until kids leave", "Forever home"] },
+            { q: "Who is the 'Chief Decision Maker' in this transition?", cat: "Emotional", o: ["Me", "Partner", "Family vote", "Equal partnership"] },
+            { q: "What is the biggest 'Logical' obstacle right now?", cat: "Logical", o: ["Current home repairs", "Interest rates", "Finding the house", "Packing/Moving"] },
+            { q: "Saturday morning in your NEW home. What are you doing?", cat: "Emotional", o: ["Watching kids play", "Organizing my office", "Coffee in peace", "Hosting family"] },
+            { q: "Does the thought of a larger mortgage keep you awake?", cat: "Psychological", o: ["Yes, a lot", "Occasionally", "I'm prepared", "Not at all"] },
+            { q: "How much does a 'Chef’s Kitchen' matter to your lifestyle?", cat: "Emotional", o: ["Essential", "Nice to have", "Don't care", "I don't cook"] },
+            { q: "How important is a 'quiet' street to your family’s peace?", cat: "Psychological", o: ["Critical", "Prefer it", "Neutral", "I like activity"] },
+            { q: "Where are you in the 'Selling' process of your current home?", cat: "Logical", o: ["Listed already", "Prepping to list", "Just researching", "Wait for new home"] },
+            { q: "If you found the perfect home today, are you ready to act?", cat: "Psychological", o: ["100% Ready", "Need to sell first", "Need to talk to bank", "Not quite yet"] },
+            { q: "How do you feel about the physical act of moving your stuff?", cat: "Emotional", o: ["Exhausted already", "Fine with help", "Exciting fresh start", "Stressed"] },
+            { q: "What is the secondary 'Why' behind this move?", cat: "Logical", o: ["Asset growth", "Better community", "Lifestyle shift", "Proximity to work"] },
+            { q: "How confident do you feel about navigating this dual transition?", cat: "Emotional", o: ["Very confident", "Need guidance", "A bit worried", "Completely lost"] }
+        ]
+    };
 
-        let currentQ = 0;
-        let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
+    // 3. Selection Logic
+    const questions = allQuestions[personaType] || allQuestions['first-chapter'];
 
-        function showQuestion() {
-            const q = questions[currentQ];
-            document.getElementById('category-tag').innerText = q.cat;
-            document.getElementById('question-text').innerText = q.q;
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            q.o.forEach((opt) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
-                btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
-                btn.onclick = () => { 
-                    scores[q.cat]++; 
-                    currentQ++; 
-                    if (currentQ < questions.length) {
-                        showQuestion();
-                    } else {
-                        showLeadCapture();
-                    }
-                };
-                optionsDiv.appendChild(btn);
-            });
-            document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
-        }
+    let currentQ = 0;
+    let scores = { Emotional: 0, Psychological: 0, Logical: 0 };
 
-        function showLeadCapture() {
-            // Hide the progress bar for the final step
-            document.getElementById('top-progress-container').classList.add('hidden');
-            document.getElementById('quiz-container').innerHTML = `
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
-                    <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Psychological, and Logical readiness.</p>
-                    <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 focus:border-amber-400 outline-none text-white transition-colors">
-                    <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
-                </div>`;
-        }
-
-        function submitLead() {
-            const email = document.getElementById('userEmail').value;
-            if(!email) return alert("Please enter your email.");
-
-            showLoadingState();
-
-            const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
-
-            let timeLeft = 60;
-            const messages = [
-                "Scanning your emotional readiness markers...",
-                "Identifying psychological 'sanctuary' requirements...",
-                "Mapping logical financial milestones...",
-                "Synthesizing your heart-to-home connection...",
-                "Finalizing your non-judging transition roadmap..."
-            ];
-
-            const progressInterval = setInterval(() => {
-                timeLeft--;
-                const percent = ((60 - timeLeft) / 60) * 100;
-                const loadingBar = document.getElementById('loading-bar');
-                if (loadingBar) loadingBar.style.width = percent + "%";
-                
-                if (timeLeft % 12 === 0) {
-                    const msgIndex = Math.floor((60 - timeLeft) / 12);
-                    const loadingText = document.getElementById('loading-text');
-                    if(loadingText && messages[msgIndex]) {
-                        loadingText.innerText = messages[msgIndex];
-                    }
+    function showQuestion() {
+        const q = questions[currentQ];
+        document.getElementById('category-tag').innerText = q.cat;
+        document.getElementById('question-text').innerText = q.q;
+        const optionsDiv = document.getElementById('options');
+        optionsDiv.innerHTML = '';
+        
+        q.o.forEach((opt) => {
+            const btn = document.createElement('button');
+            btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
+            btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
+            btn.onclick = () => { 
+                scores[q.cat]++; 
+                currentQ++; 
+                if (currentQ < questions.length) {
+                    showQuestion();
+                } else {
+                    showLeadCapture();
                 }
+            };
+            optionsDiv.appendChild(btn);
+        });
+        document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
+    }
 
-                if (timeLeft <= 0) {
-                    clearInterval(progressInterval);
-                    window.location.href = 'report.html' + urlParams;
-                }
-            }, 1000);
-        }
+    function showLeadCapture() {
+        document.getElementById('top-progress-container').classList.add('hidden');
+        document.getElementById('quiz-container').innerHTML = `
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
+                <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Psychological, and Logical readiness.</p>
+                <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 focus:border-amber-400 outline-none text-white transition-colors">
+                <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
+            </div>`;
+    }
 
-        function showLoadingState() {
-            document.getElementById('quiz-container').innerHTML = `
-                <div class="text-center py-12">
-                    <div class="mb-10 relative inline-block">
-                        <div class="animate-spin rounded-full h-28 w-28 border-t-2 border-b-2 border-amber-400"></div>
-                        <div class="absolute top-0 left-0 h-28 w-28 rounded-full bg-amber-400/5 animate-pulse flex items-center justify-center">
-                            <svg class="w-10 h-10 text-amber-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
-                    <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic tracking-wide">Scanning your emotional readiness markers...</p>
-                    <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
-                        <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-slate-500 text-[10px] uppercase tracking-[0.3em]">Precision Analysis Engine Active</p>
-                        <p class="text-slate-600 text-xs italic">Please keep this window open while we build your roadmap.</p>
-                    </div>
+    function submitLead() {
+        const email = document.getElementById('userEmail').value;
+        if(!email) return alert("Please enter your email.");
+        showLoadingState();
+        const urlParams = `?email=${email}&e=${scores.Emotional}&p=${scores.Psychological}&l=${scores.Logical}`;
+        let timeLeft = 60;
+        const messages = ["Scanning emotional readiness...", "Mapping financial milestones...", "Synthesizing heart-to-home connection...", "Finalizing your roadmap..."];
+        const progressInterval = setInterval(() => {
+            timeLeft--;
+            const percent = ((60 - timeLeft) / 60) * 100;
+            const loadingBar = document.getElementById('loading-bar');
+            if (loadingBar) loadingBar.style.width = percent + "%";
+            if (timeLeft % 15 === 0) {
+                const msgIndex = Math.floor((60 - timeLeft) / 15);
+                const loadingText = document.getElementById('loading-text');
+                if(loadingText && messages[msgIndex]) loadingText.innerText = messages[msgIndex];
+            }
+            if (timeLeft <= 0) {
+                clearInterval(progressInterval);
+                window.location.href = 'report.html' + urlParams;
+            }
+        }, 1000);
+    }
+
+    function showLoadingState() {
+        document.getElementById('quiz-container').innerHTML = `
+            <div class="text-center py-12">
+                <div class="mb-10 animate-spin rounded-full h-28 w-28 border-t-2 border-b-2 border-amber-400 mx-auto"></div>
+                <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
+                <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic">Scanning your emotional readiness markers...</p>
+                <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
+                    <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
                 </div>
-            `;
-        }
+            </div>`;
+    }
 
-        showQuestion();
-    </script>
+    showQuestion();
+</script>
 </body>
 </html>
