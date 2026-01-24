@@ -263,11 +263,35 @@
         function submitLead() {
             const email = document.getElementById('userEmail').value;
             if(!email) return alert("Please enter your email.");
+
+            // 1. YOUR GHL WEBHOOK CONNECTION
+            // PASTE THE URL FROM YOUR SCREENSHOT BETWEEN THE QUOTES BELOW
+            const webhookUrl = "https://services.leadconnectorhq.com/hooks/wxiS9Tty9rMSXvVjZ1C1/webhook-trigger/8a092340-9c36-4a89-9353-288fdb410f62"; 
+            
+            const leadData = {
+                email: email,
+                persona: personaType,
+                c1_emotional: scores["Emotional Why"],
+                c2_inaction: scores["Cost of Inaction"],
+                c3_logical: scores["Logical Foundation"],
+                c4_status: scores["Identity & Status"],
+                c5_future: scores["Future-Self"]
+            };
+
+            // This fires the data to GHL immediately
+            fetch(webhookUrl, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(leadData)
+            });
+
+            // 2. Start the 60-second loading and redirection as usual
             showLoadingState();
             const urlParams = `?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
             
             let timeLeft = 60;
-            const messages = ["Scanning Emotional Why...", "Calculating Cost of Inaction...", "Mapping Logical Foundation...", "Evaluating Identity & Status...", "Synthesizing Future-Self Visualization..."];
+            const messages = ["Scanning Emotional Why...", "Calculating Cost of Inaction...", "Mapping Logical Foundation...", "Evaluating Identity & Status...", "Synthesizing Future-Self..."];
 
             const progressInterval = setInterval(() => {
                 timeLeft--;
@@ -287,6 +311,7 @@
                 }
             }, 1000);
         }
+        
 
         function showLoadingState() {
             document.getElementById('quiz-container').innerHTML = `
