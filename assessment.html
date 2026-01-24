@@ -270,7 +270,8 @@
     const email = document.getElementById('userEmail').value;
     if(!email) return alert("Please enter your email.");
 
-    // PASTE YOUR GHL URL BELOW
+    // 1. THE GHL WEBHOOK CONNECTION
+    // Ensure the URL below is exactly what you see in your GHL Trigger
     const webhookUrl = "https://services.leadconnectorhq.com/hooks/wxiS9Tty9rMSXvVjZ1C1/webhook-trigger/0e62bd62-444a-47d8-8803-61e57b74159a"; 
     
     const leadData = {
@@ -283,32 +284,58 @@
         c5_future_visualization: scores["Future-Self"]
     };
 
-    // This part sends the data
-    fetch(webhookUrl, {
-        method: "POST",
-        mode: "no-cors", 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(leadData)
-    }).then(() => {
-        // THIS IS NEW: It will pop up an alert on your screen so you KNOW it sent
-        console.log("Data sent to GHL successfully!");
-    });
+    // We use a "Try/Catch" block so even if GHL fails, the user still gets their report
+    try {
+        fetch(webhookUrl, {
+            method: "POST",
+            mode: "no-cors", 
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(leadData)
+        });
+        console.log("Signal sent to GHL");
+    } catch (error) {
+        console.log("GHL ignored, moving to report anyway.");
+    }
 
-    // Start the loading screen
+    // 2. TRIGGER THE LOADING UI IMMEDIATELY
     showLoadingState();
+
+    // Prepare the URL for the report page
     const urlParams = `?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
     
-    // ... rest of your timing logic ...
     let timeLeft = 60;
+    const messages = [
+        "Scanning Emotional Why...", 
+        "Calculating Cost of Inaction...", 
+        "Mapping Logical Foundation...", 
+        "Evaluating Identity & Status...", 
+        "Synthesizing Future-Self..."
+    ];
+
     const progressInterval = setInterval(() => {
         timeLeft--;
+        
+        // Update the bar
+        const percent = ((60 - timeLeft) / 60) * 100;
+        const loadingBar = document.getElementById('loading-bar');
+        if (loadingBar) loadingBar.style.width = percent + "%";
+        
+        // Change the messages every 12 seconds
+        if (timeLeft % 12 === 0) {
+            const msgIndex = Math.floor((60 - timeLeft) / 12);
+            const loadingText = document.getElementById('loading-text');
+            if(loadingText && messages[msgIndex]) {
+                loadingText.innerText = messages[msgIndex];
+            }
+        }
+
+        // REDIRECT when time is up
         if (timeLeft <= 0) {
             clearInterval(progressInterval);
             window.location.href = 'report.html' + urlParams;
         }
     }, 1000);
 }
-        }
         
 
         function showLoadingState() {
