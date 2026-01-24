@@ -1,176 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePathways | Transition Intelligence by Sean Omoh</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePathways | Sean Omoh - Transition Intelligence</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#050b1a',
+                        'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0A0F1D; }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(5, 11, 26, 0.7), rgba(5, 11, 26, 0.9));
+        }
         .hero-bg {
-            background: linear-gradient(to bottom, rgba(10, 15, 29, 0.7), rgba(10, 15, 29, 0.95)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&w=1920&q=80');
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
-        .card-glow:hover { box-shadow: 0 0 40px rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4); }
+        .card-glow:hover { box-shadow: 0 0 30px rgba(129, 178, 154, 0.2); border-color: rgba(129, 178, 154, 0.4); }
     </style>
 </head>
-<body class="text-gray-200 antialiased">
+<body class="bg-navy text-gray-200 font-sans antialiased">
 
-    <nav class="absolute top-0 w-full z-50 py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <div class="text-3xl font-bold tracking-tighter text-white uppercase mb-4">HOMEPATHWAYS<span class="text-amber-400">.</span></div>
-            <div class="h-[1px] w-24 bg-amber-400/40 mb-4"></div>
-            <p class="text-[10px] text-amber-400 uppercase tracking-[0.5em] font-bold">Transition Intelligence</p>
+    <nav class="absolute top-0 z-50 w-full h-24">
+        <div class="relative max-w-7xl mx-auto flex items-center justify-between h-24 px-8 w-full">
+            <div class="hidden lg:flex items-center gap-x-8">
+                <a href="#" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">Home</a>
+                <a href="#" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">About Sean</a>
+            </div>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                <div class="text-2xl font-serif font-bold tracking-wider uppercase text-white">HOME PATHWAY</div>
+            </div>
+            <div class="hidden lg:flex items-center gap-x-8">
+                <a href="#assessment-cards" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">Who We Serve</a>
+                <a href="booking.html" class="rounded-full bg-mint px-6 py-2.5 text-sm font-medium text-navy transition-all hover:bg-white">Book a Call</a>
+            </div>
         </div>
     </nav>
 
-    <header class="hero-bg min-h-screen flex items-center justify-center text-center">
-        <div class="max-w-4xl mx-auto px-6 pt-24">
-            <span class="inline-block py-1.5 px-4 rounded-full bg-amber-400/20 text-amber-400 text-[10px] font-bold tracking-widest uppercase mb-8 backdrop-blur-md border border-amber-400/20">Sean Omoh Advisory</span>
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
-                Don't just move.<br><span class="italic text-white/90">Evolve.</span>
+    <header class="relative min-h-screen hero-bg flex items-center justify-center text-center px-6">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 max-w-5xl pt-20">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">
+                Guiding Every Home Journey <br> With Clarity, Comfort, and Care.
             </h1>
-            <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-12 font-light">
-                Strategy over sales. We map the emotional and logical blueprint for your life's biggest transitions.
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+                From first homes to life transitions, we help you understand your options and move forward with confidence.
             </p>
-            <button onclick="scrollToWork()" class="bg-amber-400 text-slate-950 font-bold px-12 py-6 rounded-2xl shadow-2xl shadow-amber-400/40 hover:bg-white transition-all text-sm uppercase tracking-widest">
-                Explore the Method
+            <p class="text-sm italic text-gray-400 mb-12">
+                Supporting first-time buyers, relocating families, downsizing retirees, probate estates, and aging-in-place homeowners.
+            </p>
+            <button onclick="scrollToWork()" class="bg-mint text-navy font-bold px-12 py-5 rounded-full shadow-2xl hover:bg-white transition-all text-lg">
+                Start Your Home Pathway
             </button>
+            <p class="mt-8 text-xs text-gray-500 uppercase tracking-widest font-medium">No pressure. Just clear guidance tailored to your situation.</p>
         </div>
     </header>
 
-    <section id="the-way-we-work" class="py-32 bg-[#0A0F1D] border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-white mb-20 uppercase tracking-widest">The Way We Work</h2>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-                <div class="p-6">
-                    <div class="text-amber-400 text-sm font-bold mb-4">01</div>
-                    <h4 class="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Emotional Why</h4>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">The internal driver behind your relocation.</p>
+    <section id="the-way-we-work" class="py-32 bg-navy border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-4xl font-serif font-bold text-white mb-20">The Way We Work</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+                <div class="space-y-4">
+                    <div class="text-mint font-serif text-2xl font-bold italic">01</div>
+                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Emotional Why</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Defining the internal driver behind your transition.</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-amber-400 text-sm font-bold mb-4">02</div>
-                    <h4 class="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Cost of Inaction</h4>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">The hidden tax of staying in a space you've outgrown.</p>
+                <div class="space-y-4">
+                    <div class="text-mint font-serif text-2xl font-bold italic">02</div>
+                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Cost of Inaction</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Measuring the lifestyle tax of staying in an outgrown space.</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-amber-400 text-sm font-bold mb-4">03</div>
-                    <h4 class="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Logical Foundation</h4>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">The data-backed roadmap for your next move.</p>
+                <div class="space-y-4">
+                    <div class="text-mint font-serif text-2xl font-bold italic">03</div>
+                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Logical Foundation</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Building the data-backed strategy for your move.</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-amber-400 text-sm font-bold mb-4">04</div>
-                    <h4 class="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Identity & Status</h4>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">Aligning your environment with your trajectory.</p>
+                <div class="space-y-4">
+                    <div class="text-mint font-serif text-2xl font-bold italic">04</div>
+                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Identity & Status</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Aligning your address with your professional trajectory.</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-amber-400 text-sm font-bold mb-4">05</div>
-                    <h4 class="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Future Self</h4>
-                    <p class="text-slate-500 text-[11px] leading-relaxed">Visualizing the 5-year destination of your lifestyle.</p>
+                <div class="space-y-4">
+                    <div class="text-mint font-serif text-2xl font-bold italic">05</div>
+                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Future Self</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Visualizing your destination 5 years from today.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="assessment-cards" class="py-32 bg-black/20 border-y border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-white mb-20 uppercase tracking-widest">Select Your Path</h2>
+    <section id="assessment-cards" class="py-32 bg-[#080e1a] border-y border-gray-900">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-serif font-bold text-white mb-20 uppercase tracking-widest">Select Your Path</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div onclick="startQuiz('first-chapter')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">01</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The First Chapter</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Renter to Homeowner. Moving from rent to equity.</p>
+                <div onclick="startQuiz('first-chapter')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">01</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The First Chapter</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Moving from rent to equity. Start your wealth building journey.</p>
                 </div>
-                <div onclick="startQuiz('growing')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">02</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Up-Mover</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Expanding your space for family and professional growth.</p>
+                <div onclick="startQuiz('growing')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">02</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Up-Mover</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Expanding your space for family and professional growth.</p>
                 </div>
-                <div onclick="startQuiz('relocation')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">03</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Relocator</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Community-first relocation for a fresh start.</p>
+                <div onclick="startQuiz('relocation')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">03</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Relocator</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">New city, new network. Community-first relocation strategy.</p>
                 </div>
-                <div onclick="startQuiz('senior')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">04</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Legacy Senior</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Optimizing for independence and long-term safety.</p>
+                <div onclick="startQuiz('senior')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">04</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Legacy Senior</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Optimizing for independence and long-term safety.</p>
                 </div>
-                <div onclick="startQuiz('downsizing')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">05</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Right-Sizer</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Trading square footage for curated experiences.</p>
+                <div onclick="startQuiz('downsizing')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">05</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Right-Sizer</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Trading square footage for curated lifestyle experiences.</p>
                 </div>
-                <div onclick="startQuiz('lifestyle')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
-                    <div class="text-amber-400 text-2xl mb-6 font-mono opacity-50">06</div>
-                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Steward</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Managing probate with emotional clarity and unity.</p>
+                <div onclick="startQuiz('lifestyle')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-mint text-2xl mb-6 font-serif italic">06</div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Steward</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Managing probate with emotional clarity and family unity.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" class="py-32 bg-black/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-20 text-center uppercase tracking-[0.3em] text-sm opacity-60">Client Intelligence</h2>
+    <section class="py-32 bg-navy">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-3xl font-serif font-bold text-white mb-20 text-center uppercase tracking-widest">Client Intelligence</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-slate-900/30 p-12 rounded-[40px] border border-slate-800/50">
-                    <div class="text-amber-400 mb-8 text-xl">★★★★★</div>
-                    <p id="t1-text" class="text-slate-300 text-lg leading-relaxed italic mb-10">
+                <div class="bg-gray-900/30 p-12 rounded-[40px] border border-gray-800">
+                    <div class="text-mint mb-8 text-xl">★★★★★</div>
+                    <p id="t1-text" class="text-gray-300 text-lg leading-relaxed italic mb-10">
                         "I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."
                     </p>
-                    <button onclick="toggleStory(1)" id="btn-1" class="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
+                    <button onclick="toggleStory(1)" id="btn-1" class="text-mint font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
                 </div>
-                <div class="bg-slate-900/30 p-12 rounded-[40px] border border-slate-800/50">
-                    <div class="text-amber-400 mb-8 text-xl">★★★★★</div>
-                    <p id="t2-text" class="text-slate-300 text-lg leading-relaxed italic mb-10">
+                <div class="bg-gray-900/30 p-12 rounded-[40px] border border-gray-800">
+                    <div class="text-mint mb-8 text-xl">★★★★★</div>
+                    <p id="t2-text" class="text-gray-300 text-lg leading-relaxed italic mb-10">
                         "Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."
                     </p>
-                    <button onclick="toggleStory(2)" id="btn-2" class="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
+                    <button onclick="toggleStory(2)" id="btn-2" class="text-mint font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 bg-[#0A0F1D] border-t border-slate-900">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-16 text-center uppercase tracking-widest">Strategic Insight</h2>
+    <section id="faq" class="py-32 bg-navy border-t border-gray-900">
+        <div class="max-w-4xl mx-auto px-8">
+            <h2 class="text-3xl font-serif font-bold text-white mb-16 text-center uppercase tracking-widest">Strategic Insight</h2>
             <div class="space-y-6">
-                <div class="border border-slate-800 rounded-3xl overflow-hidden bg-slate-900/20">
+                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-gray-900/20">
                     <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(1)">
-                        <span class="text-white font-medium group-hover:text-amber-400 transition-colors">How do I know if I'm truly ready to move?</span>
-                        <span id="icon-1" class="text-amber-400 text-2xl font-light">+</span>
+                        <span class="text-white font-medium group-hover:text-mint transition-colors">How do I know if I'm truly ready to move?</span>
+                        <span id="icon-1" class="text-mint text-2xl font-light">+</span>
                     </button>
-                    <div id="faq-1" class="hidden p-8 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/30">
+                    <div id="faq-1" class="hidden p-8 pt-0 text-gray-400 leading-relaxed border-t border-gray-800/30">
                         When your home becomes a storage unit for your past instead of a launchpad for your future, you are ready. Our assessment measures this specific "Identity Friction."
                     </div>
                 </div>
-                <div class="border border-slate-800 rounded-3xl overflow-hidden bg-slate-900/20">
+                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-gray-900/20">
                     <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(2)">
-                        <span class="text-white font-medium group-hover:text-amber-400 transition-colors">Is it better to wait for rates to drop?</span>
-                        <span id="icon-2" class="text-amber-400 text-2xl font-light">+</span>
+                        <span class="text-white font-medium group-hover:text-mint transition-colors">Is it better to wait for rates to drop?</span>
+                        <span id="icon-2" class="text-mint text-2xl font-light">+</span>
                     </button>
-                    <div id="faq-2" class="hidden p-8 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/30">
+                    <div id="faq-2" class="hidden p-8 pt-0 text-gray-400 leading-relaxed border-t border-gray-800/30">
                         You can refinance a rate, but you can't refinance lost time. If staying in your current home is costing you peace or productivity, waiting is the most expensive option.
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-20">
-                <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-12 py-6 rounded-2xl shadow-2xl shadow-amber-400/40 hover:bg-white transition-all text-sm uppercase tracking-widest">
-                    Start Your Roadmap
+                <button onclick="scrollToCards()" class="bg-mint text-navy font-bold px-12 py-6 rounded-full shadow-2xl hover:bg-white transition-all text-sm uppercase tracking-widest">
+                    Start Your Assessment
                 </button>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 bg-[#0A0F1D] border-t border-white/5 text-center">
-        <div class="text-slate-600 text-[10px] tracking-[0.5em] uppercase font-bold">
-            © 2026 Sean Omoh. Strategy Over Sales.
+    <footer class="bg-navy text-gray-400 border-t border-gray-900 py-24">
+        <div class="mx-auto max-w-7xl px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+                <div class="md:col-span-2 lg:col-span-1">
+                    <div class="text-3xl font-serif font-bold text-white mb-6 uppercase">Homepathway</div>
+                    <p class="text-gray-500 mb-6">Get curated insights and market updates directly to your inbox.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email Address" class="w-full bg-gray-900 border border-gray-800 rounded-l-md px-4 py-2 text-white outline-none">
+                        <button class="bg-mint text-navy px-4 py-2 rounded-r-md font-bold hover:bg-white transition-colors">Join</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Navigation</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="hover:text-mint">Home</a></li>
+                        <li><a href="#" class="hover:text-mint">About Sean</a></li>
+                        <li><a href="#" class="hover:text-mint">Book a Strategy Call</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Resources</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="hover:text-mint">The Process</a></li>
+                        <li><a href="#" class="hover:text-mint">Insights</a></li>
+                        <li><a href="#" class="hover:text-mint">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Connect</h3>
+                    <p class="font-bold text-white mb-2">Sean Omoh</p>
+                    <p class="text-gray-500 mb-6">(555) 000-0000</p>
+                    <div class="flex space-x-4">
+                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
+                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
+                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 pt-8 border-t border-gray-800 text-center text-xs text-gray-600 uppercase tracking-widest">
+                &copy; 2026 Homepathways. All rights reserved.
+            </div>
         </div>
     </footer>
 
@@ -181,12 +252,12 @@
 
         const stories = {
             1: {
-                full: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work. Sean helped me realize that my home wasn't supporting my growth. We moved to a community that matched my 5-year trajectory, and my career took off immediately. It wasn't just a move; it was a promotion."`,
-                short: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."`
+                f: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work. Sean helped me realize that my home wasn't supporting my growth. We moved to a community that matched my 5-year trajectory, and my career took off immediately. It wasn't just a move; it was a promotion."`,
+                s: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."`
             },
             2: {
-                full: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor. He navigated the sibling dynamics with incredible grace and used his 'Closure Logic' to help us decide on an as-is sale that maximized inheritance and saved our family unity."`,
-                short: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."`
+                f: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor. He navigated the sibling dynamics with incredible grace and used his 'Closure Logic' to help us decide on an as-is sale that maximized inheritance and saved our family unity."`,
+                s: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."`
             }
         };
 
@@ -194,20 +265,17 @@
             const p = document.getElementById(`t${id}-text`);
             const btn = document.getElementById(`btn-${id}`);
             if (btn.innerText.includes("full")) {
-                p.innerText = stories[id].full; btn.innerText = "Show less";
+                p.innerText = stories[id].f; btn.innerText = "Show less";
             } else {
-                p.innerText = stories[id].short; btn.innerText = "Show full story";
+                p.innerText = stories[id].s; btn.innerText = "Show full story";
             }
         }
 
         function toggleFAQ(id) {
             const content = document.getElementById(`faq-${id}`);
             const icon = document.getElementById(`icon-${id}`);
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden'); icon.innerText = "−";
-            } else {
-                content.classList.add('hidden'); icon.innerText = "+";
-            }
+            content.classList.toggle('hidden');
+            icon.innerText = content.classList.contains('hidden') ? "+" : "−";
         }
     </script>
 </body>
