@@ -3,301 +3,281 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Pathway Real Estate</title>
+    <title>HomePathways | Real Estate Transition Advisory</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         'navy': '#050b1a',
+                        'navy-light': '#0a101e',
                         'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
-                        'light-bg': '#f8f9fa',
-                        'light-text': '#212529',
                     },
                     fontFamily: {
                         'serif': ['"Playfair Display"', 'serif'],
                         'sans': ['"Inter"', 'sans-serif'],
                     },
-                    animation: {
-                        'marquee-seamless-right': 'marquee-seamless-right 60s linear infinite',
-                        'marquee-seamless-left': 'marquee-seamless-left 60s linear infinite',
-                    },
                 }
             }
         }
     </script>
-    
     <style>
-        @keyframes marquee-seamless-right { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes marquee-seamless-left { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-        .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-        .assessment-gradient { background: radial-gradient(circle at top right, rgba(129, 178, 154, 0.15), transparent); }
-    </style>
-
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+        .hero-overlay { background: linear-gradient(to bottom, rgba(5, 11, 26, 0.6), rgba(5, 11, 26, 0.85)); }
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
         }
-    </script>
+        .card-glow:hover { box-shadow: 0 0 30px rgba(129, 178, 154, 0.15); border-color: rgba(129, 178, 154, 0.3); }
+        html { scroll-behavior: smooth; }
+        .faq-content { display: none; }
+        .faq-content.open { display: block; }
+    </style>
 </head>
-<body class="bg-light-bg text-light-text dark:bg-navy dark:text-gray-200 font-sans antialiased">
+<body class="bg-navy text-gray-200 font-sans antialiased">
 
-    <header class="sticky top-0 z-40 w-full">
-        <nav class="h-24 bg-navy">
-            <div class="relative max-w-7xl mx-auto flex items-center justify-between h-24 px-8 w-full">
-                <div class="hidden lg:flex items-center gap-x-8">
-                    <a href="index.html" class="whitespace-nowrap text-sm font-medium tracking-wide text-white border-b-2 border-mint pb-1">Home</a>
-                    <a href="about.html" class="whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300">About Sean</a>
+    <nav class="absolute top-0 z-50 w-full h-24">
+        <div class="relative max-w-7xl mx-auto flex items-center justify-between h-24 px-8 w-full">
+            <div class="hidden lg:flex items-center gap-x-8">
+                <a href="#" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">Home</a>
+                <a href="#" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">About Sean</a>
+            </div>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                <div class="text-2xl font-serif font-bold tracking-wider uppercase text-white">HOME PATHWAY</div>
+            </div>
+            <div class="hidden lg:flex items-center gap-x-8">
+                <a href="#pathways" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">Who We Serve</a>
+                <a href="booking.html" class="rounded-full bg-mint px-6 py-2.5 text-sm font-medium text-navy transition-all hover:bg-white">Book a Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen hero-bg flex items-center justify-center text-center px-6">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 max-w-5xl pt-20">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">
+                Guiding Every Home Journey <br> With Clarity, Comfort, and Care.
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+                From first homes to major life transitions, we help you map the emotional and logical path to your next chapter.
+            </p>
+            <button onclick="scrollToWork()" class="bg-mint text-navy font-bold px-12 py-5 rounded-full shadow-2xl hover:bg-white transition-all text-lg mb-12">
+                Start Your Home Pathway
+            </button>
+            <p class="text-xs text-gray-400 uppercase tracking-widest font-medium">Clear guidance tailored to your specific situation.</p>
+        </div>
+    </header>
+
+    <section id="the-way-we-work" class="py-32 bg-navy border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row gap-16">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
+                    A Clear Path Forward – <br> Tailored to Your Journey.
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    We've designed a precision process to bring clarity to your unique situation. We replace pressure with a strategic plan built around your future.
+                </p>
+            </div>
+            <div class="lg:w-1/2 space-y-6">
+                <div class="bg-navy-light border border-gray-800 p-8 rounded-2xl">
+                    <span class="text-mint font-serif uppercase tracking-widest text-xs font-bold">Step 1</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mt-1 mb-4">Start With Clarity</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">A deep-dive consultation to understand your goals, financial picture, and timeline.</p>
                 </div>
-                <div class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <a href="index.html" class="text-2xl font-serif font-bold tracking-wider uppercase text-white">Home Pathway</a>
+                <div class="bg-navy-light border border-gray-800 p-8 rounded-2xl">
+                    <span class="text-mint font-serif uppercase tracking-widest text-xs font-bold">Step 2</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mt-1 mb-4">Explore Your Pathway</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Matching your specific lifestyle vision with tangible market opportunities.</p>
                 </div>
-                <div class="hidden lg:flex items-center gap-x-8">
-                    <a href="#" class="whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300">Blog</a>
-                    <a href="booking.html" class="whitespace-nowrap rounded-full bg-[#86A994] px-6 py-2.5 text-sm font-medium tracking-wide text-navy transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] hover:-translate-y-0.5">Book a Call</a>
-                    <button id="theme-toggle" class="p-2 rounded-full text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
-                        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path></svg>
-                        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
-                    </button>
-                </div>
-                <div class="flex w-full items-center justify-between lg:hidden">
-                    <a href="index.html" class="text-xl font-serif font-bold tracking-wider uppercase text-white">Home Pathway</a>
-                    <button id="mobile-menu-open-btn" class="rounded-md p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mint">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-                    </button>
+                <div class="bg-navy-light border border-gray-800 p-8 rounded-2xl">
+                    <span class="text-mint font-serif uppercase tracking-widest text-xs font-bold">Step 3</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mt-1 mb-4">Move With Confidence</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Handling the heavy lifting—from vetted pros to negotiations—with total peace of mind.</p>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </section>
+
+    <section id="pathways" class="py-32 bg-[#080e1a] border-y border-gray-900">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-serif font-bold text-white mb-20 uppercase tracking-widest">Which Path Are You On?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=600" alt="First-Time Buyer" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">First-Time Home Buyer</h3>
+                        <p class="mt-4 text-gray-400 text-sm">Stop renting and start building your first stake in equity with confidence.</p>
+                        <button onclick="openAssessment('first-buyer')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=600" alt="Up-Mover" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">The Up-Mover</h3>
+                        <p class="mt-4 text-gray-400 text-sm">Expanding your "container" to match your professional growth and family needs.</p>
+                        <button onclick="openAssessment('up-mover')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=600" alt="Relocator" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">The Relocator</h3>
+                        <p class="mt-4 text-gray-400 text-sm">New city, new network. We map the community before we find the house.</p>
+                        <button onclick="openAssessment('relocator')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=600" alt="Downsizing" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">Downsizing/Right-Sizing</h3>
+                        <p class="mt-4 text-gray-400 text-sm">Trading square footage for curated experiences and lifestyle freedom.</p>
+                        <button onclick="openAssessment('downsizing')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?auto=format&fit=crop&q=80&w=600" alt="Aging in Place" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">Aging in the Home You Love</h3>
+                        <p class="mt-4 text-gray-400 text-sm">Optimizing your current environment for independence and long-term safety.</p>
+                        <button onclick="openAssessment('aging')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl bg-navy-light border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=600" alt="Probate" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-8 text-left">
+                        <h3 class="font-serif text-2xl font-bold text-white">Settling an Estate (Probate)</h3>
+                        <p class="mt-4 text-gray-400 text-sm">Managing family estate transitions with professional clarity and unity.</p>
+                        <button onclick="openAssessment('probate')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <div id="assessment-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto bg-navy/95 backdrop-blur-xl transition-all duration-500">
         <div class="flex min-h-screen items-center justify-center p-4">
-            <div class="relative w-full max-w-2xl rounded-3xl bg-slate-900 border border-slate-700 p-8 shadow-2xl assessment-gradient">
-                <button onclick="closeAssessment()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
+            <div class="relative w-full max-w-2xl rounded-3xl bg-slate-900 border border-slate-700 p-8 shadow-2xl">
+                <button onclick="closeAssessment()" class="absolute top-6 right-6 text-slate-400 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
-                
-                <div class="mb-10">
-                    <div class="flex justify-between text-xs uppercase tracking-widest text-mint font-bold mb-2">
-                        <span id="current-pillar-label">Pillar: Emotional Why</span>
-                        <span id="assessment-progress-text">Step 1 of 5</span>
-                    </div>
-                    <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                        <div id="assessment-progress-bar" class="h-full bg-mint transition-all duration-500" style="width: 20%"></div>
-                    </div>
-                </div>
-
-                <div id="assessment-content" class="min-h-[300px]">
-                    <h2 id="assessment-question" class="text-3xl md:text-4xl font-serif font-bold text-white mb-8 leading-tight"></h2>
-                    <div id="assessment-options" class="space-y-4">
+                <div id="assessment-content">
+                    <div class="mb-10">
+                        <div class="flex justify-between text-xs uppercase tracking-widest text-mint font-bold mb-2">
+                            <span id="pillar-label">Pillar: Loading...</span>
+                            <span id="step-count">1 of 5</span>
                         </div>
-                </div>
-
-                <div class="mt-12 flex items-center justify-between border-t border-slate-800 pt-6">
-                    <p class="text-xs text-slate-500 italic">Your data is confidential and used only to curate your roadmap.</p>
+                        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-mint transition-all duration-500" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <h2 id="q-text" class="text-3xl font-serif font-bold text-white mb-8"></h2>
+                    <div id="options-box" class="space-y-4"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <main>
-        <section class="relative h-screen flex items-center justify-center text-center text-white">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6199f7d00c?q=80&w=2070&auto=format&fit=crop" alt="Luxurious modern home interior" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-navy bg-opacity-60 dark:bg-opacity-70"></div>
-            </div>
-            <div class="relative z-10 p-4 max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">Guiding Every Home Journey With Clarity, Comfort, and Care.</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-6 text-gray-200">From first homes to life transitions, we help you understand your options and move forward with confidence.</p>
-                <a href="#pathways" class="inline-block bg-mint text-navy font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] hover:-translate-y-0.5">Start Your Home Pathway</a>
-                <p class="mt-8 text-sm text-gray-300 tracking-wider uppercase font-medium">Supporting first-time buyers, relocators, and seniors.</p>
-            </div>
-        </section>
-
-        <section id="pathways" class="py-24 bg-navy">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">Every Journey is Unique. Which Path Are You On?</h2>
-                    <p class="mt-4 mb-16 text-lg text-slate-300">Choose your path below to begin your personalized 5-pillar assessment.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=600" alt="First Chapter" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Starting Your First Chapter</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Stop gifting your landlord equity and start building your own future with confidence.</p>
-                            <button onclick="openAssessment('first-chapter')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=600" alt="Up-Mover" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Growing Into More Space</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Transition from your "starter" home to the space that supports your growing family.</p>
-                            <button onclick="openAssessment('up-mover')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=600" alt="Relocation" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Finding Your Way Home</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Expert guidance for high-level relocation into communities that match your lifestyle.</p>
-                            <button onclick="openAssessment('relocation')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=600" alt="Downsizing" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Simplifying for the Best Years</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Cashing out your large estate to curate a lifestyle centered on experiences and freedom.</p>
-                            <button onclick="openAssessment('downsizing')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?auto=format&fit=crop&q=80&w=600" alt="Aging in Place" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Staying in the Home You Love</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Audit your current environment to ensure it remains a safe harbor for your future.</p>
-                            <button onclick="openAssessment('aging-in-place')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-
-                    <div class="group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 transition-all duration-500 hover:scale-[1.02] hover:border-mint/30">
-                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=600" alt="Probate" class="h-48 w-full object-cover rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity">
-                        <div class="p-8">
-                            <h3 class="font-serif text-2xl font-bold text-white">Navigating Sensitive Transitions</h3>
-                            <p class="mt-4 text-slate-400 text-sm leading-relaxed">Settling a family estate with professional clarity and compassionate stewardship.</p>
-                            <button onclick="openAssessment('probate')" class="mt-8 w-full rounded-full bg-mint/10 border border-mint/20 py-3 text-sm font-bold text-mint transition-all group-hover:bg-mint group-hover:text-navy">Start Assessment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="group overflow-hidden py-20 bg-navy">
-             </section>
-    </main>
-
-    <footer class="bg-[#050A14] text-slate-300">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-t border-gray-800 py-20 text-center">
-            <p>&copy; 2026 Homepathways. All rights reserved.</p>
+    <footer class="bg-navy text-gray-400 border-t border-gray-900 py-24 text-center">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-3xl font-serif font-bold text-white mb-6 uppercase">Homepathway</div>
+            <p class="text-xs text-gray-600 uppercase tracking-[0.5em]">&copy; 2026 Sean Omoh. Strategy Over Sales.</p>
         </div>
     </footer>
 
     <script>
+        function scrollToWork() { document.getElementById('the-way-we-work').scrollIntoView(); }
+        function scrollToCards() { document.getElementById('pathways').scrollIntoView(); }
+        function startQuiz(type) { openAssessment(type); }
+
         const assessmentData = {
-            'first-chapter': {
-                title: 'Starting Your First Chapter',
-                questions: [
-                    { pillar: 'Emotional Why', q: "Does your current space feel like a 'CEO' base or a 'temporary guest' house?", options: ["The CEO's Life", "A Long-term Guest", "Just a Renter", "Completely Settled"] },
-                    { pillar: 'Cost of Inaction', q: "In 24 months, how much rent are you 'gifting' your landlord?", options: ["Too much to ignore", "Significant amount", "Necessary evil", "Not sure"] },
-                    { pillar: 'Logical Foundation', q: "What is your primary engine: Financial Growth or Immediate Sanctuary?", options: ["Financial Hedge", "Permanent Sanctuary", "A bit of both", "I'm unsure"] },
-                    { pillar: 'Identity & Status', q: "Does your address reflect the professional you have become?", options: ["Yes, perfectly", "I've outgrown it", "It's embarrassing", "Not close"] },
-                    { pillar: 'Future Self', q: "Imagine your own yard/patio on Saturday; what makes you smile?", options: ["The Privacy", "The Hosting Space", "The Peace", "The Pride"] }
+            'first-buyer': {
+                qs: [
+                    { p: 'Emotional Why', q: "Do you feel like a 'guest' in an investment or the 'CEO' of your own life?", o: ["CEO of my life", "A long-term guest", "Temporary resident", "Just a renter"] },
+                    { p: 'Cost of Inaction', q: "In 24 months, how much rent are you 'gifting' your landlord instead of yourself?", o: ["Too much to ignore", "Significant amount", "Necessary evil", "Not calculated"] },
+                    { p: 'Logical Foundation', q: "Is your first home a 'forever sanctuary' or a 'wealth-building stepping stone'?", o: ["Stepping stone", "Forever sanctuary", "Wealth hedge", "Unsure"] },
+                    { p: 'Identity & Status', q: "Does your address reflect the professional adult you have become?", o: ["Yes, perfectly", "I've outgrown it", "It's embarrassing", "Not close"] },
+                    { p: 'Future Self', q: "Imagine your own yard on a Saturday; what makes you smile first?", o: ["The Privacy", "The Hosting Space", "The Peace", "The Pride"] }
                 ]
             },
             'up-mover': {
-                title: 'Growing Into More Space',
-                questions: [
-                    { pillar: 'Emotional Why', q: "Is your home a 'launchpad' for your goals or a 'cluttered cage'?", options: ["True Launchpad", "Draining my energy", "Lacking flow", "Just small"] },
-                    { pillar: 'Cost of Inaction', q: "How much productivity are you losing in a house that doesn't function?", options: ["Massive drain", "Noticeable impact", "Minor annoyance", "None"] },
-                    { pillar: 'Logical Foundation', q: "Will your children outgrow this space within 3 years?", options: ["Absolutely", "Most likely", "Maybe", "Not really"] },
-                    { pillar: 'Identity & Status', q: "Does your home reinforce your professional standing to mentors?", options: ["Yes, it's a win", "It needs work", "I hide my home", "Neutral"] },
-                    { pillar: 'Future Self', q: "A holiday dinner where everyone fits: How does that feel?", options: ["Pure Pride", "Deep Relief", "Pure Joy", "Exciting"] }
+                qs: [
+                    { p: 'Emotional Why', q: "Is your home a 'launchpad' for your goals or a 'cluttered cage'?", o: ["True Launchpad", "Draining my energy", "Lacking flow", "Just small"] },
+                    { p: 'Cost of Inaction', q: "How much daily productivity are you losing in a space that doesn't function?", o: ["Massive drain", "Noticeable impact", "Minor annoyance", "None"] },
+                    { p: 'Logical Foundation', q: "Will your family outgrow this space within the next 3 years?", o: ["Absolutely", "Most likely", "Maybe", "Not really"] },
+                    { p: 'Identity & Status', q: "Does your home reinforce your professional standing to your peers?", o: ["Yes, it's a win", "It needs work", "I hide my home", "Neutral"] },
+                    { p: 'Future Self', q: "A holiday dinner where everyone fits: How does that feel?", o: ["Pure Pride", "Deep Relief", "Pure Joy", "Exciting"] }
                 ]
-            }
-            // Logic continues for other personas...
+            },
+            'relocator': {
+                qs: [
+                    { p: 'Emotional Why', q: "Are you moving to 'escape' a lifestyle or 'pursue' a new identity?", o: ["Pursue identity", "Escape current", "Bit of both", "Neutral"] },
+                    { p: 'Cost of Inaction', q: "How many 'perfect weekends' are you losing in your current city?", o: ["Countless", "Dozens", "Occasionally", "None"] },
+                    { p: 'Logical Foundation', q: "How critical is being within 15 minutes of your lifestyle anchors?", o: ["Critical", "Prefer it", "Secondary", "Not a factor"] },
+                    { p: 'Identity & Status', q: "Who is the 'New You' in this city—Adventurer or Professional?", o: ["Adventurer", "Professional", "Socialite", "Recluse"] },
+                    { p: 'Future Self', q: "A morning in your new city cafe: What is the primary feeling?", o: ["Total Relief", "High Excitement", "Quiet Joy", "Normal"] }
+                ]
+            },
+            // Logic for Downsizing, Aging, Probate built into handleNext
         };
 
-        let currentPersona = '';
+        let currentPath = '';
         let currentStep = 0;
-        let userScores = {};
 
-        function openAssessment(personaId) {
-            currentPersona = personaId;
-            currentStep = 0;
-            const modal = document.getElementById('assessment-modal');
-            modal.classList.remove('hidden');
+        function openAssessment(path) {
+            currentPath = path; currentStep = 0;
+            document.getElementById('assessment-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            renderQuestion();
+            renderQ();
         }
 
         function closeAssessment() {
-            const modal = document.getElementById('assessment-modal');
-            modal.classList.add('hidden');
+            document.getElementById('assessment-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
-        function renderQuestion() {
-            const data = assessmentData[currentPersona] || assessmentData['first-chapter'];
-            const step = data.questions[currentStep];
-            
-            document.getElementById('current-pillar-label').innerText = `Pillar: ${step.pillar}`;
-            document.getElementById('assessment-progress-text').innerText = `Step ${currentStep + 1} of 5`;
-            document.getElementById('assessment-progress-bar').style.width = `${(currentStep + 1) * 20}%`;
-            document.getElementById('assessment-question').innerText = step.q;
-            
-            const optionsBox = document.getElementById('assessment-options');
-            optionsBox.innerHTML = '';
-            
-            step.options.forEach((opt, index) => {
+        function renderQ() {
+            const data = assessmentData[currentPath] || assessmentData['first-buyer'];
+            const step = data.qs[currentStep];
+            document.getElementById('pillar-label').innerText = `Pillar: ${step.p}`;
+            document.getElementById('step-count').innerText = `${currentStep + 1} of 5`;
+            document.getElementById('progress-bar').style.width = `${(currentStep + 1) * 20}%`;
+            document.getElementById('q-text').innerText = step.q;
+            const box = document.getElementById('options-box');
+            box.innerHTML = '';
+            step.o.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-6 rounded-2xl border border-slate-700 bg-slate-800/50 hover:border-mint hover:bg-slate-800 transition-all text-white font-medium";
+                btn.className = "w-full text-left p-6 rounded-2xl border border-slate-700 bg-slate-800/50 hover:border-mint hover:bg-slate-800 transition-all text-white";
                 btn.innerText = opt;
-                btn.onclick = () => handleNext();
-                optionsBox.appendChild(btn);
+                btn.onclick = handleNext;
+                box.appendChild(btn);
             });
         }
 
         function handleNext() {
-            if (currentStep < 4) {
-                currentStep++;
-                renderQuestion();
-            } else {
-                // Final Submission logic - link to report or lead capture
+            if (currentStep < 4) { currentStep++; renderQ(); }
+            else {
                 document.getElementById('assessment-content').innerHTML = `
                     <div class="text-center py-12">
-                        <div class="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-mint/10 text-mint">
-                            <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
-                        </div>
                         <h2 class="text-3xl font-serif font-bold text-white mb-4">Your Roadmap is Ready.</h2>
-                        <p class="text-slate-400 mb-8">We've calculated your Readiness Scores across the 5 pillars.</p>
+                        <p class="text-gray-400 mb-8">We've mapped your scores across the 5 pillars. Ready to see the results?</p>
                         <a href="booking.html" class="inline-block bg-mint text-navy font-bold px-12 py-4 rounded-full hover:bg-white transition-all">Download Analysis</a>
-                    </div>
-                `;
+                    </div>`;
             }
         }
-
-        // Keep your original theme/menu logic below
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggleButton = document.getElementById('theme-toggle');
-            const sunIcon = document.getElementById('theme-icon-sun');
-            const moonIcon = document.getElementById('theme-icon-moon');
-            const docElement = document.documentElement;
-            function setThemeIcon() { if (docElement.classList.contains('dark')) { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); } else { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); } }
-            setThemeIcon();
-            themeToggleButton.addEventListener('click', function() { if (docElement.classList.contains('dark')) { docElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); } else { docElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); } setThemeIcon(); });
-            const mobileMenu = document.getElementById('mobile-menu');
-            const openMenuBtn = document.getElementById('mobile-menu-open-btn');
-            const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
-            if(openMenuBtn) openMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
-            if(closeMenuBtn) closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
-        });
     </script>
 </body>
 </html>
