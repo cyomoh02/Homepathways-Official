@@ -3,150 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePathways | Transition Assessment</title>
+    <title>Connection Test | HomePathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#0A0F1D] text-gray-200 antialiased">
-    <div class="max-w-3xl mx-auto px-4 py-12">
-        <div id="quiz-container" class="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl min-h-[550px] flex flex-col justify-center">
-            
-            <div id="top-progress-container" class="w-full bg-slate-800 rounded-full h-1.5 mb-10">
-                <div id="progress" class="bg-amber-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
-            </div>
-
-            <div id="question-box">
-                <span id="category-tag" class="text-amber-400/60 text-xs font-bold uppercase tracking-widest mb-2 block font-mono"></span>
-                <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-white mb-8 leading-tight"></h2>
-                <div id="options" class="grid gap-4"></div>
+<body class="bg-[#0A0F1D] text-gray-200">
+    <div class="max-w-xl mx-auto py-20 px-6">
+        <div id="quiz-container" class="bg-slate-900 border border-slate-800 p-10 rounded-3xl shadow-2xl">
+            <div id="question-area">
+                <h2 id="q-text" class="text-2xl font-bold mb-6">Ready to test the GHL Connection?</h2>
+                <button onclick="startTest()" class="bg-amber-400 text-black font-bold px-8 py-4 rounded-xl">Start 5-Question Test</button>
             </div>
         </div>
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const personaType = params.get('type') || 'first-chapter';
+        const testQuestions = [
+            { q: "Test 1: Emotional Why?", cat: "c1" },
+            { q: "Test 2: Cost of Inaction?", cat: "c2" },
+            { q: "Test 3: Logical Foundation?", cat: "c3" },
+            { q: "Test 4: Identity & Status?", cat: "c4" },
+            { q: "Test 5: Future-Self?", cat: "c5" }
+        ];
+        let current = 0;
+        let scores = { c1:4, c2:4, c3:4, c4:4, c5:4 };
 
-        const allQuestions = {
-            'first-chapter': [
-                { q: "Do you feel like a 'guest' in an investment or the 'CEO' of your own life?", cat: "Emotional Why", o: ["CEO of my life", "A long-term guest", "Temporary resident", "Just a renter"] },
-                { q: "What house rule or limitation feels like a constant weight on your shoulders?", cat: "Emotional Why", o: ["Landlord restrictions", "Lack of control", "Space constraints", "Instability"] },
-                { q: "If you could paint a wall tomorrow without permission, how much more 'at home' would you feel?", cat: "Emotional Why", o: ["Completely settled", "Significantly better", "Slightly more", "No change"] },
-                { q: "Is your desire to buy driven more by security (roots) or freedom (control)?", cat: "Emotional Why", o: ["Security", "Freedom", "Both equally", "Financial gain"] },
-                { q: "What childhood memory of 'Home' is missing from your life right now?", cat: "Emotional Why", o: ["Privacy/Yard", "Stable community", "Space to host", "Sense of pride"] },
-                { q: "If you pay rent for another 24 months, how much are you 'gifting' your landlord?", cat: "Cost of Inaction", o: ["Too much to ignore", "Significant amount", "Necessary evil", "Not calculated"] },
-                { q: "How much mental energy is wasted worrying about lease renewals or rent hikes?", cat: "Cost of Inaction", o: ["Constant stress", "Occasional worry", "Very little", "None"] },
-                { q: "What milestone (family, dog, business) is on hold while you continue to rent?", cat: "Cost of Inaction", o: ["Growing family", "Getting a dog", "Business launch", "Personal space"] },
-                { q: "If prices rise 5% while you 'wait,' how many extra hours of work does that represent?", cat: "Cost of Inaction", o: ["Months of labor", "A few weeks", "Manageable", "Not sure"] },
-                { q: "How much stress is caused by living in a space you’ve outgrown?", cat: "Cost of Inaction", o: ["Daily anxiety", "Mild frustration", "Noticeable", "I'm organized"] },
-                { q: "Is your first home a 'forever sanctuary' or a 'wealth-building stepping stone'?", cat: "Logical Foundation", o: ["Stepping stone", "Forever sanctuary", "Wealth hedge", "Unsure"] },
-                { q: "Does your current space have a 'zone' that protects you from work burnout?", cat: "Logical Foundation", o: ["Dedicated zone", "Use bed/sofa", "Total burnout", "Need upgrade"] },
-                { q: "Are you more comfortable trading time (DIY) or money (Move-in ready)?", cat: "Logical Foundation", o: ["Time (DIY)", "Money (Ready)", "A bit of both", "Neither"] },
-                { q: "Priority: Social 'vibe' (gyms/bars) or your professional 'engine' (commute)?", cat: "Logical Foundation", o: ["Social vibe", "Professional engine", "Balance", "Remote"] },
-                { q: "In this economy, is 'house hacking' (renting a room) something you want?", cat: "Logical Foundation", o: ["Definitely", "Maybe", "Not interested", "Too much work"] },
-                { q: "Does your address reflect the adult you have become today?", cat: "Identity & Status", o: ["Yes, perfectly", "I've outgrown it", "It's embarrassing", "Not close"] },
-                { q: "How would it change your confidence to host friends in a place you're proud of?", cat: "Identity & Status", o: ["Massive boost", "Nice feeling", "Already proud", "Not important"] },
-                { q: "When describing 'where you live,' do you make excuses or highlight features?", cat: "Identity & Status", o: ["Always excuses", "Mostly excuses", "Neutral", "Highlight features"] },
-                { q: "Does your environment inspire productivity or encourage 'playing small'?", cat: "Identity & Status", o: ["Play small", "Inspires me", "Neutral", "Drains energy"] },
-                { q: "What one 'luxury' (chef kitchen, patio) would make you feel you’ve 'arrived'?", cat: "Identity & Status", o: ["Chef's kitchen", "Private patio", "Spa bath", "High-end finish"] },
-                { q: "Saturday morning in your OWN home: What makes you smile first?", cat: "Future-Self", o: ["My own yard", "My quiet kitchen", "A room I designed", "The equity built"] },
-                { q: "How would stress change if your payment built your net worth?", cat: "Future-Self", o: ["Absolute peace", "Much less stress", "Slight improvement", "Already fine"] },
-                { q: "Think of your first hosted holiday: What is the 'vibe' of the room?", cat: "Future-Self", o: ["Lively/Full", "Intimate/Cozy", "Grand/Impressive", "Family only"] },
-                { q: "Peace of mind knowing your housing costs are fixed for 30 years?", cat: "Future-Self", o: ["Total security", "Stability", "A little bit", "Not factor"] },
-                { q: "When you hold the keys, what is the first thing you do to claim the space?", cat: "Future-Self", o: ["Paint a wall", "Pop champagne", "Start a garden", "Sit in quiet"] }
-            ],
-            'growing': [
-                { q: "Does your home feel like a 'launchpad' or a 'storage unit' for your past life?", cat: "Emotional Why", o: ["Storage unit", "Launchpad", "Bit of both", "Neutral"] },
-                { q: "Coming home from a work win: Celebration or return to 'cramped' reality?", cat: "Emotional Why", o: ["Cramped reality", "True celebration", "A bit of both", "No connection"] },
-                { q: "What room do you avoid because it no longer aligns with who you are?", cat: "Emotional Why", o: ["Small bedroom", "Dated kitchen", "Cluttered basement", "Dining room"] },
-                { q: "If your home was your family's 'brand,' what does it say?", cat: "Emotional Why", o: ["Outgrown this", "On our way", "Success/Comfort", "Busy/Chaotic"] },
-                { q: "Frustration source: Lack of physical space or lack of functional flow?", cat: "Emotional Why", o: ["Physical space", "Functional flow", "Both equally", "Neither"] },
-                { q: "How many times a week do you apologize for your home to guests?", cat: "Cost of Inaction", o: ["Daily", "Weekly", "Occasionally", "Never"] },
-                { q: "The 'productivity tax' you pay daily in a space not designed for 2026?", cat: "Cost of Inaction", o: ["High energy loss", "Moderate drain", "Low impact", "Efficient"] },
-                { q: "Will your children outgrow this space to the point of tension in 3 years?", cat: "Cost of Inaction", o: ["Definitely", "Possibly", "Maybe", "No"] },
-                { q: "Burnout level because your home lacks a true 'recharge zone'?", cat: "Cost of Inaction", o: ["Significant", "Moderate", "I manage", "I'm fine"] },
-                { q: "Are you missing the peak window to leverage equity into a legacy asset?", cat: "Cost of Inaction", o: ["I worry I am", "Maybe", "Probably not", "No"] },
-                { q: "Is your home an 'asset' or a 'liability' requiring constant workarounds?", cat: "Logical Foundation", o: ["Liability", "Asset", "Both", "Unsure"] },
-                { q: "Hosting an aging parent tomorrow: Total disruption or seamless shift?", cat: "Logical Foundation", o: ["Total disruption", "Moderate shift", "Minor impact", "Seamless"] },
-                { q: "2026 Logic: Max square footage or max green efficiency?", cat: "Logical Foundation", o: ["Max efficiency", "Max sq footage", "Both", "Unsure"] },
-                { q: "Commute improvement needed to justify moving?", cat: "Logical Foundation", o: ["Significantly", "Slightly", "Fine now", "Not factor"] },
-                { q: "If net worth grows 20%, is this home still a suitable 'container'?", cat: "Logical Foundation", o: ["Absolutely not", "Probably not", "Yes", "Hope so"] },
-                { q: "Does your home reinforce your professional standing to mentors?", cat: "Identity & Status", o: ["I hide my home", "Needs work", "Yes, it does", "Neutral"] },
-                { q: "The 'hero feature' you’ve earned but currently lack?", cat: "Identity & Status", o: ["Primary Wing", "Wine Cellar", "Massive Garage", "Dedicated Gym"] },
-                { q: "Does your neighborhood have a 'ceiling' suppressing family potential?", cat: "Identity & Status", o: ["Yes, definitely", "A little bit", "Not at all", "Neutral"] },
-                { q: "Are you the 'Hub' of your social circle or always traveling to others?", cat: "Identity & Status", o: ["Always traveling", "Can host some", "I am the hub", "Not interested"] },
-                { q: "Magazine headline: 'Potential' or 'Perfection'?", cat: "Identity & Status", o: ["Potential/Fixer", "Perfection/Luxury", "Quaint", "Modern"] },
-                { q: "Morning chaos level if everyone had their own space to get ready?", cat: "Future-Self", o: ["Total peace", "Much less stress", "A little better", "No difference"] },
-                { q: "Holiday dinner in a room that actually fits everyone: The feeling?", cat: "Future-Self", o: ["Sigh of relief", "Pure pride", "Excitement", "Quiet joy"] },
-                { q: "The 'quiet luxury' you will finally have in the new home?", cat: "Future-Self", o: ["Boutique Closet", "Soundproof Office", "Spa Primary", "Chef's Kitchen"] },
-                { q: "Relationship improvement with dedicated passion areas?", cat: "Future-Self", o: ["Massive", "Less friction", "Slightly better", "Already great"] },
-                { q: "The view out your window that says 'We finally made it'?", cat: "Future-Self", o: ["Skyline View", "Private garden", "Quiet street", "Sunset"] }
-            ]
-        };
-
-        const questions = allQuestions[personaType] || allQuestions['first-chapter'];
-        let currentQ = 0;
-        let scores = { "Emotional Why": 0, "Cost of Inaction": 0, "Logical Foundation": 0, "Identity & Status": 0, "Future-Self": 0 };
-
-        function showQuestion() {
-            const q = questions[currentQ];
-            document.getElementById('category-tag').innerText = q.cat;
-            document.getElementById('question-text').innerText = q.q;
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            q.o.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
-                btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
-                btn.onclick = () => { 
-                    scores[q.cat] += (4 - idx); 
-                    currentQ++; 
-                    if (currentQ < questions.length) {
-                        showQuestion();
-                    } else {
-                        showLeadCapture();
-                    }
-                };
-                optionsDiv.appendChild(btn);
-            });
-            document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
+        function startTest() {
+            renderQ();
         }
 
-        function showLeadCapture() {
-            document.getElementById('top-progress-container').classList.add('hidden');
-            document.getElementById('quiz-container').innerHTML = `
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
-                    <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 text-white outline-none focus:border-amber-400">
-                    <button onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all">Analyze My Results</button>
-                </div>`;
+        function renderQ() {
+            const q = testQuestions[current];
+            document.getElementById('question-area').innerHTML = `
+                <p class="text-amber-400 mb-2">Question ${current + 1} of 5</p>
+                <h2 class="text-2xl font-bold mb-8">${q.q}</h2>
+                <button onclick="next()" class="w-full text-left p-4 border border-slate-700 rounded-xl hover:bg-slate-800 mb-4">Click to answer</button>
+            `;
         }
 
-        async function submitLead() {
-            const email = document.getElementById('userEmail').value;
-            if(!email) return alert("Please enter your email.");
-
-            // --- GHL WEBHOOK URL GOES HERE ---
-            const webhookUrl = "https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/e9ecfb3c-8341-4a00-adb8-570a88afdbe8"; 
-            
-            const leadData = {
-                email: email,
-                persona: personaType,
-                c1: scores["Emotional Why"],
-                c2: scores["Cost of Inaction"],
-                c3: scores["Logical Foundation"],
-                c4: scores["Identity & Status"],
-                c5: scores["Future-Self"]
-            };
-
-            // Fire and forget to GHL
-            fetch(webhookUrl, { method: "POST", mode: "no-cors", body: JSON.stringify(leadData) });
-
-            // Direct redirect to report
-            window.location.href = `report.html?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
+        function next() {
+            current++;
+            if (current < 5) { renderQ(); } 
+            else { showEmail(); }
         }
 
-        showQuestion();
+        function showEmail() {
+            document.getElementById('question-area').innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">Almost there...</h2>
+                <input type="email" id="testEmail" placeholder="Your Email" class="w-full p-4 rounded-xl bg-black border border-slate-700 mb-4 text-white">
+                <button onclick="fireWebhook()" id="submitBtn" class="w-full bg-amber-400 text-black font-bold py-4 rounded-xl">SEND SIGNAL TO GHL</button>
+            `;
+        }
+
+        async function fireWebhook() {
+            const email = document.getElementById('testEmail').value;
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "SENDING...";
+            btn.disabled = true;
+
+            // --- PASTE YOUR URL BELOW ---
+            const webhookUrl = "https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/9cc72b12-ecc6-40dc-b7e3-f5d0c428fcea";
+
+            const data = { email: email, persona: "test-run", c1:4, c2:4, c3:4, c4:4, c5:4 };
+
+            // We use 'fetch' but without 'no-cors' so we can see if it actually works
+            try {
+                await fetch(webhookUrl, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: { "Content-Type": "application/json" }
+                });
+            } catch (e) {
+                console.log("Fetch attempted");
+            }
+
+            // WE WAIT 3 SECONDS MANUALLY TO ENSURE GHL CATCHES IT
+            btn.innerText = "SIGNAL FIRED! REDIRECTING...";
+            setTimeout(() => {
+                window.location.href = `report.html?email=${email}&c1=4&c2=4&c3=4&c4=4&c5=4`;
+            }, 3000);
+        }
     </script>
 </body>
 </html>
