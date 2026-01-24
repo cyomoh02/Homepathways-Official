@@ -657,14 +657,24 @@ window.addEventListener('load', initTestimonials);
             closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
         });
     </script>
+
     <script>
+document.addEventListener('DOMContentLoaded', function() {
     const mobileBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileBtn.addEventListener('click', () => {
-        // This removes the 'hidden' class to show the menu
-        mobileMenu.classList.toggle('hidden');
-    });
+    // Safety check: only run if the buttons actually exist on this page
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = function(e) {
+            e.preventDefault(); // Stop the page from jumping
+            mobileMenu.classList.toggle('hidden');
+            
+            // Debugger: You can see this in your browser console (F12)
+            console.log('Mobile menu toggled. Hidden state:', mobileMenu.classList.contains('hidden'));
+        };
+    }
+});
 </script>
+
 </body>
 </html>
