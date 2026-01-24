@@ -1,66 +1,185 @@
-<section class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-slate-900 mb-4">Start Your Transition Assessment</h2>
-            <p class="text-xl text-slate-600">Select the path that best describes your current situation to see your custom roadmap.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePathways | Sean Omoh - Transition Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0A0F1D; }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(10, 15, 29, 0.7), rgba(10, 15, 29, 0.9)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-glow:hover { box-shadow: 0 0 40px rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.4); }
+    </style>
+</head>
+<body class="text-gray-200 antialiased">
+
+    <nav class="absolute top-0 w-full z-50 py-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <div class="text-3xl font-bold tracking-tighter text-white uppercase mb-4">HOMEPATHWAYS<span class="text-amber-400">.</span></div>
+            <div class="h-[1px] w-24 bg-amber-400/30 mb-4"></div>
+            <p class="text-[10px] text-amber-400 uppercase tracking-[0.4em] font-bold">Transition Intelligence</p>
         </div>
+    </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('nester')">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">🏡</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Empty Nesters</h3>
-                <p class="text-gray-600 mb-4">Downsizing from a large family home to a manageable, luxury lifestyle.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('divorce')">
-                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">⚖️</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Divorce Transitions</h3>
-                <p class="text-gray-600 mb-4">Navigating asset division and finding a fresh start with discretion.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('career')">
-                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">💼</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Career Relocation</h3>
-                <p class="text-gray-600 mb-4">Seamlessly moving your life for a new executive opportunity.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('growing')">
-                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">👨‍👩‍👧‍👦</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Growing Families</h3>
-                <p class="text-gray-600 mb-4">Upsizing to a home that fits your expanding lifestyle and needs.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('senior')">
-                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">👴</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Senior Transition</h3>
-                <p class="text-gray-600 mb-4">Expert guidance for moving to assisted living or aging-in-place.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 cursor-pointer" onclick="showAssessment('lifestyle')">
-                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-                    <span class="text-2xl">🏙️</span>
-                </div>
-                <h3 class="text-2xl font-bold mb-3">Lifestyle Shift</h3>
-                <p class="text-gray-600 mb-4">Moving from suburbs to city (or vice versa) for a new way of living.</p>
-                <span class="text-blue-600 font-semibold flex items-center">View Roadmap →</span>
-            </div>
-
+    <header class="hero-bg min-h-screen flex items-center justify-center text-center">
+        <div class="max-w-4xl mx-auto px-6 pt-20">
+            <span class="inline-block py-1 px-4 rounded-full bg-amber-400/20 text-amber-400 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md border border-amber-400/20">Sean Omoh Advisory</span>
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
+                Don't just move.<br><span class="italic text-white/90">Evolve.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-12 font-light">
+                Strategy over sales. We map the emotional and logical blueprint for your life's biggest transitions.
+            </p>
+            <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-12 py-6 rounded-2xl shadow-2xl shadow-amber-400/40 hover:bg-white transition-all text-lg uppercase tracking-widest">
+                Start Your Roadmap
+            </button>
         </div>
-    </div>
-</section>
+    </header>
+
+    <section id="assessment-cards" class="py-32 bg-[#0A0F1D] border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="mb-20">
+                <h2 class="text-4xl font-bold text-white mb-4">Select Your Path</h2>
+                <div class="h-1 w-20 bg-amber-400 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div onclick="startQuiz('first-chapter')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">01</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The First Chapter</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Transitioning from a tenant to a homeowner. Moving from rent to equity.</p>
+                </div>
+                <div onclick="startQuiz('growing')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">02</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Up-Mover</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Expanding your space to match your professional growth and family needs.</p>
+                </div>
+                <div onclick="startQuiz('relocation')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">03</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Relocator</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">New city, new network. We map the community before we find the house.</p>
+                </div>
+                <div onclick="startQuiz('senior')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">04</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Legacy Senior</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Optimizing for independence and long-term safety in your final move.</p>
+                </div>
+                <div onclick="startQuiz('downsizing')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">05</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Right-Sizer</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Curating experiences over things. Turning a large estate into a lifestyle fund.</p>
+                </div>
+                <div onclick="startQuiz('lifestyle')" class="bg-slate-900/40 border border-slate-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="text-amber-400 text-3xl mb-6 font-mono">06</div>
+                    <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">The Steward</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Managing the complexity of probate with unity and professional clarity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-black/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-20 text-center uppercase tracking-widest">Client Intelligence</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-slate-900/30 p-12 rounded-3xl border border-slate-800">
+                    <div class="text-amber-400 mb-6 text-xl">★★★★★</div>
+                    <p id="t1-text" class="text-slate-300 text-lg leading-relaxed italic mb-8">
+                        "I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."
+                    </p>
+                    <button onclick="toggleStory(1)" id="btn-1" class="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
+                </div>
+                <div class="bg-slate-900/30 p-12 rounded-3xl border border-slate-800">
+                    <div class="text-amber-400 mb-6 text-xl">★★★★★</div>
+                    <p id="t2-text" class="text-slate-300 text-lg leading-relaxed italic mb-8">
+                        "Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."
+                    </p>
+                    <button onclick="toggleStory(2)" id="btn-2" class="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#0A0F1D] border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-16 text-center uppercase tracking-widest">Strategic Insight</h2>
+            <div class="space-y-6">
+                <div class="border border-slate-800 rounded-3xl overflow-hidden bg-slate-900/20">
+                    <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(1)">
+                        <span class="text-white font-medium group-hover:text-amber-400 transition-colors">How do I know if I'm truly ready to move?</span>
+                        <span id="icon-1" class="text-amber-400 text-2xl">+</span>
+                    </button>
+                    <div id="faq-1" class="hidden p-8 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                        When your home becomes a storage unit for your past instead of a launchpad for your future, you are ready. Our assessment measures this specific "Identity Friction."
+                    </div>
+                </div>
+                <div class="border border-slate-800 rounded-3xl overflow-hidden bg-slate-900/20">
+                    <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(2)">
+                        <span class="text-white font-medium group-hover:text-amber-400 transition-colors">Is it better to wait for rates to drop?</span>
+                        <span id="icon-2" class="text-amber-400 text-2xl">+</span>
+                    </button>
+                    <div id="faq-2" class="hidden p-8 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                        You can refinance a rate, but you can't refinance lost time. If staying in your current home is costing you peace or productivity, waiting is the most expensive option.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 text-center bg-black">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Ready for a cleaner path?</h2>
+            <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-12 py-6 rounded-2xl hover:bg-white transition-all text-lg uppercase tracking-widest">
+                Start Your Assessment
+            </button>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-[#0A0F1D] border-t border-white/5 text-center">
+        <div class="text-slate-600 text-[10px] tracking-[0.5em] uppercase">
+            © 2026 Sean Omoh. Strategy Over Sales.
+        </div>
+    </footer>
+
+    <script>
+        function scrollToCards() { document.getElementById('assessment-cards').scrollIntoView({ behavior: 'smooth' }); }
+        function startQuiz(type) { window.location.href = `assessment.html?type=${type}`; }
+
+        const stories = {
+            1: {
+                full: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work. Sean helped me realize that my home wasn't supporting my growth. We moved to a community that matched my 5-year trajectory, and my career took off immediately."`,
+                short: `"I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."`
+            },
+            2: {
+                full: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor. He navigated the sibling dynamics with incredible grace and used his 'Closure Logic' to help us decide on an as-is sale that maximized inheritance and saved our family unity."`,
+                short: `"Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."`
+            }
+        };
+
+        function toggleStory(id) {
+            const p = document.getElementById(`t${id}-text`);
+            const btn = document.getElementById(`btn-${id}`);
+            if (btn.innerText.includes("full")) {
+                p.innerText = stories[id].full;
+                btn.innerText = "Show less";
+            } else {
+                p.innerText = stories[id].short;
+                btn.innerText = "Show full story";
+            }
+        }
+
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            content.classList.toggle('hidden');
+            icon.innerText = content.classList.contains('hidden') ? "+" : "−";
+        }
+    </script>
+</body>
+</html>
