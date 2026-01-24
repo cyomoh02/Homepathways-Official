@@ -657,5 +657,14 @@ window.addEventListener('load', initTestimonials);
             closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
         });
     </script>
+    <script>
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileBtn.addEventListener('click', () => {
+        // This removes the 'hidden' class to show the menu
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
 </body>
 </html>
