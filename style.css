@@ -9,10 +9,9 @@
     --brand-navy-light: #0a101e;
     --brand-slate: #1e293b;
     --brand-white: #ffffff;
-    --brand-amber: #fbbf24;
 }
 
-/* 1. GLOBAL RESET & BASE */
+/* 1. GLOBAL RESET */
 * {
     margin: 0;
     padding: 0;
@@ -25,10 +24,25 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* 2. BUTTONS (With Green Background) */
-.bg-mint, 
-button:not(.read-story-link), 
-.cta-button {
+/* 2. NAVIGATION LINKS (Text only) */
+.nav-link {
+    background: transparent !important; /* Removes the button look */
+    color: var(--brand-white) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-link:hover {
+    color: var(--brand-green) !important;
+}
+
+/* 3. BUTTONS (Solid Green Background) */
+/* This only applies to things we want as real buttons */
+.btn-primary, 
+.assessment-btn {
     background-color: var(--brand-green) !important;
     color: var(--brand-navy) !important;
     padding: 12px 32px;
@@ -39,17 +53,17 @@ button:not(.read-story-link),
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
-button:not(.read-story-link):hover, 
-.cta-button:hover {
+.btn-primary:hover {
     background-color: var(--brand-green-hover) !important;
     transform: translateY(-2px);
 }
 
-/* 3. TESTIMONIAL LINKS (Text Only - No Background) */
+/* 4. TESTIMONIAL LINKS (Text Only) */
 .read-story-link {
-    background: transparent !important; /* This removes the green box */
+    background: transparent !important;
     color: var(--brand-green) !important;
     border: none;
     border-bottom: 1px solid var(--brand-green);
@@ -60,24 +74,11 @@ button:not(.read-story-link):hover,
     text-transform: uppercase;
     letter-spacing: 0.15em;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.read-story-link:hover {
-    color: var(--brand-white) !important;
-    border-bottom-color: var(--brand-white);
-}
-
-/* 4. MARQUEE & UTILITIES */
+/* 5. MARQUEE ANIMATIONS */
 .animate-marquee-right { animation: marquee-right 50s linear infinite; }
 .animate-marquee-left { animation: marquee-left 50s linear infinite; }
 
 @keyframes marquee-right { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-left { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-
-.line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
