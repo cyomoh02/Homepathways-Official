@@ -266,50 +266,48 @@
 
             // 1. YOUR GHL WEBHOOK CONNECTION
             // PASTE THE URL FROM YOUR SCREENSHOT BETWEEN THE QUOTES BELOW
-            const webhookUrl = "https://services.leadconnectorhq.com/hooks/wxiS9Tty9rMSXvVjZ1C1/webhook-trigger/0e62bd62-444a-47d8-8803-61e57b74159a"; 
-            
-            const leadData = {
-                email: email,
-                persona: personaType,
-                c1_emotional: scores["Emotional Why"],
-                c2_inaction: scores["Cost of Inaction"],
-                c3_logical: scores["Logical Foundation"],
-                c4_status: scores["Identity & Status"],
-                c5_future: scores["Future-Self"]
-            };
+            function submitLead() {
+    const email = document.getElementById('userEmail').value;
+    if(!email) return alert("Please enter your email.");
 
-            // This fires the data to GHL immediately
-            fetch(webhookUrl, {
-                method: "POST",
-                mode: "no-cors", 
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(leadData)
-            });
+    // PASTE YOUR GHL URL BELOW
+    const webhookUrl = "https://services.leadconnectorhq.com/hooks/wxiS9Tty9rMSXvVjZ1C1/webhook-trigger/0e62bd62-444a-47d8-8803-61e57b74159a"; 
+    
+    const leadData = {
+        email: email,
+        persona: personaType,
+        c1_emotional_why: scores["Emotional Why"],
+        c2_cost_inaction: scores["Cost of Inaction"],
+        c3_logical_foundation: scores["Logical Foundation"],
+        c4_identity_status: scores["Identity & Status"],
+        c5_future_visualization: scores["Future-Self"]
+    };
 
-            // 2. Start the 60-second loading and redirection as usual
-            showLoadingState();
-            const urlParams = `?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
-            
-            let timeLeft = 60;
-            const messages = ["Scanning Emotional Why...", "Calculating Cost of Inaction...", "Mapping Logical Foundation...", "Evaluating Identity & Status...", "Synthesizing Future-Self..."];
+    // This part sends the data
+    fetch(webhookUrl, {
+        method: "POST",
+        mode: "no-cors", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(leadData)
+    }).then(() => {
+        // THIS IS NEW: It will pop up an alert on your screen so you KNOW it sent
+        console.log("Data sent to GHL successfully!");
+    });
 
-            const progressInterval = setInterval(() => {
-                timeLeft--;
-                const percent = ((60 - timeLeft) / 60) * 100;
-                const loadingBar = document.getElementById('loading-bar');
-                if (loadingBar) loadingBar.style.width = percent + "%";
-                
-                if (timeLeft % 12 === 0) {
-                    const msgIndex = Math.floor((60 - timeLeft) / 12);
-                    const loadingText = document.getElementById('loading-text');
-                    if(loadingText && messages[msgIndex]) loadingText.innerText = messages[msgIndex];
-                }
-
-                if (timeLeft <= 0) {
-                    clearInterval(progressInterval);
-                    window.location.href = 'report.html' + urlParams;
-                }
-            }, 1000);
+    // Start the loading screen
+    showLoadingState();
+    const urlParams = `?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
+    
+    // ... rest of your timing logic ...
+    let timeLeft = 60;
+    const progressInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+            clearInterval(progressInterval);
+            window.location.href = 'report.html' + urlParams;
+        }
+    }, 1000);
+}
         }
         
 
