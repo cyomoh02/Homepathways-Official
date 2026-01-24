@@ -17,6 +17,7 @@
                 extend: {
                     colors: {
                         'navy': '#050b1a',
+                        'navy-light': '#0a101e',
                         'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
                     },
                     fontFamily: {
@@ -29,14 +30,15 @@
     </script>
     <style>
         .hero-overlay {
-            background: linear-gradient(to bottom, rgba(5, 11, 26, 0.7), rgba(5, 11, 26, 0.9));
+            background: linear-gradient(to bottom, rgba(5, 11, 26, 0.6), rgba(5, 11, 26, 0.85));
         }
         .hero-bg {
             background-image: url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
-        .card-glow:hover { box-shadow: 0 0 30px rgba(129, 178, 154, 0.2); border-color: rgba(129, 178, 154, 0.4); }
+        .card-glow:hover { box-shadow: 0 0 30px rgba(129, 178, 154, 0.15); border-color: rgba(129, 178, 154, 0.3); }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-navy text-gray-200 font-sans antialiased">
@@ -52,7 +54,7 @@
             </div>
             <div class="hidden lg:flex items-center gap-x-8">
                 <a href="#assessment-cards" class="text-sm font-medium text-gray-300 hover:text-mint transition-colors">Who We Serve</a>
-                <a href="booking.html" class="rounded-full bg-mint px-6 py-2.5 text-sm font-medium text-navy transition-all hover:bg-white">Book a Call</a>
+                <a href="booking.html" class="rounded-full bg-mint px-6 py-2.5 text-sm font-medium text-navy transition-all hover:bg-white hover:-translate-y-0.5">Book a Call</a>
             </div>
         </div>
     </nav>
@@ -66,44 +68,55 @@
             <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
                 From first homes to life transitions, we help you understand your options and move forward with confidence.
             </p>
-            <p class="text-sm italic text-gray-400 mb-12">
-                Supporting first-time buyers, relocating families, downsizing retirees, probate estates, and aging-in-place homeowners.
-            </p>
-            <button onclick="scrollToWork()" class="bg-mint text-navy font-bold px-12 py-5 rounded-full shadow-2xl hover:bg-white transition-all text-lg">
+            <button onclick="scrollToWork()" class="bg-mint text-navy font-bold px-12 py-5 rounded-full shadow-2xl hover:bg-white transition-all text-lg mb-12">
                 Start Your Home Pathway
             </button>
-            <p class="mt-8 text-xs text-gray-500 uppercase tracking-widest font-medium">No pressure. Just clear guidance tailored to your situation.</p>
+            <p class="text-xs text-gray-400 uppercase tracking-widest font-medium">No pressure. Just clear guidance tailored to your situation.</p>
         </div>
     </header>
 
-    <section id="the-way-we-work" class="py-32 bg-navy border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-8 text-center">
-            <h2 class="text-4xl font-serif font-bold text-white mb-20">The Way We Work</h2>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
-                <div class="space-y-4">
-                    <div class="text-mint font-serif text-2xl font-bold italic">01</div>
-                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Emotional Why</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Defining the internal driver behind your transition.</p>
+    <section id="the-way-we-work" class="py-32 bg-navy">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row gap-16">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
+                    A Clear, Supportive Path – <br> No Matter Where You’re Starting.
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    We've designed a simple, three-step process to bring clarity to your unique situation. Our goal is to replace pressure and uncertainty with a clear, actionable plan, tailored just for you.
+                </p>
+            </div>
+            
+            <div class="lg:w-1/2 space-y-6">
+                <div class="bg-navy-light border border-gray-800 p-8 rounded-2xl">
+                    <div class="flex items-start gap-4">
+                        <div class="p-2 bg-mint/10 rounded-full">
+                            <svg class="w-6 h-6 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-mint font-serif uppercase tracking-widest text-xs font-bold">Step 1</span>
+                            <h3 class="text-2xl font-serif font-bold text-white mt-1 mb-4">Start With Clarity</h3>
+                            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Our journey begins with a comprehensive consultation to understand your goals, timeline, and financial picture. We listen, ask questions, and provide an honest assessment of the market.</p>
+                            <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4">What This Includes</h4>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center gap-3"><span class="w-5 h-5 flex items-center justify-center bg-mint/20 text-mint rounded-full text-[10px]">✓</span> In-depth needs and goals assessment</li>
+                                <li class="flex items-center gap-3"><span class="w-5 h-5 flex items-center justify-center bg-mint/20 text-mint rounded-full text-[10px]">✓</span> Financial pre-qualification guidance</li>
+                                <li class="flex items-center gap-3"><span class="w-5 h-5 flex items-center justify-center bg-mint/20 text-mint rounded-full text-[10px]">✓</span> Hyper-local market analysis and education</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-4">
-                    <div class="text-mint font-serif text-2xl font-bold italic">02</div>
-                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Cost of Inaction</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Measuring the lifestyle tax of staying in an outgrown space.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="text-mint font-serif text-2xl font-bold italic">03</div>
-                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Logical Foundation</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Building the data-backed strategy for your move.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="text-mint font-serif text-2xl font-bold italic">04</div>
-                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Identity & Status</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Aligning your address with your professional trajectory.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="text-mint font-serif text-2xl font-bold italic">05</div>
-                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Future Self</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Visualizing your destination 5 years from today.</p>
+
+                <div class="bg-navy-light border border-gray-800 p-8 rounded-2xl">
+                    <div class="flex items-start gap-4">
+                        <div class="p-2 bg-mint/10 rounded-full">
+                            <svg class="w-6 h-6 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-mint font-serif uppercase tracking-widest text-xs font-bold">Step 2</span>
+                            <h3 class="text-2xl font-serif font-bold text-white mt-1">Explore Your Pathway</h3>
+                            <p class="text-gray-400 text-sm mt-4 leading-relaxed">With a clear plan, we curate a personalized selection of properties or prepare a strategic marketing plan for your sale.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,37 +124,37 @@
 
     <section id="assessment-cards" class="py-32 bg-[#080e1a] border-y border-gray-900">
         <div class="max-w-7xl mx-auto px-8 text-center">
-            <h2 class="text-3xl font-serif font-bold text-white mb-20 uppercase tracking-widest">Select Your Path</h2>
+            <h2 class="text-3xl font-serif font-bold text-white mb-20 uppercase tracking-widest">Select Your Current Path</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div onclick="startQuiz('first-chapter')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('first-chapter')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">01</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The First Chapter</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Moving from rent to equity. Start your wealth building journey.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tenant to Homeowner. Start building your first stake in equity.</p>
                 </div>
-                <div onclick="startQuiz('growing')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('growing')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">02</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Up-Mover</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Expanding your space for family and professional growth.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Expanding your space to match your professional growth.</p>
                 </div>
-                <div onclick="startQuiz('relocation')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('relocation')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">03</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Relocator</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">New city, new network. Community-first relocation strategy.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">New city, new network. We map the community first.</p>
                 </div>
-                <div onclick="startQuiz('senior')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('senior')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">04</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Legacy Senior</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Optimizing for independence and long-term safety.</p>
                 </div>
-                <div onclick="startQuiz('downsizing')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('downsizing')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">05</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Right-Sizer</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Trading square footage for curated lifestyle experiences.</p>
                 </div>
-                <div onclick="startQuiz('lifestyle')" class="bg-gray-900/40 border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all group">
+                <div onclick="startQuiz('lifestyle')" class="bg-navy-light border border-gray-800 p-10 rounded-3xl cursor-pointer card-glow transition-all">
                     <div class="text-mint text-2xl mb-6 font-serif italic">06</div>
                     <h3 class="text-xl font-serif font-bold text-white mb-4 uppercase tracking-wider">The Steward</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Managing probate with emotional clarity and family unity.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Managing probate with emotional clarity and unity.</p>
                 </div>
             </div>
         </div>
@@ -151,14 +164,14 @@
         <div class="max-w-7xl mx-auto px-8">
             <h2 class="text-3xl font-serif font-bold text-white mb-20 text-center uppercase tracking-widest">Client Intelligence</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-gray-900/30 p-12 rounded-[40px] border border-gray-800">
+                <div class="bg-navy-light p-12 rounded-[40px] border border-gray-800">
                     <div class="text-mint mb-8 text-xl">★★★★★</div>
                     <p id="t1-text" class="text-gray-300 text-lg leading-relaxed italic mb-10">
                         "I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."
                     </p>
                     <button onclick="toggleStory(1)" id="btn-1" class="text-mint font-bold text-xs uppercase tracking-widest hover:text-white transition-all">Show full story</button>
                 </div>
-                <div class="bg-gray-900/30 p-12 rounded-[40px] border border-gray-800">
+                <div class="bg-navy-light p-12 rounded-[40px] border border-gray-800">
                     <div class="text-mint mb-8 text-xl">★★★★★</div>
                     <p id="t2-text" class="text-gray-300 text-lg leading-relaxed italic mb-10">
                         "Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."
@@ -170,19 +183,19 @@
     </section>
 
     <section id="faq" class="py-32 bg-navy border-t border-gray-900">
-        <div class="max-w-4xl mx-auto px-8">
-            <h2 class="text-3xl font-serif font-bold text-white mb-16 text-center uppercase tracking-widest">Strategic Insight</h2>
-            <div class="space-y-6">
-                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-gray-900/20">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-serif font-bold text-white mb-16 uppercase tracking-widest">Strategic Insight</h2>
+            <div class="space-y-6 text-left">
+                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-navy-light">
                     <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(1)">
                         <span class="text-white font-medium group-hover:text-mint transition-colors">How do I know if I'm truly ready to move?</span>
                         <span id="icon-1" class="text-mint text-2xl font-light">+</span>
                     </button>
                     <div id="faq-1" class="hidden p-8 pt-0 text-gray-400 leading-relaxed border-t border-gray-800/30">
-                        When your home becomes a storage unit for your past instead of a launchpad for your future, you are ready. Our assessment measures this specific "Identity Friction."
+                        When your home no longer protects your peace, it’s become a storage unit for a version of yourself you've already outgrown. Our assessment measures this specific "Identity Friction."
                     </div>
                 </div>
-                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-gray-900/20">
+                <div class="border border-gray-800 rounded-3xl overflow-hidden bg-navy-light">
                     <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(2)">
                         <span class="text-white font-medium group-hover:text-mint transition-colors">Is it better to wait for rates to drop?</span>
                         <span id="icon-2" class="text-mint text-2xl font-light">+</span>
@@ -201,53 +214,21 @@
         </div>
     </section>
 
-    <footer class="bg-navy text-gray-400 border-t border-gray-900 py-24">
-        <div class="mx-auto max-w-7xl px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
-                <div class="md:col-span-2 lg:col-span-1">
-                    <div class="text-3xl font-serif font-bold text-white mb-6 uppercase">Homepathway</div>
-                    <p class="text-gray-500 mb-6">Get curated insights and market updates directly to your inbox.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Email Address" class="w-full bg-gray-900 border border-gray-800 rounded-l-md px-4 py-2 text-white outline-none">
-                        <button class="bg-mint text-navy px-4 py-2 rounded-r-md font-bold hover:bg-white transition-colors">Join</button>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Navigation</h3>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-mint">Home</a></li>
-                        <li><a href="#" class="hover:text-mint">About Sean</a></li>
-                        <li><a href="#" class="hover:text-mint">Book a Strategy Call</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Resources</h3>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-mint">The Process</a></li>
-                        <li><a href="#" class="hover:text-mint">Insights</a></li>
-                        <li><a href="#" class="hover:text-mint">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase tracking-widest text-white mb-6">Connect</h3>
-                    <p class="font-bold text-white mb-2">Sean Omoh</p>
-                    <p class="text-gray-500 mb-6">(555) 000-0000</p>
-                    <div class="flex space-x-4">
-                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
-                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
-                        <div class="w-5 h-5 bg-gray-800 rounded-full"></div>
-                    </div>
-                </div>
+    <footer class="bg-navy text-gray-400 border-t border-gray-900 py-20">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <div class="text-2xl font-serif font-bold text-white mb-8 uppercase tracking-widest">Homepathway</div>
+            <div class="flex justify-center gap-8 text-xs font-bold uppercase tracking-[0.3em] mb-8">
+                <a href="#" class="hover:text-white">The Method</a>
+                <a href="#" class="hover:text-white">Insights</a>
+                <a href="#" class="hover:text-white">Privacy</a>
             </div>
-            <div class="mt-20 pt-8 border-t border-gray-800 text-center text-xs text-gray-600 uppercase tracking-widest">
-                &copy; 2026 Homepathways. All rights reserved.
-            </div>
+            <p class="text-[10px] text-gray-600 uppercase tracking-[0.5em]">&copy; 2026 Sean Omoh. Strategy Over Sales.</p>
         </div>
     </footer>
 
     <script>
-        function scrollToWork() { document.getElementById('the-way-we-work').scrollIntoView({ behavior: 'smooth' }); }
-        function scrollToCards() { document.getElementById('assessment-cards').scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToWork() { document.getElementById('the-way-we-work').scrollIntoView(); }
+        function scrollToCards() { document.getElementById('assessment-cards').scrollIntoView(); }
         function startQuiz(type) { window.location.href = `assessment.html?type=${type}`; }
 
         const stories = {
