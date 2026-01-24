@@ -76,7 +76,7 @@
         </div>
 
         <div class="text-center">
-            <a href="https://calendar.google.com/calendar/u/0/r?pli=1" class="inline-block bg-amber-400 text-slate-950 font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all transform hover:scale-105 shadow-2xl shadow-amber-400/20 text-lg">
+            <a id="calendar-link" href="#" class="inline-block bg-amber-400 text-slate-950 font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all transform hover:scale-105 shadow-2xl shadow-amber-400/20 text-lg">
                 Book A Roadmap Call With Sean
             </a>
             <p class="mt-6 text-slate-500 text-sm">No pressure, just a 15-minute conversation to clarify your path.</p>
@@ -86,38 +86,41 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         const scores = {
-            c1: parseInt(params.get('c1')) || 10,
-            c2: parseInt(params.get('c2')) || 10,
-            c3: parseInt(params.get('c3')) || 10,
-            c4: parseInt(params.get('c4')) || 10,
-            c5: parseInt(params.get('c5')) || 10
+            c1: parseInt(params.get('c1')) || 0,
+            c2: parseInt(params.get('c2')) || 0,
+            c3: parseInt(params.get('c3')) || 0,
+            c4: parseInt(params.get('c4')) || 0,
+            c5: parseInt(params.get('c5')) || 0
         };
 
+        // Update your GHL Calendar Link Here
+        document.getElementById('calendar-link').href = "PASTE_YOUR_GHL_CALENDAR_LINK_HERE";
+
         const messages = {
-            c1: `<p>"Your results show a profound emotional connection to this move. You aren’t just looking for property; you’re looking for a sanctuary that honors your life’s journey and the people you love. This depth of feeling is your greatest strength—it ensures your next home will truly be a masterpiece of belonging."</p>
-                 <p>"However, having such an invested heart can sometimes make the small details feel overwhelming. When the 'why' is this big, the 'how' can feel a bit daunting, and it's easy to worry about making the perfect choice."</p>
-                 <p>"That’s exactly where we can work together. My role is to protect that excitement while providing the steady, practical guardrails you need to move forward with absolute peace of mind."</p>
-                 <p>"Let’s turn this emotional vision into a reality. Book your Roadmap Call so we can ensure your heart and your head are perfectly aligned for this next chapter."</p>`,
+            c1: `<p>"Your results reveal that your primary driver is a deep, emotional need for 'Home.' You aren't just looking for property; you are seeking a sanctuary that honors your identity and your memories. This profound connection is your greatest strength—it ensures that when we find the right place, it will be a masterpiece of belonging for you and your family."</p>
+                 <p>"Where we need to work, however, is on the 'filtering' process. Because your heart is so invested, the pressure to make the 'perfect' choice can sometimes lead to decision fatigue. It's easy to worry that choosing one home means losing out on the 'feeling' of another."</p>
+                 <p>"In our Roadmap Call, we will work on building a clear list of 'Emotional Non-Negotiables.' This will give you the guardrails you need to feel safe and decisive, ensuring your heart is protected while your head makes the smart move."</p>
+                 <p>"You deserve a home that feels as good as it looks. Let's map out that path together."</p>`,
             
-            c2: `<p>"You have a sharp awareness of the 'friction' in your current life. You recognize that staying put is no longer just a neutral choice—it’s actually costing you energy, time, and perhaps even net worth. This clarity is a superpower because it means you’re ready to stop the leak."</p>
-                 <p>"The challenge when we feel this much pressure is the temptation to rush. We want to make sure we aren't just moving 'away' from something, but moving 'toward' the right destination."</p>
-                 <p>"We need to work on channeling this urgency into a precise strategy. We’ll look at the data together to make sure your exit from the current situation is as profitable as it is relieving."</p>
-                 <p>"Let's stop the clock on the 'wait and see' approach. Book your call and let's build the plan that gets you into your new space before another season passes."</p>`,
+            c2: `<p>"You have a sharp awareness of the 'friction' in your current situation. You recognize that staying put isn't just a neutral choice—it's actually costing you energy, time, and perhaps even net worth every single day. This clarity is a superpower because it means you are no longer willing to settle for a space you've outgrown."</p>
+                 <p>"The challenge with this type of urgency is the temptation to rush into a 'reactionary' move. When we are desperate to leave a situation, we sometimes settle for the first alternative, rather than the right strategic move for the long term."</p>
+                 <p>"Our focus will be on turning this momentum into a precise exit strategy. We need to work on the data to make sure your transition is as profitable as it is relieving, preventing you from carrying old frustrations into a new zip code."</p>
+                 <p>"Let's stop the clock on your 'Cost of Inaction.' I'm ready to show you the roadmap that puts you back in the driver's seat."</p>`,
             
-            c3: `<p>"You are an architect of your own future. Your results show an incredible logical foundation, with a focus on data, timelines, and the 'how' of the transition. This strategic preparation is your greatest asset; it protects you from the common pitfalls most people fall into."</p>
-                 <p>"Because you are so focused on the logistics, sometimes the 'human' part of the move—the joy, the rest, and the feeling of home—can get pushed to the background."</p>
-                 <p>"Our work will be about marrying your high-level strategy with the comfort you deserve. We'll ensure the numbers work for you, so you can actually enjoy the space once the keys are in your hand."</p>
-                 <p>"You've done the heavy lifting on the research. Now, let's refine the map. Book your call and let's finalize the roadmap that turns your data into a sanctuary."</p>`,
+            c3: `<p>"You are an architect of your own future. Your results show an incredible logical foundation, with a focus on data, timelines, and the 'how' of the transition. This strategic preparation is your greatest asset; it protects you from the emotional volatility and common pitfalls most people fall into during a move."</p>
+                 <p>"Because you are so focused on the logistics and the 'math' of the move, there is a risk that the 'human' part of the transition—the joy, the rest, and the sense of sanctuary—can get pushed to the background. We want to make sure you aren't just buying a great asset, but a great life."</p>
+                 <p>"Our work together will be about marrying your high-level strategy with the comfort you deserve. We'll ensure the numbers work for you, so you can actually enjoy the space once the keys are in your hand without worrying about the fine print."</p>
+                 <p>"You've done the heavy lifting on the research. Now, let's refine the map. I'm ready to help you finalize the roadmap that turns your data into a sanctuary."</p>`,
             
-            c4: `<p>"This move isn't just a relocation; it’s a promotion. Your results indicate that you are ready for your home to finally reflect the person you have become. You value quality, impact, and a space that serves as a launchpad for your professional and personal standing."</p>
-                 <p>"High standards are a beautiful thing, but they can sometimes lead to 'perfectionism pressure.' It’s important to make sure the 'status' of the home doesn't overshadow the daily peace you need to function at your best."</p>
-                 <p>"We will work on finding that sweet spot where luxury meets livability. We'll ensure your new address is as functional for your Tuesday morning as it is impressive for your Saturday night."</p>
-                 <p>"You’ve earned this next level. Let’s make sure the transition is as seamless as your vision. Book your call and let's find the address that matches your ambition."</p>`,
+            c4: `<p>"This move isn't just a relocation; it’s a promotion. Your results indicate that you are ready for your home to finally reflect the person you have become. You value quality, impact, and a space that serves as a launchpad for your professional and personal standing. You've earned this level of excellence."</p>
+                 <p>"High standards are a beautiful thing, but they can sometimes lead to 'perfectionism pressure.' It’s important to make sure the 'status' of the home doesn't overshadow the daily peace and functionality you need to function at your best. A home should serve you, not the other way around."</p>
+                 <p>"We will work on finding that sweet spot where luxury meets livability. My goal is to ensure your new address is as functional for your quiet Tuesday mornings as it is impressive for your Saturday nights."</p>
+                 <p>"You’ve earned this next chapter. Let’s make sure the transition is as seamless as your vision. I'm excited to help you find the address that matches your ambition."</p>`,
             
-            c5: `<p>"You can already feel the breeze from the window of your new home. Your ability to visualize your 'Future Self'—the one who is settled, free, and thriving—is a remarkable strength. It keeps you motivated when the process gets complex."</p>
-                 <p>"The bridge between that vision and today can sometimes feel a bit foggy. When the destination is so clear, the messy 'middle' of selling, buying, or modifying can feel like a distraction."</p>
-                 <p>"My role is to be the bridge-builder. We’ll work on the specific, tactical steps needed today to ensure that the vision in your mind becomes the floor beneath your feet tomorrow."</p>
-                 <p>"The finish line is closer than it feels. Let’s map out the first mile together. Book your Roadmap Call and let’s turn that visualization into your new reality."</p>`
+            c5: `<p>"You can already feel the breeze from the window of your new home. Your ability to visualize your 'Future Self'—the one who is settled, free, and thriving—is a remarkable strength. It keeps you motivated and resilient when the middle of the moving process gets complex or messy."</p>
+                 <p>"The bridge between that vision and your current reality can sometimes feel a bit foggy. When the destination is so clear, the tactical 'middle' (selling, buying, or modifying) can feel like a distraction rather than a necessary step. This can lead to frustration when the timeline doesn't move as fast as your mind."</p>
+                 <p>"My role is to be your bridge-builder. We’ll work on the specific, tactical steps needed today to ensure that the vision in your mind becomes the floor beneath your feet tomorrow. We will turn your 'Future Self' into your 'Current Reality'."</p>
+                 <p>"The finish line is closer than it feels. Let’s map out the first mile together. Book your call and let’s turn that visualization into a permanent plan."</p>`
         };
 
         // Decision Logic: Find highest score and inject message
@@ -126,7 +129,7 @@
 
         function setCircle(id, valId, val) {
             const circle = document.getElementById(id);
-            const percent = (val / 20) * 100; // Max score is 20
+            const percent = (val / 20) * 100; // Max score is 20 (5 questions x 4 pts)
             const offset = 276.5 - (276.5 * percent / 100);
             circle.style.strokeDashoffset = offset;
             document.getElementById(valId).innerText = val;
