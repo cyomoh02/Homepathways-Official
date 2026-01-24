@@ -432,5 +432,170 @@ function showAssessment(type) {
     window.location.href = 'assessment.html?type=' + type;
 }
 </script>
+<section class="py-24 bg-[#0A0F1D] border-t border-slate-900">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-amber-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Strategic Intelligence</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Frequently Asked Roadmaps</h2>
+            <p class="text-slate-400">Answers to the high-intent questions defining the 2026 real estate landscape.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(1)">
+                    <span class="text-white font-semibold italic">"How do I distinguish between 'temporary house fatigue' and a genuine need to move?"</span>
+                    <span id="icon-1" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-1" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Fatigue is often about the chores; a need to move is about the <strong>identity</strong>. If your home no longer feels like a "sanctuary" that protects your peace, it has likely become a "storage unit" for a version of yourself you've already outgrown.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(2)">
+                    <span class="text-white font-semibold italic">"Why does the idea of selling feel like I'm losing my family's history?"</span>
+                    <span id="icon-2" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-2" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    This is "Anchor Friction." We don't sell houses; we transition legacies. Your memories aren't in the drywall; they are in your family. Moving allows you to take those memories into a new space that actually functions for your future.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(3)">
+                    <span class="text-white font-semibold italic">"Can a home really be the primary cause of my daily burnout?"</span>
+                    <span id="icon-3" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-3" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Absolutely. If your environment requires constant "workarounds"—like a lack of private office space or main-floor living—your brain is constantly solving problems just to exist. That "micro-stress" leads to major burnout.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(4)">
+                    <span class="text-white font-semibold italic">"What is the 'Lifestyle Tax' of waiting for interest rates to hit a specific number?"</span>
+                    <span id="icon-4" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-4" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    The tax is paid in <strong>time</strong>. Waiting 18 months for a 1% drop might save you money on paper, but it costs you 500+ days of living in a space that is shrinking your potential. You can refinance a rate, but you can't "refinance" lost years.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(5)">
+                    <span class="text-white font-semibold italic">"Is staying in an 'outgrown' home actually costing me net worth?"</span>
+                    <span id="icon-5" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-5" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Often, yes. By staying in a plateaued neighborhood while high-growth "Identity Hubs" appreciate, you miss the equity curve. Our assessment helps identify if your current asset is "stale" compared to your goals.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(6)">
+                    <span class="text-white font-semibold italic">"How does delaying a probate sale impact the total inheritance?"</span>
+                    <span id="icon-6" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-6" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Holding costs (taxes, insurance, maintenance) and family friction eat away at the value every month. The fastest path to emotional closure and financial preservation is a strategic, timely sale.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(7)">
+                    <span class="text-white font-semibold italic">"In 2026, is it better to buy for square footage or efficiency?"</span>
+                    <span id="icon-7" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-7" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    The smart money is on <strong>efficiency and flow</strong>. Large, empty rooms are liabilities. Curated, high-tech, energy-efficient spaces are the assets that hold value in the modern market.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(8)">
+                    <span class="text-white font-semibold italic">"Should I renovate my current house or move to something newer?"</span>
+                    <span id="icon-8" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-8" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    If the location is perfect but the layout is wrong, renovate. If the location is the "ceiling" on your lifestyle, no amount of granite countertops will fix that. Move.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(9)">
+                    <span class="text-white font-semibold italic">"What are the top hidden maintenance costs in modern high-end homes?"</span>
+                    <span id="icon-9" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-9" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Smart-home ecosystem updates, high-efficiency HVAC filtration, and specialized landscaping. We audit these in your roadmap so there are no "Day 30" surprises.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(10)">
+                    <span class="text-white font-semibold italic">"Does my address really affect my professional network?"</span>
+                    <span id="icon-10" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-10" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Proximity is the most undervalued professional asset. Living where your peers and mentors live creates "organic networking" at the gym, the park, and the cafe. It’s a career accelerator.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(11)">
+                    <span class="text-white font-semibold italic">"How do I deal with 'imposter syndrome' when upgrading to a luxury area?"</span>
+                    <span id="icon-11" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-11" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Imposter syndrome happens when your external environment outpaces your internal growth. We focus on the "Identity" pillar to ensure you feel like the <strong>owner</strong> of your success, not a guest in it.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(12)">
+                    <span class="text-white font-semibold italic">"Is 'Status' a shallow reason to move, or a strategic one?"</span>
+                    <span id="icon-12" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-12" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    It's strategic. Your home is a "container" for your life. If the container is too small or poorly designed, it limits the growth of what's inside. Upgrading is about creating room for a larger life.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(13)">
+                    <span class="text-white font-semibold italic">"How do I pick a home that fits the person I'll be in 5 years?"</span>
+                    <span id="icon-13" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-13" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    We look at your "trajectory." Are you scaling a business? Planning for family? Looking for more solitude? We buy for the <strong>destination</strong>, not the current station.
+                </div>
+            </div>
+
+            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center" onclick="toggleFAQ(14)">
+                    <span class="text-white font-semibold italic">"What is the most common regret people have after a major transition?"</span>
+                    <span id="icon-14" class="text-amber-400">+</span>
+                </button>
+                <div id="faq-14" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Regret usually stems from <strong>compromise</strong>. People compromise on the neighborhood to get the extra bedroom, then realize they hate the 40-minute drive. Our roadmap prevents those trade-offs.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(id) {
+        const content = document.getElementById(`faq-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.innerText = "−";
+        } else {
+            content.classList.add('hidden');
+            icon.innerText = "+";
+        }
+    }
+</script>
 </body>
 </html>
