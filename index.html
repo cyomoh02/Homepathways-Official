@@ -285,22 +285,22 @@
 <!--Testimonial Section-->
 <section id="testimonials" class="py-32 bg-navy overflow-hidden border-t border-gray-900">
     <div class="max-w-7xl mx-auto px-8 text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Real Stories From Our Clients</h2>
-        <p class="text-gray-400 text-lg leading-8 max-w-3xl mx-auto">
-            Our success is measured by the confidence and comfort of the people we serve. Here's what they have to say about their journey with us.
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6 uppercase tracking-tight">Real Stories From Our Clients</h2>
+        <p class="text-gray-400 text-lg leading-8 max-w-3xl mx-auto font-light italic">
+            Our success is measured by the confidence and comfort of the people we serve.
         </p>
     </div>
 
     <div class="space-y-12">
         <div class="flex marquee-container group">
-            <div class="flex gap-8 animate-marquee-right group-hover:[animation-play-state:paused]">
+            <div class="flex gap-8 animate-marquee-right group-hover:[animation-play-state:paused] whitespace-nowrap">
                 <div id="row-1-content" class="flex gap-8"></div>
                 <div id="row-1-dup" class="flex gap-8"></div>
             </div>
         </div>
 
         <div class="flex marquee-container group">
-            <div class="flex gap-8 animate-marquee-left group-hover:[animation-play-state:paused]">
+            <div class="flex gap-8 animate-marquee-left group-hover:[animation-play-state:paused] whitespace-nowrap">
                 <div id="row-2-content" class="flex gap-8"></div>
                 <div id="row-2-dup" class="flex gap-8"></div>
             </div>
@@ -308,158 +308,154 @@
     </div>
 </section>
 
-<div id="story-modal" class="fixed inset-0 z-[100] hidden bg-[#050b1a]/95 backdrop-blur-2xl flex items-center justify-center p-4">
-    <div class="max-w-3xl w-full bg-slate-900 border border-slate-700 rounded-[40px] p-8 md:p-16 relative shadow-2xl">
-        <button onclick="closeStory()" class="absolute top-8 right-8 text-slate-400 hover:text-white transition-colors">
+<div id="testimonial-modal" class="fixed inset-0 z-[100] hidden bg-[#050b1a]/95 backdrop-blur-2xl flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full bg-slate-900 border border-slate-700 rounded-[40px] p-8 md:p-16 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+        <button onclick="closeFullStory()" class="absolute top-8 right-8 text-slate-400 hover:text-white transition-colors">
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <div id="modal-content" class="space-y-6 text-slate-300 text-lg leading-relaxed font-light">
+        <div id="testimonial-modal-content" class="space-y-6 text-slate-300 text-xl leading-relaxed font-light">
             </div>
         <div class="mt-12">
-            <button onclick="closeStory()" class="bg-mint text-navy font-bold px-8 py-3 rounded-full hover:bg-white transition-all">Close Story</button>
+            <button onclick="closeFullStory()" class="bg-mint text-navy font-bold px-10 py-4 rounded-full hover:bg-white transition-all uppercase tracking-widest text-xs">Back to Stories</button>
         </div>
     </div>
 </div>
 
 <style>
-    .animate-marquee-right { animation: marquee-right 40s linear infinite; }
-    .animate-marquee-left { animation: marquee-left 40s linear infinite; }
+    .animate-marquee-right { animation: marquee-right 45s linear infinite; }
+    .animate-marquee-left { animation: marquee-left 45s linear infinite; }
     @keyframes marquee-right { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes marquee-left { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 </style>
 <script>
-    const clientStories = [
-    // ROW 1 Stories
-    { id: 1, name: "Sarah & Mark", type: "First Time Home Buyer", stars: 5, 
-      preview: "We were trapped in a cycle of 'equity gifting' to our landlord. Every rent hike felt like a weight on our shoulders...",
-      full: [
-          "We were trapped in a cycle of 'equity gifting' to our landlord. Every rent hike felt like a weight on our shoulders, and we honestly felt like guests in our own life. We wanted roots, but the market felt like a giant puzzle we couldn't solve.",
-          "Sean sat us down and treated us like the 'CEOs' of our future. He didn't just show us houses; he showed us the logical foundation of building wealth. He found us a private sale that wasn't even on the apps yet.",
-          "When we finally held the keys, we didn't just walk into a house—we walked into our launchpad. For the first time, we feel like stakeholders in our community. HomePathway made the impossible feel like a clear plan."
+    const testimonials = [
+    { id: 't1', name: "Sarah & Mark", type: "First Time Home Buyer", stars: 5, 
+      short: "We felt like guests in someone else's investment. Every rent hike felt like a weight on our shoulders until Sean sat us down...",
+      paragraphs: [
+          "We felt like guests in someone else's investment. Every rent hike felt like a weight on our shoulders and we were tired of asking for permission to just live our lives. We wanted roots, but the market felt like a giant puzzle we couldn't solve.",
+          "Sean and the HomePathways team sat us down and treated us like the CEOs of our own future. They didn't just show us houses; they showed us the logical foundation of building wealth. They found us a private sale that wasn't even on the market yet.",
+          "When we finally held the keys, we didn't just walk into a house—we walked into our launchpad. HomePathways made the impossible feel like a clear, supported plan. We are finally stakeholders in a community we love."
       ]
     },
-    { id: 2, name: "The Miller Family", type: "Up-Mover", stars: 4.5, 
-      preview: "Our starter home had become a storage unit for our past. With two kids, coming home felt like a return to a cramped reality...",
-      full: [
+    { id: 't2', name: "The Miller Family", type: "Up-Mover", stars: 4.5, 
+      short: "Our starter home had become a storage unit for our past. Coming home felt like a return to a cramped reality until the Excellence Audit...",
+      paragraphs: [
           "Our starter home had become a storage unit for our past. With two kids and a growing business, coming home felt like a return to a cramped reality rather than a celebration of our success. The morning chaos was reaching a breaking point.",
-          "The HomePathway team conducted an 'Excellence Audit' of our lives. They identified that our problem wasn't just space—it was functional flow. They mapped out a trajectory for our next five years and found a home that fit our family brand.",
-          "Now, we have a 'recharge zone' and a dedicated office for deep work. The sigh of relief we feel at holiday dinners is something we can't put a price on. Sean helped us evolve."
+          "Sean conducted an 'Excellence Audit' of our lives. He realized our problem wasn't just space—it was functional flow. He mapped out a trajectory for our next five years and found a neighborhood that fit our brand.",
+          "Now, we have a 'recharge zone' and a dedicated office for deep work. The sigh of relief we feel at holiday dinners is something we can't put a price on. Sean helped us evolve into the life we earned."
       ]
     },
-    { id: 3, name: "David L.", type: "Out Of Town Relocator", stars: 5, 
-      preview: "Moving 1,000 miles away was terrifying. I was scared of making a permanent mistake in a city I didn't know...",
-      full: [
+    { id: 't3', name: "David L.", type: "Out Of Town Relocator", stars: 5, 
+      short: "Moving 1,000 miles for work was terrifying. I felt like I was moving my entire life support system into the dark until Sean became my guide...",
+      paragraphs: [
           "Moving 1,000 miles away for work was terrifying. I was scared of making a permanent mistake in a city I didn't know and failing to find my 'tribe.' I felt like I was moving my entire life support system into the dark.",
           "Sean became my 'Local Best Friend.' He mapped the community first, showing me where the morning hikers and coffee-lovers lived. He vetted neighborhoods for my lifestyle anchors before we even talked about floor plans.",
-          "Six months later, a neighbor asked for MY advice on the area. That feeling of belonging is exactly what I needed. I didn't just find a house; I found where I am supposed to be."
+          "Six months later, a neighbor asked for MY advice on the area. That feeling of belonging is exactly what I needed. I didn't just find a house; I found where I am supposed to be. Sean’s local secrets were the key."
       ]
     },
-    { id: 4, name: "Eleanor & James", type: "Retiring Rightsizer", stars: 5, 
-      preview: "We were living in a 'monument to the past.' Large empty rooms that only served as clutter traps and chores...",
-      full: [
-          "We were living in a 'monument to the past.' Large empty rooms that only served as clutter traps and constant chores. We were caring for a house that was supposed to be caring for us, and it was stealing our travel years.",
-          "Sean helped us pivot from 'Management' to 'Freedom.' He showed us how to trade 2,000 square feet of unused space for 200 days of stress-free travel. He handled the sorting process with so much patience.",
-          "We now have a 'jewel box' home designed 100% for us. We simply turn the key and leave for a month without a single worry. We wish we had done this sooner."
+    { id: 't4', name: "Robert & Lisa", type: "Probate", stars: 4, 
+      short: "Losing our parents was hard, but being business partners with my siblings to settle the estate was tearing us apart. Sean saved our unity...",
+      paragraphs: [
+          "Losing our parents was hard enough, but being forced into acting as business partners with my siblings to settle the estate was tearing our family unity apart. We were stuck in a state of 'unfinished business' that was stalling our grieving.",
+          "Sean acted as our Strategic Steward. He took the heavy lifting off our shoulders, handling the logistics, the 2 AM repair calls, and the vendor coordination with profound empathy. He provided the professional unity we needed to decide without resentment.",
+          "We settled the estate with total family fairness. The closure we feel is the greatest gift Sean gave us. He helped us remember the peace, not just the property. We can finally go back to being a family again."
       ]
     },
-    { id: 5, name: "Robert S.", type: "Probate", stars: 4, 
-      preview: "Losing my parents was hard enough, but the decision fatigue of settling the estate was tearing my siblings apart...",
-      full: [
-          "Losing my parents was hard enough, but the decision fatigue of settling the estate was tearing my siblings apart. We were stuck in a state of 'unfinished business' that was stalling our grieving process.",
-          "Sean acted as a Strategic Steward. He took the weight off our shoulders, handling the logistics, staging, and vendor coordination with profound empathy. He helped us see the 'Living Legacy' the house could provide for our own kids.",
-          "We settled the estate with total family unity. The closure we feel is the greatest gift he gave us. He remembered the peace, not just the property."
+    { id: 't5', name: "Margaret H.", type: "Aging In Place Adults", stars: 5, 
+      short: "I was scared of losing my autonomy or becoming a burden because of my stairs. Sean didn't tell me to leave; he showed me how to stay strong...",
+      paragraphs: [
+          "I was determined to stay in my home, but the stairs were starting to feel like a barrier to my life rather than a safe harbor. I was scared of losing my autonomy or becoming a burden to my children because I couldn't manage the maintenance.",
+          "Sean didn't tell me to leave; he showed me how to stay strong. He conducted a 'Dignity Audit' of my space and recommended tech-forward modifications and small design changes that gave me my confidence back.",
+          "I feel like a pioneer of my own future now. My home is protected for my needs, and my children don't have to worry about a 'crisis move.' I’ve successfully conquered this next phase of my life in the place I love."
       ]
     },
-    { id: 6, name: "Margaret H.", type: "Aging In Place Adults", stars: 5, 
-      preview: "I was determined to stay in my home, but it was starting to feel like a barrier to my daily life instead of a safe harbor...",
-      full: [
-          "I was determined to stay in my home, but it was starting to feel like a barrier to my daily life instead of a safe harbor. I was scared of losing my autonomy or becoming a burden to my children because of the stairs.",
-          "Sean conducted a 'Dignity Audit' of my space. He didn't tell me to leave; he showed me how to stay strong. He recommended tech-forward modifications and small design changes that gave me my confidence back.",
-          "I feel like a pioneer of my own future now. My home is protected for my needs, and my relationship with my kids is back to being about adventures, not my mobility."
+    { id: 't6', name: "Eleanor & James", type: "Retiring Rightsizer", stars: 5, 
+      short: "We were living in a monument to the past. Chores were stealing our travel years until Sean helped us pivot from Management to Freedom...",
+      paragraphs: [
+          "We were living in a 'monument to the past.' Large empty rooms that served only as clutter traps and constant chores. We were caring for a house that was supposed to be caring for us, and it was stealing our travel years.",
+          "Sean helped us pivot from 'Management' to 'Freedom.' He showed us how to trade 2,000 square feet of unused space for 200 days of stress-free travel. He handled the sorting process with so much patience, helping us decide what to keep.",
+          "We now have a 'jewel box' home designed 100% for us. We simply turn the key and leave for a month without a worry about lawns or security. Our relationship with our kids is back to being about adventures, not chores."
       ]
     },
-    { id: 7, name: "Kevin & Jen", type: "Up-Mover", stars: 4.5, 
-      preview: "Our address reflected who we were in college, not the professionals we are today. We were playing small...",
-      full: [
-          "Our address reflected who we were in college, not the professionals we are today. We were 'playing small' because we were comfortable, but the subconscious drain of a house that didn't fit our success was real.",
-          "Sean pushed us to visualize our destination five years from now. He found us a primary suite that felt like a reward for our hard work. He didn't just sell us a home; he improved our trajectory.",
-          "When we host mentors now, we don't make excuses. We feel empowered. Our home is finally a suitable container for our life's growth."
+    { id: 't7', name: "Kevin & Jen", type: "Up-Mover", stars: 5, 
+      short: "We were playing small because we were comfortable, but we were burnt out. Sean showed us our home should be a win for our family brand...",
+      paragraphs: [
+          "Our home was a 'storage unit' for our old life. We were playing small because we were comfortable, but we were burnt out because we had no 'recharge zone.' When mentors visited, we felt the need to explain our home away.",
+          "Sean and his team helped us realize our home should be a win for our family brand. He found us a primary suite wing that felt like the reward we earned for our hard work. He identified the friction points we didn't even know were draining us.",
+          "Six months later, we are the social hub for our peers. Our home finally matches our ambition and gives us the energy to keep growing. We finally made it, and the view out our new window tells us that every morning."
       ]
     },
-    // ROW 2 Stories (Repeated persona types with different narratives)
-    { id: 8, name: "Alice P.", type: "First Time Home Buyer", stars: 5, preview: "The 'house rules' of my rental were a weight on my soul. I wanted to paint, to plant, to own...", full: ["The 'house rules' of my rental were a weight on my soul. I wanted to paint, to plant, to own my own Saturday morning. Sean treated my small budget with the same respect as a mansion. He found me a 'wealth-building stepping stone' that changed everything.", "He explained the math like a teacher, helping me see how my monthly payment was building my net worth. The peace of mind of having fixed costs for 30 years is incredible.", "I claimed my space the day I got the keys by dancing in the empty living room. I'm finally the CEO of my life."] },
-    { id: 9, name: "The Thompson Duo", type: "Out Of Town Relocator", stars: 4.5, preview: "Traffic and weather had drained our energy. We were escaping a city that no longer served us...", full: ["Traffic and weather had drained our energy. We were escaping a city that no longer served us to pursue a new identity. We needed to find our 'people' as much as a house.", "HomePathway found us the community rhythm we craved. They told us the 'local secrets' that apps can't show you. They saved us from making a costly mistake in a flashy but wrong neighborhood.", "Our eye light up when we tell people where we live now. We are finally home."] },
-    { id: 10, name: "Brian & Sue", type: "Retiring Rightsizer", stars: 5, preview: "Cleaning rooms no one slept in felt like a tax on our retirement. We wanted to be curators of experiences...", full: ["Cleaning rooms no one slept in felt like a tax on our retirement. We wanted to be curators of experiences, not collectors of things. Sean showed us the equity opportunity we were sitting on.", "He managed the right-sizing process with incredible care, helping us decide what to keep and what to set free. He made the transition feel light and exciting.", "Our relationship with our adult kids has improved because our home is now a vacation destination, not a work-weekend of chores."] },
-    { id: 11, name: "Linda G.", type: "Aging In Place Adults", stars: 4.5, preview: "I was worried about the 'Wait-for-Crisis' trap. I didn't want my children making decisions for me...", full: ["I was worried about the 'Wait-for-Crisis' trap. I didn't want my children or a doctor making decisions for me. I wanted to make the smart move early.", "Sean helped me find a 'forever-functional' home that looks state-of-the-art, not clinical. It's a tech-forward sanctuary that protects my peace and my independence.", "I've conquered this phase of life. I feel secure and vibrant in a space that works for the adult I am today."] },
-    { id: 12, name: "The Harris Heirs", type: "Probate", stars: 5, preview: "We were business partners with siblings we hadn't talked to in years. The probate was a nightmare...", full: ["We were suddenly business partners with siblings we hadn't talked to in years. The probate was a nightmare of تصمیم fatigue and family friction.", "Sean provided the professional unity we needed. He navigated the complexity and delivered a fair result for everyone. He helped us honor our parents' legacy without the battle.", "Closing that chapter allowed us to go back to being siblings. The peace he created for us is his true legacy."] },
-    { id: 13, name: "Chris W.", type: "Up-Mover", stars: 5, preview: "Coming home shouldn't feel like a return to reality. It should feel like a celebration of the win...", full: ["Coming home shouldn't feel like a return to reality. It should feel like a celebration of the win at work. My old house was suppressing my social potential.", "HomePathway found me the 'hero feature' I earned—a wine lounge that makes me the hub of my social circle. They identified the 'functional flow' I was missing.", "I don't travel to others anymore; they come to me. My home finally matches my ambition."] },
-    { id: 14, name: "Sophia R.", type: "First Time Home Buyer", stars: 4, preview: "I didn't think I could afford to stop renting in 2026. Sean showed me the 'CEO logic' of ownership...", full: ["I didn't think I could afford to stop renting in 2026. Sean showed me the 'CEO logic' of ownership and helped me with a financial pre-qualification strategy.", "He found a home with 'house hacking' potential that covers a third of my mortgage. He taught me the hyper-local market education I needed to feel brave.", "I'm no longer gifting my future to a landlord. I'm building my own stake."] }
+    // Second Row Stories (t8-t14)
+    { id: 't8', name: "Alice P.", type: "First Time Home Buyer", stars: 5, short: "The house rules of my rental were a weight on my soul. Sean treated my small budget with the same respect as a mansion...", paragraphs: ["The house rules of my rental were a weight on my soul. I wanted to paint, to plant, to own my own Saturday morning. Sean treated my small budget with the same respect as a mansion.", "He explained the math like a teacher, helping me see how my monthly payment was building my net worth. The peace of mind of having fixed costs for 30 years is incredible.", "I claimed my space the day I got the keys by dancing in the empty living room. I'm finally the CEO of my life thanks to HomePathways."] },
+    { id: 't9', name: "The Thompson Duo", type: "Out Of Town Relocator", stars: 4.5, short: "Traffic and weather had drained our energy. We needed to find our people as much as a house. Sean found us the community rhythm...", paragraphs: ["Traffic and weather had drained our energy. We were escaping a city that no longer served us to pursue a new identity. We needed to find our 'people' as much as a house.", "HomePathways found us the community rhythm we craved. They told us the 'local secrets' that apps can't show you. They saved us from making a costly mistake in a flashy but wrong neighborhood.", "Our eyes light up when we tell people where we live now. We are finally home."] },
+    { id: 't10', name: "Brian & Sue", type: "Retiring Rightsizer", stars: 5, short: "Cleaning rooms no one slept in felt like a tax on our retirement. Sean made the transition feel light and exciting...", paragraphs: ["Cleaning rooms no one slept in felt like a tax on our retirement. We wanted to be curators of experiences, not collectors of things. Sean showed us the equity opportunity we were sitting on.", "He managed the right-sizing process with incredible care, helping us decide what to keep and what to set free. He made the transition feel light and exciting.", "Our relationship with our adult kids has improved because our home is now a vacation destination, not a work-weekend of chores."] },
+    { id: 't11', name: "Linda G.", type: "Aging In Place Adults", stars: 4.5, short: "I was worried about the 'Wait-for-Crisis' trap. Sean helped me find a forever-functional home that looks state-of-the-art...", paragraphs: ["I was worried about the 'Wait-for-Crisis' trap. I didn't want my children or a doctor making decisions for me. I wanted to make the smart move early.", "Sean helped me find a 'forever-functional' home that looks state-of-the-art, not clinical. It's a tech-forward sanctuary that protects my peace and my independence.", "I've conquered this phase of life. I feel secure and vibrant in a space that works for the adult I am today."] },
+    { id: 't12', name: "The Heirs of Oak St", type: "Probate", stars: 5, short: "The probate was a nightmare of decision fatigue until Sean provided the professional unity we needed to honor a legacy...", paragraphs: ["We were suddenly business partners with siblings we hadn't talked to in years. The probate was a nightmare of decision fatigue and family friction.", "Sean and the HomePathways team provided the professional unity we needed. He navigated the complexity and delivered a fair result for everyone.", "Closing that chapter allowed us to go back to being siblings. The peace he created for us is his true legacy."] },
+    { id: 't13', name: "Chris W.", type: "Up-Mover", stars: 5, short: "My old house was a ceiling on my family's potential. HomePathways found me the hero feature I earned...", paragraphs: ["Coming home shouldn't feel like a return to reality. It should feel like a celebration of the win at work. My old house was a ceiling on my family's social potential.", "HomePathways found me the 'hero feature' I earned—a wine lounge that makes me the hub of my social circle. They identified the 'functional flow' I was missing.", "I don't travel to others anymore; they come to me. My home finally matches my ambition."] },
+    { id: 't14', name: "Sophia R.", type: "First Time Home Buyer", stars: 4, short: "I didn't think I could afford to stop renting in 2026. Sean showed me the CEO logic of ownership and a house-hacking strategy...", paragraphs: ["I didn't think I could afford to stop renting in 2026. Sean showed me the 'CEO logic' of ownership and helped me with a financial pre-qualification strategy.", "He found a home with 'house hacking' potential that covers a third of my mortgage. He taught me the market education I needed to feel brave.", "I'm no longer gifting my future to a landlord. I'm building my own stake."] }
 ];
 
-function createStarRating(stars) {
-    let html = '<div class="flex text-amber-400 mb-4">';
-    for(let i=0; i<5; i++) {
-        if(i < Math.floor(stars)) html += '★';
-        else if(i < stars) html += '½';
-        else html += '☆';
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= Math.floor(rating)) stars += '★';
+        else if (i - 0.5 === rating) stars += '½';
+        else stars += '☆';
     }
-    return html + '</div>';
+    return `<div class="text-amber-400 text-lg mb-4">${stars}</div>`;
 }
 
-function renderMarquee() {
-    const row1 = document.getElementById('row-1-content');
-    const row2 = document.getElementById('row-2-content');
+function initTestimonials() {
+    const r1 = document.getElementById('row-1-content');
+    const r2 = document.getElementById('row-2-content');
     
-    clientStories.slice(0, 7).forEach(s => {
-        const card = createCardElement(s);
-        row1.appendChild(card);
-        document.getElementById('row-1-dup').appendChild(card.cloneNode(true));
-    });
-
-    clientStories.slice(7, 14).forEach(s => {
-        const card = createCardElement(s);
-        row2.appendChild(card);
-        document.getElementById('row-2-dup').appendChild(card.cloneNode(true));
+    testimonials.forEach((t, i) => {
+        const card = document.createElement('div');
+        card.className = "w-[450px] bg-[#0a101e] border border-gray-800 p-8 rounded-[32px] whitespace-normal flex flex-col justify-between h-[360px] transition-all hover:border-mint/50";
+        card.innerHTML = `
+            <div>
+                ${generateStars(t.stars)}
+                <div class="text-mint font-bold text-[10px] uppercase tracking-widest mb-2">${t.type}</div>
+                <h4 class="text-xl text-white font-bold mb-4 font-serif italic leading-relaxed line-clamp-2">"${t.short}"</h4>
+            </div>
+            <div>
+                <p class="text-slate-500 text-sm font-bold uppercase mb-6">— ${t.name}</p>
+                <button onclick='openFullStory("${t.id}")' class="text-mint font-bold text-xs uppercase tracking-widest hover:text-white transition-colors border-b border-mint/30 pb-1">Read The Full Story →</button>
+            </div>
+        `;
+        
+        if(i < 7) {
+            r1.appendChild(card);
+            document.getElementById('row-1-dup').appendChild(card.cloneNode(true));
+        } else {
+            r2.appendChild(card);
+            document.getElementById('row-2-dup').appendChild(card.cloneNode(true));
+        }
     });
 }
 
-function createCardElement(s) {
-    const div = document.createElement('div');
-    div.className = "w-[450px] bg-[#0a101e] border border-gray-800 p-8 rounded-[32px] whitespace-normal flex flex-col justify-between h-[380px] transition-all hover:border-mint/50";
-    div.innerHTML = `
-        <div>
-            ${createStarRating(s.stars)}
-            <div class="text-mint font-bold text-[10px] uppercase tracking-widest mb-2">${s.type}</div>
-            <h4 class="text-xl text-white font-bold mb-4 italic">"${s.preview}"</h4>
-        </div>
-        <div>
-            <p class="text-slate-500 text-sm font-bold uppercase mb-6">— ${s.name}</p>
-            <button onclick='openStory(${JSON.stringify(s)})' class="text-mint font-bold text-xs uppercase tracking-widest hover:text-white transition-colors border-b border-mint/30 pb-1">Read The Full Story →</button>
-        </div>
-    `;
-    return div;
-}
-
-function openStory(s) {
-    const modal = document.getElementById('story-modal');
-    const content = document.getElementById('modal-content');
+function openFullStory(id) {
+    const story = testimonials.find(t => t.id === id);
+    if(!story) return;
+    const modal = document.getElementById('testimonial-modal');
+    const content = document.getElementById('testimonial-modal-content');
     content.innerHTML = `
-        <div class="text-amber-400 font-bold text-[10px] uppercase tracking-[0.4em] mb-4">${s.type} Roadmap</div>
-        <h2 class="text-4xl font-serif font-bold text-white mb-8">${s.name}'s Journey</h2>
-        ${s.full.map(p => `<p class="mb-6 font-light">${p}</p>`).join('')}
+        <div class="text-amber-400 font-bold text-[10px] uppercase tracking-[0.4em] mb-4">${story.type} Victory</div>
+        <h2 class="text-5xl font-serif font-bold text-white mb-10 leading-tight">${story.name}'s Journey</h2>
+        ${story.paragraphs.map(p => `<p class="mb-6">${p}</p>`).join('')}
     `;
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }
 
-function closeStory() {
-    document.getElementById('story-modal').classList.add('hidden');
+function closeFullStory() {
+    document.getElementById('testimonial-modal').classList.add('hidden');
     document.body.style.overflow = 'auto';
 }
 
-// Initialize on load
-window.onload = renderMarquee;
+// Call on load
+window.addEventListener('load', initTestimonials);
 </script>
 
         <!-- Final CTA Section -->
