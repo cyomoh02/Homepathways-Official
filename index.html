@@ -657,27 +657,22 @@ window.addEventListener('load', initTestimonials);
             closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
         });
     </script>
-
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.getElementById('mobile-menu-button');
+    const openBtn = document.getElementById('mobile-menu-button');
     const closeBtn = document.getElementById('close-menu');
     const menu = document.getElementById('mobile-menu');
 
-    if (btn && menu) {
-        // We use 'touchstart' for mobile to make it feel instant
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation(); 
+    if (openBtn && menu) {
+        openBtn.onclick = function(e) {
+            e.preventDefault();
             menu.classList.remove('hidden');
-            console.log("Menu Opened");
-        });
-
-        if (closeBtn) {
-            closeBtn.onclick = () => menu.classList.add('hidden');
-        }
+        };
+        closeBtn.onclick = function() {
+            menu.classList.add('hidden');
+        };
     }
 });
 </script>
-
 </body>
 </html>
