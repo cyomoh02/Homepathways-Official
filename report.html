@@ -3,66 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your HomePathways Roadmap</title>
+    <title>Your Roadmap | HomePathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#050b1a] text-gray-200 p-6 md:p-12">
+<body class="bg-[#050b1a] text-gray-200 p-6 md:p-12 font-sans antialiased">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold text-white mb-4">Your Custom Roadmap</h1>
-        <p class="text-amber-400 text-lg mb-12 italic">"You did a great job answering those questions. Here is your clear path forward."</p>
+        <h1 class="text-4xl font-bold text-white mb-4 uppercase tracking-tighter">Your Strategic Analysis</h1>
+        <p class="text-amber-400 mb-12 text-lg italic">"You did a great job today. Here is your path forward."</p>
 
-        <div id="score-grid" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16">
-            </div>
+        <div id="grid" class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16"></div>
 
-        <div class="bg-slate-900/50 border border-slate-800 p-8 md:p-12 rounded-[40px]">
-            <h2 class="text-2xl font-bold text-white mb-6">What this means for you:</h2>
-            <div id="simple-advice" class="space-y-6 text-lg leading-relaxed text-slate-300">
-                </div>
-            
-            <div class="mt-12 text-center">
-                <a href="booking.html" class="inline-block bg-amber-400 text-black font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all">Book Your Roadmap Call</a>
+        <div class="bg-slate-900 border border-slate-800 p-10 rounded-[40px] shadow-2xl">
+            <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest border-b border-slate-800 pb-4">Analysis Summary</h2>
+            <div id="summary" class="space-y-8 text-xl leading-relaxed text-slate-300"></div>
+            <div class="mt-16 text-center border-t border-slate-800 pt-10">
+                <a href="booking.html" class="inline-block bg-amber-400 text-black font-bold px-12 py-5 rounded-2xl hover:bg-white transition-all text-lg shadow-xl shadow-amber-400/20">Book a Roadmap Strategic Call</a>
             </div>
         </div>
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const pillars = [
-            { id: 'c1', name: 'Emotional Why' },
-            { id: 'c2', name: 'Cost of Inaction' },
-            { id: 'c3', name: 'Logical Foundation' },
-            { id: 'c4', name: 'Identity & Status' },
-            { id: 'c5', name: 'Future Self' }
-        ];
-
-        const scoreGrid = document.getElementById('score-grid');
-        const adviceBox = document.getElementById('simple-advice');
-
-        pillars.forEach(p => {
-            const score = params.get(p.id) || 15;
-            const pct = (score / 20) * 100;
-            
-            // Inject Score Bars
-            scoreGrid.innerHTML += `
-                <div class="text-center">
-                    <p class="text-[10px] uppercase font-bold text-slate-500 mb-2">${p.name}</p>
-                    <div class="h-32 w-full bg-slate-800 rounded-2xl relative overflow-hidden">
-                        <div class="absolute bottom-0 w-full bg-amber-400" style="height: ${pct}%"></div>
+        const p = new URLSearchParams(window.location.search);
+        const pillars = ['Emotional Why', 'Cost of Inaction', 'Logical Foundation', 'Identity', 'Future Self'];
+        const grid = document.getElementById('grid');
+        
+        pillars.forEach((n, i) => {
+            const s = parseInt(p.get(`c${i+1}`)) || 10;
+            const pct = (s / 20) * 100;
+            const offset = 251 - (251 * pct / 100);
+            grid.innerHTML += `
+                <div class="flex flex-col items-center">
+                    <div class="relative w-24 h-24 mb-4">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="48" cy="48" r="40" stroke="#1e293b" stroke-width="8" fill="transparent" />
+                            <circle cx="48" cy="48" r="40" stroke="#fbbf24" stroke-width="8" fill="transparent" 
+                                stroke-dasharray="251" stroke-dashoffset="${offset}" stroke-linecap="round" />
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center font-bold text-white text-sm">${Math.round(pct)}%</span>
                     </div>
-                    <p class="mt-2 font-bold text-white">${score}/20</p>
-                </div>
-            `;
+                    <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest text-center">${n}</p>
+                </div>`;
         });
 
-        // 5th Grade Logic Message
-        adviceBox.innerHTML = `
-            <p><strong>Your Strength:</strong> You are really good at knowing what you want! You took the time to think about your future, and that is a very smart thing to do. Many people rush into things, but you are being careful and wise.</p>
+        const scores = [parseInt(p.get('c1')), parseInt(p.get('c2')), parseInt(p.get('c3')), parseInt(p.get('c4')), parseInt(p.get('c5'))];
+        const highIdx = scores.indexOf(Math.max(...scores));
+        const lowIdx = scores.indexOf(Math.min(...scores));
+
+        document.getElementById('summary').innerHTML = `
+            <p><strong>You did a great job!</strong> Just by finishing this, you are already ahead of most people[cite: 1, 41]. You took the time to think about your future, and that is a very smart thing to do. You should be very proud of yourself for being brave enough to ask these big questions!</p>
             
-            <p><strong>The Next Step:</strong> Right now, your biggest job is to look at your "Logical Foundation." This just means making sure the math matches your dreams. It's like building a Lego house—we want to make sure the bottom part is very strong so the top part doesn't fall over.</p>
+            <p><strong>Where you are strong:</strong> You are really good at the "${pillars[highIdx]}" part of your move. This means you have a very clear picture in your head of what you want[cite: 4, 122]. This is your "superpower"—it will help you stay excited even when things get busy!</p>
             
-            <p><strong>Simple Advice:</strong> Don't let the big numbers scare you. Think of this move like a bridge. On one side is where you are now, and on the other side is your new happy home. We just need to walk across the bridge one step at a time.</p>
+            <p><strong>What we can work on:</strong> Sometimes, the "${pillars[lowIdx]}" stuff can feel a bit scary or confusing. That is totally okay! Right now, your heart is ready to move, but your brain just needs a little more help with the plan[cite: 14, 218]. It's like building a big Lego castle—we just need to make sure the bottom blocks are extra strong before we start building the towers.</p>
             
-            <p><strong>Sean's Commendation:</strong> I am very proud of you for finishing this. It shows you care about your family and your future. You are ready to stop guessing and start knowing!</p>
+            <p><strong>The Next Step:</strong> You are ready to stop guessing and start knowing for sure[cite: 82, 123]. Don't worry about knowing everything today. My job is to help you put the pieces together so you can move forward without any stress. Let's look at your roadmap together!</p>
         `;
     </script>
 </body>
