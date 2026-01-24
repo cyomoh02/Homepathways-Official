@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePathways | Transition Assessment</title>
+    <title>HomePathways | Deep Transition Assessment</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#0A0F1D] text-gray-200 antialiased">
+<body class="bg-[#0A0F1D] text-gray-200 font-sans antialiased">
     <div class="max-w-3xl mx-auto px-4 py-12">
         <div id="quiz-container" class="bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl min-h-[600px] flex flex-col justify-center">
-            
             <div id="top-progress-container" class="w-full bg-slate-800 rounded-full h-1.5 mb-10">
                 <div id="progress" class="bg-amber-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
             </div>
-
             <div id="question-box">
-                <span id="category-tag" class="text-amber-400/60 text-xs font-bold uppercase tracking-widest mb-2 block font-mono"></span>
+                <span id="category-tag" class="text-amber-400/60 text-xs font-bold uppercase tracking-widest mb-2 block"></span>
                 <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-white mb-8 leading-tight"></h2>
                 <div id="options" class="grid gap-4"></div>
             </div>
@@ -28,121 +26,116 @@
 
         const allQuestions = {
             'first-chapter': [
-                /* Category 1: Emotional Why */
                 { q: "When you walk through your front door, do you feel like a 'guest' in someone else’s investment or the 'CEO' of your own life?", cat: "Emotional Why", o: ["CEO of my life", "A long-term guest", "Temporary resident", "Just a renter"] },
-                { q: "What is the one specific 'house rule' or limitation of your current living situation that feels like a weight?", cat: "Emotional Why", o: ["Landlord restrictions", "Lack of control", "Space constraints", "Instability"] },
-                { q: "If you could paint a wall or change a fixture tomorrow without permission, how much more 'at home' would you feel?", cat: "Emotional Why", o: ["Completely settled", "Significantly better", "Slightly more", "No change"] },
-                { q: "Is your desire to buy driven more by a need for security (roots) or a need for freedom (creative control)?", cat: "Emotional Why", o: ["Security", "Freedom", "Both equally", "Financial gain"] },
-                { q: "Think of your favorite childhood memory at home; what physical element is missing from your life right now?", cat: "Emotional Why", o: ["Privacy/Yard", "Stable community", "Space to host", "Sense of pride"] },
-                /* Category 2: Cost of Inaction */
-                { q: "If you pay rent for another 24 months, how much are you gifting your landlord instead of your own retirement?", cat: "Cost of Inaction", o: ["Too much to ignore", "Significant amount", "Necessary evil", "Not calculated"] },
-                { q: "How much mental energy do you waste monthly worrying about lease renewals, rent hikes, or a landlord selling?", cat: "Cost of Inaction", o: ["Constant stress", "Occasional worry", "Very little", "None"] },
-                { q: "If you stay in your current space for another year, what milestone (dog, family, business) stays on hold?", cat: "Cost of Inaction", o: ["Growing family", "Getting a dog", "Business launch", "Personal space"] },
-                { q: "If prices rise 5% while you 'wait and see,' how many extra months of work does that represent to afford the same house?", cat: "Cost of Inaction", o: ["Months of labor", "A few weeks", "Manageable", "Not sure"] },
+                { q: "What is the one specific 'house rule' or limitation of your current living situation that feels like a constant weight?", cat: "Emotional Why", o: ["Landlord restrictions", "Lack of creative control", "Space constraints", "Instability"] },
+                { q: "If you could paint a wall, tear up a carpet, or change a fixture tomorrow without permission, how much more 'at home' would you feel?", cat: "Emotional Why", o: ["Completely settled", "Significantly better", "Slightly more", "No change"] },
+                { q: "Is your desire to buy driven more by a need for security (roots/safety) or a need for freedom (creative control)?", cat: "Emotional Why", o: ["Security", "Freedom", "Both equally", "Financial gain"] },
+                { q: "Think of your favorite childhood memory at home; what physical element of that memory is missing from your life right now?", cat: "Emotional Why", o: ["Privacy/Yard", "Stable community", "Space to host", "Sense of pride"] },
+                { q: "If you continue paying rent for another 24 months, how much money will you have contributed to your landlord’s retirement instead of yours?", cat: "Cost of Inaction", o: ["Too much to ignore", "Significant amount", "Necessary evil", "Not calculated"] },
+                { q: "How much mental energy do you waste every month worrying about lease renewals, rent hikes, or a landlord selling?", cat: "Cost of Inaction", o: ["Constant stress", "Occasional worry", "Very little", "None"] },
+                { q: "If you stay in your current space for another year, what 'milestone' (dog, family, business) will stay on hold?", cat: "Cost of Inaction", o: ["Growing family", "Getting a dog", "Business launch", "Personal space"] },
+                { q: "If prices rise 5% while you 'wait and see,' how many hours of extra work does that represent for you?", cat: "Cost of Inaction", o: ["Months of labor", "A few weeks", "Manageable", "Not sure"] },
                 { q: "What is the 'clutter cost' of your current home—how much stress is caused by living in a space you've outgrown?", cat: "Cost of Inaction", o: ["Daily anxiety", "Mild frustration", "Noticeable", "I'm organized"] },
-                /* Category 3: Logical Foundation */
-                { q: "Do you view your first home as a 'forever sanctuary' or a 'wealth-building stepping stone'?", cat: "Logical Foundation", o: ["Stepping stone", "Forever sanctuary", "Financial hedge", "Unsure"] },
-                { q: "If your job transitioned to 100% remote work, does your space have a 'zone' that protects your mental health?", cat: "Logical Foundation", o: ["Dedicated zone", "Use bed/sofa", "Total burnout", "Need upgrade"] },
-                { q: "Are you more comfortable trading time (fixer-upper) or money (move-in ready) to get into the market?", cat: "Logical Foundation", o: ["Time (DIY)", "Money (Ready)", "A bit of both", "Neither"] },
+                { q: "Do you view your first home as a 'forever sanctuary' or a 'wealth-building stepping stone'?", cat: "Logical Foundation", o: ["Stepping stone", "Forever sanctuary", "Wealth hedge", "Unsure"] },
+                { q: "If your job transitioned to 100% remote work, does your current space have a 'zone' that protects your mental health?", cat: "Logical Foundation", o: ["Dedicated zone", "Use bed/sofa", "Total burnout", "Need upgrade"] },
+                { q: "Beyond the mortgage, are you more comfortable trading time (a fixer-upper) or money (move-in ready)?", cat: "Logical Foundation", o: ["Time (DIY)", "Money (Ready)", "A bit of both", "Neither"] },
                 { q: "Which is a bigger priority: Proximity to your social 'vibe' or your professional 'engine' (commute)?", cat: "Logical Foundation", o: ["Social vibe", "Professional engine", "Balance", "Remote"] },
-                { q: "Is 'house hacking' (renting a room or ADU) a strategy you want to be capable of?", cat: "Logical Foundation", o: ["Definitely", "Maybe", "Not interested", "Too much work"] },
-                /* Category 4: Identity & Status */
+                { q: "In the 2026 economy, is 'house hacking' (renting out a room or ADU) something you want to explore?", cat: "Logical Foundation", o: ["Definitely", "Maybe", "Not interested", "Too much work"] },
                 { q: "Does your current address reflect the person you were in school, or the professional adult you have become?", cat: "Identity & Status", o: ["Yes, perfectly", "I've outgrown it", "It's embarrassing", "Not close"] },
-                { q: "How would it change your confidence if you could invite friends over to a place you felt proud of?", cat: "Identity & Status", o: ["Massive boost", "Nice feeling", "Already proud", "Not important"] },
-                { q: "When you describe where you live, do you find yourself making excuses or highlighting its features?", cat: "Identity & Status", o: ["Always excuses", "Mostly excuses", "Neutral", "Highlight features"] },
+                { q: "How would it change your confidence if you could host friends in a place you were proud of?", cat: "Identity & Status", o: ["Massive boost", "Nice feeling", "Already proud", "Not important"] },
+                { q: "When you describe where you live, do you find yourself making excuses or highlighting features?", cat: "Identity & Status", o: ["Always excuses", "Mostly excuses", "Neutral", "Highlight features"] },
                 { q: "Does your environment inspire productivity or encourage you to 'play small'?", cat: "Identity & Status", o: ["Play small", "Inspires me", "Neutral", "Drains energy"] },
-                { q: "What one 'luxury' (chef kitchen, patio, spa tub) would make you feel you’ve finally 'arrived'?", cat: "Identity & Status", o: ["Chef's kitchen", "Private patio", "Spa bath", "High-end finish"] },
-                /* Category 5: Future-Self Visualization */
+                { q: "What one 'luxury' (chef kitchen, patio, spa tub) would make you feel like you’ve 'arrived'?", cat: "Identity & Status", o: ["Chef's kitchen", "Private patio", "Spa bath", "High-end finish"] },
                 { q: "Saturday morning in your OWN home: What is the first thing you see that makes you smile?", cat: "Future-Self", o: ["My own yard", "My quiet kitchen", "A room I designed", "The equity built"] },
                 { q: "How would your stress change if your monthly housing payment was building your net worth?", cat: "Future-Self", o: ["Absolute peace", "Much less stress", "Slight improvement", "Already fine"] },
-                { q: "Think of the first holiday you host in your own home: What is the 'vibe' of the room?", cat: "Future-Self", o: ["Lively/Full", "Intimate/Cozy", "Grand/Impressive", "Family only"] },
-                { q: "Peace of mind knowing your housing costs are fixed for the next 30 years?", cat: "Future-Self", o: ["Total security", "Stability", "A little bit", "Not factor"] },
-                { q: "When you hold the keys, what is the first thing you will do inside to claim the space?", cat: "Future-Self", o: ["Paint a wall", "Pop champagne", "Start a garden", "Sit in quiet"] }
+                { q: "Think of the first dinner party or holiday you host: What is the 'vibe' of the room?", cat: "Future-Self", o: ["Lively/Full", "Intimate/Cozy", "Grand/Impressive", "Family only"] },
+                { q: "If you buy now, how much more 'peace of mind' will you have knowing your costs are fixed for 30 years?", cat: "Future-Self", o: ["Total security", "Stability", "A little bit", "Not factor"] },
+                { q: "When you finally hold the keys, what is the very first thing you will do to claim the space?", cat: "Future-Self", o: ["Paint a wall", "Pop champagne", "Start a garden", "Sit in quiet"] }
             ],
             'growing': [
-                { q: "Does your current home feel like a 'launchpad' for your future or a 'storage unit' for your past?", cat: "Emotional Why", o: ["Storage unit", "Launchpad", "Bit of both", "Neutral"] },
-                { q: "Coming home from a work win: Celebration or return to 'cramped' reality?", cat: "Emotional Why", o: ["Cramped reality", "True celebration", "A bit of both", "No connection"] },
-                { q: "What is the room you avoid because it no longer aligns with who you've become?", cat: "Emotional Why", o: ["Small bedroom", "Dated kitchen", "Cluttered basement", "Dining room"] },
-                { q: "If your home was your family's 'brand,' what does it currently say?", cat: "Emotional Why", o: ["Outgrown this", "On our way", "Success/Comfort", "Busy/Chaotic"] },
+                { q: "Does your home feel like a 'launchpad' for your future or a 'storage unit' for your past life?", cat: "Emotional Why", o: ["Launchpad", "Storage unit", "Bit of both", "Neutral"] },
+                { q: "Coming home from a work win: Celebration of success or return to 'cramped' reality?", cat: "Emotional Why", o: ["Celebration", "Cramped reality", "Bit of both", "No connection"] },
+                { q: "What room do you avoid because it no longer aligns with the person you’ve become?", cat: "Emotional Why", o: ["Small bedroom", "Dated kitchen", "Cluttered basement", "Dining room"] },
+                { q: "If your home was a physical manifestation of your family’s 'brand,' what does it say?", cat: "Emotional Why", o: ["Outgrown this", "On our way", "Success/Comfort", "Busy/Chaotic"] },
                 { q: "Frustration source: Lack of physical space or lack of functional flow?", cat: "Emotional Why", o: ["Physical space", "Functional flow", "Both equally", "Neither"] },
-                { q: "How many times a week do you apologize for your home to guests or yourself?", cat: "Cost of Inaction", o: ["Daily", "Weekly", "Occasionally", "Never"] },
-                { q: "The 'productivity tax' you pay daily living in a space not designed for 2026?", cat: "Cost of Inaction", o: ["High energy loss", "Moderate drain", "Low impact", "Efficient"] },
-                { q: "In 3 years, will your children have outgrown the space to the point of tension?", cat: "Cost of Inaction", o: ["Definitely", "Possibly", "Maybe", "No"] },
-                { q: "Burnout level because your home lacks a true 'recharge zone'?", cat: "Cost of Inaction", o: ["Significant", "Moderate", "I manage", "I'm fine"] },
-                { q: "Are you missing the peak window to leverage equity into a legacy asset?", cat: "Cost of Inaction", o: ["I worry I am", "Maybe", "Probably not", "No"] },
-                { q: "Is your home an 'asset' that works for you, or a 'liability' requiring workarounds?", cat: "Logical Foundation", o: ["Liability", "Asset", "Both", "Unsure"] },
+                { q: "How many times a week do you find yourself apologizing for your home to guests or yourself?", cat: "Cost of Inaction", o: ["Daily", "Weekly", "Occasionally", "Never"] },
+                { q: "The 'productivity tax' you pay daily by living in a space not designed for your 2026 lifestyle?", cat: "Cost of Inaction", o: ["High energy loss", "Moderate drain", "Low impact", "Efficient"] },
+                { q: "If you stay 3 years, will your children (or hobbies) have outgrown the space to tension?", cat: "Cost of Inaction", o: ["Definitely", "Possibly", "Maybe", "No"] },
+                { q: "How much more 'burnout' are you experiencing because your home lacks a 'recharge zone'?", cat: "Cost of Inaction", o: ["Significant", "Moderate", "I manage", "I'm fine"] },
+                { q: "By not moving now, are you missing the peak window to leverage equity into a legacy asset?", cat: "Cost of Inaction", o: ["I worry I am", "Maybe", "Probably not", "No"] },
+                { q: "Is your current home an 'asset' that works for you, or a 'liability' requiring workarounds?", cat: "Logical Foundation", o: ["Liability", "Asset", "Both", "Unsure"] },
                 { q: "Hosting an aging parent tomorrow: Total disruption or seamless shift?", cat: "Logical Foundation", o: ["Total disruption", "Moderate shift", "Minor impact", "Seamless"] },
-                { q: "2026 Market Logic: Buy for max square footage or max green efficiency?", cat: "Logical Foundation", o: ["Max efficiency", "Max sq footage", "Both", "Unsure"] },
-                { q: "Commute improvement needed to justify the move?", cat: "Logical Foundation", o: ["Significantly", "Slightly", "Fine now", "Not factor"] },
-                { q: "If net worth grows 20%, is this home still a suitable 'container'?", cat: "Logical Foundation", o: ["Absolutely not", "Probably not", "Yes", "Hope so"] },
-                { q: "Does your home reinforce your professional standing to peers or mentors?", cat: "Identity & Status", o: ["I hide my home", "Needs work", "Yes, it does", "Neutral"] },
-                { q: "The 'hero feature' (wine cellar, garage, suite) you’ve earned but lack?", cat: "Identity & Status", o: ["Primary Wing", "Wine Cellar", "Massive Garage", "Dedicated Gym"] },
-                { q: "Does your neighborhood have a 'ceiling' suppressing your family potential?", cat: "Identity & Status", o: ["Yes, definitely", "A little bit", "Not at all", "Neutral"] },
-                { q: "Are you the 'Hub' of your social circle or always traveling to others?", cat: "Identity & Status", o: ["Always traveling", "Can host some", "I am the hub", "Not interested"] },
+                { q: "2026 Logic: Buy for maximum square footage or maximum technological/green efficiency?", cat: "Logical Foundation", o: ["Green efficiency", "Max sq ft", "Both", "Unsure"] },
+                { q: "How much would your commute need to improve to justify the move?", cat: "Logical Foundation", o: ["Significantly", "Slightly", "Fine now", "Not factor"] },
+                { q: "If your net worth grows 20%, will your current home still be a suitable 'container'?", cat: "Logical Foundation", o: ["Absolutely not", "Probably not", "Yes", "Hope so"] },
+                { q: "When you invite mentors over, does your home reinforce your professional standing?", cat: "Identity & Status", o: ["I hide my home", "Needs work", "Yes, it does", "Neutral"] },
+                { q: "The 'hero feature' (wine cellar, 4-car garage, primary wing) you’ve earned but lack?", cat: "Identity & Status", o: ["Primary wing", "Wine/Kitchen", "Large garage", "Gym/Studio"] },
+                { q: "Do you feel your neighborhood has a 'ceiling' suppressing your family’s potential?", cat: "Identity & Status", o: ["Yes, definitely", "A little bit", "Not at all", "Neutral"] },
+                { q: "Are you the 'Hub' of your social circle, or are you always the one traveling to others?", cat: "Identity & Status", o: ["Always traveling", "Can host some", "I am the hub", "Not interested"] },
                 { q: "Magazine headline: 'Potential' or 'Perfection'?", cat: "Identity & Status", o: ["Potential/Fixer", "Perfection/Luxury", "Quaint", "Modern"] },
-                { q: "Morning chaos level if everyone had their own space to get ready?", cat: "Future-Self", o: ["Total peace", "Much less stress", "A little better", "No difference"] },
-                { q: "Holiday dinner in a room that actually fits everyone: The feeling?", cat: "Future-Self", o: ["Sigh of relief", "Pure pride", "Excitement", "Quiet joy"] },
-                { q: "The 'quiet luxury' you will finally have in the new home?", cat: "Future-Self", o: ["Boutique Closet", "Soundproof Office", "Spa Primary", "Chef's Kitchen"] },
-                { q: "Relationship improvement if you had dedicated passion areas?", cat: "Future-Self", o: ["Massive", "Less friction", "Slightly better", "Already great"] },
-                { q: "The view out your window that says 'We finally made it'?", cat: "Future-Self", o: ["Skyline View", "Private garden", "Quiet street", "Sunset"] }
+                { q: "Imagine everyone has their own space to get ready—how much 'morning chaos' vanishes?", cat: "Future-Self", o: ["Total peace", "Much less stress", "A little better", "No difference"] },
+                { q: "The first holiday dinner in a dining room that actually fits everyone: The feeling?", cat: "Future-Self", o: ["Sigh of relief", "Pure pride", "Excitement", "Quiet joy"] },
+                { q: "In your new home, what is the one 'quiet luxury' you will finally have?", cat: "Future-Self", o: ["Boutique closet", "Silent office", "Spa primary", "Chef kitchen"] },
+                { q: "Relationship improvement if you both had dedicated passion-space?", cat: "Future-Self", o: ["Massive", "Less friction", "Slightly better", "Already great"] },
+                { q: "Specific view from your new window that says: 'We finally made it'?", cat: "Future-Self", o: ["Skyline View", "Private garden", "Quiet street", "Sunset"] }
             ],
             'relocation': [
-                { q: "Is your primary goal to 'escape' an old lifestyle or 'pursue' a new identity?", cat: "Emotional Why", o: ["Pursue identity", "Escape lifestyle", "Bit of both", "Neutral"] },
-                { q: "The one 'daily frustration' (traffic, weather) you're leaving behind?", cat: "Emotional Why", o: ["Pace of life", "Environment", "The commute", "The weather"] },
-                { q: "Personality traits your new city needs to make you feel at home?", cat: "Emotional Why", o: ["Active/Vibrant", "Calm/Quiet", "Professional", "Artistic"] },
+                { q: "Is your primary goal to 'escape' an old lifestyle or 'pursue' a specific new identity?", cat: "Emotional Why", o: ["Pursue identity", "Escape lifestyle", "Bit of both", "Neutral"] },
+                { q: "The one 'daily frustration' (traffic, weather) you are most excited to leave behind?", cat: "Emotional Why", o: ["Pace of life", "The weather", "The environment", "The commute"] },
+                { q: "If your new city was a person, what personality traits would it need to have?", cat: "Emotional Why", o: ["Active/Vibrant", "Calm/Quiet", "Professional", "Artistic"] },
                 { q: "Is this move about 'finding a house' or 'finding a community'?", cat: "Emotional Why", o: ["Finding community", "Finding house", "Both equally", "Neither"] },
-                { q: "What part of this move makes your eyes light up with excitement?", cat: "Emotional Why", o: ["The new city", "The new home", "Starting over", "Opportunity"] },
-                { q: "If you stay in your current city for 2 years, what part of you will 'wilt'?", cat: "Cost of Inaction", o: ["Mental health", "Physical health", "Social life", "Ambition"] },
-                { q: "The 'geographic ceiling' on your career that only this move can shatter?", cat: "Cost of Inaction", o: ["Professional growth", "Networking", "Lifestyle access", "Finances"] },
-                { q: "How many 'perfect weekends' are you losing in your current environment?", cat: "Cost of Inaction", o: ["Countless", "Dozens", "Occasionally", "None"] },
-                { q: "Are you missing the window to integrate children before a social milestone?", cat: "Cost of Inaction", o: ["Yes, high risk", "Possibly", "Not sure", "No"] },
-                { q: "Cost of 'living for the future' instead of starting your life today?", cat: "Cost of Inaction", o: ["Energy drain", "Moderate", "Minor", "None"] },
-                { q: "Are you looking for 'stable and established' or 'emerging and growth'?", cat: "Logical Foundation", o: ["Emerging/Growth", "Stable/Established", "Both", "Unsure"] },
-                { q: "Hours of frustration if you don't know the local 'hidden gems'?", cat: "Logical Foundation", o: ["Countless", "Dozens", "I'll manage", "None"] },
-                { q: "How critical is being within 15 minutes of your lifestyle anchors?", cat: "Logical Foundation", o: ["Critical", "Prefer it", "Secondary", "Not factor"] },
-                { q: "Does your 2026 budget account for hidden tax or climate costs?", cat: "Logical Foundation", o: ["Yes, fully", "Researching", "A little", "No"] },
-                { q: "If a local friend filtered areas for you, what is the #1 deal-breaker?", cat: "Logical Foundation", o: ["Safety/Crime", "Noise/Traffic", "Lack of nature", "Bad schools"] },
-                { q: "Who is the 'New You' in this city—Hiker, Socialite, or Peace-seeker?", cat: "Identity & Status", o: ["The adventurer", "The socialite", "One with peace", "The professional"] },
-                { q: "Does your address signal success, or is this an 'incognito' chapter?", cat: "Identity & Status", o: ["Signal success", "Incognito", "Vibe-focused", "Neutral"] },
-                { q: "How important is your home being the 'Social Hub' for a new network?", cat: "Identity & Status", o: ["Very important", "Somewhat", "Not at all", "Neutral"] },
+                { q: "When you tell people you are moving, what part makes your eyes light up?", cat: "Emotional Why", o: ["The new city", "The new home", "Starting over", "Opportunity"] },
+                { q: "If you stay in your current city for 2 years, what part of your health will decline?", cat: "Cost of Inaction", o: ["Mental health", "Physical health", "Social life", "Ambition"] },
+                { q: "The 'geographic ceiling' on your career that only this specific move can shatter?", cat: "Cost of Inaction", o: ["Professional growth", "Networking", "Lifestyle access", "Finances"] },
+                { q: "How many 'perfect weekends' are you losing because you don't live in the environment you love?", cat: "Cost of Inaction", o: ["Countless", "Dozens", "Occasionally", "None"] },
+                { q: "Are you missing the window to integrate children before a critical social milestone?", cat: "Cost of Inaction", o: ["Yes, high risk", "Possibly", "Not sure", "No"] },
+                { q: "Emotional cost of 'living for the future' instead of starting your life today?", cat: "Cost of Inaction", o: ["Energy drain", "Moderate", "Minor", "None"] },
+                { q: "Are you looking for 'stable and established' or 'emerging and high-growth'?", cat: "Logical Foundation", o: ["Emerging/Growth", "Stable/Established", "Both", "Unsure"] },
+                { q: "Hours of frustration if you don't know the local 'hidden gems' in the first 90 days?", cat: "Logical Foundation", o: ["Countless", "Dozens", "I'll manage", "None"] },
+                { q: "How critical is being within a 15-minute radius of your lifestyle anchors?", cat: "Logical Foundation", o: ["Critical", "Prefer it", "Secondary", "Not factor"] },
+                { q: "Does your budget account for hidden tax structures or climate-specific maintenance?", cat: "Logical Foundation", o: ["Yes, fully", "Researching", "A little", "No"] },
+                { q: "If a local friend filtered neighborhoods for you, what is the #1 deal-breaker?", cat: "Logical Foundation", o: ["Safety/Crime", "Noise/Traffic", "Lack of nature", "Bad schools"] },
+                { q: "Who is the 'New You' in this city—Hiker, Socialite, or the one with Peace?", cat: "Identity & Status", o: ["The adventurer", "The socialite", "One with peace", "The professional"] },
+                { q: "Does your address signal success, or is this move an 'incognito' chapter?", cat: "Identity & Status", o: ["Signal success", "Incognito", "Vibe-focused", "Neutral"] },
+                { q: "How important is your home being the 'Social Hub' where you build a new network?", cat: "Identity & Status", o: ["Very important", "Somewhat", "Not at all", "Neutral"] },
                 { q: "First photo story: 'I've made it' or 'Adventure starts'?", cat: "Identity & Status", o: ["I've made it", "I'm finally home", "Adventure starts", "Peace found"] },
                 { q: "Does your current home feel like a 'costume' that no longer fits?", cat: "Identity & Status", o: ["Absolutely", "A bit tight", "No", "Neutral"] },
-                { q: "Local in 6 months: Where are you sitting and what are you eating?", cat: "Future-Self", o: ["Local cafe", "My own deck", "Park picnic", "Downtown bar"] },
-                { q: "First time a neighbor asks YOUR advice: What does that feeling do?", cat: "Future-Self", o: ["Total relief", "Confidence boost", "Warmth", "Normal"] },
-                { q: "View that tells you: 'I’m finally where I’m supposed to be'?", cat: "Future-Self", o: ["Skyline/City", "Mountains/Nature", "Quiet street", "Sunset"] },
+                { q: "Local in six months: Where are you sitting and what are you eating?", cat: "Future-Self", o: ["Local cafe", "My own deck", "Park picnic", "Downtown bar"] },
+                { q: "First time a neighbor asks for YOUR advice: What does that feeling do?", cat: "Future-Self", o: ["Total relief", "Confidence boost", "Warmth", "Normal"] },
+                { q: "The view out your window that tells you: 'I’m finally where I’m supposed to be'?", cat: "Future-Self", o: ["Skyline/City", "Mountains/Nature", "Quiet street", "Sunset"] },
                 { q: "Family dynamic change if background noise was replaced by the new city?", cat: "Future-Self", o: ["Total reset", "More calm", "Slight shift", "No change"] },
-                { q: "The one 'local secret' you'll be glad you discovered early?", cat: "Future-Self", o: ["The best park", "The hidden cafe", "The local route", "The community"] }
+                { q: "The one 'local secret' you're glad you discovered early?", cat: "Future-Self", o: ["The best park", "The hidden cafe", "The local route", "The community"] }
             ],
             'senior': [
-                { q: "Attached to the structure or the vicinity to people who know your name?", cat: "Emotional Why", o: ["People/Places", "The structure", "Both", "Neither"] },
-                { q: "Sense of 'self' tied to managing the household without help?", cat: "Emotional Why", o: ["Deeply tied", "Somewhat", "Ready to let go", "Not at all"] },
+                { q: "Attached to the physical structure or the vicinity to people who know your name?", cat: "Emotional Why", o: ["People/Places", "The structure", "Both", "Neither"] },
+                { q: "Sense of 'self' tied to managing the household without asking for help?", cat: "Emotional Why", o: ["Deeply tied", "Somewhat", "Ready to let go", "Not at all"] },
                 { q: "Is the home currently protecting you or demanding more than you can give?", cat: "Emotional Why", o: ["Demanding energy", "Protecting me", "Bit of both", "A burden"] },
                 { q: "The room with the most 'emotional fuel'—is it still easy to access?", cat: "Emotional Why", o: ["Garden/Yard", "The kitchen", "The living room", "Bedroom"] },
                 { q: "Stay put driven by comfort or fear of the overwhelming nature of change?", cat: "Emotional Why", o: ["Pure comfort", "Bit of fear", "Mostly fear", "Neither"] },
                 { q: "If mobility changed tomorrow, is your home a 'safe harbor' or a 'barrier'?", cat: "Cost of Inaction", o: ["Total barrier", "Minor barrier", "Manageable", "Safe harbor"] },
-                { q: "Emotional cost of 'off-limits' areas like the basement?", cat: "Cost of Inaction", o: ["High stress", "Annoyance", "I don't mind", "None"] },
+                { q: "Emotional cost of 'off-limits' areas like a basement that you still pay for?", cat: "Cost of Inaction", o: ["High stress", "Annoyance", "I don't mind", "None"] },
                 { q: "Wait for 'crisis' risk: Will you lose power to choose to children or doctors?", cat: "Cost of Inaction", o: ["I'll lose it all", "Significant", "A little", "None"] },
                 { q: "Social isolation level because your home makes visits hard?", cat: "Cost of Inaction", o: ["Significant", "Occasionally", "Very little", "None"] },
                 { q: "Worrying about a fall vs. the joy of the space: Which wins?", cat: "Cost of Inaction", o: ["Yes, daily", "Sometimes", "Rarely", "No"] },
                 { q: "Zero-Step audit: Would your home pass for living well at age 85?", cat: "Logical Foundation", o: ["Absolutely not", "Needs work", "Probably", "Yes"] },
-                { q: "Budget priority: Maintaining the yard or home-health tech?", cat: "Logical Foundation", o: ["Health tech", "The yard", "Both", "Neither"] },
-                { q: "How many 'micro-frustrations' (high shelves/doors) daily?", cat: "Logical Foundation", o: ["Countless", "Several", "One or two", "None"] },
+                { q: "2026 budget priority: Maintaining a large yard or home-health tech?", cat: "Logical Foundation", o: ["Health tech", "Large yard", "Both", "Neither"] },
+                { q: "How many 'micro-frustrations' (high shelves/doors) encounter daily?", cat: "Logical Foundation", o: ["Countless", "Several", "One or two", "None"] },
                 { q: "Right-sizing liquid wealth gain for hobbies?", cat: "Logical Foundation", o: ["Life-changing", "Significant", "A little", "Not much"] },
-                { q: "Help is 5 mins away or are you on an 'island'?", cat: "Logical Foundation", o: ["Total island", "Disconnected", "Near people", "Well connected"] },
-                { q: "Next chapter: Slowing down or optimizing to keep going?", cat: "Identity & Status", o: ["Optimizing", "Slowing down", "Resting", "Neutral"] },
+                { q: "Help is a 5-minute walk away or are you on an 'island'?", cat: "Logical Foundation", o: ["Total island", "Disconnected", "Near people", "Well connected"] },
+                { q: "Next chapter: slowing down or optimizing so you can keep going?", cat: "Identity & Status", o: ["Optimizing", "Slowing down", "Resting", "Neutral"] },
                 { q: "Host family in a space that is 'state-of-the-art' for your needs?", cat: "Identity & Status", o: ["Empowering", "Relieving", "Proud", "Normal"] },
-                { q: "Home reflect the vibrant adult today or a family life that ended?", cat: "Identity & Status", o: ["Ended version", "Tired version", "Vibrant adult", "Current"] },
-                { q: "Pride in 'made the smart move early' vs 'forced late'?", cat: "Identity & Status", o: ["Massive pride", "Some pride", "Relief", "Neutral"] },
-                { q: "Tech-forward sanctuary (sensors/voice): Feel like a pioneer?", cat: "Identity & Status", o: ["Yes, definitely", "Maybe", "Not really", "No"] },
+                { q: "Home reflect the vibrant adult today or family life that ended?", cat: "Identity & Status", o: ["Ended version", "Tired version", "Vibrant adult", "Current"] },
+                { q: "Pride in 'making the smart move early' vs. 'forced move late'?", cat: "Identity & Status", o: ["Massive pride", "Some pride", "Relief", "Neutral"] },
+                { q: "Tech-forward sanctuary (sensors/voice commands): Feel like a pioneer?", cat: "Identity & Status", o: ["Yes, definitely", "Maybe", "Not really", "No"] },
                 { q: "Stairs/maintenance gone: What do you do with that energy?", cat: "Future-Self", o: ["Travel/Hobby", "Family time", "Volunteer", "Rest"] },
                 { q: "Relationship change if conversations weren't about 'the house'?", cat: "Future-Self", o: ["Total reset", "Much better", "Slight shift", "No change"] },
                 { q: "Peace of mind knowing you will NEVER have to move again?", cat: "Future-Self", o: ["Total peace", "High security", "Some comfort", "Not factor"] },
                 { q: "The one 'luxury for one' (spa tub/hobby garden) finally allowed?", cat: "Future-Self", o: ["Therapeutic tub", "Hobby garden", "Reading nook", "Chef kit"] },
-                { q: "Retreating vs Conquered the next phase of life?", cat: "Future-Self", o: ["Yes, a victor", "Yes, capable", "Still unsure", "No"] }
+                { q: "Retreating vs. Conquered the next phase of life?", cat: "Future-Self", o: ["Yes, a victor", "Yes, capable", "Still unsure", "No"] }
             ],
             'downsizing': [
                 { q: "Empty rooms: 'Opportunity' or 'monuments to a season passed'?", cat: "Emotional Why", o: ["Monuments passed", "Opportunity", "Bit of both", "Neutral"] },
-                { q: "Pride tied to size of house vs quality of time in it?", cat: "Emotional Why", o: ["Quality of time", "Mostly size", "Both", "Status"] },
+                { q: "Pride tied to house size vs. quality of time spent in it?", cat: "Emotional Why", o: ["Quality of time", "Mostly size", "Both", "Status"] },
                 { q: "Trade 2,000 sq ft for 200 days of travel today?", cat: "Emotional Why", o: ["In a heartbeat", "Probably", "Maybe", "No"] },
                 { q: "Family member you care for or tool that cares for you?", cat: "Emotional Why", o: ["Member I care for", "Tool for me", "Both", "Neutral"] },
                 { q: "The chore removal that makes you feel 10 years younger?", cat: "Emotional Why", o: ["Mowing/Yard", "Deep cleaning", "Fixing things", "Stairs"] },
@@ -153,8 +146,8 @@
                 { q: "Social life shrinking because of upkeep energy?", cat: "Cost of Inaction", o: ["Significantly", "Moderate", "Minor", "None"] },
                 { q: "Prioritize a 'lock-and-leave' lifestyle?", cat: "Logical Foundation", o: ["Definitely", "Prefer it", "Not sure", "No"] },
                 { q: "Neighborhood aligned with 2026 needs?", cat: "Logical Foundation", o: ["No, it's commute", "Partially", "Mostly", "Yes"] },
-                { q: "Cost of 'retrofitting' vs moving to stay 20 more years?", cat: "Logical Foundation", o: ["Too much", "Moderate", "Small amount", "None"] },
-                { q: "Taxes on 'family-sized' vs pivot to lifestyle fund?", cat: "Logical Foundation", o: ["Pivot to fund", "Pay for size", "Unsure", "N/A"] },
+                { q: "Cost of 'retrofitting' vs. moving to stay 20 more years?", cat: "Logical Foundation", o: ["Too much", "Moderate", "Small amount", "None"] },
+                { q: "Taxes on 'family-sized' vs. pivot to lifestyle fund?", cat: "Logical Foundation", o: ["Pivot to fund", "Pay for size", "Unsure", "N/A"] },
                 { q: "Modern convenience your current home can't offer?", cat: "Logical Foundation", o: ["Zero-step entry", "Smart home", "Efficiency", "Modern security"] },
                 { q: "Ready to transition from Collector to Curator of Experiences?", cat: "Identity & Status", o: ["Totally ready", "Getting there", "Not sure", "No"] },
                 { q: "Feel like telling children: 'House is handled, I'm living my best life'?", cat: "Identity & Status", o: ["Empowering", "Relieving", "Proud", "Normal"] },
@@ -164,7 +157,7 @@
                 { q: "Mental clutter disappear with every object having a purpose?", cat: "Future-Self", o: ["Total clarity", "Much less", "A bit", "No change"] },
                 { q: "Month-long trip and simply 'turning the key'?", cat: "Future-Self", o: ["Pure bliss", "Quiet joy", "Exciting", "Nervous"] },
                 { q: "The 'jewel box' room designed 100% for YOU?", cat: "Future-Self", o: ["Perfect library", "Sunlit hobby", "Spa bath", "Chef kitchen"] },
-                { q: "Relationship change with adult children as a 'vacation destination'?", cat: "Future-Self", o: ["Much better", "Closer", "Slight shift", "No change"] },
+                { q: "Relationship change with adult children as 'vacation destination'?", cat: "Future-Self", o: ["Much better", "Closer", "Slight shift", "No change"] },
                 { q: "Wish you had done sooner 6 months from now?", cat: "Future-Self", o: ["Moved earlier", "Decluttered", "Saved more", "N/A"] }
             ],
             'lifestyle': [
@@ -190,7 +183,7 @@
                 { q: "Stop being a Property Manager and go back to family?", cat: "Identity & Status", o: ["Totally ready", "Getting there", "Not yet", "No"] },
                 { q: "First sensation handing over keys and walking away?", cat: "Future-Self", o: ["Total weight off", "Sigh of relief", "Sad but right", "Normal"] },
                 { q: "First holiday when 'the house' is not the topic?", cat: "Future-Self", o: ["Family peace", "Focus on kids", "New traditions", "Quiet joy"] },
-                { q: "Living legacy of funding education vs vacant building?", cat: "Future-Self", o: ["Much better", "Purposeful", "A bit sad", "N/A"] },
+                { q: "Living legacy of funding education vs. vacant building?", cat: "Future-Self", o: ["Much better", "Purposeful", "A bit sad", "N/A"] },
                 { q: "Glad you did 'right' looking back 6 months from now?", cat: "Future-Self", o: ["Handled fairly", "Moved quickly", "Stayed unified", "Maximized value"] },
                 { q: "Remember 'the house' or 'the peace' you created?", cat: "Future-Self", o: ["The peace", "The house", "Both", "Legacy"] }
             ]
@@ -209,10 +202,11 @@
             
             q.o.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group";
+                btn.className = "w-full text-left p-5 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex justify-between items-center group text-sm md:text-base";
                 btn.innerHTML = `<span>${opt}</span><span class="opacity-0 group-hover:opacity-100 text-amber-400 transition-opacity">→</span>`;
                 btn.onclick = () => { 
-                    scores[q.cat] += (4 - idx); 
+                    const weight = 4 - idx;
+                    scores[q.cat] += weight; 
                     currentQ++; 
                     if (currentQ < questions.length) {
                         showQuestion();
@@ -230,7 +224,7 @@
             document.getElementById('quiz-container').innerHTML = `
                 <div class="text-center">
                     <h2 class="text-3xl font-bold text-white mb-4">Your Roadmap is Ready</h2>
-                    <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom report on your Emotional, Logical, and Psychological readiness.</p>
+                    <p class="text-slate-400 mb-10 leading-relaxed">Enter your email to receive your custom 4-paragraph analysis on your transition readiness.</p>
                     <input type="email" id="userEmail" placeholder="Email Address" class="w-full p-5 rounded-2xl bg-black/40 border border-slate-800 mb-4 text-white outline-none focus:border-amber-400 transition-colors">
                     <button id="submitBtn" onclick="submitLead()" class="w-full bg-amber-400 text-slate-950 font-bold py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-amber-400/10">Analyze My Results</button>
                 </div>`;
@@ -245,20 +239,18 @@
             btn.disabled = true;
 
             // --- GHL WEBHOOK LOGIC ---
-            // Paste your actual Webhook URL from the GHL screenshot inside the quotes below
-            const webhookUrl = "https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/466469eb-a779-43cc-849f-0f192bab1bd2"; 
+            const webhookUrl = "https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/262a0ab8-56a9-48f2-935c-8c291c2c1926"; 
             
             const leadData = {
                 email: email,
                 persona: personaType,
-                c1_emotional: scores["Emotional Why"],
-                c2_inaction: scores["Cost of Inaction"],
-                c3_logical: scores["Logical Foundation"],
-                c4_status: scores["Identity & Status"],
-                c5_future: scores["Future-Self"]
+                c1: scores["Emotional Why"],
+                c2: scores["Cost of Inaction"],
+                c3: scores["Logical Foundation"],
+                c4: scores["Identity & Status"],
+                c5: scores["Future-Self"]
             };
 
-            // This fires to GHL. We use 'await' to ensure it tries to send before moving on.
             try {
                 await fetch(webhookUrl, {
                     method: "POST",
@@ -266,12 +258,8 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(leadData)
                 });
-                console.log("Signal sent to GHL");
-            } catch (error) {
-                console.log("GHL Connection check: ", error);
-            }
+            } catch (error) { console.log("Webhook check: ", error); }
 
-            // Start the loading screen
             showLoadingState();
 
             const urlParams = `?email=${email}&c1=${scores["Emotional Why"]}&c2=${scores["Cost of Inaction"]}&c3=${scores["Logical Foundation"]}&c4=${scores["Identity & Status"]}&c5=${scores["Future-Self"]}`;
@@ -305,12 +293,4 @@
                     <h2 class="text-2xl font-bold text-white mb-3">Conducting Deep Analysis</h2>
                     <p id="loading-text" class="text-amber-400/90 font-medium mb-10 italic">Scanning your emotional readiness markers...</p>
                     <div class="max-w-xs mx-auto bg-slate-800 rounded-full h-1.5 mb-6">
-                        <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="width: 0%"></div>
-                    </div>
-                </div>`;
-        }
-
-        showQuestion();
-    </script>
-</body>
-</html>
+                        <div id="loading-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-1000 shadow-[0_0_1
