@@ -24,40 +24,86 @@
 
     <script>
         const p = new URLSearchParams(window.location.search);
-        const pillars = ['Emotional Why', 'Cost of Inaction', 'Logical Foundation', 'Identity', 'Future Self'];
-        const grid = document.getElementById('grid');
-        
-        pillars.forEach((n, i) => {
-            const s = parseInt(p.get(`c${i+1}`)) || 10;
-            const pct = (s / 20) * 100;
-            const offset = 251 - (251 * pct / 100);
-            grid.innerHTML += `
-                <div class="flex flex-col items-center">
-                    <div class="relative w-24 h-24 mb-4">
-                        <svg class="w-full h-full transform -rotate-90">
-                            <circle cx="48" cy="48" r="40" stroke="#1e293b" stroke-width="8" fill="transparent" />
-                            <circle cx="48" cy="48" r="40" stroke="#fbbf24" stroke-width="8" fill="transparent" 
-                                stroke-dasharray="251" stroke-dashoffset="${offset}" stroke-linecap="round" />
-                        </svg>
-                        <span class="absolute inset-0 flex items-center justify-center font-bold text-white text-sm">${Math.round(pct)}%</span>
-                    </div>
-                    <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest text-center">${n}</p>
-                </div>`;
-        });
+const pillars = ['Emotional Why', 'Cost of Inaction', 'Logical Foundation', 'Identity', 'Future Self'];
+const grid = document.getElementById('grid');
 
-        const scores = [parseInt(p.get('c1')), parseInt(p.get('c2')), parseInt(p.get('c3')), parseInt(p.get('c4')), parseInt(p.get('c5'))];
-        const highIdx = scores.indexOf(Math.max(...scores));
-        const lowIdx = scores.indexOf(Math.min(...scores));
+// Pillar Data with 5 Variations Each (5th Grade English)
+const variations = {
+    'Emotional Why': [
+        "You are feeling a bit lost with your 'Why.' That's okay! Many people feel this way. We just need to help you find your 'Happy Place' compass.",
+        "Your heart knows something needs to change. You are starting to see the path, but it's still a little foggy. We can help clear the air!",
+        "You are doing a good job! You know what you want, but sometimes you feel like a guest in your own life. Let's work on making you the boss.",
+        "You have a very strong heart! You know exactly why you want to move. This is a great superpower to have. It will keep you excited.",
+        "You are a superstar! You have the clearest vision ever. Your 'Why' is so strong that nothing can stop you. You are 100% ready!"
+    ],
+    'Cost of Inaction': [
+        "Right now, waiting feels safe, but it's actually like a leaky bucket. We want to help you plug the holes before you lose too much money or time.",
+        "You are starting to notice that staying put has a cost. It's like wearing shoes that are too small. It hurts a little now, but we can find a better fit!",
+        "You are being very brave! You see that time is moving fast. You're ready to stop giving your energy to the past and start giving it to your future.",
+        "You are very smart! You know that lost time is something you can't buy back. You see the open door and you are ready to walk through it.",
+        "You are a master of time! You know exactly what waiting costs you. You are moving with the speed and power of a rocket ship. Let's go!"
+    ],
+    'Logical Foundation': [
+        "The math and the rules feel like a giant puzzle right now. Don't worry! We are going to help you put the pieces together one by one.",
+        "You have a few Lego blocks ready, but the tower is a bit wobbly. We just need to make the bottom part extra strong so you feel safe.",
+        "You are doing great! Your plan is coming together nicely. A few more small tweaks and you will have a rock-solid foundation for your move.",
+        "Your logical brain is working hard! You have a great plan and the math looks very good. You are very prepared for this journey.",
+        "You are a math genius! Your foundation is as strong as a castle. You have thought of everything and are ready for any surprise."
+    ],
+    'Identity': [
+        "Sometimes you feel like you are 'playing small.' We want to help you find a home that fits the big, amazing person you really are!",
+        "You are growing fast, but your house is still a little bit behind. It's time to find a home that matches your new success and your new life.",
+        "You should be proud! You've come a long way. Now we just need to make sure your front door says 'I made it!' to the whole world.",
+        "You have a lot of confidence! You know your home should be a win for your family brand. You are almost at the top of the mountain.",
+        "You are at the top! Your home is a perfect mirror of your success. You don't make excuses; you make moves! You are a leader."
+    ],
+    'Future Self': [
+        "Thinking about 5 years from now feels like looking at the stars. It's pretty, but far away. Let's bring those dreams down to earth together.",
+        "You have some pretty dreams, but they need a map. We can help you draw the lines so you know exactly where you are going to land.",
+        "You are a dreamer in the best way! You can already see the coffee on the patio and the happy family. Let's make that vision real.",
+        "Your future looks very bright! You have a clear picture of your destination. You are already halfway there. Just a few more steps!",
+        "You are a time traveler! You can already feel the keys in your hand. Your future self is already saying 'Thank You!' for being so wise today."
+    ]
+};
 
-        document.getElementById('summary').innerHTML = `
-            <p><strong>You did a great job!</strong> Just by finishing this, you are already ahead of most people[cite: 1, 41]. You took the time to think about your future, and that is a very smart thing to do. You should be very proud of yourself for being brave enough to ask these big questions!</p>
-            
-            <p><strong>Where you are strong:</strong> You are really good at the "${pillars[highIdx]}" part of your move. This means you have a very clear picture in your head of what you want[cite: 4, 122]. This is your "superpower"—it will help you stay excited even when things get busy!</p>
-            
-            <p><strong>What we can work on:</strong> Sometimes, the "${pillars[lowIdx]}" stuff can feel a bit scary or confusing. That is totally okay! Right now, your heart is ready to move, but your brain just needs a little more help with the plan[cite: 14, 218]. It's like building a big Lego castle—we just need to make sure the bottom blocks are extra strong before we start building the towers.</p>
-            
-            <p><strong>The Next Step:</strong> You are ready to stop guessing and start knowing for sure[cite: 82, 123]. Don't worry about knowing everything today. My job is to help you put the pieces together so you can move forward without any stress. Let's look at your roadmap together!</p>
-        `;
+pillars.forEach((n, i) => {
+    const s = parseInt(p.get(`c${i+1}`)) || 10;
+    const pct = (s / 20) * 100;
+    const offset = 251 - (251 * pct / 100);
+    
+    // Determine which variation to show (1-5)
+    const varIdx = Math.min(Math.floor(s / 4.1), 4);
+    const message = variations[n][varIdx];
+
+    grid.innerHTML += `
+        <div class="flex flex-col items-center bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-xl">
+            <div class="relative w-24 h-24 mb-4">
+                <svg class="w-full h-full transform -rotate-90">
+                    <circle cx="48" cy="48" r="40" stroke="#1e293b" stroke-width="8" fill="transparent" />
+                    <circle cx="48" cy="48" r="40" stroke="#fbbf24" stroke-width="8" fill="transparent" 
+                        stroke-dasharray="251" stroke-dashoffset="${offset}" stroke-linecap="round" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center font-bold text-white text-sm">${Math.round(pct)}%</span>
+            </div>
+            <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest text-center mb-4">${n}</p>
+            <p class="text-xs text-slate-400 text-center leading-relaxed italic">${message}</p>
+        </div>`;
+});
+
+// Overall Summary (5th Grade Logic)
+const scores = [parseInt(p.get('c1')), parseInt(p.get('c2')), parseInt(p.get('c3')), parseInt(p.get('c4')), parseInt(p.get('c5'))];
+const highIdx = scores.indexOf(Math.max(...scores));
+const lowIdx = scores.indexOf(Math.min(...scores));
+
+document.getElementById('summary').innerHTML = `
+    <p><strong>You did a great job!</strong> Just by finishing this, you are already ahead of most people. You took the time to think about your future, and that is a very smart thing to do. You should be very proud of yourself for being brave enough to ask these big questions!</p>
+    
+    <p><strong>Where you are strong:</strong> You are really good at the "${pillars[highIdx]}" part of your move. This means you have a very clear picture in your head of what you want. This is your "superpower"—it will help you stay excited even when things get busy!</p>
+    
+    <p><strong>What we can work on:</strong> Sometimes, the "${pillars[lowIdx]}" stuff can feel a bit scary or confusing. That is totally okay! Right now, your heart is ready to move, but your brain just needs a little more help with the plan. It's like building a big Lego castle—we just need to make sure the bottom blocks are extra strong before we start building the towers.</p>
+    
+    <p><strong>The Next Step:</strong> You are ready to stop guessing and start knowing for sure. Don't worry about knowing everything today. My job is to help you put the pieces together so you can move forward without any stress. Let's look at your roadmap together!</p>
+`;
     </script>
 </body>
 </html>
