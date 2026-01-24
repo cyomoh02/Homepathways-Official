@@ -1,326 +1,149 @@
-
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Pathway Real Estate</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePathways | Sean Omoh - Transition Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Tailwind Config -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'navy': '#050b1a',
-                        'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
-                        'light-bg': '#f8f9fa',
-                        'light-text': '#212529',
-                    },
-                    fontFamily: {
-                        'serif': ['"Playfair Display"', 'serif'],
-                        'sans': ['"Inter"', 'sans-serif'],
-                    },
-                    animation: {
-                        'marquee-seamless-right': 'marquee-seamless-right 60s linear infinite',
-                        'marquee-seamless-left': 'marquee-seamless-left 60s linear infinite',
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes marquee-seamless-right { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes marquee-seamless-left { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-        .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+        body { font-family: 'Inter', sans-serif; }
+        .card-glow:hover { box-shadow: 0 0 30px rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.4); }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-content.open { max-height: 200px; }
     </style>
-
-    <!-- Theme Initialization Script -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
 </head>
-<body class="bg-navy text-gray-200 font-sans antialiased"></body>
+<body class="bg-[#0A0F1D] text-gray-200 antialiased">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-40 w-full">
-        <nav class="h-24 bg-navy">
-            <div class="relative max-w-7xl mx-auto flex items-center justify-between h-24 px-8 w-full">
-                <!-- Left Wing -->
-                <div class="hidden lg:flex items-center gap-x-8">
-                    <a href="index.html" class="whitespace-nowrap text-sm font-medium tracking-wide text-white">Home</a>
-                    <a href="about.html" class="whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300">About Sean</a>
-                </div>
-                <!-- Dead-Center Logo -->
-                <div class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <a href="index.html" class="text-2xl font-serif font-bold tracking-wider uppercase text-white">Home Pathway</a>
-                </div>
-                <!-- Right Wing -->
-                <div class="hidden lg:flex items-center gap-x-8">
-                    <div class="relative group">
-                        <button class="flex items-center gap-x-1.5 whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none">
-                            Who We Serve
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
-                        </button>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-96 rounded-xl bg-[#0A101E] border border-gray-800 shadow-2xl p-6 z-50">
-                            <div class="grid grid-cols-1 gap-2">
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Starting Your First Chapter</p><p class="text-sm text-slate-400 mt-1">For first-time buyers navigating the market.</p></a>
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Growing Into More Space</p><p class="text-sm text-slate-400 mt-1">Finding a new home for your evolving family.</p></a>
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Finding Your Way Home</p><p class="text-sm text-slate-400 mt-1">Relocating with confidence and local expertise.</p></a>
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Simplifying for the Best Years</p><p class="text-sm text-slate-400 mt-1">Downsizing to a home that fits your lifestyle.</p></a>
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Staying in the Home You Love</p><p class="text-sm text-slate-400 mt-1">Guidance on aging-in-place with dignity.</p></a>
-                                <a href="#" class="block p-4 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"><p class="font-serif font-bold text-white">Navigating a Sensitive Transition</p><p class="text-sm text-slate-400 mt-1">Compassionate support for settling an estate.</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="whitespace-nowrap text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors duration-300">Blog</a>
-                    <a href="booking.html" class="whitespace-nowrap rounded-full bg-mint px-6 py-2.5 text-sm font-medium tracking-wide text-navy transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] hover:-translate-y-0.5">Book a Call</a>
-                    </div>
-                <!-- Mobile & Tablet -->
-                <div class="flex w-full items-center justify-between lg:hidden">
-                    <a href="index.html" class="text-xl font-serif font-bold tracking-wider uppercase text-white">Home Pathway</a>
-                    <button id="mobile-menu-open-btn" class="rounded-md p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mint" aria-label="Open main menu">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-                    </button>
-                </div>
+    <nav class="border-b border-white/5 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-white">HOMEPATHWAYS<span class="text-amber-400">.</span></div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400 uppercase tracking-widest">
+                <a href="#" class="hover:text-amber-400 transition-colors">The Method</a>
+                <a href="#" class="hover:text-amber-400 transition-colors">Sean Omoh</a>
+                <a href="#" class="hover:text-amber-400 transition-colors">Case Studies</a>
             </div>
-        </nav>
-    </header>
+            <button onclick="scrollToCards()" class="border border-amber-400/20 text-amber-400 px-6 py-2 rounded-full text-sm font-bold hover:bg-amber-400 hover:text-black transition-all">
+                START ASSESSMENT
+            </button>
+        </div>
+    </nav>
 
-    <!-- Full-Screen Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-light-bg dark:bg-navy lg:hidden hidden">
-        <div class="h-full flex flex-col">
-            <div class="flex h-20 items-center justify-between px-4 sm:px-6 border-b border-gray-200/50 dark:border-gray-800/50">
-                <a href="index.html" class="text-xl font-serif font-bold tracking-wider uppercase">Home Pathway</a>
-                <button id="mobile-menu-close-btn" class="rounded-md p-2 text-gray-500 hover:text-mint focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mint dark:text-gray-400 dark:hover:text-mint-dark" aria-label="Close main menu">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    <header class="relative pt-24 pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold tracking-widest uppercase mb-6">2026 Real Estate Advisory</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+                Your life is changing.<br><span class="text-slate-500">Don't just move. Evolve.</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
+                We replace traditional real estate sales with <strong>Transition Intelligence</strong>. 
+                A precision-mapped roadmap for your next chapter.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all shadow-2xl shadow-amber-400/20">
+                    Get My Custom Roadmap
                 </button>
             </div>
-            <div class="flex flex-1 flex-col items-center justify-center space-y-6">
-                <a href="index.html" class="block text-2xl font-medium text-center hover:text-mint transition-colors duration-300">Home</a>
-                <a href="about.html" class="block text-2xl font-medium text-center hover:text-mint transition-colors duration-300">About Sean</a>
-                <a href="booking.html" class="block text-2xl font-medium text-center hover:text-mint transition-colors duration-300">Book a Call</a>
-                <a href="#" class="block text-2xl font-medium text-center hover:text-mint transition-colors duration-300">Blog</a>
-            </div>
         </div>
-    </div>
+    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="relative h-screen flex items-center justify-center text-center text-white">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luxurious modern home interior" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-navy bg-opacity-60 dark:bg-opacity-70"></div>
-            </div>
-            <div class="relative z-10 p-4 max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">Guiding Every Home Journey With Clarity, Comfort, and Care.</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-6 text-gray-200">From first homes to life transitions, we help you understand your options and move forward with confidence.</p>
-                <p class="text-sm md:text-base max-w-3xl mx-auto mb-10 text-gray-300 italic">Supporting first-time buyers, relocating families, downsizing retirees, probate estates, and aging-in-place homeowners.</p>
-                <a href="booking.html" class="inline-block bg-mint text-navy font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white hover:text-[#050b1a] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-mint focus:ring-opacity-50">Start Your Home Pathway</a>
-                <p class="mt-8 text-sm text-gray-300 tracking-wider">No pressure. Just clear guidance tailored to your situation.</p>
-            </div>
-        </section>
-
-        <!-- Process Roadmap Section -->
-        <section class="relative z-10 -mt-32">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-                <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-24">
-                    <div class="lg:sticky lg:top-32 text-center">
-                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">A Clear, Supportive Path – No Matter Where You’re Starting.</h2>
-                        <p class="mt-10 text-lg leading-8 text-slate-300">We've designed a simple, three-step process to bring clarity to your unique situation. Our goal is to replace pressure and uncertainty with a clear, actionable plan, tailored just for you.</p>
-                    </div>
-                    <div class="mt-20 lg:mt-0">
-                        <div class="space-y-12">
-                            <div class="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
-                                <div class="flex items-start gap-6"><div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></div><div><p class="text-sm font-bold uppercase tracking-widest text-mint">Step 1</p><h3 class="text-3xl font-serif font-bold text-white mt-1">Start With Clarity</h3></div></div>
-                                <p class="mt-6 text-slate-300">Our journey begins with a comprehensive consultation to understand your goals, timeline, and financial picture. We listen, ask questions, and provide an honest assessment of the market.</p>
-                                <h4 class="mt-8 font-semibold text-white">What This Includes</h4>
-                                <ul class="mt-6 space-y-3">
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">In-depth needs and goals assessment</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Financial pre-qualification guidance</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Hyper-local market analysis and education</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Timeline and expectation setting</span></li>
-                                </ul>
-                            </div>
-                            <div class="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
-                                <div class="flex items-start gap-6"><div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path></svg></div><div><p class="text-sm font-bold uppercase tracking-widest text-mint">Step 2</p><h3 class="text-3xl font-serif font-bold text-white mt-1">Explore Your Pathway</h3></div></div>
-                                <p class="mt-6 text-slate-300">With a clear plan, we curate a personalized selection of properties or prepare a strategic marketing plan for your sale. This is where we match your vision with tangible opportunities.</p>
-                                <h4 class="mt-8 font-semibold text-white">What This Includes</h4>
-                                <ul class="mt-6 space-y-3">
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Curated property tours (for buyers)</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Custom marketing and staging plan (for sellers)</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Access to off-market listings</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Continuous feedback and strategy refinement</span></li>
-                                </ul>
-                            </div>
-                            <div class="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
-                                <div class="flex items-start gap-6"><div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286z"></path></svg></div><div><p class="text-sm font-bold uppercase tracking-widest text-mint">Step 3</p><h3 class="text-3xl font-serif font-bold text-white mt-1">Move Forward With Confidence</h3></div></div>
-                                <p class="mt-6 text-slate-300">We handle every detail of the transaction, from skilled negotiation to seamless closing coordination. Our proactive approach ensures you are informed and empowered at every turn.</p>
-                                <h4 class="mt-8 font-semibold text-white">What This Includes</h4>
-                                <ul class="mt-6 space-y-3">
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Expert offer strategy and negotiation</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Transaction management and coordination</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Connection to trusted vendors (inspectors, lenders, etc.)</span></li>
-                                    <li class="flex items-start gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-mint" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span class="text-slate-300">Post-closing support and resources</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Personas Section -->
-        <section class="py-24 bg-navy relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Every Journey is Unique. Which Path Are You On?</h2>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Tell us a bit about your situation so we can provide the specific guidance you need.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('first-chapter')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18 18.246 18.477 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">First-Time Buyer</span>
-                </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Buying Your First Home</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Are you ready to stop renting and start owning? We make the journey to your first home simple and stress-free.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
+    <section id="assessment-cards" class="py-24 bg-black/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Select Your Current Path</h2>
+                <p class="text-slate-500">Pick the card that reflects your situation to start your 25-point diagnostic.</p>
             </div>
 
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('growing')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="startQuiz('first-chapter')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">Up-Mover</span>
+                    <h3 class="text-xl font-bold text-white mb-3">The First Chapter</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Transitioning from a tenant to a CEO of your own lifestyle and equity.</p>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Moving to a Larger Home</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Need more room for your growing family? We coordinate your sale and purchase so you only move once.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
-            </div>
 
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('relocation')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <div onclick="startQuiz('growing')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                     </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">Relocation</span>
+                    <h3 class="text-xl font-bold text-white mb-3">The Up-Mover</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">You’ve outgrown your current "container" and need space that matches your ambition.</p>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Relocating for a New Chapter</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Moving to a new city? We provide boots-on-the-ground support and neighborhood insights you can trust.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
-            </div>
 
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('senior')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                <div onclick="startQuiz('relocation')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
                     </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">Aging In Place</span>
+                    <h3 class="text-xl font-bold text-white mb-3">The Relocator</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">New city, new network. We find the community before we find the house.</p>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Staying Independent at Home</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Want to stay in the neighborhood you love? We help you assess your home for safety so you can live comfortably.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
-            </div>
 
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('senior')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <div onclick="startQuiz('senior')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">Gentle Transition</span>
+                    <h3 class="text-xl font-bold text-white mb-3">The Legacy Senior</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Transitioning from upkeep to lifestyle. Optimizing independence for the long game.</p>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Senior Right-Sizing</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Ready for a simpler lifestyle? We coordinate with families for a stress-free transition to your next home.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
-            </div>
 
-            <div class="group relative overflow-hidden rounded-2xl bg-slate-900/50 border border-slate-800 transition-all hover:bg-slate-800/90 cursor-pointer p-8" onclick="showAssessment('lifestyle')">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center border border-gold/20">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <div onclick="startQuiz('downsizing')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
-                    <span class="text-xs font-bold text-gold uppercase tracking-widest">Probate</span>
+                    <h3 class="text-xl font-bold text-white mb-3">The Right-Sizer</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Curating experiences over collecting things. Turning "monuments" into "travel funds."</p>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-3">Settling an Estate</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Navigating the sale of a family property? We provide the professional guidance needed to settle an estate with care.</p>
-                <div class="flex items-center text-gold font-medium group-hover:translate-x-2 transition-transform">
-                    <span>Start Assessment</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+
+                <div onclick="startQuiz('lifestyle')" class="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl cursor-pointer card-glow transition-all group">
+                    <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-400 transition-colors">
+                        <svg class="w-6 h-6 text-amber-400 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">The Steward (Probate)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Navigating the complexity of estates with emotional clarity and professional unity.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-        <!-- Real Stories Section -->
-        <section class="group overflow-hidden py-20">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto"><h2 class="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">Real Stories From Our Clients</h2><p class="mt-4 mb-10 text-lg leading-8 text-slate-300">Our success is measured by the confidence and comfort of the people we serve. Here’s what they have to say about their journey with us.</p></div>
-                <div class="flex flex-col space-y-8">
-                    <div class="w-full"><div class="flex animate-marquee-seamless-right group-hover:[animation-play-state:paused]"><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Local Wisdom</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We were getting so discouraged by the competitive market. Sean's deep roots in the community found our dream home before anyone else even knew it was for sale."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Sarah J.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Local Wisdom" data-story="The online listings were getting snapped up in hours, and we felt hopeless. Sean's lifelong connections in the area were invaluable. He heard about a home perfect for us—a private sale that was never going to hit Zillow. He got us a viewing, and we made an offer that was accepted without a bidding war. His local wisdom didn't just find us a house; it gave us peace of mind and an incredible advantage in a tough market." data-attribution="— Sarah J.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Compassion-First</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Selling the house our parents built was one of the hardest things we've ever done. The team handled every detail with such grace, allowing us to focus on our family."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Robert M.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Compassion-First" data-story="The thought of sorting through 50 years of memories while also managing showings and paperwork was completely overwhelming. The team at Homepathways stepped in with such profound empathy. They handled all the logistics—the staging, the marketing, the scheduling—which freed us up to focus on our family and the emotional side of the transition. They understood it was more than a transaction; it was about honoring our parents' legacy, and they treated it with that level of care." data-attribution="— Robert M.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div><h3 class="text-xl font-bold text-white mb-3">Affiliate Network</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We had just three days to get the house ready before we moved in. Sean’s network of professionals was like a special forces team for home renovation."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Elena</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Affiliate Network" data-story="Our move-in date was set in stone, but the house needed fresh paint and some minor electrical work, fast. We thought it was impossible. But Sean made one phone call, and his vetted network of pros descended on the house. Painters, electricians, and cleaners worked in perfect coordination. What would havetaken us weeks to organize was done in 72 hours. Sean's connections didn't just save us time; they saved our entire move." data-attribution="— Elena">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Transparent Guidance</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We fell in love with a house, but Sean advised us not to buy it. His honesty showed he cared more about our future than his commission."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Mark &amp; Susan</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Transparent Guidance" data-story="It looked perfect on the surface, and we were ready to make a high offer. But during the walkthrough, Sean pointed out subtle signs of potential foundation issues that we completely missed. He recommended a specialist inspection that confirmed his suspicions, saving us from a potential six-figure repair down the road. His willingness to prioritize our financial safety over an easy sale proved we could trust him completely. That integrity is priceless." data-attribution="— Mark &amp; Susan">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Local Wisdom</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We were getting so discouraged by the competitive market. Sean's deep roots in the community found our dream home before anyone else even knew it was for sale."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Sarah J.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Local Wisdom" data-story="The online listings were getting snapped up in hours, and we felt hopeless. Sean's lifelong connections in the area were invaluable. He heard about a home perfect for us—a private sale that was never going to hit Zillow. He got us a viewing, and we made an offer that was accepted without a bidding war. His local wisdom didn't just find us a house; it gave us peace of mind and an incredible advantage in a tough market." data-attribution="— Sarah J.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Compassion-First</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Selling the house our parents built was one of the hardest things we've ever done. The team handled every detail with such grace, allowing us to focus on our family."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Robert M.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Compassion-First" data-story="The thought of sorting through 50 years of memories while also managing showings and paperwork was completely overwhelming. The team at Homepathways stepped in with such profound empathy. They handled all the logistics—the staging, the marketing, the scheduling—which freed us up to focus on our family and the emotional side of the transition. They understood it was more than a transaction; it was about honoring our parents' legacy, and they treated it with that level of care." data-attribution="— Robert M.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div><h3 class="text-xl font-bold text-white mb-3">Affiliate Network</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We had just three days to get the house ready before we moved in. Sean’s network of professionals was like a special forces team for home renovation."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Elena</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Affiliate Network" data-story="Our move-in date was set in stone, but the house needed fresh paint and some minor electrical work, fast. We thought it was impossible. But Sean made one phone call, and his vetted network of pros descended on the house. Painters, electricians, and cleaners worked in perfect coordination. What would havetaken us weeks to organize was done in 72 hours. Sean's connections didn't just save us time; they saved our entire move." data-attribution="— Elena">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Transparent Guidance</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We fell in love with a house, but Sean advised us not to buy it. His honesty showed he cared more about our future than his commission."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Mark &amp; Susan</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Transparent Guidance" data-story="It looked perfect on the surface, and we were ready to make a high offer. But during the walkthrough, Sean pointed out subtle signs of potential foundation issues that we completely missed. He recommended a specialist inspection that confirmed his suspicions, saving us from a potential six-figure repair down the road. His willingness to prioritize our financial safety over an easy sale proved we could trust him completely. That integrity is priceless." data-attribution="— Mark &amp; Susan">Read Full Story →</button></div></div></div></div></div>
-                    <div class="w-full"><div class="flex animate-marquee-seamless-left group-hover:[animation-play-state:paused]"><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M12 12.75h.008v.008H12v-.008z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Client-Centric</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Coordinating a complex cross-country move with a new job and two kids felt impossible. The team at Homepathways made it feel completely manageable."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Michael K.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Client-Centric" data-story="We were juggling so many moving parts—selling our old home, starting new jobs, and enrolling the kids in school from 2,000 miles away. The team at Homepathways became our anchor. They created a master timeline, synchronized the closing dates perfectly, and handled virtual tours and digital paperwork with incredible efficiency. They took a mountain of stress off our shoulders, allowing us to focus on our family during a huge life change." data-attribution="— Michael K.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Aging-in-Place</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We were determined to stay in our home but worried about safety. Sean's specialized guidance gave us a clear, confident path forward to do so with dignity."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Linda G.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Aging-in-Place" data-story="The thought of leaving our beloved home was heartbreaking. Sean, with his specialized certification in aging-in-place, was a godsend. He didn't just talk about real estate; he talked about dignity and independence. He conducted a home assessment and provided a roadmap for simple, elegant modifications—like lever-style door handles and a curbless shower. His thoughtful approach ensured we could continue living safely and comfortably in the place we love for years to come." data-attribution="— Linda G.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Concierge Service</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Two years after we moved in, our water heater failed. One call to the team and they had a trusted plumber at our door within hours. That's service."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— James</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Concierge Service" data-story="Most real estate agents disappear after the closing check is cashed. Not the team at Homepathways. When our water heater burst on a holiday weekend, we were in a panic. We called their main line, and they immediately connected us with a reliable plumber from their network who came out that same day. That commitment proves they aren't just in it for the sale; they are a lifelong resource for their clients." data-attribution="— James">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M12 12.75h.008v.008H12v-.008z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Client-Centric</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Coordinating a complex cross-country move with a new job and two kids felt impossible. The team at Homepathways made it feel completely manageable."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Michael K.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Client-Centric" data-story="We were juggling so many moving parts—selling our old home, starting new jobs, and enrolling the kids in school from 2,000 miles away. The team at Homepathways became our anchor. They created a master timeline, synchronized the closing dates perfectly, and handled virtual tours and digital paperwork with incredible efficiency. They took a mountain of stress off our shoulders, allowing us to focus on our family during a huge life change." data-attribution="— Michael K.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Aging-in-Place</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"We were determined to stay in our home but worried about safety. Sean's specialized guidance gave us a clear, confident path forward to do so with dignity."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— Linda G.</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Aging-in-Place" data-story="The thought of leaving our beloved home was heartbreaking. Sean, with his specialized certification in aging-in-place, was a godsend. He didn't just talk about real estate; he talked about dignity and independence. He conducted a home assessment and provided a roadmap for simple, elegant modifications—like lever-style door handles and a curbless shower. His thoughtful approach ensured we could continue living safely and comfortably in the place we love for years to come." data-attribution="— Linda G.">Read Full Story →</button></div></div></div><div class="flex-shrink-0 px-4"><div class="group/card relative flex h-full flex-col justify-between w-96 min-h-[19rem] rounded-2xl bg-slate-900/50 p-6 border border-slate-700/80 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(129,178,154,0.3)]"><div><div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-mint"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"></path></svg></div><h3 class="text-xl font-bold text-white mb-3">Concierge Service</h3><div class="relative"><p class="text-slate-300 leading-relaxed text-sm line-clamp-2">"Two years after we moved in, our water heater failed. One call to the team and they had a trusted plumber at our door within hours. That's service."</p></div><p class="text-right text-sm font-medium text-slate-400 mt-3">— James</p></div><div class="mt-4"><button class="story-button text-sm font-semibold text-mint transition-colors duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-mint rounded-md" data-title="Concierge Service" data-story="Most real estate agents disappear after the closing check is cashed. Not the team at Homepathways. When our water heater burst on a holiday weekend, we were in a panic. We called their main line, and they immediately connected us with a reliable plumber from their network who came out that same day. That commitment proves they aren't just in it for the sale; they are a lifelong resource for their clients." data-attribution="— James">Read Full Story →</button></div></div></div></div></div>
+    <section class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-16 text-center">Results, Not Promises.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-slate-900/20 p-10 rounded-3xl border border-slate-800">
+                    <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
+                    <p id="t1-preview" class="text-slate-300 leading-relaxed mb-4 italic">
+                        "I thought I was just looking for a bigger kitchen, but Sean's assessment showed me I was actually suffering from serious identity friction at work..."
+                    </p>
+                    <div id="t1-full" class="hidden text-slate-300 leading-relaxed mb-4 italic">
+                        "Sean helped me realize that my home wasn't supporting my professional growth. We moved to a community that matched my 5-year trajectory, and my career took off immediately. It wasn't just a move; it was a promotion."
+                    </div>
+                    <button onclick="toggleStory(1)" id="btn-1" class="text-amber-400 font-bold text-sm uppercase tracking-widest">See the rest of the story</button>
+                </div>
+                <div class="bg-slate-900/20 p-10 rounded-3xl border border-slate-800">
+                    <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
+                    <p id="t2-preview" class="text-slate-300 leading-relaxed mb-4 italic">
+                        "Selling my parents' estate felt like a nightmare until we brought Sean in. He acted as a strategic steward rather than just a realtor..."
+                    </p>
+                    <div id="t2-full" class="hidden text-slate-300 leading-relaxed mb-4 italic">
+                        "He navigated the sibling dynamics with incredible grace and used his 'Closure Logic' to help us decide on an as-is sale that maximized the inheritance and saved our relationships. I cannot recommend his transition roadmap enough."
+                    </div>
+                    <button onclick="toggleStory(2)" id="btn-2" class="text-amber-400 font-bold text-sm uppercase tracking-widest">See the rest of the story</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-24 bg-[#0A0F1D] border-t border-slate-900">
-    <div class="max-w-4xl mx-auto px-4">
-        <div class="text-center mb-16">
+    <section class="py-24 bg-[#0A0F1D] border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-4 text-center mb-16">
             <span class="text-amber-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Strategic Intelligence</span>
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Frequently Asked Roadmaps</h2>
-            <p class="text-slate-400">Answers to the high-intent questions defining the 2026 real estate landscape.</p>
         </div>
-
-        <div class="space-y-4">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
             <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
                 <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(1)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"How do I distinguish between 'temporary house fatigue' and a genuine need to move?"</span>
-                    <span id="icon-1" class="text-amber-400 text-2xl">+</span>
+                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"How do I distinguish between 'house fatigue' and a genuine need to move?"</span>
+                    <span id="icon-1" class="text-amber-400">+</span>
                 </button>
                 <div id="faq-1" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
                     Fatigue is often about the chores; a need to move is about the <strong>identity</strong>. If your home no longer feels like a sanctuary that protects your peace, it has likely become a "storage unit" for a version of yourself you've already outgrown.
@@ -329,159 +152,98 @@
 
             <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
                 <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(2)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Why does the idea of selling feel like I'm losing my family's history?"</span>
-                    <span id="icon-2" class="text-amber-400 text-2xl">+</span>
+                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"What is the 'Lifestyle Tax' of waiting for interest rates to drop?"</span>
+                    <span id="icon-2" class="text-amber-400">+</span>
                 </button>
                 <div id="faq-2" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    This is "Anchor Friction." We don't sell houses; we transition legacies. Your memories aren't in the drywall; they are in your family. Moving allows you to take those memories into a new space that actually functions for your future.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(3)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Can a home really be the primary cause of my daily burnout?"</span>
-                    <span id="icon-3" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-3" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Absolutely. If your environment requires constant "workarounds"—like a lack of private office space or main-floor living—your brain is constantly solving problems just to exist. That "micro-stress" leads to major burnout.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(4)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"What is the 'Lifestyle Tax' of waiting for interest rates to hit a specific number?"</span>
-                    <span id="icon-4" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-4" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
                     The tax is paid in <strong>time</strong>. Waiting 18 months for a 1% drop might save you money on paper, but it costs you 500+ days of living in a space that is shrinking your potential. You can refinance a rate, but you can't "refinance" lost years.
                 </div>
             </div>
 
             <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(5)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Is staying in an 'outgrown' home actually costing me net worth?"</span>
-                    <span id="icon-5" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-5" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Often, yes. By staying in a plateaued neighborhood while high-growth "Identity Hubs" appreciate, you miss the equity curve. Our assessment helps identify if your current asset is "stale" compared to your goals.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(6)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"How does delaying a probate sale impact the total inheritance?"</span>
-                    <span id="icon-6" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-6" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Holding costs (taxes, insurance, maintenance) and family friction eat away at the value every month. The fastest path to emotional closure and financial preservation is a strategic, timely sale.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(7)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"In 2026, is it better to buy for square footage or efficiency?"</span>
-                    <span id="icon-7" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-7" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    The smart money is on <strong>efficiency and flow</strong>. Large, empty rooms are liabilities. Curated, high-tech, energy-efficient spaces are the assets that hold value in the modern market.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(8)">
+                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(3)">
                     <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Should I renovate my current house or move to something newer?"</span>
-                    <span id="icon-8" class="text-amber-400 text-2xl">+</span>
+                    <span id="icon-3" class="text-amber-400">+</span>
                 </button>
-                <div id="faq-8" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                <div id="faq-3" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
                     If the location is perfect but the layout is wrong, renovate. If the location is the "ceiling" on your lifestyle, no amount of granite countertops will fix that. Move.
                 </div>
             </div>
 
             <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(9)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"What are the top hidden maintenance costs in modern high-end homes?"</span>
-                    <span id="icon-9" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-9" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Smart-home ecosystem updates, high-efficiency HVAC filtration, and specialized landscaping. We audit these in your roadmap so there are no "Day 30" surprises.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(10)">
+                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(4)">
                     <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Does my address really affect my professional network?"</span>
-                    <span id="icon-10" class="text-amber-400 text-2xl">+</span>
+                    <span id="icon-4" class="text-amber-400">+</span>
                 </button>
-                <div id="faq-10" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Proximity is the most undervalued professional asset. Living where your peers and mentors live creates organic networking at the gym, the park, and the cafe. It’s a career accelerator.
+                <div id="faq-4" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                    Proximity is the most undervalued asset. Living where your peers and mentors live creates organic networking at the gym and the cafe. It’s a career accelerator.
                 </div>
             </div>
 
             <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(11)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"How do I deal with 'imposter syndrome' when upgrading to a luxury area?"</span>
-                    <span id="icon-11" class="text-amber-400 text-2xl">+</span>
+                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(5)">
+                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"What is the most common regret after a major transition?"</span>
+                    <span id="icon-5" class="text-amber-400">+</span>
                 </button>
-                <div id="faq-11" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    Imposter syndrome happens when your environment outpaces your internal growth. We focus on the "Identity" pillar to ensure you feel like the <strong>owner</strong> of your success.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(12)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"Is 'Status' a shallow reason to move, or a strategic one?"</span>
-                    <span id="icon-12" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-12" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    It's strategic. Your home is a "container" for your life. If the container is too small, it limits the growth of what's inside. Upgrading is about creating room for a larger life.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(13)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"How do I pick a home that fits the person I'll be in 5 years?"</span>
-                    <span id="icon-13" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-13" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
-                    We look at your "trajectory." Are you scaling a business? Planning for family? We buy for the <strong>destination</strong>, not the current station.
-                </div>
-            </div>
-
-            <div class="border border-slate-800 rounded-2xl bg-slate-900/20 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group" onclick="toggleFAQ(14)">
-                    <span class="text-white font-semibold italic group-hover:text-amber-400 transition-colors">"What is the most common regret people have after a major transition?"</span>
-                    <span id="icon-14" class="text-amber-400 text-2xl">+</span>
-                </button>
-                <div id="faq-14" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
+                <div id="faq-5" class="hidden p-6 pt-0 text-slate-400 leading-relaxed border-t border-slate-800/50">
                     Regret usually stems from <strong>compromise</strong>. People compromise on the neighborhood to get the extra bedroom, then realize they hate the drive. Our roadmap prevents those trade-offs.
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="py-24 bg-[#0A0F1D] text-center border-t border-slate-900">
-    <div class="max-w-3xl mx-auto px-4">
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Ready for a cleaner path?</h2>
-        <p class="text-slate-400 text-xl mb-12 leading-relaxed">
-            Stop guessing. Start mapping. Take the 25-point assessment and uncover the emotional and logical blueprint of your next move.
-        </p>
-        <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all transform hover:scale-105 shadow-2xl shadow-amber-400/20">
-            Start Your Assessment
-        </button>
-    </div>
-</section>
+    <section class="py-24 bg-black text-center border-t border-slate-900">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Ready for a cleaner path?</h2>
+            <p class="text-slate-400 text-xl mb-12 leading-relaxed italic">
+                Stop guessing. Start mapping.
+            </p>
+            <button onclick="scrollToCards()" class="bg-amber-400 text-slate-950 font-bold px-10 py-5 rounded-2xl hover:bg-white transition-all transform hover:scale-105 shadow-2xl shadow-amber-400/20">
+                Start Your 25-Point Assessment
+            </button>
+        </div>
+    </section>
 
-<script>
-    function toggleFAQ(id) {
-        const content = document.getElementById(`faq-${id}`);
-        const icon = document.getElementById(`icon-${id}`);
-        if (content.classList.contains('hidden')) {
-            content.classList.remove('hidden');
-            icon.innerText = "−";
-        } else {
-            content.classList.add('hidden');
-            icon.innerText = "+";
+    <footer class="py-12 bg-[#0A0F1D] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left md:flex md:justify-between items-center">
+            <div class="text-xl font-bold text-white mb-4 md:mb-0">HOMEPATHWAYS<span class="text-amber-400">.</span></div>
+            <div class="text-slate-500 text-xs">© 2026 HomePathways Advisory. Sean Omoh - All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToCards() {
+            document.getElementById('assessment-cards').scrollIntoView({ behavior: 'smooth' });
         }
-    }
-</script>
+
+        function startQuiz(type) {
+            window.location.href = `assessment.html?type=${type}`;
+        }
+
+        function toggleStory(id) {
+            const fullStory = document.getElementById(`t${id}-full`);
+            const btn = document.getElementById(`btn-${id}`);
+            if (fullStory.classList.contains('hidden')) {
+                fullStory.classList.remove('hidden');
+                btn.innerText = "Show less";
+            } else {
+                fullStory.classList.add('hidden');
+                btn.innerText = "See the rest of the story";
+            }
+        }
+
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = "−";
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = "+";
+            }
+        }
+    </script>
+
+</body>
+</html>
