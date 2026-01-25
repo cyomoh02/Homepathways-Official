@@ -63,102 +63,49 @@
 <body>
     <header class="sticky top-0 w-full bg-[#050b1a] border-b border-white/5 z-[100]">
     <nav class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between relative">
-        
         <button id="mobile-menu-button" class="lg:hidden p-2 text-white relative z-[110]">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
         </button>
 
         <div class="hidden lg:flex items-center gap-x-8 w-1/3">
-            <a href="index.html" class="text-sm font-medium text-[#97B99D]">Home</a>
-            <a href="about.html" class="text-sm font-medium text-gray-400 hover:text-[#97B99D] transition-colors">About Sean</a>
-            
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Trusted Partners <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[240px] grid grid-cols-1 gap-1">
-                        <a href="partners-developers.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Developers</a>
-                        <a href="partners-bmo.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Bank of Montreal</a>
-                        <a href="partners-hvac.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">HVAC</a>
-                        <a href="partners-electrician.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Electrician</a>
-                        <a href="partners-roofer.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Roofer</a>
-                        <a href="partners-appliances.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Appliances</a>
-                        <a href="partners-windows.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Energy Efficient Windows</a>
-                        <a href="partners-mortgage.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Mortgage</a>
-                        <a href="partners-painter.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Painter</a>
-                        <a href="partners-plumber.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Plumber</a>
-                    </div>
-                </div>
-            </div>
+            <a href="index.html" class="text-sm font-medium text-gray-400 hover:text-[#97B99D]">Home</a>
+            <a href="about.html" class="text-sm font-medium text-gray-400 hover:text-[#97B99D]">About Sean</a>
+            <a href="partners.html" class="text-sm font-medium text-[#97B99D]">Trusted Partners</a>
         </div>
 
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <a href="index.html" class="text-xl font-serif font-bold text-white tracking-widest uppercase">HOME PATHWAYS</a>
         </div>
 
-        <div class="hidden lg:flex items-center justify-end gap-x-6 w-1/3">
-            
+        <div class="hidden lg:flex items-center justify-end gap-x-8 w-1/3">
             <div class="relative group">
                 <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
                     Guides <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
                 </div>
                 <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                     <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="guides-buying.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Buying Guide</a>
-                        <a href="guides-selling.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Selling Guide</a>
-                        <a href="guides-relocation.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocation Guide</a>
-                        <a href="guides-rightsizing.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizing Guide</a>
-                        <a href="guides-aging.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place Guide</a>
-                        <a href="guides-probate.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate Guide</a>
+                        <a href="guides-buying.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg uppercase tracking-widest">Buying Guide</a>
+                        <a href="guides-selling.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg uppercase tracking-widest">Selling Guide</a>
                     </div>
                 </div>
             </div>
-
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Who We Serve <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="assessment.html?type=probate" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate</a>
-                        <a href="assessment.html?type=first-buyer" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">First Time Buyer</a>
-                        <a href="assessment.html?type=up-mover" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Up-Mover</a>
-                        <a href="assessment.html?type=relocator" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocator</a>
-                        <a href="assessment.html?type=rightsizing" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizer</a>
-                        <a href="assessment.html?type=aging" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place</a>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-lg whitespace-nowrap">
-                Book a Call
-            </a>
+            <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">Book a Call</a>
         </div>
     </nav>
 </header>
+
 <section class="pt-32 pb-16 bg-[#050b1a] border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 text-center">
         <div class="animate-reveal">
             <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">The Inner Circle</span>
             <h1 class="text-5xl md:text-7xl font-serif text-white mb-6">Trusted <span class="italic text-[#97B99D]">Partners</span></h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
-                A curated network of professionals I personally trust to handle your home with the same care and precision that I do.
-            </p>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">A curated network of professionals I personally trust to handle your home with care.</p>
         </div>
     </div>
 </section>
 
 <section class="py-24 bg-[#0a101e]">
     <div class="max-w-7xl mx-auto px-6">
-        
-        <div class="flex flex-wrap justify-center gap-4 mb-16 animate-reveal delay-1">
-            <span class="px-6 py-2 rounded-full border border-[#97B99D] text-[#97B99D] text-xs font-bold uppercase tracking-widest cursor-pointer">All Professionals</span>
-            <span class="px-6 py-2 rounded-full border border-white/10 text-gray-400 text-xs font-bold uppercase tracking-widest hover:border-[#97B99D] transition-all cursor-pointer">Finance</span>
-            <span class="px-6 py-2 rounded-full border border-white/10 text-gray-400 text-xs font-bold uppercase tracking-widest hover:border-[#97B99D] transition-all cursor-pointer">Maintenance</span>
-            <span class="px-6 py-2 rounded-full border border-white/10 text-gray-400 text-xs font-bold uppercase tracking-widest hover:border-[#97B99D] transition-all cursor-pointer">Infrastructure</span>
-        </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <div class="animate-reveal delay-1 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
@@ -169,10 +116,32 @@
                     <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Bank of Montreal</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Tailored mortgage solutions and financial guidance for every stage of home ownership.</p>
-                <a href="partners-bmo.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">
-                    View Details <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                </a>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Tailored mortgage solutions and financial guidance for every stage of ownership.</p>
+                <a href="partners-bmo.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
+
+            <div class="animate-reveal delay-1 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Climate Pros HVAC</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Specialists in energy-efficient heating and cooling systems for luxury comfort.</p>
+                <a href="partners-hvac.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
+
+            <div class="animate-reveal delay-2 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m4 0h1m-5 4h1m4 0h1m-5 4h1m4 0h1"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Home Developers</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Visionary builders crafting sustainable living spaces for the modern lifestyle.</p>
+                <a href="partners-developers.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
             </div>
 
             <div class="animate-reveal delay-2 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
@@ -182,126 +151,113 @@
                     </div>
                     <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Climate Pros HVAC</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Specialists in energy-efficient heating and cooling systems to maximize home comfort.</p>
-                <a href="partners-hvac.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">
-                    View Details <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                </a>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Master Electricians</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Certified experts providing safe, innovative solutions for smart-home integration.</p>
+                <a href="partners-electrician.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
             </div>
 
-            </div>
             <div class="animate-reveal delay-3 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m4 0h1m-5 4h1m4 0h1m-5 4h1m4 0h1"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Home Developers</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Visionary builders crafting high-end, sustainable living spaces designed for the modern lifestyle.</p>
-    <a href="partners-developers.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Elite Roofing</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Superior craftsmanship and durable materials protecting your home's structure.</p>
+                <a href="partners-roofer.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-3 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Master Electricians</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Certified experts providing safe, innovative electrical solutions for luxury smart-home integration.</p>
-    <a href="partners-electrician.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+            <div class="animate-reveal delay-3 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Home Appliances</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">High-performance kitchen technology blending design with daily efficiency.</p>
+                <a href="partners-appliances.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-3 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Elite Roofing</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Superior craftsmanship and durable materials protecting your home's most important structural asset.</p>
-    <a href="partners-roofer.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+            <div class="animate-reveal delay-4 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 12h16M12 4v16"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Thermal Windows</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Advanced glazing solutions that reduce energy costs while flooding homes with light.</p>
+                <a href="partners-windows.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-4 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Home Appliances</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">High-performance kitchen and laundry technology that blends elegant design with daily efficiency.</p>
-    <a href="partners-appliances.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+            <div class="animate-reveal delay-4 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Mortgage Solutions</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Bespoke lending strategies tailored to your unique financial landscape.</p>
+                <a href="partners-mortgage.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-4 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 12h16M12 4v16"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Thermal Windows</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Advanced glazing solutions that reduce energy costs while flooding your home with natural light.</p>
-    <a href="partners-windows.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+            <div class="animate-reveal delay-5 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Artisan Painters</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Transforming spaces with premium finishes and meticulous attention to detail.</p>
+                <a href="partners-painter.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-4 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Mortgage Solutions</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Competitive rates and bespoke lending strategies tailored to your unique financial landscape.</p>
-    <a href="partners-mortgage.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
+            <div class="animate-reveal delay-5 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.054.585l-1.835 1.835a2 2 0 00-.58 1.43l.064 2.087a2 2 0 002.254 1.892l2.399-.3a2 2 0 011.606.518l.844.703a2 2 0 002.485 0l.844-.703a2 2 0 011.606-.518l2.399.3a2 2 0 002.254-1.892l.064-2.087a2 2 0 00-.58-1.43l-1.835-1.835z"></path></svg>
+                    </div>
+                    <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Elite Plumbing</h3>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Reliable, modern solutions ensuring your home's infrastructure operates flawlessly.</p>
+                <a href="partners-plumber.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
+            </div>
 
-<div class="animate-reveal delay-5 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Artisan Painters</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Transforming spaces with premium finishes and a meticulous attention to color and detail.</p>
-    <a href="partners-painter.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
-
-<div class="animate-reveal delay-5 bg-[#050b1a] border border-white/5 p-8 rounded-2xl hover:border-[#97B99D]/50 transition-all group">
-    <div class="flex justify-between items-start mb-6">
-        <div class="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-[#97B99D] group-hover:bg-[#97B99D] group-hover:text-navy transition-all">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.054.585l-1.835 1.835a2 2 0 00-.58 1.43l.064 2.087a2 2 0 002.254 1.892l2.399-.3a2 2 0 011.606.518l.844.703a2 2 0 002.485 0l.844-.703a2 2 0 011.606-.518l2.399.3a2 2 0 002.254-1.892l.064-2.087a2 2 0 00-.58-1.43l-1.835-1.835z"></path></svg>
-        </div>
-        <span class="text-[10px] font-bold text-[#97B99D] border border-[#97B99D]/30 px-2 py-1 rounded uppercase tracking-tighter">Vetted Partner</span>
-    </div>
-    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Elite Plumbing</h3>
-    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Reliable, modern plumbing solutions ensuring your home's infrastructure operates flawlessly.</p>
-    <a href="partners-plumber.html" class="text-[#97B99D] text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 inline-flex items-center transition-transform">View Details →</a>
-</div>
-    </div>
+        </div> </div>
 </section>
+
+<div id="mobile-menu" class="hidden fixed inset-0 bg-[#050b1a] z-[200] flex flex-col p-8 overflow-y-auto">
+    <button id="close-menu" class="self-start p-2 text-white mb-8">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <div class="flex flex-col space-y-6 text-center">
+        <a href="index.html" class="text-2xl font-bold text-white">Home</a>
+        <a href="about.html" class="text-2xl font-bold text-white">About Sean</a>
+        <a href="partners.html" class="text-2xl font-bold text-[#97B99D]">Trusted Partners</a>
+        <a href="guides-buying.html" class="text-2xl font-bold text-white">Buying Guide</a>
+        <a href="guides-selling.html" class="text-2xl font-bold text-white">Selling Guide</a>
+        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] py-4 rounded-full font-bold text-xl mt-4">Book a Call</a>
+    </div>
+</div>
+
 <script>
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenuButton = document.getElementById('close-menu');
 
-    // Open Menu
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Stops the background from scrolling
+        document.body.style.overflow = 'hidden';
     });
 
-    // Close Menu
     closeMenuButton.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Enables scrolling again
+        document.body.style.overflow = 'auto';
     });
 </script>
 </body>
