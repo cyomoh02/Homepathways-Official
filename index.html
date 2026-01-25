@@ -626,16 +626,21 @@ window.addEventListener('load', initTestimonials);
         });
     </script>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileBtn = document.getElementById('mobile-menu-button');
-    const closeBtn = document.getElementById('close-menu');
-    const menu = document.getElementById('mobile-menu');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu');
 
-    if (mobileBtn && menu) {
-        mobileBtn.onclick = () => menu.classList.remove('hidden');
-        if (closeBtn) closeBtn.onclick = () => menu.classList.add('hidden');
-    }
-});
+    // Open Menu
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Stops the background from scrolling
+    });
+
+    // Close Menu
+    closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Enables scrolling again
+    });
 </script>
 </body>
 </html>
