@@ -259,50 +259,53 @@
         <div class="text-center mb-16 animate-reveal">
             <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Buyer Intelligence</span>
             <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Home Buying <span class="italic text-[#97B99D]">Intelligence</span></h2>
-            <p class="text-gray-400 font-light">Direct answers to the most-searched buyer anxieties in British Columbia.</p>
+            <p class="text-gray-400 font-light">Direct answers to the most-searched buyer questions in British Columbia.</p>
         </div>
 
         <div class="space-y-2">
-            <div class="border-b border-white/10 group">
-                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What exactly qualifies as a first-time buyer in Canada for 2026?</span>
-                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">You qualify if you haven't lived in a home owned by you or your partner in the last 4 years. This "reset" allows previous owners to re-access the Home Buyers' Plan (HBP).</div>
-            </div>
+            <script>
+                const buyerFaqs = [
+                    { q: "What exactly qualifies as a first-time home buyer in Canada?", a: "You qualify if you haven't lived in a home owned by you or your partner in the last 4 years. This allows previous owners to re-access the Home Buyers' Plan (HBP)." },
+                    { q: "How much can I withdraw from my RRSP for a down payment in 2026?", a: "The HBP limit is now $60,000 per person ($120,000 for couples). It's an interest-free loan from your future self, repayable over 15 years." },
+                    { q: "What is the 2026 BC Property Transfer Tax (PTT) exemption limit?", a: "First-time buyers are exempt from PTT on homes up to $835,000. Partial exemptions apply between $835,000 and $860,000." },
+                    { q: "How does the First Home Savings Account (FHSA) help me in 2026?", a: "You can contribute $8,000/year (tax-deductible) and withdraw it tax-free for a home. In 2026, if you started in 2023, you could have up to $32,000 in room." },
+                    { q: "What is the mandatory Home Buyer Rescission Period in BC?", a: "Buyers have 3 business days to cancel a contract after it's accepted. If you cancel, you must pay the seller 0.25% of the purchase price." },
+                    { q: "Are there GST rebates for new homes in 2026?", a: "Yes, for first-time buyers of new builds up to $1M, the GST can be 100% rebated (max $50,000). Partial rebates apply up to $1.5M." },
+                    { q: "What credit score do I need for a 2026 mortgage?", a: "Most 'A' lenders require a 680+ score for the best rates. Scores below 600 typically require private lenders or larger down payments." },
+                    { q: "What is the mortgage 'Stress Test' rate right now?", a: "You must qualify at either 5.25% or your contract rate plus 2%, whichever is higher. This ensures you can handle future rate hikes." },
+                    { q: "Should I choose a Fixed or Variable rate in the current 2026 market?", a: "Fixed offers certainty, while Variable allows you to benefit if the Bank of Canada cuts rates further. Your risk tolerance is the deciding factor." },
+                    { q: "What are the typical closing costs in BC?", a: "Budget 1.5% to 3% of the purchase price for PTT, legal fees, title insurance, and adjustments." },
+                    { q: "What happens if a home appraisal comes in low?", a: "This is an 'Appraisal Gap.' The bank will only lend based on the lower value, meaning you must cover the difference in cash." },
+                    { q: "What is 'Bridge Financing'?", a: "A short-term loan used if you buy your new home before your current one sells. It bridges the gap between your two closing dates." },
+                    { q: "What do I look for in Strata Documents?", a: "Review the Depreciation Report, Form B, and meeting minutes to check for upcoming special levies or low contingency funds." },
+                    { q: "Is a home inspection still necessary for a new build?", a: "Yes. New builds can have 'settling' issues or finishing defects. An inspection ensures the 2-5-10 warranty covers everything." },
+                    { q: "How long does the average home search take?", a: "In BC's current balanced market, most buyers find 'the one' within 4 to 8 weeks of active viewing." },
+                    { q: "Can I buy a home with a 'Subject to Sale' clause?", a: "Yes, but in a competitive market, sellers may only accept this with a '72-hour clause' allowing them to bump you for a non-subject offer." },
+                    { q: "What is a Principal Residence Exemption?", a: "It's a tax rule that allows you to sell your primary home without paying capital gains tax on the profit." },
+                    { q: "How does the BC Home Owner Grant work?", a: "If your home is assessed under $2.15M (2026 threshold), you may get a grant that reduces your annual property taxes." },
+                    { q: "What is Title Insurance?", a: "It protects you against fraud, unknown liens, or survey issues that weren't caught during the legal search." },
+                    { q: "Can I use a gift for my down payment?", a: "Yes, but lenders require a 'Gift Letter' signed by a family member confirming the money is not a loan." },
+                    { q: "Is buying a condo still a good first move?", a: "Yes. Condos are the 'entry gate' to BC real estate, allowing you to build equity rather than paying 100% interest (rent)." }
+                ];
 
-            <div class="border-b border-white/10 group">
-                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What is the 2026 Property Transfer Tax (PTT) exemption threshold?</span>
-                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">In BC, first-time buyers are exempt from PTT on homes with a fair market value up to $835,000. Partial exemptions apply between $835,000 and $860,000.</div>
-            </div>
-
-            <div class="border-b border-white/10 group">
-                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How much can I withdraw from my RRSP for a down payment now?</span>
-                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">The HBP limit is now $60,000 per person ($120,000 for couples). It is effectively an interest-free loan from your future self, repayable over 15 years.</div>
-            </div>
-
-            <div class="border-b border-white/10 group">
-                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Is it better to buy a condo or a detached home as an investment?</span>
-                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">Condos offer lower entry costs and "lock-and-leave" maintenance, while detached homes typically offer higher land-value appreciation. We analyze the "Price-to-Rent" ratio for your specific target area.</div>
-            </div>
+                document.write(buyerFaqs.map(faq => `
+                    <div class="border-b border-white/10 group">
+                        <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                            <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
+                            <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">${faq.a}</div>
+                    </div>
+                `).join(''));
+            </script>
         </div>
 
         <div class="mt-16 bg-[#0a101e] border border-white/5 p-10 rounded-3xl text-center animate-reveal">
-            <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Didn't find your specific question?</p>
+            <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Ready to move from research to reality?</p>
             <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
                 <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
-                    Ask Sean Directly
+                    Consult with Sean
                 </a>
-                
                 <form class="flex overflow-hidden rounded-full border border-slate-600 bg-slate-900/50 max-w-sm w-full">
                     <input type="email" placeholder="Get Market Updates" class="bg-transparent px-6 py-3 text-sm text-white w-full focus:outline-none placeholder:text-gray-500">
                     <button type="submit" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 font-bold text-sm hover:bg-white transition-all">Join</button>
