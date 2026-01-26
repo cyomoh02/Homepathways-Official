@@ -61,93 +61,15 @@
 </script>
 <body>
         <!-- Header -->
-    <header class="sticky top-0 w-full bg-[#050b1a] border-b border-white/5 z-[100]">
-    <nav class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between relative">
-        
-        <button id="mobile-menu-button" class="lg:hidden p-2 text-white relative z-[110]">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
-
-        <div class="hidden lg:flex items-center gap-x-8 w-1/3">
-            <a href="index.html" class="text-sm font-medium text-[#97B99D]">Home</a>
-            <a href="about.html" class="text-sm font-medium text-gray-400 hover:text-[#97B99D] transition-colors">About Sean</a>
-            
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Trusted Partners <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[240px] grid grid-cols-1 gap-1">
-                        <a href="partners-developers.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Developers</a>
-                        <a href="partners-bmo.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Bank of Montreal</a>
-                        <a href="partners-hvac.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">HVAC</a>
-                        <a href="partners-electrician.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Electrician</a>
-                        <a href="partners-roofer.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Roofer</a>
-                        <a href="partners-appliances.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Appliances</a>
-                        <a href="partners-windows.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Energy Efficient Windows</a>
-                        <a href="partners-mortgage.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Mortgage</a>
-                        <a href="partners-painter.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Painter</a>
-                        <a href="partners-plumber.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Plumber</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <a href="index.html" class="text-xl font-serif font-bold text-white tracking-widest uppercase">HOME PATHWAYS</a>
-        </div>
-
-        <div class="hidden lg:flex items-center justify-end gap-x-6 w-1/3">
-            
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Guides <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="guides-buying.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Buying Guide</a>
-                        <a href="guides-selling.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Selling Guide</a>
-                        <a href="guides-relocation.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocation Guide</a>
-                        <a href="guides-rightsizing.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizing Guide</a>
-                        <a href="guides-aging.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place Guide</a>
-                        <a href="guides-probate.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate Guide</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Who We Serve <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="assessment.html?type=probate" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate</a>
-                        <a href="assessment.html?type=first-buyer" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">First Time Buyer</a>
-                        <a href="assessment.html?type=up-mover" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Up-Mover</a>
-                        <a href="assessment.html?type=relocator" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocator</a>
-                        <a href="assessment.html?type=rightsizing" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizer</a>
-                        <a href="assessment.html?type=aging" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place</a>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-lg whitespace-nowrap">
-                Book a Call
-            </a>
-        </div>
-    </nav>
-</header>
-
-<!--Buying Guide-->
-<section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden">
+    <section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 text-center animate-reveal">
-        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Comprehensive Guide</span>
+        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">International & Interprovincial</span>
         <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
-            The Pathway to <br> 
-            <span class="italic text-[#97B99D]">Your New Home.</span>
+            Your Boots on the Ground <br> 
+            <span class="italic text-[#97B99D]">in British Columbia.</span>
         </h1>
         <p class="text-xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Buying a home in British Columbia is a journey of a thousand details. This guide simplifies the complex, providing the clarity you need to move forward with confidence.
+            Relocating is a logistical marathon. I provide the local intelligence and digital precision required to secure your home before you even land.
         </p>
     </div>
 </section>
@@ -162,9 +84,9 @@
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] shadow-[0_0_15px_rgba(151,185,157,0.5)] z-10 hidden md:block"></div>
                 <div class="md:w-1/2 md:pl-16">
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">01.</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Financial Blueprint</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Digital Neighborhood Vetting</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        Before the first viewing, we establish your budget. This includes exploring the <strong>First-Time Home Buyers' Program</strong>, calculating PTT, and securing a robust pre-approval.
+                        We start with a deep dive into the <strong>Tri-Cities</strong> and beyond. I provide data on school catchments, transit proximity, and local micro-climates to narrow your search to the streets that match your lifestyle.
                     </p>
                 </div>
             </div>
@@ -172,9 +94,9 @@
             <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal delay-2">
                 <div class="md:w-1/2 md:pr-16 md:text-right">
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">02.</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Curated Search</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Virtual Handshake</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        We don't just look at listings; we look at lifestyles. We analyze neighborhoods, school catchments, and future development plans to find a home that fits your long-term vision.
+                        No more guessing from photos. I perform high-definition 4K virtual tours of every property, inspecting the details you can't see on a screen—from the mechanical room's age to the neighborhood "vibe."
                     </p>
                 </div>
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
@@ -186,9 +108,9 @@
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
                 <div class="md:w-1/2 md:pl-16">
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">03.</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Strategic Offer</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Logistics Coordination</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        When we find "the one," we move with precision. I draft a contract with protective clauses—including inspection, financing, and title review—to ensure your interests are guarded.
+                        Through my <strong>Trusted Partners</strong>, I connect you with vetted cross-country movers, BC-licensed lawyers, and mortgage specialists who specialize in interprovincial transfers.
                     </p>
                 </div>
             </div>
@@ -196,9 +118,9 @@
             <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal delay-4">
                 <div class="md:w-1/2 md:pr-16 md:text-right">
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">04.</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Due Diligence</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Remote Closing Mastery</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        This is the "Clarity" phase. We bring in our <strong>Trusted Partners</strong>—vetted inspectors and specialists—to peel back the layers and ensure there are no hidden surprises.
+                        I manage the digital documentation and "Subject to Inspection" periods on your behalf. We utilize digital signing platforms to ensure the legal process is seamless, no matter your current time zone.
                     </p>
                 </div>
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
@@ -210,9 +132,9 @@
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
                 <div class="md:w-1/2 md:pl-16">
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">05.</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Closing & Keys</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The BC Welcome</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        From the lawyer's office to the final walkthrough, I am with you until the moment the keys are in your hand. Your new chapter starts with a seamless transition.
+                        I am there to pick up the keys and perform the final walkthrough. From helping you find a family doctor to explaining the <strong>BC Services Card</strong>, your transition begins with support.
                     </p>
                 </div>
             </div>
@@ -220,75 +142,42 @@
     </div>
 </section>
 
-<section class="py-24 bg-[#050b1a] relative border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-6 text-center animate-reveal">
-        <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Ready to define your <span class="italic text-[#97B99D]">Pathway?</span></h2>
-        <p class="text-xl text-gray-400 mb-12 font-light leading-relaxed">
-            Whether you're just starting to save or you're ready to book viewings this weekend, I offer two ways to move forward.
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-[#0a101e] border border-white/5 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">Self-Guided</h4>
-                    <p class="text-gray-400 text-sm mb-8">Take our 2-minute assessment to receive a customized buyer profile and neighborhood recommendations.</p>
-                </div>
-                <a href="assessment.html?type=buying" class="bg-white/5 text-white border border-white/10 py-4 rounded-full font-bold uppercase tracking-widest text-xs group-hover:bg-[#97B99D] group-hover:text-[#050b1a] transition-all">
-                    Start Assessment
-                </a>
-            </div>
-
-            <div class="bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D] transition-all group">
-                <div>
-                    <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-4">Direct Guidance</h4>
-                    <p class="text-gray-400 text-sm mb-8">Book a 15-minute introductory call to discuss your specific timeline and goals with Sean.</p>
-                </div>
-                <a href="#contact" class="bg-[#97B99D] text-[#050b1a] py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all">
-                    Book a Call
-                </a>
-            </div>
-        </div>
-        
-        <p class="mt-12 text-gray-500 text-xs uppercase tracking-[0.3em] italic">No obligation. No pressure. Simply clarity.</p>
-    </div>
-</section>
-
-<!--FAQ-->
+<!--FAQ + CTA-->
 <section class="py-24 bg-[#050b1a] border-t border-white/5">
     <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-16 animate-reveal">
-            <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Buyer Intelligence</span>
-            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Home Buying <span class="italic text-[#97B99D]">Intelligence</span></h2>
-            <p class="text-gray-400 font-light">Direct answers to the most-searched buyer questions in British Columbia.</p>
+            <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Relocation Intelligence</span>
+            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Settling into <span class="italic text-[#97B99D]">British Columbia</span></h2>
+            <p class="text-gray-400 font-light">The 21 essential questions for those moving to BC in 2026.</p>
         </div>
 
         <div class="space-y-2">
             <script>
-                const buyerFaqs = [
-                    { q: "What exactly qualifies as a first-time home buyer in Canada?", a: "You qualify if you haven't lived in a home owned by you or your partner in the last 4 years. This allows previous owners to re-access the Home Buyers' Plan (HBP)." },
-                    { q: "How much can I withdraw from my RRSP for a down payment in 2026?", a: "The HBP limit is now $60,000 per person ($120,000 for couples). It's an interest-free loan from your future self, repayable over 15 years." },
-                    { q: "What is the 2026 BC Property Transfer Tax (PTT) exemption limit?", a: "First-time buyers are exempt from PTT on homes up to $835,000. Partial exemptions apply between $835,000 and $860,000." },
-                    { q: "How does the First Home Savings Account (FHSA) help me in 2026?", a: "You can contribute $8,000/year (tax-deductible) and withdraw it tax-free for a home. In 2026, if you started in 2023, you could have up to $32,000 in room." },
-                    { q: "What is the mandatory Home Buyer Rescission Period in BC?", a: "Buyers have 3 business days to cancel a contract after it's accepted. If you cancel, you must pay the seller 0.25% of the purchase price." },
-                    { q: "Are there GST rebates for new homes in 2026?", a: "Yes, for first-time buyers of new builds up to $1M, the GST can be 100% rebated (max $50,000). Partial rebates apply up to $1.5M." },
-                    { q: "What credit score do I need for a 2026 mortgage?", a: "Most 'A' lenders require a 680+ score for the best rates. Scores below 600 typically require private lenders or larger down payments." },
-                    { q: "What is the mortgage 'Stress Test' rate right now?", a: "You must qualify at either 5.25% or your contract rate plus 2%, whichever is higher. This ensures you can handle future rate hikes." },
-                    { q: "Should I choose a Fixed or Variable rate in the current 2026 market?", a: "Fixed offers certainty, while Variable allows you to benefit if the Bank of Canada cuts rates further. Your risk tolerance is the deciding factor." },
-                    { q: "What are the typical closing costs in BC?", a: "Budget 1.5% to 3% of the purchase price for PTT, legal fees, title insurance, and adjustments." },
-                    { q: "What happens if a home appraisal comes in low?", a: "This is an 'Appraisal Gap.' The bank will only lend based on the lower value, meaning you must cover the difference in cash." },
-                    { q: "What is 'Bridge Financing'?", a: "A short-term loan used if you buy your new home before your current one sells. It bridges the gap between your two closing dates." },
-                    { q: "What do I look for in Strata Documents?", a: "Review the Depreciation Report, Form B, and meeting minutes to check for upcoming special levies or low contingency funds." },
-                    { q: "Is a home inspection still necessary for a new build?", a: "Yes. New builds can have 'settling' issues or finishing defects. An inspection ensures the 2-5-10 warranty covers everything." },
-                    { q: "How long does the average home search take?", a: "In BC's current balanced market, most buyers find 'the one' within 4 to 8 weeks of active viewing." },
-                    { q: "Can I buy a home with a 'Subject to Sale' clause?", a: "Yes, but in a competitive market, sellers may only accept this with a '72-hour clause' allowing them to bump you for a non-subject offer." },
-                    { q: "What is a Principal Residence Exemption?", a: "It's a tax rule that allows you to sell your primary home without paying capital gains tax on the profit." },
-                    { q: "How does the BC Home Owner Grant work?", a: "If your home is assessed under $2.15M (2026 threshold), you may get a grant that reduces your annual property taxes." },
-                    { q: "What is Title Insurance?", a: "It protects you against fraud, unknown liens, or survey issues that weren't caught during the legal search." },
-                    { q: "Can I use a gift for my down payment?", a: "Yes, but lenders require a 'Gift Letter' signed by a family member confirming the money is not a loan." },
-                    { q: "Is buying a condo still a good first move?", a: "Yes. Condos are the 'entry gate' to BC real estate, allowing you to build equity rather than paying 100% interest (rent)." }
+                const relocationFaqs = [
+                    { q: "How long do I have to switch my driver's license to BC?", a: "You have 90 days after moving to BC to switch your out-of-province license to an ICBC license. For most Canadian provinces, this is a simple swap without a re-test." },
+                    { q: "When does my BC Medical Services Plan (MSP) coverage start?", a: "There is a 'wait period' consisting of the balance of the month you arrive plus two full months. We recommend private insurance for this gap." },
+                    { q: "Do I pay Property Transfer Tax (PTT) if I move from another province?", a: "Yes, PTT applies to all BC property transfers. However, first-time buyers or buyers of new builds under 2026 thresholds often qualify for exemptions." },
+                    { q: "How do I find the best school catchment in the Tri-Cities?", a: "We use the SD43 locator tool. I can provide Fraser Institute rankings and neighborhood safety data for every street we consider." },
+                    { q: "What is the BC 'Speculation and Vacancy Tax'?", a: "It's an annual tax on homes in major urban centers. If you live in the home as your principal residence, you are exempt, but you must complete a declaration yearly." },
+                    { q: "Can I buy a home in BC virtually without visiting first?", a: "Yes. With 4K video tours, digital signatures, and remote notary services, many of my relocation clients buy before they ever land." },
+                    { q: "What are the 2026 rules for the Foreign Buyer Ban?", a: "The federal ban has been extended through 2026. Exemptions exist for work permit holders and permanent residents meeting specific work/residency criteria." },
+                    { q: "How much does a long-distance move to BC typically cost?", a: "Interprovincial moves range from $4,000 to $10,000 depending on weight. I can connect you with 'Elite Movers' for a precise quote." },
+                    { q: "What is the 2026 Home Owner Grant threshold in BC?", a: "The 2026 threshold is $2,150,000. If your home is assessed below this value, you may qualify for a significant property tax reduction." },
+                    { q: "How do I register my vehicle in BC from another province?", a: "You have 30 days to register and insure with ICBC. You will need a provincial safety inspection (MVI) before finalizing registration." },
+                    { q: "How do I set up my BC Hydro and FortisBC accounts?", a: "This is done online. You typically need 48 hours' notice before your possession date to ensure the power is live." },
+                    { q: "Are there relocation tax deductions in Canada?", a: "Yes. If you move at least 40km closer to a new job, many expenses (movers, legal fees, even realtor commission) may be tax-deductible." },
+                    { q: "What is the 'Underused Housing Tax' (UHT)?", a: "A federal 1% tax on vacant housing. Primary residents are exempt but may still need to file a return depending on ownership structure." },
+                    { q: "How do virtual 'Subject to Inspection' clauses work?", a: "We write the offer with a condition that your 'Boots on the Ground' (me or an inspector) must approve the home's condition." },
+                    { q: "What is the 'BC Premium' on housing prices?", a: "BC has higher entry costs but historically higher appreciation. We focus on 'Value Pockets' that offer the best price-per-square-foot." },
+                    { q: "How do I find a family doctor in BC?", a: "BC uses a centralized 'Health Connect Registry.' I recommend registering the moment you have your BC Services Card." },
+                    { q: "What is the best way to commute to Vancouver from Coquitlam?", a: "The West Coast Express and the Evergreen SkyTrain line are the most efficient. I can find listings within walking distance of these hubs." },
+                    { q: "Are BC closing dates different from other provinces?", a: "BC uses three dates: Completion (money moves), Possession (keys move), and Adjustment (taxes split). These are often 1-2 days apart." },
+                    { q: "Do I need a BC-based lawyer for my move?", a: "Yes. Real estate law is provincial. You need a lawyer or notary authorized in BC to register the title at the Land Title Office." },
+                    { q: "How do I handle my old home sale while buying in BC?", a: "We coordinate with your out-of-province agent to align closing dates, utilizing 'Bridge Financing' if a gap exists." },
+                    { q: "What is the first thing I should do when I land in BC?", a: "Visit an ICBC office for your ID and a Service BC office for your health card. Then, let's head to your new home for the walkthrough!" }
                 ];
 
-                document.write(buyerFaqs.map(faq => `
+                document.write(relocationFaqs.map(faq => `
                     <div class="border-b border-white/10 group">
                         <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
                             <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
@@ -299,19 +188,39 @@
                 `).join(''));
             </script>
         </div>
+    </div>
+</section>
 
-        <div class="mt-16 bg-[#0a101e] border border-white/5 p-10 rounded-3xl text-center animate-reveal">
-            <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Ready to move from research to reality?</p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
-                    Consult with Sean
+<section class="py-24 bg-[#050b1a] relative border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 text-center animate-reveal">
+        <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Ready to secure your <span class="italic text-[#97B99D]">BC Landing?</span></h2>
+        <p class="text-xl text-gray-400 mb-12 font-light leading-relaxed">
+            Relocating is about more than a mortgage. It's about settling your life. Choose the path that fits your current timeline.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="bg-[#0a101e] border border-white/5 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">Self-Guided</h4>
+                    <p class="text-gray-400 text-sm mb-8">Take our 2-minute Relocation Assessment to receive a custom "BC Settling Checklist" and neighborhood report.</p>
+                </div>
+                <a href="assessment.html?type=relocation" class="bg-white/5 text-white border border-white/10 py-4 rounded-full font-bold uppercase tracking-widest text-xs group-hover:bg-[#97B99D] group-hover:text-[#050b1a] transition-all text-center">
+                    Start Assessment
                 </a>
-                <form class="flex overflow-hidden rounded-full border border-slate-600 bg-slate-900/50 max-w-sm w-full">
-                    <input type="email" placeholder="Get Market Updates" class="bg-transparent px-6 py-3 text-sm text-white w-full focus:outline-none placeholder:text-gray-500">
-                    <button type="submit" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 font-bold text-sm hover:bg-white transition-all">Join</button>
-                </form>
+            </div>
+
+            <div class="bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D] transition-all group">
+                <div>
+                    <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-4">Direct Guidance</h4>
+                    <p class="text-gray-400 text-sm mb-8">Book a virtual consultation to discuss your specific timeline, school needs, and "boots on the ground" strategy with Sean.</p>
+                </div>
+                <a href="#contact" class="bg-[#97B99D] text-[#050b1a] py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all text-center">
+                    Book a Call
+                </a>
             </div>
         </div>
+        
+        <p class="mt-12 text-gray-500 text-xs uppercase tracking-[0.3em] italic">No obligation. No pressure. Simply clarity for your move.</p>
     </div>
 </section>
 
