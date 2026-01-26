@@ -564,33 +564,44 @@ window.addEventListener('load', initTestimonials);
     </div>
 
     <!--FAQ-->
-    <section class="py-24 bg-[#050b1a] border-t border-white/5">
+    <section id="faq" class="py-24 bg-[#050b1a] border-t border-white/5">
     <div class="max-w-4xl mx-auto px-6">
         
         <div class="text-center mb-16 animate-reveal">
             <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Knowledge Base</span>
             <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Common Questions on <br><span class="italic text-[#97B99D]">Home Pathways</span></h2>
-            <p class="text-gray-400 font-light">Direct answers to the most searched real estate transitions in British Columbia.</p>
+            <p class="text-gray-400 font-light">Real answers for complex transitions in British Columbia.</p>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-2">
+            
             <div class="border-b border-white/10 group">
                 <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What exactly qualifies as a first-time home buyer in Canada?</span>
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What exactly qualifies you as a first-time home buyer in Canada?</span>
                     <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="hidden pb-6 text-gray-400 leading-relaxed font-light">
-                    In Canada, you are generally considered a first-time buyer if you have not occupied a home that you or your current spouse/common-law partner owned in the last four years. This allows individuals who previously owned a home to "reset" their status for incentives like the Home Buyers' Plan (HBP).
+                    In Canada, you qualify if you have not occupied a home that you or your current spouse/partner owned in the last four years. This "four-year rule" allows previous homeowners to re-qualify for incentives like the Home Buyers' Plan (HBP) after a significant life change.
                 </div>
             </div>
 
             <div class="border-b border-white/10 group">
                 <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Who qualifies for the First Time Home Buyers’ Program in BC?</span>
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Who is eligible for the First Time Home Buyers’ Program in BC?</span>
                     <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="hidden pb-6 text-gray-400 font-light">
-                    To qualify for the BC Property Transfer Tax (PTT) exemption, you must be a Canadian citizen or permanent resident, have lived in BC for at least 12 consecutive months before the registration date, and the property must be your principal residence with a fair market value below the current threshold.
+                    To skip the Property Transfer Tax (PTT), you must be a Canadian citizen or PR, have lived in BC for 12 consecutive months, and the home's value must stay below the current threshold (currently $835,000 for a full exemption).
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How much RRSP can I withdraw for my first home in 2026?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    Under the Home Buyers' Plan (HBP), individuals can withdraw up to $60,000 tax-free from their RRSP. For a couple, that’s a total of $120,000 toward your down payment.
                 </div>
             </div>
 
@@ -600,7 +611,37 @@ window.addEventListener('load', initTestimonials);
                     <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="hidden pb-6 text-gray-400 font-light">
-                    You can list and even sign a Contract of Purchase and Sale before probate is granted, but the contract must include a "Subject to Probate" clause. The actual transfer of title (closing) cannot occur until the court issues the Grant of Probate.
+                    Yes, you can list and sign a contract, but it must include a "Subject to Probate" clause. You cannot finalize the title transfer or receive funds until the court issues the formal Grant of Probate.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Who is responsible for paying probate fees in BC?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    The estate pays the probate fees. In BC, estates under $25,000 pay nothing. Over $25k, the fee is roughly 1.4% of the estate's total value.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How long does the probate process typically take?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    In BC, it currently takes anywhere from 3 to 6 months for the court to grant probate, depending on the complexity of the estate and the current backlog.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What is a "Subject to Probate" clause?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    It is a protective legal clause in a real estate contract that states the sale is contingent upon the seller receiving the legal authority (Probate) to sell the deceased's property.
                 </div>
             </div>
 
@@ -610,7 +651,37 @@ window.addEventListener('load', initTestimonials);
                     <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="hidden pb-6 text-gray-400 font-light">
-                    The primary requirement is that all homeowners listed on the title must be at least 55 years old. Additionally, the home must be your primary residence, and any existing debt secured by the home (like a standard mortgage) must be paid off using the funds from the reverse mortgage.
+                    The primary requirement is age: all homeowners on the title must be at least 55 years old. The home must also be your primary residence.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Is income from a reverse mortgage taxable?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    No. Because a reverse mortgage is a loan against your home's equity, the money you receive is tax-free and does not affect Old Age Security (OAS) or Guaranteed Income Supplement (GIS).
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Can the bank take my home if I have a reverse mortgage?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    As long as you maintain the property, pay your property taxes, and keep your home insurance active, you retain full ownership and can never be forced to move.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Are there grants for aging-in-place renovations in BC?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    Yes. Programs like the BC Home Renovation Tax Credit for Seniors and Persons with Disabilities help offset costs for ramps, walk-in tubs, and other accessibility modifications.
                 </div>
             </div>
 
@@ -620,15 +691,105 @@ window.addEventListener('load', initTestimonials);
                     <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="hidden pb-6 text-gray-400 font-light">
-                    This depends on market conditions. In a "Seller's Market," buying first ensures you have a place to go, but you risk carrying two mortgages. In a "Buyer's Market," selling first provides financial certainty. We often use "Bridge Financing" to help Up-Movers navigate the gap between closing dates.
+                    Buying first gives you a guaranteed roof over your head, but requires bridge financing. Selling first gives you financial certainty but may require a temporary rental. We analyze current market absorption rates to decide which strategy fits your risk tolerance.
                 </div>
             </div>
 
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What exactly is bridge financing?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    Bridge financing is a short-term loan that "bridges" the gap between the closing date of the home you're buying and the home you're selling, using your current equity as collateral.
+                </div>
             </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How do I use a "Subject to Sale" clause?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    This clause allows you to make an offer on a new home that only becomes firm once you have a solid, non-subject offer on your existing home.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How do I buy a home in BC while living in another province?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    We utilize virtual tours, 3D mapping, and digital signings. I act as your local boots on the ground to inspect neighborhoods and school catchments before you even fly in.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">Are there tax implications for relocating to BC?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    BC has specific Property Transfer Tax (PTT) rates. If you are relocating for work, certain moving expenses may also be tax-deductible on your federal return.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How do I verify a school district from afar?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    We use Fraser Institute rankings and School District catchment maps to ensure your home choice guarantees your children a spot in your preferred institution.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What is the difference between downsizing and rightsizing?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    Downsizing is about less square footage. Rightsizing is about *better* square footage—finding a layout that matches your future lifestyle and reduces maintenance burdens.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">What are the financial benefits of rightsizing early?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    By rightsizing before you "have to," you can unlock home equity to fund your retirement while the market is in your favor, rather than being forced to sell in a rush.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">How do I clear out a lifetime of belongings for a move?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    We partner with specialized "Senior Move Managers" and decluttering experts who treat your memories with respect while helping you decide what fits in your next chapter.
+                </div>
+            </div>
+
+            <div class="border-b border-white/10 group">
+                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">When is the best time of year to list a rightsized home?</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="hidden pb-6 text-gray-400 font-light">
+                    Spring is traditionally high-volume, but for rightsizers, the "Early Autumn" market is often better as it captures serious families and retirees looking to settle before the winter.
+                </div>
+            </div>
+
+        </div>
 
         <div class="mt-16 text-center animate-reveal delay-2">
             <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Didn't find your specific question?</p>
-            <a href="#contact" class="inline-block bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
+            <a href="#contact" class="inline-block bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-xl">
                 Ask Sean Directly
             </a>
         </div>
