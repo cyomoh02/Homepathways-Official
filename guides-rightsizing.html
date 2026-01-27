@@ -1,246 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Pathway Real Estate</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rightsizing Guide | Sean Omoh - Homepathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Tailwind Config -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'navy': '#050b1a',
-                        'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
-                        'light-bg': '#f8f9fa',
-                        'light-text': '#212529',
-                    },
-                    fontFamily: {
-                        'serif': ['"Playfair Display"', 'serif'],
-                        'sans': ['"Inter"', 'sans-serif'],
-                    },
-                    animation: {
-                        'marquee-seamless-right': 'marquee-seamless-right 60s linear infinite',
-                        'marquee-seamless-left': 'marquee-seamless-left 60s linear infinite',
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Theme Initialization Script -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
 <body>
-    <!--Header-->
-    <header class="sticky top-0 w-full bg-[#050b1a] border-b border-white/5 z-[100]">
-    <nav class="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between relative">
-        
-        <button id="mobile-menu-button" class="lg:hidden p-2 text-white relative z-[110]">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
 
-        <div class="hidden lg:flex items-center gap-x-8 w-1/3">
-            <a href="index.html" class="text-sm font-medium text-[#97B99D]">Home</a>
-            <a href="about.html" class="text-sm font-medium text-gray-400 hover:text-[#97B99D] transition-colors">About Sean</a>
-            
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Trusted Partners <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[240px] grid grid-cols-1 gap-1">
-                        <a href="partners-developers.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Developers</a>
-                        <a href="partners-bmo.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Bank of Montreal</a>
-                        <a href="partners-hvac.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">HVAC</a>
-                        <a href="partners-electrician.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Electrician</a>
-                        <a href="partners-roofer.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Roofer</a>
-                        <a href="partners-appliances.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Home Appliances</a>
-                        <a href="partners-windows.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Energy Efficient Windows</a>
-                        <a href="partners-mortgage.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Mortgage</a>
-                        <a href="partners-painter.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Painter</a>
-                        <a href="partners-plumber.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Plumber</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <a href="index.html" class="text-xl font-serif font-bold text-white tracking-widest uppercase">HOME PATHWAYS</a>
-        </div>
-
-        <div class="hidden lg:flex items-center justify-end gap-x-6 w-1/3">
-            
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Guides <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="guides-buying.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Buying Guide</a>
-                        <a href="guides-selling.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Selling Guide</a>
-                        <a href="guides-relocation.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocation Guide</a>
-                        <a href="guides-rightsizing.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizing Guide</a>
-                        <a href="guides-aging.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place Guide</a>
-                        <a href="guides-probate.html" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate Guide</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div class="flex items-center gap-x-1 text-sm font-medium text-gray-400 group-hover:text-[#97B99D] cursor-pointer py-4">
-                    Who We Serve <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-width="1.5"/></svg>
-                </div>
-                <div class="absolute top-full right-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                    <div class="bg-[#0a101e] border border-slate-800 p-2 rounded-2xl shadow-2xl min-w-[200px]">
-                        <a href="assessment.html?type=probate" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Probate</a>
-                        <a href="assessment.html?type=first-buyer" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">First Time Buyer</a>
-                        <a href="assessment.html?type=up-mover" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Up-Mover</a>
-                        <a href="assessment.html?type=relocator" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Relocator</a>
-                        <a href="assessment.html?type=rightsizing" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Rightsizer</a>
-                        <a href="assessment.html?type=aging" class="block p-3 text-[10px] font-bold text-white hover:bg-slate-800 rounded-lg tracking-widest uppercase">Aging In Place</a>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-lg whitespace-nowrap">
-                Book a Call
-            </a>
-        </div>
-    </nav>
-</header>
-
-<!--Hero Section-->
-<section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 text-center animate-reveal">
-        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Lifestyle Transition Guide</span>
-        <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
-            From Legacy Home to <br> 
-            <span class="italic text-[#97B99D]">Lifestyle Freedom.</span>
-        </h1>
-        <p class="text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-            Your home was the stage for a lifetime of memories. But today, the <strong>tension</strong> of maintenance and unused space shouldn't hold back the <strong>resolution</strong> of your future.
-        </p>
-    </div>
-</section>
-
-<section class="py-24 bg-[#0a101e]">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="relative">
-            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-[1px] bg-white/10"></div>
-            
-            <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
-                <div class="hidden md:block w-1/2"></div>
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] shadow-[0_0_15px_rgba(151,185,157,0.5)] z-10 hidden md:block"></div>
-                <div class="md:w-1/2 md:pl-16">
-                    <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Stage</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest text-balance">The Burden of "Too Much"</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">
-                        You've reached a point where the stairs feel steeper and the yard work feels heavier. The problem is <strong>Unavoidable</strong>—your current home was built for a full family, but your new goals require <strong>Unworkable</strong> amounts of time and energy to maintain.
-                    </p>
-                </div>
-            </div>
-
-            <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
-                <div class="md:w-1/2 md:pr-16 md:text-right">
-                    <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Opportunity</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest text-balance">Unlocking Your Equity</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">
-                        The <strong>Opportunity</strong> isn't just selling; it's <strong>Disruptive</strong>. By rightsizing now, you unlock significant home equity to fund travel, family legacies, or a luxury residence designed specifically for your future.
-                    </p>
-                </div>
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
-                <div class="hidden md:block w-1/2"></div>
-            </div>
-
-            <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
-                <div class="hidden md:block w-1/2"></div>
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
-                <div class="md:w-1/2 md:pl-16">
-                    <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Resolution</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest text-balance">Curated Transition</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">
-                        Our <strong>Resolution</strong> provides the "Boots on the Ground" logistics. From professional decluttering to strategic market positioning, we transform your transition from an <strong>Urgent</strong> stress into a <strong>Defensible</strong>, calm success.
-                    </p>
-                </div>
-            </div>
-
-            <div class="relative flex flex-col md:flex-row items-center animate-reveal">
-                <div class="md:w-1/2 md:pr-16 md:text-right">
-                    <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Yes</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest text-balance">Your Next Chapter</h3>
-                    <p class="text-gray-400 font-light leading-relaxed">
-                        Are you ready to say <strong>Yes</strong> to a life where your home serves you, rather than you serving your home? Let's map out the pathway to your <strong>Absolute Joy</strong>.
-                    </p>
-                </div>
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
-                <div class="hidden md:block w-1/2"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="py-24 bg-[#050b1a] relative border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-6 text-center animate-reveal">
-        <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Embrace the <span class="italic text-[#97B99D]">Outcome of the Outcome.</span></h2>
-        <p class="text-xl text-gray-400 mb-12 font-light leading-relaxed">
-            Rightsizing is about gaining more time, more freedom, and more life. How would you like to begin?
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-[#0a101e] border border-white/5 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">The Assessment (Believe)</h4>
-                    <p class="text-gray-400 text-sm mb-8">Worried about the logistics? Take our 2-minute assessment to receive a customized "Rightsizing Roadmap" that addresses your specific concerns.</p>
-                </div>
-                <a href="assessment.html?type=rightsizing" class="bg-white/5 text-white border border-white/10 py-4 rounded-full font-bold uppercase tracking-widest text-xs group-hover:bg-[#97B99D] group-hover:text-[#050b1a] transition-all text-center">
-                    (Act) Start Roadmap
-                </a>
-            </div>
-
-            <div class="bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D] transition-all group">
-                <div>
-                    <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-4">Direct Strategy (Care)</h4>
-                    <p class="text-gray-400 text-sm mb-8">Book a private consultation to see how we can maximize your equity and transition you into a home that offers total freedom.</p>
-                </div>
-                <a href="#contact" class="bg-[#97B99D] text-[#050b1a] py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all text-center">
-                    (Act) Book a Call
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--FAQ Section-->
 <section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 text-center animate-reveal">
         <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Lifestyle Transition Guide</span>
@@ -266,7 +38,7 @@
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Stage</span>
                     <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Burden of "Too Much"</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        You've reached a point where the stairs feel steeper and the yard work feels heavier. The problem is <strong>Unavoidable</strong>—your home was built for a full family, but your current goals require <strong>Unworkable</strong> amounts of time and energy to maintain.
+                        The stairs feel steeper and the yard work feels heavier. The problem is <strong>Unavoidable</strong>—your home was built for a full family, but your current goals require <strong>Unworkable</strong> amounts of energy to maintain.
                     </p>
                 </div>
             </div>
@@ -276,7 +48,7 @@
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Opportunity</span>
                     <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Unlocking Your Equity</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        The <strong>Opportunity</strong> isn't just selling; it's <strong>Disruptive</strong>. By rightsizing now, you unlock significant home equity to fund travel, family legacies, or a luxury residence designed specifically for your future.
+                        The <strong>Opportunity</strong> isn't just selling; it's <strong>Disruptive</strong>. By rightsizing now, you unlock home equity to fund travel, family legacies, or a luxury residence designed for your future.
                     </p>
                 </div>
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
@@ -290,7 +62,7 @@
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Resolution</span>
                     <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">A Curated Transition</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        Our <strong>Resolution</strong> provides the logistical support you need. From professional decluttering to strategic market positioning, we transform your transition from an <strong>Urgent</strong> stress into a <strong>Defensible</strong>, calm success.
+                        Our <strong>Resolution</strong> provides the logistical support you need. From professional decluttering to strategic positioning, we transform your transition into a <strong>Defensible</strong>, calm success.
                     </p>
                 </div>
             </div>
@@ -300,7 +72,7 @@
                     <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Yes</span>
                     <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Your Next Chapter</h3>
                     <p class="text-gray-400 font-light leading-relaxed">
-                        Are you ready to say <strong>Yes</strong> to a life where your home serves you, rather than you serving your home? Let's map out the pathway to your <strong>Absolute Joy</strong>.
+                        Are you ready to say <strong>Yes</strong> to a life where your home serves you? Let's map out the pathway to your <strong>Absolute Joy</strong>.
                     </p>
                 </div>
                 <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
@@ -313,15 +85,12 @@
 <section class="py-24 bg-[#050b1a] relative border-t border-white/5">
     <div class="max-w-4xl mx-auto px-6 text-center animate-reveal">
         <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Embrace the <span class="italic text-[#97B99D]">Outcome of the Outcome.</span></h2>
-        <p class="text-xl text-gray-400 mb-12 font-light leading-relaxed">
-            Rightsizing is about gaining more time, more freedom, and more life. How would you like to begin?
-        </p>
         
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
             <div class="bg-[#0a101e] border border-white/5 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">The Assessment (Believe)</h4>
-                    <p class="text-gray-400 text-sm mb-8">Worried about the logistics? Take our 2-minute assessment to receive a customized "Rightsizing Roadmap" that addresses your specific concerns.</p>
+                    <p class="text-gray-400 text-sm mb-8">Worried about the logistics? Take our 2-minute assessment to receive a customized "Rightsizing Roadmap."</p>
                 </div>
                 <a href="assessment.html?type=rightsizing" class="bg-white/5 text-white border border-white/10 py-4 rounded-full font-bold uppercase tracking-widest text-xs group-hover:bg-[#97B99D] group-hover:text-[#050b1a] transition-all text-center">
                     (Act) Start Roadmap
@@ -331,7 +100,7 @@
             <div class="bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl flex flex-col justify-between hover:border-[#97B99D] transition-all group">
                 <div>
                     <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-4">Direct Strategy (Care)</h4>
-                    <p class="text-gray-400 text-sm mb-8">Book a private consultation to see how we can maximize your equity and transition you into a home that offers total freedom.</p>
+                    <p class="text-gray-400 text-sm mb-8">Book a private consultation to see how we can maximize your equity and transition you into freedom.</p>
                 </div>
                 <a href="#contact" class="bg-[#97B99D] text-[#050b1a] py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all text-center">
                     (Act) Book a Call
@@ -341,7 +110,28 @@
     </div>
 </section>
 
-<section style="display: none;" aria-hidden="true">
+<section class="py-24 bg-[#0a101e] border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl font-serif text-white mb-12 text-center">Rightsizing <span class="italic text-[#97B99D]">Intelligence</span></h2>
+        <div class="space-y-2 mb-20" id="faq-container">
+            </div>
+
+        <div class="mt-16 bg-[#0a101e] border border-white/5 p-10 rounded-3xl text-center animate-reveal">
+            <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Didn't find your specific question?</p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
+                    Ask Sean Directly
+                </a>
+                <form class="flex overflow-hidden rounded-full border border-slate-600 bg-slate-900/50 max-w-sm w-full">
+                    <input type="email" placeholder="Get Rightsizing Guide" class="bg-transparent px-6 py-3 text-sm text-white w-full focus:outline-none placeholder:text-gray-500">
+                    <button type="submit" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 font-bold text-sm hover:bg-white transition-all">Join</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;" aria-hidden="true">
     <div itemscope itemtype="http://schema.org/RealEstateAgent">
         <span itemprop="name">Sean Omoh - Homepathways</span>
         <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
@@ -353,73 +143,49 @@
         <span itemprop="description">Specialized real estate transition services for retirees and empty-nesters rightsizing their lifestyle in British Columbia.</span>
     </div>
     <nav>
-        <a href="https://www.bcrea.bc.ca/">BC Real Estate Association - Rightsizing Insights</a>
-        <a href="https://www.coquitlam.ca/">City of Coquitlam - Senior Housing Services</a>
-        <a href="https://www2.gov.bc.ca/gov/content/taxes/property-taxes/annual-property-tax/defer-taxes">BC Government - Property Tax Deferment Program</a>
-        <a href="partners.html">Homepathways Trusted Partner Network</a>
+        <a href="https://www.bcrea.bc.ca/">BC Real Estate Association</a>
+        <a href="https://www.coquitlam.ca/">City of Coquitlam Senior Housing</a>
+        <a href="https://www2.gov.bc.ca/gov/content/taxes/property-taxes/annual-property-tax/defer-taxes">BC Tax Deferment</a>
+        <a href="partners.html">Trusted Partner Network</a>
     </nav>
 </section>
 
-<section class="py-24 bg-[#0a101e] border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-3xl font-serif text-white mb-12 text-center">Rightsizing <span class="italic text-[#97B99D]">Intelligence</span></h2>
-        
-        <div class="space-y-2 mb-20">
-            <script>
-                <div class="space-y-2 mb-20">
-    <script>
-        const rightsizingFaqs = [
-            { q: "What is the primary difference between downsizing and rightsizing?", a: "Downsizing is strictly about reducing square footage. Rightsizing is about 'better' square footage—optimizing your home to match your current lifestyle, mobility needs, and the freedom you want to enjoy in 2026." },
-            { q: "Is rightsizing taxable for my principal residence in BC?", a: "No. Under the Principal Residence Exemption, the capital gains from selling the home you live in are generally 100% tax-free in Canada, allowing you to keep every dollar of your unlocked equity." },
-            { q: "How does the BC Property Tax Deferment program work for seniors?", a: "If you are 55+, you can apply to have the province pay your property taxes on your behalf. This low-interest loan is only repaid when you sell the home, significantly increasing your monthly cash flow." },
-            { q: "How do I handle the emotional tension of leaving a family legacy home?", a: "We focus on the 'Outcome of the Outcome.' By preserving memories through digital archiving and selective 'heirloom' keeping, we help you transition the legacy into a lifestyle that offers more time for family." },
-            { q: "What is the 'Golden Window' for rightsizing?", a: "The best time to rightsize is when you are still physically capable of making the decisions. This ensures you lead the transition rather than letting health or urgency dictate the timeline." },
-            { q: "Can I buy my new rightsized home before selling my current estate?", a: "Yes. Using bridge financing or a 'subject to sale' clause, we can secure your new residence first, ensuring you only move once and have total peace of mind." },
-            { q: "What is the 2026 BC Home Owner Grant for seniors?", a: "For seniors aged 65+, the grant is currently $845 (or more in northern/rural areas). This reduces your annual property tax burden as long as your home is assessed below the $2.15M threshold." },
-            { q: "How do I start the decluttering process without feeling overwhelmed?", a: "We provide access to Senior Move Managers who specialize in the 'gentle' transition. We start small, one room at a time, focusing on what you are gaining, not what you are losing." },
-            { q: "Are strata fees more expensive than maintaining a detached home?", a: "Usually, no. When you calculate the 'true cost' of a detached home—roofing, landscaping, exterior painting, and heating—a strata fee is often more predictable and cost-effective." },
-            { q: "What should I look for in a rightsized layout?", a: "Look for 'Universal Design': wider doorways, zero-threshold entries, and primary bedrooms on the main floor. This ensures the home remains comfortable for decades." },
-            { q: "Will I have to pay the BC Speculation and Vacancy Tax?", a: "If the home is your principal residence, you are exempt. You simply need to complete the annual declaration to ensure you aren't charged." },
-            { q: "What are the typical closing costs for a seller in BC?", a: "Budget for realtor commission, legal fees (approx. $1,200-$2,000), and mortgage discharge fees. Unlike buyers, sellers do not pay Property Transfer Tax (PTT)." },
-            { q: "Can a reverse mortgage help with my rightsizing strategy?", a: "For some, a reverse mortgage allows them to stay in a larger home longer. However, rightsizing usually provides a cleaner 'Resolution' by eliminating maintenance and freeing up cash." },
-            { q: "What happens to my BC Property Tax Deferment if I move?", a: "The deferred taxes must be paid back when you sell your current home. You can then start a new deferment application for your next principal residence." },
-            { q: "How do I vet a condo's financial health before buying?", a: "We perform a deep dive into the 'Depreciation Report' and 'Contingency Reserve Fund.' We want to ensure the building is well-managed so you don't face unexpected special levies." },
-            { q: "What is the 'Executor's Year' and does it apply to me?", a: "This applies to probate, but for rightsizers, it’s a reminder that a well-planned move now prevents your future executors from having to manage a massive estate later." },
-            { q: "Should I renovate my old home before listing it?", a: "We focus on high-ROI cosmetic updates—paint, flooring, and lighting. We want the home to look 'turn-key' for young families without over-investing in their future tastes." },
-            { q: "What is the best way to move large family heirlooms?", a: "Our moving partners specialize in high-value items like pianos and antiques. We coordinate the logistics so your most precious items arrive safely at your new residence." },
-            { q: "How does rightsizing impact my OAS or GIS payments?", a: "Selling your principal residence does not count as 'income' for OAS or GIS purposes. However, the interest earned on the invested proceeds might, so we consult with your financial planner." },
-            { q: "Can I port my current mortgage to a smaller home?", a: "Most lenders allow you to 'port' your rate and term to a new property, which is especially valuable if your current interest rate is lower than the 2026 market rates." },
-            { q: "Why is Sean Omoh the right guide for this transition?", a: "Because I focus on the 'Outcome of the Outcome.' I don't just sell the house; I manage the logistics, the partners, and the emotional pathway to your freedom." }
-        ];
+<script>
+    const faqData = [
+        { q: "What is the primary difference between downsizing and rightsizing?", a: "Downsizing is strictly about reducing square footage. Rightsizing is about 'better' square footage—optimizing your home to match your current lifestyle and future mobility needs." },
+        { q: "Is rightsizing taxable for my principal residence in BC?", a: "No. Under the Principal Residence Exemption, the profit from selling the home you live in is generally 100% tax-free in Canada." },
+        { q: "How does the BC Property Tax Deferment program work?", a: "If you are 55+, you can apply to have the province pay your property taxes at a low interest rate, freeing up significant monthly cash flow." },
+        { q: "How do I handle the emotional tension of leaving a family home?", a: "We focus on the 'Outcome of the Outcome.' We preserve memories through archiving while moving you into a lifestyle that offers more time for what matters." },
+        { q: "What is the 'Golden Window' for rightsizing?", a: "The best time is while you are still physically capable of making decisions, ensuring you lead the transition rather than letting urgency dictate it." },
+        { q: "Can I buy my new home before selling my current estate?", a: "Yes. Using bridge financing or a 'subject to sale' clause, we can secure your new residence first for total peace of mind." },
+        { q: "What is the 2026 BC Home Owner Grant for seniors?", a: "Seniors 65+ can receive a grant of up to $845, provided the home is assessed below the $2.15M threshold." },
+        { q: "How do I start decluttering without feeling overwhelmed?", a: "We provide Senior Move Managers who specialize in 'gentle' transition, handling the logistics so you don't have to." },
+        { q: "Are strata fees more expensive than maintaining a detached home?", a: "Usually, no. When you calculate roofing, landscaping, and exterior repairs, strata fees are often more predictable and cost-effective." },
+        { q: "What should I look for in a rightsized layout?", a: "Look for 'Universal Design': wider doorways, zero-threshold entries, and primary bedrooms on the main floor for long-term comfort." },
+        { q: "Will I have to pay the BC Speculation and Vacancy Tax?", a: "If the home is your principal residence, you are exempt. You simply complete an annual declaration." },
+        { q: "What are the typical closing costs for a seller in BC?", a: "Budget for realtor commission, legal fees (approx. $1,200-$2,000), and mortgage discharge fees." },
+        { q: "Can a reverse mortgage help with my rightsizing strategy?", a: "It can, but rightsizing usually provides a cleaner 'Resolution' by eliminating maintenance and freeing up liquid cash." },
+        { q: "What happens to my Property Tax Deferment if I move?", a: "The deferred taxes are repaid upon sale. You can then start a new deferment application for your next principal residence." },
+        { q: "How do I vet a condo's financial health before buying?", a: "We perform a deep dive into the 'Depreciation Report' and 'Contingency Reserve Fund' to avoid unexpected special levies." },
+        { q: "What is the 'Executor's Year' and how does it apply?", a: "A well-planned rightsizing move now prevents your future executors from having to manage an overwhelming estate later." },
+        { q: "Should I renovate my old home before listing it?", a: "We focus on high-ROI cosmetic updates like paint and lighting to attract buyers without over-investing." },
+        { q: "What is the best way to move large family heirlooms?", a: "Our moving partners specialize in high-value antiques. We coordinate the logistics so they arrive safely at your new home." },
+        { q: "How does rightsizing impact my OAS or GIS payments?", a: "Selling your principal residence is not 'income.' However, interest on the proceeds might be; consult your financial planner." },
+        { q: "Can I port my current mortgage to a smaller home?", a: "Most lenders allow you to 'port' your rate and term, which is valuable if your current rate is lower than 2026 market rates." },
+        { q: "Why is Sean Omoh the right guide for this transition?", a: "Because I focus on the 'Outcome of the Outcome.' I manage the logistics, the partners, and the emotional pathway to your freedom." }
+    ];
 
-        document.write(rightsizingFaqs.map(faq => `
-            <div class="border-b border-white/10 group">
-                <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
-                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">${faq.a}</div>
-            </div>
-        `).join(''));
-    </script>
-</div>
-
-<div class="mt-16 bg-[#0a101e] border border-white/5 p-10 rounded-3xl text-center animate-reveal">
-    <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest italic">Ready to trade square footage for freedom?</p>
-    <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
-            Ask Sean Directly
-        </a>
-        <form class="flex overflow-hidden rounded-full border border-slate-600 bg-slate-900/50 max-w-sm w-full">
-            <input type="email" placeholder="Get Rightsizing Guide" class="bg-transparent px-6 py-3 text-sm text-white w-full focus:outline-none placeholder:text-gray-500">
-            <button type="submit" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 font-bold text-sm hover:bg-white transition-all">Join</button>
-        </form>
-    </div>
-</div>
-            </script>
+    const container = document.getElementById('faq-container');
+    container.innerHTML = faqData.map(faq => `
+        <div class="border-b border-white/10 group">
+            <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
+                <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">${faq.a}</div>
         </div>
-    </div>
-</section>
+    `).join('');
+</script>
 
 <script type="application/ld+json">
 {
@@ -568,5 +334,6 @@
         document.body.style.overflow = 'auto'; // Enables scrolling again
     });
 </script>
+
 </body>
 </html>
