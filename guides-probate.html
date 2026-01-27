@@ -318,28 +318,6 @@
     `).join('');
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Probate Real Estate Transition",
-  "provider": {
-    "@type": "RealEstateAgent",
-    "name": "Sean Omoh - Homepathways",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "1126 Austin Avenue",
-      "addressLocality": "Coquitlam",
-      "addressRegion": "BC",
-      "postalCode": "V3K 3P5",
-      "addressCountry": "CA"
-    }
-  },
-  "areaServed": "Coquitlam, BC",
-  "description": "Specialized probate real estate services, estate valuations, and transition management for executors in British Columbia."
-}
-</script>
-
 <!--Footer Section-->
 <footer class="bg-[#050b1a] border-t border-white/5 pt-20 pb-10" itemscope itemtype="http://schema.org/RealEstateAgent">
     <div class="max-w-7xl mx-auto px-6">
@@ -464,6 +442,41 @@
         mobileMenu.classList.add('hidden');
         document.body.style.overflow = 'auto'; // Enables scrolling again
     });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Sean Omoh - Homepathways",
+  "url": "https://homepathways.ca",
+  "telephone": "778-386-2334",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1126 Austin Avenue",
+    "addressLocality": "Coquitlam",
+    "addressRegion": "BC",
+    "postalCode": "V3K 3P5",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Vancouver Lower Mainland" },
+    { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Probate Real Estate Transition",
+  "provider": {
+    "@type": "RealEstateAgent",
+    "name": "Sean Omoh - Homepathways"
+  },
+  "description": "Specialized probate real estate services for executors across the Lower Mainland and Fraser Valley."
+}
 </script>
 
 </body>
