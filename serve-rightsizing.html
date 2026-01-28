@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Pathway Real Estate</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#050b1a',
+                        'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
+                        'light-bg': '#f8f9fa',
+                        'light-text': '#212529',
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee-seamless-right': 'marquee-seamless-right 60s linear infinite',
+                        'marquee-seamless-left': 'marquee-seamless-left 60s linear infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Theme Initialization Script -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+
+<body>
+    <!--Header-->
+<header>
+    <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between relative h-10">
+                
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 pr-12">
+                    <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="text-[10px] font-bold uppercase tracking-[0.3em] text-white group-hover:text-[#97B99D] transition-all flex items-center">
+                            Who We Serve
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-72 bg-[#0a101e] border border-white/10 mt-6 py-5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                            <a href="serve-probate.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Probate Estates</a>
+                            <a href="serve-rightsizing.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Rightsizing Seniors</a>
+                            <a href="serve-aging.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Aging in Place</a>
+                            <a href="serve-relocation.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Relocation Families</a>
+                            <a href="serve-first-time-buyers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">First Time Buyers</a>
+                            <a href="serve-upmovers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors">Upmovers</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-[10px] font-bold uppercase tracking-[0.3em] text-white group-hover:text-[#97B99D] transition-all flex items-center">
+                            Guides
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-72 bg-[#0a101e] border border-white/10 mt-6 py-5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                            <a href="guides-probate.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Probate Estates</a>
+                            <a href="guides-rightsizing.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Rightsizing Seniors</a>
+                            <a href="guides-aging.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Aging in Place</a>
+                            <a href="guides-relocation.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Relocation Families</a>
+                            <a href="guides-first-time-buyers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">First Time Buyers</a>
+                            <a href="guides-upmovers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors">Upmovers</a>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">About</a>
+                </div>
+
+                <div class="absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <a href="index.html" class="text-3xl md:text-4xl font-serif text-white tracking-tight hover:text-[#97B99D] transition-all block whitespace-nowrap">
+                        Homepathways
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center justify-end space-x-6 xl:space-x-8 pl-12">
+                    <a href="partners.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Trusted Partners</a>
+                    <a href="blog.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Blog</a>
+                    <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:scale-105 transition-all shadow-lg whitespace-nowrap">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="lg:hidden ml-auto">
+                    <button class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--Hero Section-->
+<section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden text-center">
+    <div class="max-w-7xl mx-auto px-6">
+        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Who We Serve: Rightsizing Seniors</span>
+        <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+            Less House. <br> 
+            <span class="italic text-[#97B99D]">More Life.</span>
+        </h1>
+        <p class="text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+            Your home served you well while raising a family. Now, the empty rooms and constant maintenance are an <strong>unworkable struggle</strong>. It's time to trade the <strong>tension</strong> of upkeep for the <strong>absolute joy</strong> of freedom.
+        </p>
+    </div>
+</section>
+
+<section class="py-24 bg-[#0a101e]">
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-[1px] bg-white/10"></div>
+        
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="hidden md:block w-1/2"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] shadow-[0_0_15px_rgba(151,185,157,0.5)] z-10 hidden md:block"></div>
+            <div class="md:w-1/2 md:pl-16">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Stage</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The "Golden" Handcuffs</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    You love your neighborhood, but the stairs are getting steeper and the yard is getting larger. The <strong>tension</strong> between your memories and your current reality is <strong>unavoidable</strong>. You're "house rich" but "time poor."
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="md:w-1/2 md:pr-16 md:text-right">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Opportunity</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">Unlocking the Future</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    The <strong>opportunity</strong> is a <strong>disruptive</strong> shift in lifestyle. By rightsizing now, you unlock the equity to travel, support family, or simplify your daily routine. This isn't "moving down"—it's moving <strong>up</strong> in quality of life.
+                </p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="hidden md:block w-1/2"></div>
+        </div>
+
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="hidden md:block w-1/2"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="md:w-1/2 md:pl-16">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Resolution</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Frictionless Shift</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    Our <strong>resolution</strong> handles the <strong>urgent</strong> logistics of a lifetime's worth of belongings. We coordinate the downsizers, the movers, and the market positioning, ensuring you land in your new home with total peace of mind.
+                </p>
+            </div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="md:w-1/2 md:pr-16 md:text-right">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Yes</span>
+                <h3 class="text-3xl font-bold text-white mb-4 uppercase tracking-widest">Absolute Joy</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    Are you ready to say yes to a new chapter defined by freedom rather than chores? Let’s reach the <strong>absolute joy</strong> of a rightsized life in the Lower Mainland.
+                </p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="hidden md:block w-1/2"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#050b1a] border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-serif text-white mb-16">Secure Your <span class="italic text-[#97B99D]">Lifestyle Milestone.</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="bg-[#0a101e]/50 border border-white/5 p-12 rounded-[2.5rem] flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Equity Assessment (Believe)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Wondering what your transition looks like financially? Our custom report calculates your net equity and maps out your buying power for a smaller, modern home.
+                    </p>
+                </div>
+                <a href="assessment.html?type=rightsizing" class="w-full bg-white/5 text-white border border-white/10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#97B99D] hover:text-[#050b1a] transition-all text-center">
+                    (ACT) START MY ASSESSMENT
+                </a>
+            </div>
+
+            <div class="bg-[#0a101e]/50 border border-white/5 p-12 rounded-[2.5rem] flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
+                <div>
+                    <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-6">Transition Strategy (Care)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Let's discuss the <strong>outcome of the outcome</strong>—a lifestyle of travel, family, and freedom. We handle the 2026 market logistics while you plan your next trip.
+                    </p>
+                </div>
+                <a href="#contact" class="w-full bg-[#97B99D] text-[#050b1a] py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all text-center shadow-lg">
+                    (ACT) BOOK A STRATEGY CALL
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#0a101e] border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl font-serif text-white mb-12 text-center">Rightsizing <span class="italic text-[#97B99D]">Intelligence</span></h2>
+        <div class="space-y-2 mb-20" id="faq-container">
+            </div>
+
+        <div class="mt-16 bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl text-center group">
+            <h3 class="text-2xl md:text-3xl font-serif text-white mb-4 italic text-[#97B99D]">Trade Up to Freedom.</h3>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+                The unworkable struggle of maintaining a large home ends here. Let’s create your managed pathway to a rightsized lifestyle.
+            </p>
+            <a href="assessment.html?type=rightsizing" class="inline-block bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
+                (ACT) GET YOUR RIGHTSizing ROADMAP
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!--FAQ + CTA Section-->
+<script>
+    const rightsizingFaqs = [
+        { q: "Is 'rightsizing' just a fancy word for downsizing?", a: "No. Downsizing is about getting rid of things. Rightsizing is about choosing a home that matches your current lifestyle and future goals, ensuring your space works for you, not against you." },
+        { q: "How do we handle 30+ years of belongings?", a: "We coordinate with professional senior move managers and 'decluttering' specialists. They help you curate what you love and handle the logistics of donations or sales, making the move effortless." },
+        { q: "What are the best neighborhoods for rightsizing in the Tri-Cities?", a: "Port Moody's Inlet District and Coquitlam's City Centre are top choices. They offer high-end strata living with walkability to shops, transit, and parks like Lafarge Lake." },
+        { q: "Should we buy our new home before selling the family house in 2026?", a: "In the 2026 BC market, we typically recommend a 'Subject to Sale' approach or leveraging your equity for a bridge loan. We map out the financial risk-reward for your specific situation." },
+        { q: "What are the strata fees like for modern rightsized homes?", a: "They vary, but we look for buildings with 'Healthy Contingency Reserve Funds.' We review the 2026 strata documents to ensure you aren't hit with unexpected special assessments." },
+        { q: "Can we find a home that still has room for the grandkids to visit?", a: "Absolutely. Many rightsized options include 'plus-den' layouts or guest suites within the building, allowing you to have space when you need it without paying for it every day." },
+        { q: "What is the BC Home Owner Grant for seniors in 2026?", a: "Seniors aged 65+ typically qualify for a higher grant amount, which significantly reduces your annual property taxes. We ensure your filings are correct upon move-in." },
+        { q: "Is now a good time to sell a larger family home in the Fraser Valley?", a: "With inventory levels shifting in 2026, detached family homes remain in high demand. It is a strategic time to harvest your equity and move into a high-efficiency condo or townhouse." },
+        { q: "How do we manage the emotional side of leaving a family home?", a: "We recognize this is a major life transition. We provide a patient, zero-pressure environment where your memories are respected and the move happens at your pace." },
+        { q: "What is 'Universal Design' and why does it matter?", a: "It's design that is accessible for everyone (wider doorways, no-step entries). We prioritize finding homes with these features so you never have to move again." },
+        { q: "How do we protect our equity during the move?", a: "We use a 'Total Equity Protection' strategy, balancing your selling price with a negotiated purchase to ensure you have a significant cash reserve left over for your retirement." },
+        { q: "Why choose Homepathways for rightsizing?", a: "Because we aren't just selling a house. We are managing a life transition. We solve the logistics, the emotional hurdles, and the financial strategy so you can find your absolute joy." }
+    ];
+
+    document.getElementById('faq-container').innerHTML = rightsizingFaqs.map(faq => `
+        <div class="border-b border-white/10 group">
+            <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
+                <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">${faq.a}</div>
+        </div>
+    `).join('');
+</script>
+
+<!--Footer Section-->
+</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const docElement = document.documentElement;
+            function setThemeIcon() { if (docElement.classList.contains('dark')) { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); } else { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); } }
+            setThemeIcon();
+            themeToggleButton.addEventListener('click', function() { if (docElement.classList.contains('dark')) { docElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); } else { docElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); } setThemeIcon(); });
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openMenuBtn = document.getElementById('mobile-menu-open-btn');
+            const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
+            openMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+            closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
+        });
+    </script>
+
+    <!--Footer-->
+    <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    // Open Menu
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Stops the background from scrolling
+    });
+
+    // Close Menu
+    closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Enables scrolling again
+    });
+</script>
+
+<!--Schema-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Sean Omoh - Homepathways",
+  "image": "https://homepathways.ca/images/sean-omoh-portrait.jpg",
+  "url": "https://homepathways.ca",
+  "telephone": "778-386-2334",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1126 Austin Avenue",
+    "addressLocality": "Coquitlam",
+    "addressRegion": "BC",
+    "postalCode": "V3K 3P5",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Vancouver Lower Mainland" },
+    { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+  ],
+  "memberOf": [
+    { "@type": "Organization", "name": "BC Real Estate Association (BCREA)" },
+    { "@type": "Organization", "name": "Real Estate Board of Greater Vancouver" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Seniors Rightsizing Transition",
+  "provider": { "@type": "RealEstateAgent", "name": "Sean Omoh - Homepathways" },
+  "areaServed": ["Vancouver Lower Mainland", "Fraser Valley"],
+  "description": "Specialized real estate services for seniors looking to rightsize and transition from family homes to lifestyle residences."
+}
+</script>
+</body>
