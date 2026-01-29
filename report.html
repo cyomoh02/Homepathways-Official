@@ -3,108 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Roadmap | HomePathways</title>
+    <title>Your Custom Roadmap | Homepathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
+        .font-serif { font-family: 'DM+Serif+Display', serif; }
+        .animate-reveal { animation: reveal 1s ease-out forwards; }
+        @keyframes reveal { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        
+        .loader-ring {
+            border: 4px solid rgba(151, 185, 157, 0.1);
+            border-top: 4px solid #97B99D;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
 </head>
-<body class="bg-[#050b1a] text-gray-200 p-6 md:p-12 font-sans antialiased">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold text-white mb-4 uppercase tracking-tighter">Your Strategic Analysis</h1>
-        <p class="text-amber-400 mb-12 text-lg italic">"You did a great job today. Here is your path forward."</p>
+<body class="flex flex-col items-center justify-center min-h-screen px-6 py-20">
 
-        <div id="grid" class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16"></div>
+    <div id="loading-state" class="text-center w-full max-w-lg">
+        <div class="loader-ring mx-auto mb-10"></div>
+        <h2 class="text-white font-serif text-4xl mb-6">Analyzing Your Answers...</h2>
+        <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mb-6">
+            <div id="loading-bar" class="bg-[#97B99D] h-full transition-all duration-[30000ms] ease-linear" style="width: 0%"></div>
+        </div>
+        <p id="loading-status" class="text-gray-500 text-[10px] uppercase tracking-[0.4em] font-bold italic animate-pulse">Scanning BC 2026 Regulations...</p>
+    </div>
 
-        <div class="bg-slate-900 border border-slate-800 p-10 rounded-[40px] shadow-2xl">
-            <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest border-b border-slate-800 pb-4">Analysis Summary</h2>
-            <div id="summary" class="space-y-8 text-xl leading-relaxed text-slate-300"></div>
-            <div class="mt-16 text-center border-t border-slate-800 pt-10">
-                <a href="booking.html" class="inline-block bg-amber-400 text-black font-bold px-12 py-5 rounded-2xl hover:bg-white transition-all text-lg shadow-xl shadow-amber-400/20">Book a Roadmap Strategic Call</a>
+    <div id="report-content" class="hidden w-full max-w-5xl animate-reveal">
+        <div class="text-center mb-20">
+            <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Confidential Analysis for <span id="display-name"></span></span>
+            <h1 class="text-5xl md:text-8xl font-serif text-white leading-none">Your <span class="italic text-[#97B99D]">Pathway</span> Analysis</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+            <div class="flex flex-col items-center">
+                <div id="grade-1" class="w-44 h-44 rounded-full border-[12px] border-[#97B99D] flex items-center justify-center text-white font-serif text-6xl mb-6 shadow-[0_0_40px_rgba(151,185,157,0.15)]"></div>
+                <span class="text-[#97B99D] uppercase tracking-[0.3em] text-[10px] font-black">Foundation</span>
             </div>
+            <div class="flex flex-col items-center">
+                <div id="grade-2" class="w-44 h-44 rounded-full border-[12px] border-white/10 flex items-center justify-center text-white font-serif text-6xl mb-6"></div>
+                <span class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-black">Readiness</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div id="grade-3" class="w-44 h-44 rounded-full border-[12px] border-[#97B99D]/30 flex items-center justify-center text-white font-serif text-6xl mb-6"></div>
+                <span class="text-[#97B99D]/50 uppercase tracking-[0.3em] text-[10px] font-black">Action Tier</span>
+            </div>
+        </div>
+
+        <div class="bg-[#0a101e] border border-white/5 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#97B99D]/5 blur-[120px]"></div>
+            <div class="space-y-16 relative z-10">
+                <div>
+                    <h3 class="text-[#97B99D] uppercase tracking-[0.3em] text-[10px] font-black mb-6">01 — Your Strength</h3>
+                    <p id="p-strength" class="text-gray-300 font-light text-2xl md:text-3xl leading-snug italic"></p>
+                </div>
+                <div class="w-full h-[1px] bg-white/5"></div>
+                <div>
+                    <h3 class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-black mb-6">02 — Your Current Reality</h3>
+                    <p id="p-reality" class="text-gray-300 font-light text-2xl md:text-3xl leading-snug italic"></p>
+                </div>
+                <div class="w-full h-[1px] bg-white/5"></div>
+                <div>
+                    <h3 class="text-[#97B99D] uppercase tracking-[0.3em] text-[10px] font-black mb-6">03 — The Resolution</h3>
+                    <p id="p-resolution" class="text-gray-300 font-light text-2xl md:text-3xl leading-snug italic"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl font-serif text-white mb-6 italic">This Roadmap is just the beginning.</h2>
+            <p class="text-gray-400 font-light text-lg mb-12">The hardest step is the one you take alone. Let's discuss your report and build the outcome of the outcome together.</p>
+            <a href="https://calendly.com/sean-omoh" target="_blank" class="inline-block bg-[#97B99D] text-[#050b1a] px-16 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white hover:scale-110 transition-all shadow-[0_0_50px_rgba(151,185,157,0.3)]">
+                Book My Free Strategy Session
+            </a>
         </div>
     </div>
 
+    
+
     <script>
-        const p = new URLSearchParams(window.location.search);
-const pillars = ['Emotional Why', 'Cost of Inaction', 'Logical Foundation', 'Identity', 'Future Self'];
-const grid = document.getElementById('grid');
+        const params = new URLSearchParams(window.location.search);
+        const userName = params.get('name') || 'Friend';
+        const score = parseInt(params.get('score')) || 10;
+        const persona = params.get('persona') || 'probate';
 
-// Pillar Data with 5 Variations Each (5th Grade English)
-const variations = {
-    'Emotional Why': [
-        "You are feeling a bit lost with your 'Why.' That's okay! Many people feel this way. We just need to help you find your 'Happy Place' compass.",
-        "Your heart knows something needs to change. You are starting to see the path, but it's still a little foggy. We can help clear the air!",
-        "You are doing a good job! You know what you want, but sometimes you feel like a guest in your own life. Let's work on making you the boss.",
-        "You have a very strong heart! You know exactly why you want to move. This is a great superpower to have. It will keep you excited.",
-        "You are a superstar! You have the clearest vision ever. Your 'Why' is so strong that nothing can stop you. You are 100% ready!"
-    ],
-    'Cost of Inaction': [
-        "Right now, waiting feels safe, but it's actually like a leaky bucket. We want to help you plug the holes before you lose too much money or time.",
-        "You are starting to notice that staying put has a cost. It's like wearing shoes that are too small. It hurts a little now, but we can find a better fit!",
-        "You are being very brave! You see that time is moving fast. You're ready to stop giving your energy to the past and start giving it to your future.",
-        "You are very smart! You know that lost time is something you can't buy back. You see the open door and you are ready to walk through it.",
-        "You are a master of time! You know exactly what waiting costs you. You are moving with the speed and power of a rocket ship. Let's go!"
-    ],
-    'Logical Foundation': [
-        "The math and the rules feel like a giant puzzle right now. Don't worry! We are going to help you put the pieces together one by one.",
-        "You have a few Lego blocks ready, but the tower is a bit wobbly. We just need to make the bottom part extra strong so you feel safe.",
-        "You are doing great! Your plan is coming together nicely. A few more small tweaks and you will have a rock-solid foundation for your move.",
-        "Your logical brain is working hard! You have a great plan and the math looks very good. You are very prepared for this journey.",
-        "You are a math genius! Your foundation is as strong as a castle. You have thought of everything and are ready for any surprise."
-    ],
-    'Identity': [
-        "Sometimes you feel like you are 'playing small.' We want to help you find a home that fits the big, amazing person you really are!",
-        "You are growing fast, but your house is still a little bit behind. It's time to find a home that matches your new success and your new life.",
-        "You should be proud! You've come a long way. Now we just need to make sure your front door says 'I made it!' to the whole world.",
-        "You have a lot of confidence! You know your home should be a win for your family brand. You are almost at the top of the mountain.",
-        "You are at the top! Your home is a perfect mirror of your success. You don't make excuses; you make moves! You are a leader."
-    ],
-    'Future Self': [
-        "Thinking about 5 years from now feels like looking at the stars. It's pretty, but far away. Let's bring those dreams down to earth together.",
-        "You have some pretty dreams, but they need a map. We can help you draw the lines so you know exactly where you are going to land.",
-        "You are a dreamer in the best way! You can already see the coffee on the patio and the happy family. Let's make that vision real.",
-        "Your future looks very bright! You have a clear picture of your destination. You are already halfway there. Just a few more steps!",
-        "You are a time traveler! You can already feel the keys in your hand. Your future self is already saying 'Thank You!' for being so wise today."
-    ]
-};
+        window.onload = () => {
+            document.getElementById('display-name').innerText = userName;
+            document.getElementById('loading-bar').style.width = '100%';
+            
+            const statuses = ["Analyzing Inventory...", "Checking Tax Laws...", "Mapping Equity...", "Finalizing Resolution..."];
+            let i = 0;
+            const interval = setInterval(() => {
+                document.getElementById('loading-status').innerText = statuses[i];
+                i = (i + 1) % statuses.length;
+            }, 7000);
 
-pillars.forEach((n, i) => {
-    const s = parseInt(p.get(`c${i+1}`)) || 10;
-    const pct = (s / 20) * 100;
-    const offset = 251 - (251 * pct / 100);
-    
-    // Determine which variation to show (1-5)
-    const varIdx = Math.min(Math.floor(s / 4.1), 4);
-    const message = variations[n][varIdx];
+            setTimeout(() => {
+                clearInterval(interval);
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('report-content').classList.remove('hidden');
+                buildReport();
+            }, 30000);
+        };
 
-    grid.innerHTML += `
-        <div class="flex flex-col items-center bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-xl">
-            <div class="relative w-24 h-24 mb-4">
-                <svg class="w-full h-full transform -rotate-90">
-                    <circle cx="48" cy="48" r="40" stroke="#1e293b" stroke-width="8" fill="transparent" />
-                    <circle cx="48" cy="48" r="40" stroke="#fbbf24" stroke-width="8" fill="transparent" 
-                        stroke-dasharray="251" stroke-dashoffset="${offset}" stroke-linecap="round" />
-                </svg>
-                <span class="absolute inset-0 flex items-center justify-center font-bold text-white text-sm">${Math.round(pct)}%</span>
-            </div>
-            <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest text-center mb-4">${n}</p>
-            <p class="text-xs text-slate-400 text-center leading-relaxed italic">${message}</p>
-        </div>`;
-});
+        function buildReport() {
+            // 10 UNIQUE TIERS OF CONTENT
+            const matrix = [
+                /* 0-2 Points */ {g: ["C-", "C", "C+"], s: "Your honesty is your anchor. You've admitted that things are heavy, which is the only way to begin lightening the load.", r: "You are currently in a state of 'Survival Mode.' Every decision feels like a mountain because you are carrying the weight of the entire transition alone.", res: "We need to clear the path immediately. My first step for you is a Total Logistics Hand-off—we take the weight so you can find your breath again."},
+                /* 3-4 Points */ {g: ["C", "C+", "B-"], s: "You have a deep respect for the legacy you are handling. This care will be the compass that guides us through the fog.", r: "The fog is thick right now. You have more questions than answers, and the 2026 market feels like a moving target that you can't quite hit.", res: "We will start with a Clarity Audit. We'll list every hurdle and solve them one by one, turning the unworkable into a series of small, easy wins."},
+                /* 5-6 Points */ {g: ["C+", "B-", "B"], s: "You are starting to see the edges of the map. Your strength is your awareness that 'doing nothing' is no longer an option.", r: "You are feeling the 'Tension of the Unknown.' You know a move is coming, but the fear of making a wrong turn is keeping you stationary.", res: "Let’s build a Defensible Strategy. We’ll look at the data for your specific neighborhood to prove exactly what your next best move is, removing the guesswork."},
+                /* 7-8 Points */ {g: ["B-", "B", "B+"], s: "You have a solid foundation of information. You’ve done your research, and that puts you ahead of 70% of the people in your situation.", r: "You are stuck in the 'Research Loop.' You have the facts, but the bridge between knowing and doing feels fragile and high-risk.", res: "It’s time to move from research to action. We will coordinate a 'Soft Launch' for your transition, handling the messy parts while you maintain full control."},
+                /* 9-11 Points */ {g: ["B", "B+", "A-"], s: "Your biggest strength is your momentum. You are moving forward, and you have a clear vision of what 'Absolute Joy' looks like for you.", r: "The 'Logistical Gap' is your current reality. You have the goal in sight, but the 21 steps required to get there are starting to overlap and confuse the process.", res: "We provide the Synchronization. We’ll align your sale, your purchase, and your legal needs into one smooth timeline that protects your equity at every turn."},
+                /* 12-13 Points */ {g: ["B+", "A-", "A"], s: "You are exceptionally well-prepared. Your strength is your ability to see this transition as a strategic milestone rather than just a move.", r: "You are facing 'Execution Friction.' You have the plan, but finding the right partners in the 2026 market to execute it perfectly is the current struggle.", res: "We introduce you to the Inner Circle. We connect you with the specific experts who handle high-level transitions, ensuring every detail is polished and premium."},
+                /* 14-15 Points */ {g: ["A-", "A", "A"], s: "You have a rare level of clarity. Your strength is your decisiveness—you know what you want and you are ready to claim it.", r: "The current reality is 'Optimization.' You are doing well, but there is still room to protect more of your equity and save more of your time.", res: "We will perform an Equity Guard analysis. We’ll find the hidden fees and tax breaks that 2026 offers to ensure your transition is as profitable as it is peaceful."},
+                /* 16-17 Points */ {g: ["A", "A", "A+"], s: "Your preparation is a benchmark for others. You have protected the legacy and the logistics with incredible foresight.", r: "You are in the 'Final Polish' stage. The reality is that you are almost there, but the last 5% of a move is often where the most stress hides.", res: "We provide the White-Glove Finish. We handle the final hand-overs and legal filings so your move-in day feels like a celebration, not a chore."},
+                /* 18-19 Points */ {g: ["A", "A+", "A+"], s: "You are a 'Pathway Master.' Your strength is the total alignment between your goals, your family, and your finances.", r: "Your reality is 'The Outcome of the Outcome.' You are already looking past the move and into your new life, which is exactly where you should be.", res: "We ensure the landing is perfect. We manage the final 2026 regional filings and neighborhood integrations so you can start living your new life on day one."},
+                /* 20-21 Points */ {g: ["A+", "A+", "A+"], s: "Your strength is your Vision. You have navigated the unworkable toughness of this process with absolute grace and strategy.", r: "You have reached 'Absolute Joy.' The reality is that you have successfully managed a life-changing transition with total authority.", res: "Our role now is simply to be your lifelong partner. We’ll finalize the documents and celebrate your new milestone. You have arrived."}
+            ];
 
-// Overall Summary (5th Grade Logic)
-const scores = [parseInt(p.get('c1')), parseInt(p.get('c2')), parseInt(p.get('c3')), parseInt(p.get('c4')), parseInt(p.get('c5'))];
-const highIdx = scores.indexOf(Math.max(...scores));
-const lowIdx = scores.indexOf(Math.min(...scores));
+            // Select the tier based on score
+            let tierIdx = Math.floor(score / 2.2); 
+            if (tierIdx > 9) tierIdx = 9;
+            const tier = matrix[tierIdx];
 
-document.getElementById('summary').innerHTML = `
-    <p><strong>You did a great job!</strong> Just by finishing this, you are already ahead of most people. You took the time to think about your future, and that is a very smart thing to do. You should be very proud of yourself for being brave enough to ask these big questions!</p>
-    
-    <p><strong>Where you are strong:</strong> You are really good at the "${pillars[highIdx]}" part of your move. This means you have a very clear picture in your head of what you want. This is your "superpower"—it will help you stay excited even when things get busy!</p>
-    
-    <p><strong>What we can work on:</strong> Sometimes, the "${pillars[lowIdx]}" stuff can feel a bit scary or confusing. That is totally okay! Right now, your heart is ready to move, but your brain just needs a little more help with the plan. It's like building a big Lego castle—we just need to make sure the bottom blocks are extra strong before we start building the towers.</p>
-    
-    <p><strong>The Next Step:</strong> You are ready to stop guessing and start knowing for sure. Don't worry about knowing everything today. My job is to help you put the pieces together so you can move forward without any stress. Let's look at your roadmap together!</p>
-`;
+            // Populate Grades
+            document.getElementById('grade-1').innerText = tier.g[0];
+            document.getElementById('grade-2').innerText = tier.g[1];
+            document.getElementById('grade-3').innerText = tier.g[2];
+
+            // Populate Text
+            document.getElementById('p-strength').innerText = tier.s;
+            document.getElementById('p-reality').innerText = tier.r;
+            document.getElementById('p-resolution').innerText = tier.res;
+        }
     </script>
+
+    </footer>
+<!--Footer Section-->
+<footer class="bg-[#050b1a] border-t border-white/5 pt-20 pb-10" itemscope itemtype="http://schema.org/RealEstateAgent">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
+            
+            <div class="lg:col-span-1">
+                <a href="index.html" class="text-3xl font-serif font-bold text-white tracking-tight mb-6 block">
+                    Homepathways
+                </a>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    Guided by clarity, comfort, and care. Mapping out pathways for every stage of your home ownership journey.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="text-gray-500 hover:text-[#97B99D] transition-colors"><span class="sr-only">LinkedIn</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-[#97B99D] transition-colors"><span class="sr-only">Instagram</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.621.074-3.136.438-4.312 1.614-1.176 1.176-1.54 2.691-1.614 4.312-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.074 1.621.438 3.136 1.614 4.312 1.176 1.176 2.691 1.54 4.312 1.614 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.621-.074 3.136-.438 4.312-1.614 1.176-1.176 1.54-2.691 1.614-4.312.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.074-1.621-.438-3.136-1.614-4.312-1.176-1.176-2.691-1.54-4.312-1.614-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-[#97B99D] transition-colors"><span class="sr-only">Facebook</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-[#97B99D] transition-colors"><span class="sr-only">Pinterest</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.967 7.398 6.93 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.033-1.002 2.324-1.492 3.12 1.12.345 2.301.531 3.527.531 6.622 0 11.988-5.365 11.988-11.987C23.991 5.367 18.63 0 12.017 0z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-[#97B99D] transition-colors"><span class="sr-only">YouTube</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-[11px] mb-8">Navigation</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">About Sean</a></li>
+                    <li><a href="process.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">The Process</a></li>
+                    <li><a href="assessments.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Assessments</a></li>
+                    <li><a href="insights.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Insights</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-[11px] mb-8">Pathways</h4>
+                <ul class="space-y-4">
+                    <li><a href="assessment.html?type=probate" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Probate Support</a></li>
+                    <li><a href="assessment.html?type=rightsizing" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Retiring Rightsizer</a></li>
+                    <li><a href="assessment.html?type=aging" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Aging In Place</a></li>
+                    <li><a href="assessment.html?type=first-buyer" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">First-Time Buyers</a></li>
+                    <li><a href="assessment.html?type=up-mover" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Up-Mover</a></li>
+                    <li><a href="assessment.html?type=relocator" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Relocating Families</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-[11px] mb-8">Resources</h4>
+                <ul class="space-y-4">
+                    <li><a href="partners.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Trusted Partners</a></li>
+                    <li><a href="guides-buying.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Home Buying Guide</a></li>
+                    <li><a href="guides-selling.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Home Selling Guide</a></li>
+                    <li><a href="guides-relocation.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Relocation Guide</a></li>
+                    <li><a href="guides-rightsizing.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Rightsizing Guide</a></li>
+                    <li><a href="guides-aging.html" class="text-gray-400 text-sm hover:text-[#97B99D] transition-colors">Aging In Place Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-1">
+                <h4 class="text-white font-bold uppercase tracking-widest text-[11px] mb-8">Connect</h4>
+                <div class="text-gray-400 text-sm font-light space-y-1 mb-8">
+                    <p class="text-white font-bold" itemprop="name">Sean Omoh - Homepathways</p>
+                    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <p itemprop="streetAddress">1126 Austin Avenue</p>
+                        <p><span itemprop="addressLocality">Coquitlam</span>, <span itemprop="addressRegion">BC</span> <span itemprop="postalCode">V3K 3P5</span></p>
+                    </div>
+                    <p itemprop="telephone" class="pt-2">778-386-2334</p>
+                </div>
+
+                <p class="text-white text-sm mb-4 font-serif italic">Ready to begin? Let's map out your next move.</p>
+                <a href="#contact" class="inline-block w-full bg-[#97B99D] text-[#050b1a] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all text-center mb-10 shadow-lg transform hover:scale-105">
+                    Book a Call
+                </a>
+
+                <p class="text-gray-300 text-[12px] mb-4">Get curated insights and market updates directly to your inbox.</p>
+                <form class="flex overflow-hidden rounded-lg border border-slate-600 bg-slate-900/50">
+                    <input type="email" placeholder="Email Address" class="bg-transparent px-4 py-3 text-sm text-white w-full focus:outline-none placeholder:text-gray-400 font-medium">
+                    <button type="submit" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 font-bold text-sm hover:bg-white transition-all whitespace-nowrap">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">
+                &copy; 2026 Homepathways. All rights reserved.
+            </p>
+            <div class="flex gap-8">
+                <a href="#" class="text-gray-500 text-[10px] uppercase tracking-widest hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-500 text-[10px] uppercase tracking-widest hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const docElement = document.documentElement;
+            function setThemeIcon() { if (docElement.classList.contains('dark')) { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); } else { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); } }
+            setThemeIcon();
+            themeToggleButton.addEventListener('click', function() { if (docElement.classList.contains('dark')) { docElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); } else { docElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); } setThemeIcon(); });
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openMenuBtn = document.getElementById('mobile-menu-open-btn');
+            const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
+            openMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+            closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
+        });
+    </script>
+
+    <!--Footer-->
+    <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    // Open Menu
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Stops the background from scrolling
+    });
+
+    // Close Menu
+    closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Enables scrolling again
+    });
+</script>
+
 
     <!--Schema-->
 <script type="application/ld+json">
@@ -133,5 +301,22 @@ document.getElementById('summary').innerHTML = `
   ]
 }
 </script>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Personal Transition Report - Homepathways",
+      "description": "Custom real estate transition roadmap and analysis based on personal audit results.",
+      "relatedService": {
+        "@type": "Service",
+        "serviceType": "Real Estate Strategy",
+        "provider": {
+          "@type": "RealEstateAgent",
+          "name": "Sean Omoh - Homepathways"
+        }
+      }
+    }
+    </script>
 </body>
 </html>
