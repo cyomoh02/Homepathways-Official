@@ -7,24 +7,53 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; }
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
         .font-serif { font-family: 'DM+Serif+Display', serif; }
         .animate-reveal { animation: reveal 0.8s cubic-bezier(0, 0, 0.2, 1) forwards; }
         @keyframes reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
 <body>
 
-    <section class="relative pt-32 pb-12 text-center">
-        <div class="max-w-4xl mx-auto px-6">
+    <header>
+        <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-8">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center justify-between relative h-10">
+                    <div class="hidden lg:flex items-center space-x-8 w-1/3">
+                        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Home</a>
+                        <div class="relative group">
+                            <button class="text-[10px] font-bold uppercase tracking-[0.3em] text-white flex items-center">Who We Serve</button>
+                            <div class="absolute top-full left-0 w-64 bg-[#0a101e] border border-white/10 mt-6 py-4 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                <a href="serve-probate.html" class="block px-6 py-2 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest">Probate</a>
+                                <a href="serve-rightsizing.html" class="block px-6 py-2 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest">Rightsizing</a>
+                                <a href="serve-aging.html" class="block px-6 py-2 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest">Aging in Place</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">About</a>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
+                        <a href="index.html" class="text-3xl md:text-4xl font-serif text-white tracking-tight block whitespace-nowrap">Homepathways</a>
+                    </div>
+                    <div class="hidden lg:flex items-center justify-end space-x-8 w-1/3">
+                        <a href="partners.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Partners</a>
+                        <a href="blog.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Blog</a>
+                        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="relative pt-48 pb-12 text-center">
+        <div class="max-w-6xl mx-auto px-6">
             <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">The Readiness Audit</span>
-            <h1 class="text-4xl md:text-6xl font-serif text-white mb-8">Your Path is <span class="italic text-[#97B99D]">Unique.</span></h1>
+            <h1 class="text-6xl md:text-[9rem] font-serif text-white mb-8 leading-none animate-reveal">Your Path is <br><span class="italic text-[#97B99D]">Unique.</span></h1>
             
-            <div class="text-gray-400 font-light text-lg md:text-xl leading-relaxed max-w-2xl mx-auto space-y-6 mb-16 animate-reveal">
+            <div id="hero-copy" class="text-gray-400 font-light text-lg md:text-xl leading-relaxed max-w-2xl mx-auto space-y-6 mb-16 animate-reveal">
                 <p>Transitioning is hard. Guessing is harder.</p>
-                <p>Most families feel stuck because they don't know where they are on the map. They worry about making a move that they can't take back.</p>
-                <p>This 2-minute audit removes the fog. It looks at your safety, your money, and your heart to give you a clear look at your next move.</p>
-                <p class="text-white font-medium italic border-t border-white/5 pt-6">Choose the card below that feels most like you to begin.</p>
+                <p>Choose the card below that feels most like you to begin your 2-minute roadmap.</p>
             </div>
 
             <div id="progress-container" class="hidden mt-12 w-full bg-white/5 h-1.5 rounded-full overflow-hidden max-w-md mx-auto">
@@ -33,42 +62,41 @@
         </div>
     </section>
 
-    <section id="persona-selection" class="pb-32">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-reveal">
+    <section id="persona-selection" class="pb-32 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 animate-reveal">
             <div onclick="startAssessment('probate')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Probate Family</h3>
-                <p class="text-gray-500 text-sm">Handling a loved one's home and legal steps.</p>
+                <p class="text-gray-500 text-sm">Managing a loved one's estate home.</p>
             </div>
             <div onclick="startAssessment('rightsizing')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Rightsizing Senior</h3>
-                <p class="text-gray-500 text-sm">Moving to a smaller home for a simpler life.</p>
+                <p class="text-gray-500 text-sm">Trading the house for a simpler life.</p>
             </div>
             <div onclick="startAssessment('aging')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Aging in Place</h3>
-                <p class="text-gray-500 text-sm">Staying safe and independent in your own home.</p>
+                <p class="text-gray-500 text-sm">Staying safe and independent at home.</p>
             </div>
             <div onclick="startAssessment('relocation')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Relocation</h3>
-                <p class="text-gray-500 text-sm">Moving to BC from another city or country.</p>
+                <p class="text-gray-500 text-sm">Moving to the BC Lower Mainland.</p>
             </div>
             <div onclick="startAssessment('buyer')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">First Time Buyer</h3>
-                <p class="text-gray-500 text-sm">Looking to buy your very first home in BC.</p>
+                <p class="text-gray-500 text-sm">Buying your very first BC property.</p>
             </div>
             <div onclick="startAssessment('upmover')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
                 <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Upmover</h3>
-                <p class="text-gray-500 text-sm">Trading your current home for more space.</p>
+                <p class="text-gray-500 text-sm">Trading up for more family space.</p>
             </div>
         </div>
     </section>
 
     <section id="question-wrapper" class="hidden pb-32">
         <div class="max-w-2xl mx-auto px-6">
-            <form id="assessment-form" class="bg-[#0a101e] border border-white/10 p-8 md:p-12 rounded-[3rem] shadow-2xl relative">
-                <div id="question-container" class="min-h-[400px] flex flex-col justify-center">
-                    </div>
+            <form id="assessment-form" class="bg-[#0a101e] border border-white/10 p-10 rounded-[3rem] shadow-2xl relative">
+                <div id="question-container" class="min-h-[400px] flex flex-col justify-center"></div>
                 <div class="flex items-center justify-between mt-12 pt-8 border-t border-white/5">
-                    <button type="button" id="prev-btn" class="text-gray-500 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-all">← Back</button>
+                    <button type="button" id="prev-btn" class="text-gray-500 hover:text-white text-[10px] font-bold uppercase tracking-widest">← Back</button>
                     <div id="step-counter" class="text-[10px] text-[#97B99D] font-bold uppercase tracking-widest">Question 1 of 21</div>
                 </div>
             </form>
@@ -78,56 +106,171 @@
     <script>
         let currentPersona = '';
         let currentStep = 0;
-        let userAnswers = [];
+        let score = 0;
 
-        // 21 Questions for each Persona (Sample set for logic)
         const questionsDB = {
             probate: [
-                { q: "Do you have the legal 'keys' (The Will) to the house?", opts: ["Yes", "I think so", "No, not yet"] },
-                { q: "Is the house currently empty?", opts: ["Yes, it's empty", "No, someone is there", "Just for now"] },
-                { q: "Does the house need a lot of cleaning or repairs?", opts: ["Yes, a lot", "Just a little", "No, it's ready"] },
-                { q: "Are you worried about the taxes for the house?", opts: ["Yes, very much", "A little bit", "No"] },
-                { q: "Is your family agreeing on what to do next?", opts: ["Yes", "Most of us", "No, we are stuck"] },
-                // ... (Logic repeats for 21 total per persona)
+                {q: "Do you have the original Will?", opts: ["Yes", "Not yet", "I don't think so"]},
+                {q: "Is anyone living in the home right now?", opts: ["Yes", "No", "Just visiting"]},
+                {q: "Is there a lot of mail piling up at the door?", opts: ["Yes", "No", "We are checking it"]},
+                {q: "Do you know who the legal owner is today?", opts: ["Yes", "I'm not sure", "It's complicated"]},
+                {q: "Are the property taxes up to date?", opts: ["Yes", "No", "I don't know"]},
+                {q: "Does the house smell like it's been closed for a while?", opts: ["Yes", "No", "A little bit"]},
+                {q: "Are you the person making all the choices?", opts: ["Yes", "I'm helping", "No"]},
+                {q: "Are other family members upset about the house?", opts: ["Yes", "A little", "No, we are okay"]},
+                {q: "Is the grass being cut and yard kept clean?", opts: ["Yes", "No", "Sometimes"]},
+                {q: "Do you have a lawyer helping you with BC law?", opts: ["Yes", "Not yet", "I'm looking"]},
+                {q: "Do you know what the house is worth in 2026?", opts: ["Yes", "Just a guess", "No idea"]},
+                {q: "Are you worried about people breaking in?", opts: ["Yes", "A little", "No"]},
+                {q: "Is the heater and water turned on?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Does the house have old furniture inside?", opts: ["It's full", "A little bit", "It's empty"]},
+                {q: "Do you need help finding a safe place for valuables?", opts: ["Yes, please", "No, I'm okay", "Maybe"]},
+                {q: "Are you ready to sell the home this year?", opts: ["Yes", "Maybe", "Not yet"]},
+                {q: "Do you have a storage unit ready?", opts: ["Yes", "No", "I don't need one"]},
+                {q: "Do you live near the house?", opts: ["Yes", "No, I'm far away", "I'm in the same city"]},
+                {q: "Are you worried about probate taxes?", opts: ["Yes", "A little", "No"]},
+                {q: "Is this the first time you've done this?", opts: ["Yes", "No"]},
+                {q: "Do you want someone to handle the heavy work?", opts: ["Yes, please", "Just some of it", "No"]}
             ],
             rightsizing: [
-                { q: "Do you find the stairs hard to use lately?", opts: ["Yes", "Sometimes", "No, I'm okay"] },
-                { q: "Is there a lot of space you don't use anymore?", opts: ["Yes, many rooms", "One or two", "No"] },
-                { q: "Do you feel like your house is 'too much work'?", opts: ["Yes, every day", "On some days", "No, I love it"] },
-                { q: "Would you like to move somewhere smaller?", opts: ["Yes, please", "Maybe", "Not yet"] },
-                // ... (Logic repeats for 21 total)
+                {q: "Do you have rooms you haven't used in months?", opts: ["Yes, many", "One or two", "No"]},
+                {q: "Is it hard to keep the house clean lately?", opts: ["Yes", "Sometimes", "No, it's easy"]},
+                {q: "Do the stairs feel like a lot of work?", opts: ["Yes", "On some days", "No, I'm okay"]},
+                {q: "Do you worry about falling when you are home alone?", opts: ["Yes", "Sometimes", "No"]},
+                {q: "Would you rather be traveling than doing yard work?", opts: ["Yes, definitely", "Maybe", "No"]},
+                {q: "Does the house feel too quiet?", opts: ["Yes", "No, I like it", "Sometimes"]},
+                {q: "Are you worried about the cost of fixing an old house?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you have a lot of things you don't use anymore?", opts: ["A lifetime of things", "A little bit", "No"]},
+                {q: "Would you like to live closer to shops or family?", opts: ["Yes", "I'm okay here", "Maybe"]},
+                {q: "Is your family asking you to move to a smaller place?", opts: ["Yes", "They mention it", "No"]},
+                {q: "Do you know how much money you'd have after selling?", opts: ["Yes", "I have a guess", "No idea"]},
+                {q: "Are you scared of moving to a new place?", opts: ["Yes", "A little", "No, I'm excited"]},
+                {q: "Do you have help to sort through your things?", opts: ["No, I need help", "I have a little help", "Yes"]},
+                {q: "Would you like a home with no stairs at all?", opts: ["Yes, please", "I don't mind a few", "No"]},
+                {q: "Are you tired of paying high heat and light bills?", opts: ["Yes", "No", "I haven't noticed"]},
+                {q: "Do you want a home that is brand new?", opts: ["Yes", "I like old homes", "Doesn't matter"]},
+                {q: "Are you ready to make a move this year?", opts: ["Yes", "Maybe", "Not yet"]},
+                {q: "Do you have a friend who has rightsized already?", opts: ["Yes", "No"]},
+                {q: "Do you want to stay in the same neighborhood?", opts: ["Yes", "No", "I'm open to new areas"]},
+                {q: "Are you house rich but cash poor?", opts: ["Yes", "No", "A little bit"]},
+                {q: "Do you want a professional to guide you?", opts: ["Yes, please", "Just some help", "No"]}
+            ],
+            aging: [
+                {q: "Is your bathroom easy to use safely?", opts: ["Yes", "No", "I need a better tub/shower"]},
+                {q: "Are the doorways wide enough for a walker?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Is your bedroom on the main floor?", opts: ["Yes", "No", "I use the stairs"]},
+                {q: "Is there good lighting in the hallways?", opts: ["Yes", "No, it's dark", "Could be better"]},
+                {q: "Can you reach your kitchen cabinets easily?", opts: ["Yes", "No", "Some are too high"]},
+                {q: "Do you have grab bars in the bathroom?", opts: ["Yes", "No, I need them", "I have one"]},
+                {q: "Is your front door easy to get into (no steps)?", opts: ["Yes", "No, there are steps", "I have a ramp"]},
+                {q: "Do you have a way to call for help if you fall?", opts: ["Yes", "No", "My phone is always with me"]},
+                {q: "Are your carpets or rugs slippery?", opts: ["No", "Yes, a little", "I have hardwood"]},
+                {q: "Do you have a friend or family member nearby?", opts: ["Yes", "No", "About 30 mins away"]},
+                {q: "Is your laundry room on the main floor?", opts: ["Yes", "No, it's in the basement", "It's in the garage"]},
+                {q: "Are you worried about being lonely at home?", opts: ["Yes", "No", "Sometimes"]},
+                {q: "Do you have trouble doing basic repairs?", opts: ["Yes", "No", "I hire someone"]},
+                {q: "Is it easy for you to get to the doctor?", opts: ["Yes", "No, I need a ride", "I use the bus"]},
+                {q: "Would you like smart lights that turn on automatically?", opts: ["Yes", "Maybe", "No"]},
+                {q: "Are your smoke alarms working and tested?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Do you want to stay in this home forever?", opts: ["Yes", "I'm not sure", "No"]},
+                {q: "Are you open to having a helper come to the house?", opts: ["Yes", "Maybe", "No"]},
+                {q: "Do you have a clear plan for your future care?", opts: ["Yes", "No", "Starting to plan"]},
+                {q: "Are you overwhelmed by all these choices?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you want a 'Longevity Audit' of your home?", opts: ["Yes, please", "Maybe later", "No"]}
+            ],
+            relocation: [
+                {q: "Do you have a job waiting for you in BC?", opts: ["Yes", "No", "I work for myself"]},
+                {q: "Do you have children who need to start school?", opts: ["Yes", "No"]},
+                {q: "How many times have you visited the Lower Mainland?", opts: ["Many times", "Once or twice", "Never"]},
+                {q: "Are you worried about BC's housing prices?", opts: ["Yes, a lot", "A little", "No"]},
+                {q: "Do you need to sell a home in another city first?", opts: ["Yes", "No", "It's already sold"]},
+                {q: "How are you planning to move your things?", opts: ["Moving truck", "Shipping container", "I'm starting fresh"]},
+                {q: "Do you want to live near a SkyTrain station?", opts: ["Yes, definitely", "Maybe", "No, I'll drive"]},
+                {q: "Are you moving for the weather and nature?", opts: ["Yes", "No, for work", "Both"]},
+                {q: "Do you know about the 2026 BC tax rules?", opts: ["Yes", "No", "I've heard a little"]},
+                {q: "Are you coming from outside of Canada?", opts: ["Yes", "No, from another province"]},
+                {q: "Do you need to see homes through video calls?", opts: ["Yes, please", "No, I'll fly in", "Maybe"]},
+                {q: "Do you have a pet that is moving with you?", opts: ["Yes", "No"]},
+                {q: "What is your biggest worry about moving?", opts: ["The cost", "The schools", "Finding the right house"]},
+                {q: "Are you looking for a house or a condo?", opts: ["House", "Condo", "Townhouse"]},
+                {q: "Do you know which city in the Valley is best for you?", opts: ["Yes", "No, I need advice", "I'm looking at two"]},
+                {q: "Are you ready to buy in the next 3 months?", opts: ["Yes", "In 6 months", "Just looking"]},
+                {q: "Do you need help finding a local doctor or dentist?", opts: ["Yes", "No", "Maybe later"]},
+                {q: "Is your move because of a life change (like retirement)?", opts: ["Yes", "No, just for a change", "Work move"]},
+                {q: "Have you talked to a BC bank yet?", opts: ["Yes", "Not yet", "I'm using my current bank"]},
+                {q: "Do you feel like you are 'guessing' from far away?", opts: ["Yes, totally", "A little bit", "No, I'm researched"]},
+                {q: "Do you want 'Local Eyes' to find the truth for you?", opts: ["Yes, please", "Maybe", "No"]}
+            ],
+            buyer: [
+                {q: "Have you been saving for a deposit for over a year?", opts: ["Yes", "No, just started", "I have it ready"]},
+                {q: "Are you tired of paying rent every month?", opts: ["Yes, very tired", "It's okay for now", "No"]},
+                {q: "Do you have a steady job you've had for a while?", opts: ["Yes, over 2 years", "Less than 2 years", "I'm new there"]},
+                {q: "Are you scared that prices will go up if you wait?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you know what a 'Strata Fee' is?", opts: ["Yes", "No", "I've heard of it"]},
+                {q: "Are you looking for a home in the Fraser Valley?", opts: ["Yes", "Maybe", "No, Lower Mainland"]},
+                {q: "Do you have a pre-approved mortgage?", opts: ["Yes", "Not yet", "I'm going to do that soon"]},
+                {q: "Are you worried about interest rates?", opts: ["Yes, a lot", "A little", "No"]},
+                {q: "Is your family helping you with the money?", opts: ["Yes", "No", "Maybe a little"]},
+                {q: "Are you okay with living in a condo first?", opts: ["Yes", "No, I want a house", "Townhouse is okay"]},
+                {q: "Do you have any big debts (like a car or school loan)?", opts: ["Yes", "A little", "No, I'm clear"]},
+                {q: "How is your credit score?", opts: ["Very good", "Okay", "I need to check it"]},
+                {q: "Are you ready to stop looking and start buying?", opts: ["Yes, I'm ready", "In a few months", "Just looking"]},
+                {q: "Do you want to live near your work?", opts: ["Yes", "No", "I work from home"]},
+                {q: "Are you worried about the 'hidden costs' of buying?", opts: ["Yes", "No", "What are they?"]},
+                {q: "Do you have a friend who just bought their first home?", opts: ["Yes", "No"]},
+                {q: "Are you looking for a 'fixer-upper'?", opts: ["Yes", "Maybe", "No, move-in ready"]},
+                {q: "Do you know about the BC First Time Buyer grant?", opts: ["Yes", "No", "Tell me more"]},
+                {q: "Are you buying this home with someone else?", opts: ["Yes", "No, on my own"]},
+                {q: "Do you feel like the market is too fast for you?", opts: ["Yes", "Sometimes", "No, I'm ready"]},
+                {q: "Do you want a guide to show you the way?", opts: ["Yes, please", "Maybe", "No"]}
+            ],
+            upmover: [
+                {q: "Do you have enough bedrooms for everyone today?", opts: ["No, we need more", "Yes, but they are small", "Yes"]},
+                {q: "Is there a 'home office' in a closet or kitchen?", opts: ["Yes", "No", "We need one"]},
+                {q: "Do you have toys or boxes taking over the living room?", opts: ["Yes, it's messy", "A little bit", "No"]},
+                {q: "Do you have a lot of equity in your current home?", opts: ["Yes, a lot", "Some", "I'm not sure"]},
+                {q: "Are you worried about selling and buying at the same time?", opts: ["Yes, very worried", "A little", "No"]},
+                {q: "Do you need a bigger yard for kids or pets?", opts: ["Yes, definitely", "No, we like small", "Maybe"]},
+                {q: "Is your current home in a school area you like?", opts: ["Yes", "No", "It's okay"]},
+                {q: "Are you tired of your current neighborhood?", opts: ["Yes", "No, I want to stay near", "A little"]},
+                {q: "Do you want a 'mortgage helper' suite in the next home?", opts: ["Yes, please", "No", "Maybe"]},
+                {q: "Is your current kitchen too small to cook in?", opts: ["Yes", "No", "It's okay"]},
+                {q: "Do you have a 'Subject to Sale' plan?", opts: ["No, what is that?", "Yes", "I've heard of it"]},
+                {q: "Are you ready for a higher mortgage payment?", opts: ["Yes", "No", "Only if I have a suite"]},
+                {q: "Do you know what your current home is worth?", opts: ["Yes", "I have a guess", "No idea"]},
+                {q: "Are you looking at the Fraser Valley for more space?", opts: ["Yes", "Maybe", "No"]},
+                {q: "Do you have a growing family?", opts: ["Yes", "Soon", "No"]},
+                {q: "Is your current home a condo or townhouse?", opts: ["Condo", "Townhouse", "Small House"]},
+                {q: "Do you want a brand new detached home?", opts: ["Yes, please", "I like older ones", "No"]},
+                {q: "Are you worried about interest rates on a larger loan?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you have a garage that is too full of stuff?", opts: ["Yes", "No", "I don't have a garage"]},
+                {q: "Are you ready to move this summer or fall?", opts: ["Yes", "No", "Maybe"]},
+                {q: "Do you want a strategist to time your move?", opts: ["Yes, please", "Maybe", "No"]}
             ]
-            // (Other personas populated with same 5th-grade clarity)
         };
-
-        // Fallback generator for demo (to ensure 21 questions exist for every persona)
-        function getQuestion(persona, step) {
-            const set = questionsDB[persona] || questionsDB['probate'];
-            if (set[step]) return set[step];
-            // Generic 5th-grade clarity questions if specific ones are missing
-            return { q: `Is this move making you feel a bit overwhelmed? (Question ${step + 1})`, opts: ["Yes", "A little", "No"] };
-        }
 
         function startAssessment(persona) {
             currentPersona = persona;
             document.getElementById('persona-selection').classList.add('hidden');
+            document.getElementById('hero-copy').classList.add('hidden');
             document.getElementById('progress-container').classList.remove('hidden');
             document.getElementById('question-wrapper').classList.remove('hidden');
             renderStep();
         }
 
         function renderStep() {
+            const personaSet = questionsDB[currentPersona] || questionsDB['probate'];
             if (currentStep < 21) {
-                const item = getQuestion(currentPersona, currentStep);
+                const item = personaSet[currentStep];
                 document.getElementById('step-counter').innerText = `Question ${currentStep + 1} of 21`;
                 document.getElementById('question-container').innerHTML = `
                     <div class="animate-reveal">
-                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">${currentPersona} Roadmap</span>
+                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">${currentPersona} Readiness</span>
                         <h2 class="text-2xl md:text-3xl font-serif text-white mb-8 leading-tight">${item.q}</h2>
                         <div class="space-y-3">
-                            ${item.opts.map(opt => `
-                                <button type="button" onclick="handleAnswer('${opt}')" class="w-full text-left p-5 rounded-2xl border border-white/5 bg-white/5 text-gray-300 hover:border-[#97B99D] hover:bg-[#97B99D]/5 transition-all text-sm group">
-                                    ${opt}
+                            ${item.opts.map((opt, idx) => `
+                                <button type="button" onclick="handleAnswer(${idx === 0 ? 1 : 0})" class="w-full text-left p-5 rounded-2xl border border-white/5 bg-white/5 text-gray-300 hover:border-[#97B99D] hover:bg-[#97B99D]/5 transition-all text-sm group">
+                                    <span class="group-hover:text-white transition-colors">${opt}</span>
                                 </button>
                             `).join('')}
                         </div>
@@ -140,41 +283,31 @@
             }
         }
 
-        function handleAnswer(ans) {
-            userAnswers[currentStep] = ans;
-            currentStep++;
-            renderStep();
-        }
-
-        document.getElementById('prev-btn').onclick = () => {
-            if (currentStep > 0) {
-                currentStep--;
-                renderStep();
-            }
-        };
-
+        function handleAnswer(val) { score += val; currentStep++; renderStep(); }
+        
         function renderLeadForm() {
             document.getElementById('progress-bar').style.width = "100%";
             document.getElementById('question-container').innerHTML = `
                 <div class="animate-reveal">
                     <h2 class="text-3xl font-serif text-white mb-4">Your Roadmap is Ready.</h2>
-                    <p class="text-gray-400 mb-8 text-sm leading-relaxed">We have looked at your 21 answers. Enter your name and email, and we will build your personal 2026 Transition Report.</p>
+                    <p class="text-gray-400 mb-8 text-sm">Enter your details to generate your curated 2026 Transition Report.</p>
                     <div class="space-y-4">
-                        <input type="text" id="user-name" placeholder="First Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D] transition-all">
-                        <input type="email" id="user-email" placeholder="Email Address" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D] transition-all">
-                        <button type="button" onclick="submitAssessment()" class="w-full bg-[#97B99D] text-[#050b1a] py-5 rounded-full font-bold uppercase tracking-widest text-[10px] mt-4 hover:bg-white transition-all shadow-lg">Get My Report →</button>
+                        <input type="text" id="user-name" placeholder="First Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D]">
+                        <input type="email" id="user-email" placeholder="Email Address" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D]">
+                        <button type="button" onclick="finalize()" class="w-full bg-[#97B99D] text-[#050b1a] py-5 rounded-full font-bold uppercase tracking-widest text-[10px] mt-4 hover:bg-white transition-all shadow-lg">Get My Report →</button>
                     </div>
                 </div>
             `;
             document.getElementById('prev-btn').classList.add('hidden');
         }
 
-        function submitAssessment() {
+        function finalize() {
             const name = document.getElementById('user-name').value;
-            if(!name) { alert('Please enter your name'); return; }
-            // In a real app, you would send userAnswers to a server here
-            window.location.href = `report.html?name=${encodeURIComponent(name)}&persona=${currentPersona}`;
+            if(!name) return alert("Please enter your name");
+            window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
         }
+
+        document.getElementById('prev-btn').onclick = () => { if (currentStep > 0) { currentStep--; renderStep(); } };
     </script>
 
     </footer>
