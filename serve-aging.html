@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Pathway Real Estate</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#050b1a',
+                        'mint': { DEFAULT: '#81b29a', 'dark': '#6aa383' },
+                        'light-bg': '#f8f9fa',
+                        'light-text': '#212529',
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee-seamless-right': 'marquee-seamless-right 60s linear infinite',
+                        'marquee-seamless-left': 'marquee-seamless-left 60s linear infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Theme Initialization Script -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+
+<body>
+    <!--Header Section-->
+<header>
+    <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between relative h-10">
+                
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 pr-12">
+                    <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="text-[10px] font-bold uppercase tracking-[0.3em] text-white group-hover:text-[#97B99D] transition-all flex items-center">
+                            Who We Serve
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-72 bg-[#0a101e] border border-white/10 mt-6 py-5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                            <a href="serve-probate.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Probate Estates</a>
+                            <a href="serve-rightsizing.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Rightsizing Seniors</a>
+                            <a href="serve-aging.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Aging in Place</a>
+                            <a href="serve-relocation.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Relocation Families</a>
+                            <a href="serve-first-time-buyers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">First Time Buyers</a>
+                            <a href="serve-upmovers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors">Upmovers</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-[10px] font-bold uppercase tracking-[0.3em] text-white group-hover:text-[#97B99D] transition-all flex items-center">
+                            Guides
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-72 bg-[#0a101e] border border-white/10 mt-6 py-5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                            <a href="guides-probate.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Probate Estates</a>
+                            <a href="guides-rightsizing.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Rightsizing Seniors</a>
+                            <a href="guides-aging.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Aging in Place</a>
+                            <a href="guides-relocation.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">Relocation Families</a>
+                            <a href="guides-first-time-buyers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors border-b border-white/5">First Time Buyers</a>
+                            <a href="guides-upmovers.html" class="block px-8 py-3 text-[10px] text-gray-400 hover:text-[#97B99D] uppercase tracking-widest transition-colors">Upmovers</a>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">About</a>
+                </div>
+
+                <div class="absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <a href="index.html" class="text-3xl md:text-4xl font-serif text-white tracking-tight hover:text-[#97B99D] transition-all block whitespace-nowrap">
+                        Homepathways
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center justify-end space-x-6 xl:space-x-8 pl-12">
+                    <a href="partners.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Trusted Partners</a>
+                    <a href="blog.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-all">Blog</a>
+                    <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:scale-105 transition-all shadow-lg whitespace-nowrap">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="lg:hidden ml-auto">
+                    <button class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--Hero Section-->
+<section class="relative pt-32 pb-20 bg-[#050b1a] overflow-hidden text-center">
+    <div class="max-w-7xl mx-auto px-6">
+        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Who We Serve: Aging in Place</span>
+        <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+            Stay Home. <br> 
+            <span class="italic text-[#97B99D]">Stay Independent.</span>
+        </h1>
+        <p class="text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+            Your home is your sanctuary, but for many seniors, it’s becoming an <strong>unworkable struggle</strong> to navigate safely. Don't wait for a crisis to settle for a move you don't want. Let's build a <strong>resolution</strong> that keeps you in control.
+        </p>
+    </div>
+</section>
+
+<section class="py-24 bg-[#0a101e]">
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-[1px] bg-white/10"></div>
+        
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="hidden md:block w-1/2"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] shadow-[0_0_15px_rgba(151,185,157,0.5)] z-10 hidden md:block"></div>
+            <div class="md:w-1/2 md:pl-16">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Stage</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Hidden Hazards</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    Most BC homes weren't built with 2026 accessibility standards in mind. The <strong>tension</strong> between wanting to stay and the <strong>urgent</strong> need for safety creates a state of paralysis. The stairs, the tub, and the lighting are becoming <strong>unavoidable</strong> hurdles.
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="md:w-1/2 md:pr-16 md:text-right">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Opportunity</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Longevity Audit</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    The <strong>opportunity</strong> is to be proactive. By performing a <strong>disruptive</strong> home longevity audit, we identify how your current space can be modified—or where a more accessible 'Forever Home' exists—to ensure you never lose your freedom.
+                </p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="hidden md:block w-1/2"></div>
+        </div>
+
+        <div class="mb-24 relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="hidden md:block w-1/2"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="md:w-1/2 md:pl-16">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Resolution</span>
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase tracking-widest">The Accessible Pathway</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    Our <strong>resolution</strong> connects you to our "Inner Circle" of contractors specializing in Universal Design. We manage the logistics of modification or transition, providing a safe, high-value environment that honors your desire to remain independent.
+                </p>
+            </div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row items-center animate-reveal">
+            <div class="md:w-1/2 md:pr-16 md:text-right">
+                <span class="text-[#97B99D] font-serif italic text-2xl mb-2 block">The Yes</span>
+                <h3 class="text-3xl font-bold text-white mb-4 uppercase tracking-widest">Absolute Joy</h3>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    Are you ready to say yes to a home that supports your future instead of limiting it? Let’s reach the <strong>absolute joy</strong> of staying exactly where you want to be, safely and securely.
+                </p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#97B99D] z-10 hidden md:block"></div>
+            <div class="hidden md:block w-1/2"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#050b1a] border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-serif text-white mb-16">Secure Your <span class="italic text-[#97B99D]">Home Longevity.</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="bg-[#0a101e]/50 border border-white/5 p-12 rounded-[2.5rem] flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Home Safety Audit (Believe)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Is your home ready for the next decade? Our audit identifies key safety gaps and provides a cost-effective roadmap for modifications or a transition to an accessible property.
+                    </p>
+                </div>
+                <a href="assessment.html?type=aging" class="w-full bg-white/5 text-white border border-white/10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#97B99D] hover:text-[#050b1a] transition-all text-center">
+                    (ACT) START MY AUDIT
+                </a>
+            </div>
+
+            <div class="bg-[#0a101e]/50 border border-white/5 p-12 rounded-[2.5rem] flex flex-col justify-between hover:border-[#97B99D]/30 transition-all group">
+                <div>
+                    <h4 class="text-[#97B99D] font-bold uppercase tracking-widest text-sm mb-6">Longevity Strategy (Care)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Let's discuss the <strong>outcome of the outcome</strong>—remaining in the community you love, surrounded by the people you care about, in a home that works for you.
+                    </p>
+                </div>
+                <a href="#contact" class="w-full bg-[#97B99D] text-[#050b1a] py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white transition-all text-center shadow-lg">
+                    (ACT) BOOK A STRATEGY CALL
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#0a101e] border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl font-serif text-white mb-12 text-center">Aging in Place <span class="italic text-[#97B99D]">Intelligence</span></h2>
+        <div class="space-y-2 mb-20" id="faq-container">
+            </div>
+
+        <div class="mt-16 bg-[#0a101e] border border-[#97B99D]/20 p-10 rounded-3xl text-center group">
+            <h3 class="text-2xl md:text-3xl font-serif text-white mb-4 italic text-[#97B99D]">Your Home. Your Rules.</h3>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+                The tension of an aging home shouldn't dictate your future. Let’s build your managed pathway to lifelong independence.
+            </p>
+            <a href="assessment.html?type=aging" class="inline-block bg-[#97B99D] text-[#050b1a] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105">
+                (ACT) GET MY LONGEVITY PLAN
+            </a>
+        </div>
+    </div>
+</section>
+
+<!--FAQ + CTA-->
+<script>
+    const agingFaqs = [
+        { q: "What is the core goal of 'Aging in Place'?", a: "It's the ability to live in one's own home and community safely, independently, and comfortably, regardless of age, income, or ability level through strategic planning." },
+        { q: "How do I know if my current home is safe for aging in place?", a: "We look for 'Red Flags' like high-threshold showers, narrow doorways, poor lighting, and multi-level living with no ground-floor full bath. Our audit identifies these hazards early." },
+        { q: "What are 'Universal Design' modifications?", a: "These are changes that make a home accessible to everyone, such as lever-style door handles, walk-in tubs, non-slip flooring, and smart home lighting systems." },
+        { q: "Are there BC government grants for home modifications in 2026?", a: "Yes, programs like the 'Home Adaptations for Independence' (HAFI) often provide financial assistance to low-income seniors. We help you identify which grants you qualify for." },
+        { q: "When is the right time to start planning for aging in place?", a: "The best time is before a crisis occurs. Strategic planning at age 60 or 65 allows for gradual modifications that don't disrupt your life." },
+        { q: "What if my home is too old to modify effectively?", a: "In some cases, the cost of modification exceeds the benefit. We then look for 'Forever Homes' in the Lower Mainland—newer strata or townhomes built with accessibility in mind." },
+        { q: "How does smart home technology help seniors?", a: "Voice-activated lights, automated thermostats, and smart locks can significantly reduce physical strain and improve safety for those with limited mobility." },
+        { q: "Can aging in place improve my home's resale value?", a: "Yes. In 2026, accessible homes are in high demand. Modifications like walk-in showers and main-floor bedrooms make your home attractive to a wider range of buyers." },
+        { q: "How do we handle the financial cost of modifications?", a: "We look at your home equity. In many cases, a small portion of your equity can fund modifications that keep you in your home for an additional 10-15 years, saving thousands in assisted living costs." },
+        { q: "What role does the community play in aging in place?", a: "Location is everything. We prioritize homes near transit, medical services, and social hubs like the Tri-Cities' community centers to prevent senior isolation." },
+        { q: "How do I talk to my family about wanting to stay at home?", a: "We provide the data and safety audits to show your family that staying at home is a viable, managed, and safe option, reducing their worry and your tension." },
+        { q: "Why choose Homepathways for an Aging in Place strategy?", a: "Because we focus on the person, not the property. We provide the 'Inner Circle' of specialists to ensure your home is a sanctuary of independence, not a place of struggle." }
+    ];
+
+    document.getElementById('faq-container').innerHTML = agingFaqs.map(faq => `
+        <div class="border-b border-white/10 group">
+            <button class="w-full py-6 flex justify-between items-center text-left focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                <span class="text-lg text-gray-200 group-hover:text-[#97B99D] transition-colors">${faq.q}</span>
+                <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="hidden pb-6 text-gray-400 font-light leading-relaxed">${faq.a}</div>
+        </div>
+    `).join('');
+</script>
+
+<!--Footer Section-->
+</footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const docElement = document.documentElement;
+            function setThemeIcon() { if (docElement.classList.contains('dark')) { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); } else { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); } }
+            setThemeIcon();
+            themeToggleButton.addEventListener('click', function() { if (docElement.classList.contains('dark')) { docElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); } else { docElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); } setThemeIcon(); });
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openMenuBtn = document.getElementById('mobile-menu-open-btn');
+            const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
+            openMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+            closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.add('hidden'); document.body.style.overflow = 'unset'; });
+        });
+    </script>
+
+    <!--Footer-->
+    <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    // Open Menu
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Stops the background from scrolling
+    });
+
+    // Close Menu
+    closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Enables scrolling again
+    });
+</script>
+
+<!--Schema-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Sean Omoh - Homepathways",
+  "image": "https://homepathways.ca/images/sean-omoh-portrait.jpg",
+  "url": "https://homepathways.ca",
+  "telephone": "778-386-2334",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1126 Austin Avenue",
+    "addressLocality": "Coquitlam",
+    "addressRegion": "BC",
+    "postalCode": "V3K 3P5",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Vancouver Lower Mainland" },
+    { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+  ],
+  "memberOf": [
+    { "@type": "Organization", "name": "BC Real Estate Association (BCREA)" },
+    { "@type": "Organization", "name": "Real Estate Board of Greater Vancouver" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Aging in Place Strategy",
+  "provider": { "@type": "RealEstateAgent", "name": "Sean Omoh - Homepathways" },
+  "areaServed": ["Vancouver Lower Mainland", "Fraser Valley"],
+  "description": "Expert real estate and home longevity consulting for seniors wishing to age safely and independently in their own homes."
+}
+</script>
+</body>
+</html>
