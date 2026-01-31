@@ -398,21 +398,44 @@
     }
 
     async function finalize() {
-        const name = document.getElementById('user-name').value;
-        const email = document.getElementById('user-email').value;
-        
-        if(!name || !email) {
-            alert("Please provide your name and email.");
-            return;
-        }
+    const name = document.getElementById('user-name').value;
+    const email = document.getElementById('user-email').value;
+    
+    if(!name || !email) {
+        alert("Please provide your name and email.");
+        return;
+    }
 
-        const leadData = {
-            firstName: name,
-            email: email,
-            persona: currentPersona,
-            score: score,
-            tag: `persona-${currentPersona}`
-        };
+    const leadData = {
+        firstName: name,
+        email: email,
+        persona: currentPersona,
+        score: score,
+        tag: `persona-${currentPersona}`
+    };
+
+    // Replace this URL with the exact one from your GHL screenshot
+    const ghlWebhookUrl = 'https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/b5f53fbd-3a9b-4315-ae68-b858db';
+
+    console.log("Attempting to send data to GHL...", leadData);
+
+    try {
+        // We use a standard fetch here to ensure the data actually arrives
+        await fetch(ghlWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData)
+        });
+        console.log("Data sent successfully.");
+    } catch (error) {
+        console.error('CRM Sync Error:', error);
+    }
+
+    // Small delay to ensure the fetch finishes before the page changes
+    setTimeout(() => {
+        window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+    }, 500);
+}
 
         // THE GHL WEBHOOK
         try {
