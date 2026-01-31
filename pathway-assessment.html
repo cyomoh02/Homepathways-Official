@@ -380,13 +380,41 @@
                 </div>
             `;
             document.getElementById('prev-btn').classList.add('hidden');
-        }
+        async function finalize() {
+    const name = document.getElementById('user-name').value;
+    const email = document.getElementById('user-email').value;
+    
+    if(!name || !email) {
+        alert("Please provide your name and email so we can send your roadmap.");
+        return;
+    }
 
-        function finalize() {
-            const name = document.getElementById('user-name').value;
-            if(!name) return alert("Please enter your name");
-            window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
-        }
+    // 1. THE DATA PACKAGE
+    const leadData = {
+        firstName: name,
+        email: email,
+        persona: currentPersona,
+        score: score,
+        source: 'Pathway Assessment',
+        tag: `persona-${currentPersona}` // This helps GHL sort the lead automatically
+    };
+
+    // 2. THE WEBHOOK BRIDGE (Send to GHL)
+    // We use 'fetch' to send this in the background while the user redirects
+    try {
+        fetch('YOUR_GHL_WEBHOOK_URL_HERE', {
+            method: 'POST',
+            mode: 'no-cors', // Keeps it seamless for the user
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData)
+        });
+    } catch (error) {
+        console.log('CRM Sync Error:', error);
+    }
+
+    // 3. THE REDIRECT (Keep the "Expert" feel moving)
+    window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+} 
 
         document.getElementById('prev-btn').onclick = () => { if (currentStep > 0) { currentStep--; renderStep(); } };
     </script>
