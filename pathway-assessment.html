@@ -71,10 +71,10 @@
                 <h3 class="text-white font-serif text-2xl mb-2">First Time Buyer</h3>
                 <p class="text-gray-500 text-xs uppercase tracking-widest">Entry Point</p>
             </div>
-            <div onclick="startAssessment('upmover')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer text-center">
-                <h3 class="text-white font-serif text-2xl mb-2">Upmover</h3>
-                <p class="text-gray-500 text-xs uppercase tracking-widest">Growth Phase</p>
-            </div>
+            <div onclick="startAssessment('investor')" class="bg-[#0a101e] border border-white/5 p-10 rounded-[2.5rem] hover:border-[#97B99D] transition-all cursor-pointer group text-center">
+    <h3 class="text-white font-serif text-2xl mb-4 group-hover:text-[#97B99D]">Presale Investor</h3>
+    <p class="text-gray-500 text-sm">Strategic equity growth and assignment navigation.</p>
+</div>
         </div>
     </section>
 
@@ -213,29 +213,29 @@
                 {q: "Do you feel like the market is too fast for you?", opts: ["Yes", "Sometimes", "No, I'm ready"]},
                 {q: "Do you want a guide to show you the way?", opts: ["Yes, please", "Maybe", "No"]}
             ],
-            upmover: [
-                {q: "Do you have enough bedrooms for everyone today?", opts: ["No, we need more", "Yes, but they are small", "Yes"]},
-                {q: "Is there a 'home office' in a closet or kitchen?", opts: ["Yes", "No", "We need one"]},
-                {q: "Do you have toys or boxes taking over the living room?", opts: ["Yes, it's messy", "A little bit", "No"]},
-                {q: "Do you have a lot of equity in your current home?", opts: ["Yes, a lot", "Some", "I'm not sure"]},
-                {q: "Are you worried about selling and buying at the same time?", opts: ["Yes, very worried", "A little", "No"]},
-                {q: "Do you need a bigger yard for kids or pets?", opts: ["Yes, definitely", "No, we like small", "Maybe"]},
-                {q: "Is your current home in a school area you like?", opts: ["Yes", "No", "It's okay"]},
-                {q: "Are you tired of your current neighborhood?", opts: ["Yes", "No, I want to stay near", "A little"]},
-                {q: "Do you want a 'mortgage helper' suite in the next home?", opts: ["Yes, please", "No", "Maybe"]},
-                {q: "Is your current kitchen too small to cook in?", opts: ["Yes", "No", "It's okay"]},
-                {q: "Do you have a 'Subject to Sale' plan?", opts: ["No, what is that?", "Yes", "I've heard of it"]},
-                {q: "Are you ready for a higher mortgage payment?", opts: ["Yes", "No", "Only if I have a suite"]},
-                {q: "Do you know what your current home is worth?", opts: ["Yes", "I have a guess", "No idea"]},
-                {q: "Are you looking at the Fraser Valley for more space?", opts: ["Yes", "Maybe", "No"]},
-                {q: "Do you have a growing family?", opts: ["Yes", "Soon", "No"]},
-                {q: "Is your current home a condo or townhouse?", opts: ["Condo", "Townhouse", "Small House"]},
-                {q: "Do you want a brand new detached home?", opts: ["Yes, please", "I like older ones", "No"]},
-                {q: "Are you worried about interest rates on a larger loan?", opts: ["Yes, a lot", "A little", "No"]},
-                {q: "Do you have a garage that is too full of stuff?", opts: ["Yes", "No", "I don't have a garage"]},
-                {q: "Are you ready to move this summer or fall?", opts: ["Yes", "No", "Maybe"]},
-                {q: "Do you want a strategist to time your move?", opts: ["Yes, please", "Maybe", "No"]}
-            ]
+            investor: [
+    {q: "Are you looking for long-term equity or a short-term assignment?", opts: ["Long-term hold", "Assignment sale", "Not sure yet"]},
+    {q: "Do you have 20% deposit liquid over the next 18 months?", opts: ["Yes", "Most of it", "I'm working on it"]},
+    {q: "Is this your first BC presale purchase?", opts: ["Yes", "No, I own others", "No, I've assigned before"]},
+    {q: "Are you familiar with the 7-day Rescission Period?", opts: ["Yes", "I've heard of it", "No"]},
+    {q: "Do you have a preferred developer in the Fraser Valley?", opts: ["Yes", "I need recommendations", "Doesn't matter"]},
+    {q: "Is your goal cash-flow or capital appreciation?", opts: ["Appreciation", "Cash-flow", "Both"]},
+    {q: "Are you aware of the new 2026 BC Flipping Tax rules?", opts: ["Yes", "Vaguely", "Tell me more"]},
+    {q: "Do you need a mortgage pre-approval for completion?", opts: ["Yes", "I'm a cash buyer", "Not yet"]},
+    {q: "Are you looking for a condo or a townhouse?", opts: ["Condo", "Townhouse", "Detached (Presale)"]},
+    {q: "Do you have a lawyer who reviews Disclosure Statements?", opts: ["Yes", "No", "I use my Realtor"]},
+    {q: "Are you an out-of-province investor?", opts: ["Yes", "No, I'm local", "International"]},
+    {q: "Is the project completion date critical for you?", opts: ["Yes, soon", "No, 2-3 years out", "Doesn't matter"]},
+    {q: "Are you looking for a 'Mortgage Helper' suite?", opts: ["Yes", "No", "Maybe"]},
+    {q: "Do you understand 'Estimated Completion' vs 'Firm'?", opts: ["Yes", "No"]},
+    {q: "Are you looking to use your RRSP for the deposit?", opts: ["Yes", "No", "Is that possible?"]},
+    {q: "Do you have an accountant for GST rebate strategy?", opts: ["Yes", "No", "I need one"]},
+    {q: "Are you buying under a personal name or corporation?", opts: ["Personal", "Corporation", "Holding Co"]},
+    {q: "Do you want access to Platinum VIP 'First Access' lists?", opts: ["Yes, please", "Not necessary", "Maybe"]},
+    {q: "Are you worried about interest rates at completion?", opts: ["Yes", "A little", "No, I'm prepared"]},
+    {q: "Have you ever walked away from a deposit?", opts: ["No", "Yes", "I'm worried about it"]},
+    {q: "Do you want a strategist to find the 'Value Gap' for you?", opts: ["Yes, definitely", "Just the listings", "No"]}
+]
         };
 
         function startAssessment(persona) {
