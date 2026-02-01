@@ -302,26 +302,67 @@
         }
 
         async function finalize() {
-            const name = document.getElementById('user-name').value;
-            const email = document.getElementById('user-email').value;
-            if(!name || !email) { alert("Please provide your name and email."); return; }
-            const leadData = { firstName: name, email: email, persona: currentPersona, score: score, tag: `persona-${currentPersona}` };
-            
-            try {
-                // REPLACE URL BELOW
-                await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7661987a-1462-49cc-85f9-c0f41b7f309c', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(leadData)
-                });
-            } catch (error) { console.log('Sync Error:', error); }
+    // 1. Grab inputs
+    const nameInput = document.getElementById('user-name');
+    const emailInput = document.getElementById('user-email');
+    
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
 
-            setTimeout(() => {
-                window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
-            }, 500);
+    // 2. Validation
+    if (!name || !email) {
+        alert("Please provide your name and email to generate your custom report.");
+        return;
+    }
+
+    // 3. Prepare the Data (The Payload)
+    const leadData = {
+        first_name: name,
+        email: email,
+        persona: currentPersona,
+        score: score,
+        tag: `persona-${currentPersona}`,
+        source: 'Homepathways Assessment'
+    };
+
+    // Change button state to show "Processing" (The Pro Touch)
+    const btn = document.querySelector('button[onclick="finalize()"]');
+    const originalText = btn.innerText;
+    btn.innerText = "Generating Report...";
+    btn.disabled = true;
+
+    // 4. The Request Strategy
+    // Replace with your EXACT GHL Webhook URL
+    const ghlWebhookUrl = 'https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b9724a07';
+
+    console.log("Full Stack Debug: Sending lead data...", leadData);
+
+    try {
+        // We use await to FORCE the browser to finish sending data before moving
+        const response = await fetch(ghlWebhookUrl, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(leadData)
+        });
+
+        if (response.ok) {
+            console.log("Success: GHL received the data.");
+        } else {
+            console.warn("GHL responded with an error, but we will still redirect.");
         }
+    } catch (error) {
+        // This catches CORS issues or network drops
+        console.error("Critical Error: Webhook failed to fire.", error);
+    }
 
-        document.getElementById('prev-btn').onclick = () => { if (currentStep > 0) { currentStep--; renderStep(); } };
+    // 5. The Redirect (With a tiny 300ms delay for safety)
+    setTimeout(() => {
+        window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+    }, 300);
+}
     </script>
 </body>
 </html>
