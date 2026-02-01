@@ -293,18 +293,69 @@
         }
 
         async function finalize() {
-            const nameInput = document.getElementById('user-name');
-            const emailInput = document.getElementById('user-email');
-            const btn = document.getElementById('submit-btn');
-            const debug = document.getElementById('debug-log');
+    const nameInput = document.getElementById('user-name');
+    const emailInput = document.getElementById('user-email');
+    const btn = document.getElementById('submit-btn');
 
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
 
-            if(!name || !email) { 
-                alert("Please provide your name and email."); 
-                return; 
-            }
+    if(!name || !email) { 
+        alert("Please provide your name and email."); 
+        return; 
+    }
+
+    // 1. UI LOCK
+    btn.innerText = "GENERATING YOUR PATHWAY...";
+    btn.disabled = true;
+
+    // 2. THE DATA
+    const ghlUrl = 'https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b9';
+
+    // 3. THE "BRUTE FORCE" METHOD (No Fetch, No CORS blocks)
+    // We create a hidden form and submit it directly to GHL's URL.
+    try {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = ghlUrl;
+        form.target = 'hidden_iframe'; // This prevents the GHL response from opening a new tab
+
+        const data = {
+            first_name: name,
+            email: email,
+            persona: currentPersona,
+            score: score,
+            tag: `persona-${currentPersona}`
+        };
+
+        // Add each data point as a hidden input
+        for (const key in data) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = data[key];
+            form.appendChild(input);
+        }
+
+        // Create a hidden iframe so the page doesn't jump
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        document.body.appendChild(form);
+
+        form.submit();
+        console.log("Form submitted to GHL.");
+
+    } catch (e) {
+        console.error("Submission error", e);
+    }
+
+    // 4. THE REDIRECT (Wait 1 second to ensure the 'slam' finished)
+    setTimeout(() => {
+        window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+    }, 1000);
+}
 
             // LOCK UI
             btn.innerText = "SYNCING WITH CRM...";
