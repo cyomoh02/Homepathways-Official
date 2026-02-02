@@ -9,7 +9,9 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
         .font-serif { font-family: 'DM+Serif+Display', serif; }
-        .dropdown:hover .dropdown-menu { display: block; }
+        
+        /* Dropdown Logic: Ensuring full visibility and smooth interaction */
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; visibility: visible; }
     </style>
 
     <script type="application/ld+json">
@@ -53,13 +55,17 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "The Pathway Journal",
-      "description": "Expert real estate insights and market analysis for the BC Lower Mainland and Fraser Valley.",
-      "publisher": {
-        "@type": "RealEstateAgent",
-        "name": "Sean Omoh - Homepathways",
-        "telephone": "+1-778-949-9889"
+      "@type": "RealEstateAgent",
+      "name": "Homepathways | Sean Omoh",
+      "telephone": "+1-778-949-9889",
+      "url": "https://homepathways.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1126 Austin Avenue",
+        "addressLocality": "Coquitlam",
+        "addressRegion": "BC",
+        "postalCode": "V3K 3P5",
+        "addressCountry": "CA"
       }
     }
     </script>
@@ -73,19 +79,34 @@
                     
                     <div class="hidden lg:flex items-center space-x-10 w-[38%]">
                         <a href="index.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Home</a>
+                        
                         <div class="relative dropdown group py-4">
                             <button class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
                                 Who We Serve <svg class="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100]">
-                                <a href="serve-probate.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Probate Support</a>
-                                <a href="serve-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Retiring Rightsizer</a>
-                                <a href="serve-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Aging In Place</a>
-                                <a href="serve-investor.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Presale Investor</a>
-                                <a href="serve-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Relocation Hub</a>
-                                <a href="serve-buyer.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">First-Time Buyer</a>
+                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                                <a href="serve-probate.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Probate Support</a>
+                                <a href="serve-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Retiring Rightsizer</a>
+                                <a href="serve-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Aging In Place</a>
+                                <a href="serve-investor.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Presale Investor</a>
+                                <a href="serve-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Relocation Hub</a>
+                                <a href="serve-buyer.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">First-Time Buyer</a>
                             </div>
                         </div>
+
+                        <div class="relative dropdown group py-4">
+                            <button class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                                Guides <svg class="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                                <a href="guide-buying.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Home Buying Guide</a>
+                                <a href="guide-selling.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Home Selling Guide</a>
+                                <a href="guide-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Relocation Guide</a>
+                                <a href="guide-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Rightsizing Guide</a>
+                                <a href="guide-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Aging In Place Guide</a>
+                            </div>
+                        </div>
+
                         <a href="about.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">About</a>
                     </div>
 
@@ -110,16 +131,18 @@
             <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Market Intelligence & Strategic Insights</span>
             <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">The <span class="italic text-[#97B99D]">Pathway Journal.</span></h1>
             <p class="text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-12">
-                Deep dives into BC probate laws, 2026 market shifts, and the <strong>art of the transition</strong>.
+                Deep dives into BC probate laws, 2026 market shifts, and the <strong>art of the transition</strong>. Insight over noise.
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 md:gap-8 pt-8 border-t border-white/5">
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-[#97B99D] border-b border-[#97B99D] pb-1">All Insights</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Probate Support</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Presale Investing</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Rightsizing</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Market Reports</a>
-                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Relocation</a>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-[#97B99D] border-b border-[#97B99D] pb-1">All Insights</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Probate Support</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Presale Investing</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Rightsizing</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Market Reports</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Relocation</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">First Time Buyer</button>
+                <button class="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Aging In Place</button>
             </div>
         </div>
     </section>
@@ -127,7 +150,7 @@
     <section class="py-24 bg-[#050b1a]">
         <div class="max-w-7xl mx-auto px-6">
             <a href="blog-probate-2026.html" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center">
-                <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-800 relative">
+                <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#050b1a] to-transparent opacity-60"></div>
                 </div>
                 <div class="p-12 lg:w-1/2 lg:p-20">
@@ -138,7 +161,7 @@
                     <div class="flex items-center space-x-4 mb-8">
                         <div class="w-8 h-8 rounded-full bg-[#97B99D] flex items-center justify-center text-[#050b1a] font-bold text-[10px]">SO</div>
                         <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
-                            By <span class="text-white">Sean Omoh</span> &nbsp; | &nbsp; Feb 1, 2026
+                            By <span class="text-white">Sean Omoh</span> &nbsp; | &nbsp; February 1, 2026
                         </p>
                     </div>
                     <p class="text-gray-400 font-light text-lg mb-8 leading-relaxed">
@@ -150,51 +173,26 @@
         </div>
     </section>
 
-    <section class="py-24 bg-[#0a101e]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <article class="group">
-                    <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5"></div>
-                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">Regional Strategy</span>
-                    <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">Why Langley is the 2026 Upmover Capital.</h3>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | Feb 2026</p>
-                    <p class="text-gray-500 font-light text-sm leading-relaxed mb-6">Analyzing the infrastructure boom and the 'Value-Gap' drawing families east.</p>
-                    <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 hover:border-[#97B99D] transition-all pb-1">View Insight</a>
-                </article>
-                <article class="group">
-                    <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5"></div>
-                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">Lifestyle Strategy</span>
-                    <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">The 'Soft Purge': Sorting a Lifetime of Memories.</h3>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | Feb 2026</p>
-                    <p class="text-gray-500 font-light text-sm leading-relaxed mb-6">Expert advice on handling the emotional logistics of a senior transition.</p>
-                    <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 hover:border-[#97B99D] transition-all pb-1">View Insight</a>
-                </article>
-                <article class="group">
-                    <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5"></div>
-                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">Investor Hub</span>
-                    <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">Presale Assignments: Risk vs Reward in 2026.</h3>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | Feb 2026</p>
-                    <p class="text-gray-500 font-light text-sm leading-relaxed mb-6">Navigating the new BC disclosure requirements for assignment contracts.</p>
-                    <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 hover:border-[#97B99D] transition-all pb-1">View Insight</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <footer class="bg-[#050b1a] border-t border-white/5 pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-6">
+            
             <div class="text-center mb-20">
                 <h2 class="text-4xl font-serif text-white mb-6">Homepathways</h2>
                 <p class="text-gray-400 font-light max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
                     Guided by clarity, comfort, and care. Mapping out custom pathways for every stage of your home ownership journey across the <strong>Lower Mainland and Fraser Valley.</strong>
                 </p>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-                    <a href="pathway-assessment.html" class="border border-[#97B99D] text-[#97B99D] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#97B99D] hover:text-[#050b1a] transition-all">Take the Readiness Audit</a>
-                    <a href="https://calendly.com/your-link" class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all">Book a Call</a>
+                    <a href="pathway-assessment.html" class="border border-[#97B99D] text-[#97B99D] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#97B99D] hover:text-[#050b1a] transition-all">
+                        Take the Readiness Audit
+                    </a>
+                    <a href="https://calendly.com/your-link" class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all">
+                        Book a Call
+                    </a>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                
                 <div class="flex flex-col space-y-3">
                     <span class="text-white text-[10px] font-bold uppercase tracking-widest mb-4">The Pathways</span>
                     <a href="serve-probate.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Probate Support</a>
@@ -235,21 +233,49 @@
                         1126 Austin Avenue, Coquitlam, BC<br>
                         +1-778-949-9889
                     </p>
+                    
                     <div class="flex flex-wrap gap-5 py-4">
-                        </div>
+                        <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="LinkedIn">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Instagram">
+                            <svg class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Facebook">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Pinterest">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.397 2.965 7.397 6.93 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="YouTube">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+
                     <div class="pt-2">
                         <p class="text-[9px] text-gray-500 uppercase font-bold tracking-[0.2em] mb-3">Newsletter</p>
                         <div class="flex">
-                            <input type="email" placeholder="Email" class="bg-white/5 border border-white/10 px-4 py-2 text-xs text-white rounded-l-lg outline-none w-full">
-                            <button class="bg-[#97B99D] text-[#050b1a] px-4 py-2 text-[10px] font-bold uppercase rounded-r-lg">Join</button>
+                            <input type="email" placeholder="Email Address" class="bg-white/5 border border-white/10 px-4 py-2 text-xs text-white rounded-l-lg outline-none focus:border-[#97B99D] w-full">
+                            <button class="bg-[#97B99D] text-[#050b1a] px-4 py-2 text-[10px] font-bold uppercase rounded-r-lg hover:bg-white transition-all">Join</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                 <span class="text-[9px] text-gray-600 uppercase tracking-widest font-bold">© 2026 Homepathways. All Rights Reserved.</span>
+                <div class="flex space-x-8 text-[9px] text-gray-600 uppercase tracking-widest font-bold">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="disclosure.html" class="hover:text-white transition-colors">REBGV Disclosure</a>
+                </div>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
