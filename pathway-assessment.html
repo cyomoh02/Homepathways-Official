@@ -322,23 +322,16 @@
             }
         }
 
-        function handleAnswer(val) { score += val; currentStep++; renderStep(); }
-        
-        function renderLeadForm() {
-            document.getElementById('progress-bar').style.width = "100%";
-            document.getElementById('question-container').innerHTML = `
-                <div class="animate-reveal">
-                    <h2 class="text-3xl font-serif text-white mb-4">Your Roadmap is Ready.</h2>
-                    <p class="text-gray-400 mb-8 text-sm">Enter your details to generate your curated 2026 Transition Report.</p>
-                    <div class="space-y-4">
-                        <input type="text" id="user-name" placeholder="First Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D]">
-                        <input type="email" id="user-email" placeholder="Email Address" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#97B99D]">
-                        <button type="button" id="submit-btn" onclick="finalize()" class="w-full bg-[#97B99D] text-[#050b1a] py-5 rounded-full font-bold uppercase tracking-widest text-[10px] mt-4 hover:bg-white transition-all shadow-lg">Get My Report →</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById('prev-btn').classList.add('hidden');
-        }
+        function handleAnswer(val, optionText) {
+    const questionText = questionsDB[currentPersona][currentStep].q;
+    
+    // Store the data for GHL Notes
+    qaSummary.push(`${questionText} -> ${optionText}`);
+    
+    score += val; 
+    currentStep++; 
+    renderStep(); 
+}
 
         async function finalize() {
     const nameInput = document.getElementById('user-name');
