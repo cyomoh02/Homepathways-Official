@@ -1,0 +1,37 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Homepathways | Sean Omoh",
+  "description": "Strategic Real Estate Advisory specializing in complex transitions: Probate, Rightsizing, Aging in Place, and Presale Investment in the Lower Mainland & Fraser Valley.",
+  "url": "https://homepathways.com",
+  "telephone": "+1-778-949-9889",
+  "image": "https://homepathways.com/images/sean-omoh-authority.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1126 Austin Avenue",
+    "addressLocality": "Coquitlam",
+    "addressRegion": "BC",
+    "postalCode": "V3K 3P5",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "49.2485", 
+    "longitude": "-122.8611"
+  },
+  "areaServed": ["Coquitlam", "Langley", "Surrey", "Abbotsford", "Burnaby", "Vancouver"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "The Six Homepathway Strategies",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Probate Estate Strategy" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seniors Rightsizing Advisory" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aging in Place Longevity Audit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Presale Investor Equity Mapping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BC Relocation Strategy" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "First-Time Buyer Wealth Building" } }
+    ]
+  }
+}
+</script>
