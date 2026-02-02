@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Readiness Audit | Homepathways</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
+        .font-serif { font-family: 'DM+Serif+Display', serif; }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0, 0, 0.2, 1) forwards; }
+        @keyframes reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-8">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center justify-between relative h-10">
+                    <div class="hidden lg:flex items-center space-x-8 w-1/3">
+                        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Home</a>
+                        <a href="about.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">About</a>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
+                        <a href="index.html" class="text-3xl md:text-4xl font-serif text-white tracking-tight block whitespace-nowrap">Homepathways</a>
+                    </div>
+                    <div class="hidden lg:flex items-center justify-end space-x-8 w-1/3">
+                        <a href="inner-circle.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Inner Circle</a>
+                        <a href="blog.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D]">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="relative pt-48 pb-12 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Homepathways Strategy Audit</span>
+            
+            <div id="hero-copy" class="animate-reveal">
+                <h1 class="text-4xl md:text-5xl font-bold font-serif text-white mb-2 leading-tight">
+                    Every Journey is <span class="text-[#97B99D]">unique.</span>
+                </h1>
+                <h2 class="text-3xl md:text-4xl font-bold font-serif text-white mb-8">
+                    Which Path are You On?
+                </h2>
+                
+                <p class="text-gray-400 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-16">
+                    Transition is hard. Guessing is harder. Navigating fragmented legal steps, market volatility, and logistical weight alone is an <strong>unworkable struggle</strong>. Choose your pathway below to unlock a tailored roadmap, providing the <strong>absolute joy</strong> of a managed transition that protects your equity and your peace of mind.
+                </p>
+            </div>
+
+            <div id="progress-container" class="hidden mt-12 w-full bg-white/5 h-1.5 rounded-full overflow-hidden max-w-md mx-auto">
+                <div id="progress-bar" class="bg-[#97B99D] h-full transition-all duration-500 shadow-[0_0_10px_#97B99D]" style="width: 0%"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="persona-selection" class="pb-32 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 animate-reveal">
+            
+            <div onclick="startAssessment('probate')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">Probate Family</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Managing an estate in 2026 involves complex legal timelines and tax implications. This audit helps you secure the Grant of Administration and protect the family legacy.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+            <div onclick="startAssessment('rightsizing')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">Rightsizing Senior</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Unlock the equity tied up in a home that no longer fits. Map out your transition to a simpler lifestyle, from the "soft purge" of belongings to finding your next stage of freedom.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+            <div onclick="startAssessment('aging')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">Aging In Place</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Your home should be your sanctuary, not a series of obstacles. Use this audit to perform a longevity check on your property and identify the safety modifications needed for independence.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+            <div onclick="startAssessment('relocation')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">Relocation</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Moving to the Lower Mainland requires more than just listings. Get the "Local Eyes" advantage to navigate neighborhood trends and land in the right community with confidence.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+            <div onclick="startAssessment('buyer')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">First Time Buyer</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Stop renting and start building equity. This pathway analyzes 2026 BC grant structures and strata health to ensure your first purchase is a solid foundation for your future wealth.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+            <div onclick="startAssessment('investor')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-[#97B99D] hover:shadow-[0_0_30px_rgba(151,185,157,0.1)]">
+                <div class="group-hover:opacity-10 transition-opacity duration-500">
+                    <h3 class="text-white font-serif text-2xl font-bold mb-4">Presale Investor</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Presale investing requires a precise strategy for assignments and deposit timelines. Take this audit to calculate your "Value Gap" and map a secure exit before you sign.</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <span class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl">Take the Assessment</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="question-wrapper" class="hidden pb-32">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="bg-[#0a101e] border border-white/10 p-10 rounded-[3rem] relative">
+                <div id="question-container" class="min-h-[300px] flex flex-col justify-center"></div>
+                <div class="flex items-center justify-between mt-12 pt-8 border-t border-white/5">
+                    <button type="button" id="prev-btn" class="text-gray-500 hover:text-white text-[10px] font-bold uppercase tracking-widest">← Back</button>
+                    <div id="step-counter" class="text-[10px] text-[#97B99D] font-bold uppercase tracking-widest">Question 1 of 21</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="debug-log" class="hidden fixed bottom-4 right-4 bg-red-900/90 text-white p-4 rounded-xl text-[10px] font-mono max-w-xs z-[100]"></div>
+
+    <script>
+        let currentPersona = '';
+        let currentStep = 0;
+        let score = 0;
+        let qaSummary = []; // This will store the questions and answers
+
+        const questionsDB = {
+            probate: [
+                {q: "Do you have the original Will?", opts: ["Yes", "Not yet", "I don't think so"]},
+                {q: "Is anyone living in the home right now?", opts: ["Yes", "No", "Just visiting"]},
+                {q: "Is there a lot of mail piling up at the door?", opts: ["Yes", "No", "We are checking it"]},
+                {q: "Do you know who the legal owner is today?", opts: ["Yes", "I'm not sure", "It's complicated"]},
+                {q: "Are the property taxes up to date?", opts: ["Yes", "No", "I don't know"]},
+                {q: "Does the house smell like it's been closed for a while?", opts: ["Yes", "No", "A little bit"]},
+                {q: "Are you the person making all the choices?", opts: ["Yes", "I'm helping", "No"]},
+                {q: "Are other family members upset about the house?", opts: ["Yes", "A little", "No, we are okay"]},
+                {q: "Is the grass being cut and yard kept clean?", opts: ["Yes", "No", "Sometimes"]},
+                {q: "Do you have a lawyer helping you with BC law?", opts: ["Yes", "Not yet", "I'm looking"]},
+                {q: "Do you know what the house is worth in 2026?", opts: ["Yes", "Just a guess", "No idea"]},
+                {q: "Are you worried about people breaking in?", opts: ["Yes", "A little", "No"]},
+                {q: "Is the heater and water turned on?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Does the house have old furniture inside?", opts: ["It's full", "A little bit", "It's empty"]},
+                {q: "Do you need help finding a safe place for valuables?", opts: ["Yes, please", "No, I'm okay", "Maybe"]},
+                {q: "Are you ready to sell the home soon?", opts: ["Yes", "Maybe", "Not yet"]},
+                {q: "Do you have a storage unit ready?", opts: ["Yes", "No", "I don't need one"]},
+                {q: "Do you live near the house?", opts: ["Yes", "No, I'm far away", "I'm in the same city"]},
+                {q: "Are you worried about probate taxes?", opts: ["Yes", "A little", "No"]},
+                {q: "Is this the first time you've done this?", opts: ["Yes", "No"]},
+                {q: "Do you want someone to handle the heavy work?", opts: ["Yes, please", "Just some of it", "No"]}
+            ],
+            rightsizing: [
+                {q: "Do you have rooms you haven't used in months?", opts: ["Yes, many", "One or two", "No"]},
+                {q: "Is it hard to keep the house clean lately?", opts: ["Yes", "Sometimes", "No, it's easy"]},
+                {q: "Do the stairs feel like a lot of work?", opts: ["Yes", "On some days", "No, I'm okay"]},
+                {q: "Do you worry about falling when you are home alone?", opts: ["Yes", "Sometimes", "No"]},
+                {q: "Would you rather be traveling than doing yard work?", opts: ["Yes, definitely", "Maybe", "No"]},
+                {q: "Does the house feel too quiet?", opts: ["Yes", "No, I like it", "Sometimes"]},
+                {q: "Are you worried about the cost of fixing an old house?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you have a lot of things you don't use anymore?", opts: ["A lifetime of things", "A little bit", "No"]},
+                {q: "Would you like to live closer to shops or family?", opts: ["Yes", "I'm okay here", "Maybe"]},
+                {q: "Is your family asking you to move to a smaller place?", opts: ["Yes", "They mention it", "No"]},
+                {q: "Do you know how much money you'd have after selling?", opts: ["Yes", "I have a guess", "No idea"]},
+                {q: "Are you scared of moving to a new place?", opts: ["Yes", "A little", "No, I'm excited"]},
+                {q: "Do you have help to sort through your things?", opts: ["No, I need help", "I have a little help", "Yes"]},
+                {q: "Would you like a home with no stairs at all?", opts: ["Yes, please", "I don't mind a few", "No"]},
+                {q: "Are you tired of paying high heat and light bills?", opts: ["Yes", "No", "I haven't noticed"]},
+                {q: "Do you want a home that is brand new?", opts: ["Yes", "I like old homes", "Doesn't matter"]},
+                {q: "Are you ready to make a move this year?", opts: ["Yes", "Maybe", "Not yet"]},
+                {q: "Do you have a friend who has rightsized already?", opts: ["Yes", "No"]},
+                {q: "Do you want to stay in the same neighborhood?", opts: ["Yes", "No", "I'm open to new areas"]},
+                {q: "Are you house rich but cash poor?", opts: ["Yes", "No", "A little bit"]},
+                {q: "Do you want a professional to guide you?", opts: ["Yes, please", "Just some help", "No"]}
+            ],
+            aging: [
+                {q: "Is your bathroom easy to use safely?", opts: ["Yes", "No", "I need a better tub/shower"]},
+                {q: "Are the doorways wide enough for a walker?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Is your bedroom on the main floor?", opts: ["Yes", "No", "I use the stairs"]},
+                {q: "Is there good lighting in the hallways?", opts: ["Yes", "No, it's dark", "Could be better"]},
+                {q: "Can you reach your kitchen cabinets easily?", opts: ["Yes", "No", "Some are too high"]},
+                {q: "Do you have grab bars in the bathroom?", opts: ["Yes", "No, I need them", "I have one"]},
+                {q: "Is your front door easy to get into (no steps)?", opts: ["Yes", "No, there are steps", "I have a ramp"]},
+                {q: "Do you have a way to call for help if you fall?", opts: ["Yes", "No", "My phone is always with me"]},
+                {q: "Are your carpets or rugs slippery?", opts: ["No", "Yes, a little", "I have hardwood"]},
+                {q: "Do you have a friend or family member nearby?", opts: ["Yes", "No", "About 30 mins away"]},
+                {q: "Is your laundry room on the main floor?", opts: ["Yes", "No, it's in the basement", "It's in the garage"]},
+                {q: "Are you worried about being lonely at home?", opts: ["Yes", "No", "Sometimes"]},
+                {q: "Do you have trouble doing basic repairs?", opts: ["Yes", "No", "I hire someone"]},
+                {q: "Is it easy for you to get to the doctor?", opts: ["Yes", "No, I need a ride", "I use the bus"]},
+                {q: "Would you like smart lights that turn on automatically?", opts: ["Yes", "Maybe", "No"]},
+                {q: "Are your smoke alarms working and tested?", opts: ["Yes", "No", "I'm not sure"]},
+                {q: "Do you want to stay in this home forever?", opts: ["Yes", "I'm not sure", "No"]},
+                {q: "Are you open to having a helper come to the house?", opts: ["Yes", "Maybe", "No"]},
+                {q: "Do you have a clear plan for your future care?", opts: ["Yes", "No", "Starting to plan"]},
+                {q: "Are you overwhelmed by all these choices?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you want a 'Longevity Audit' of your home?", opts: ["Yes, please", "Maybe later", "No"]}
+            ],
+            relocation: [
+                {q: "Do you have a job waiting for you in BC?", opts: ["Yes", "No", "I work for myself"]},
+                {q: "Do you have children who need to start school?", opts: ["Yes", "No"]},
+                {q: "How many times have you visited the Lower Mainland?", opts: ["Many times", "Once or twice", "Never"]},
+                {q: "Are you worried about BC's housing prices?", opts: ["Yes, a lot", "A little", "No"]},
+                {q: "Do you need to sell a home in another city first?", opts: ["Yes", "No", "It's already sold"]},
+                {q: "How are you planning to move your things?", opts: ["Moving truck", "Shipping container", "I'm starting fresh"]},
+                {q: "Do you want to live near a SkyTrain station?", opts: ["Yes, definitely", "Maybe", "No, I'll drive"]},
+                {q: "Are you moving for the weather and nature?", opts: ["Yes", "No, for work", "Both"]},
+                {q: "Do you know about the 2026 BC tax rules?", opts: ["Yes", "No", "I've heard a little"]},
+                {q: "Are you coming from outside of Canada?", opts: ["Yes", "No, from another province"]},
+                {q: "Do you need to see homes through video calls?", opts: ["Yes, please", "No, I'll fly in", "Maybe"]},
+                {q: "Do you have a pet that is moving with you?", opts: ["Yes", "No"]},
+                {q: "What is your biggest worry about moving?", opts: ["The cost", "The schools", "Finding the right house"]},
+                {q: "Are you looking for a house or a condo?", opts: ["House", "Condo", "Townhouse"]},
+                {q: "Do you know which city in the Valley is best for you?", opts: ["Yes", "No, I need advice", "I'm looking at two"]},
+                {q: "Are you ready to buy in the next 3 months?", opts: ["Yes", "In 6 months", "Just looking"]},
+                {q: "Do you need help finding a local doctor or dentist?", opts: ["Yes", "No", "Maybe later"]},
+                {q: "Is your move because of a life change (like retirement)?", opts: ["Yes", "No, just for a change", "Work move"]},
+                {q: "Have you talked to a BC bank yet?", opts: ["Yes", "Not yet", "I'm using my current bank"]},
+                {q: "Do you feel like you are 'guessing' from far away?", opts: ["Yes, totally", "A little bit", "No, I'm researched"]},
+                {q: "Do you want 'Local Eyes' to find the truth for you?", opts: ["Yes, please", "Maybe", "No"]}
+            ],
+            buyer: [
+                {q: "Have you been saving for a deposit for over a year?", opts: ["Yes", "No, just started", "I have it ready"]},
+                {q: "Are you tired of paying rent every month?", opts: ["Yes, very tired", "It's okay for now", "No"]},
+                {q: "Do you have a steady job you've had for a while?", opts: ["Yes", "over 2 years", "Less than 2 years", "I'm new there"]},
+                {q: "Are you scared that prices will go up if you wait?", opts: ["Yes", "A little", "No"]},
+                {q: "Do you know what a 'Strata Fee' is?", opts: ["Yes", "No", "I've heard of it"]},
+                {q: "Are you looking for a home in the Fraser Valley?", opts: ["Yes", "Maybe", "No, Lower Mainland"]},
+                {q: "Do you have a pre-approved mortgage?", opts: ["Yes", "Not yet", "I'm going to do that soon"]},
+                {q: "Are you worried about interest rates?", opts: ["Yes, a lot", "A little", "No"]},
+                {q: "Is your family helping you with the money?", opts: ["Yes", "No", "Maybe a little"]},
+                {q: "Are you okay with living in a condo first?", opts: ["Yes", "No, I want a house", "Townhouse is okay"]},
+                {q: "Do you have any big debts (like a car or school loan)?", opts: ["Yes", "A little", "No, I'm clear"]},
+                {q: "How is your credit score?", opts: ["Very good", "Okay", "I need to check it"]},
+                {q: "Are you ready to stop looking and start buying?", opts: ["Yes, I'm ready", "In a few months", "Just looking"]},
+                {q: "Do you want to live near your work?", opts: ["Yes", "No", "I work from home"]},
+                {q: "Are you worried about the 'hidden costs' of buying?", opts: ["Yes", "No", "What are they?"]},
+                {q: "Do you have a friend who just bought their first home?", opts: ["Yes", "No"]},
+                {q: "Are you looking for a 'fixer-upper'?", opts: ["Yes", "Maybe", "No, move-in ready"]},
+                {q: "Do you know about the BC First Time Buyer grant?", opts: ["Yes", "No", "Tell me more"]},
+                {q: "Are you buying this home with someone else?", opts: ["Yes", "No, on my own"]},
+                {q: "Do you feel like the market is too fast for you?", opts: ["Yes", "Sometimes", "No, I'm ready"]},
+                {q: "Do you want a guide to show you the way?", opts: ["Yes, please", "Maybe", "No"]}
+            ],
+            investor: [
+    {q: "Are you looking for long-term equity or a short-term assignment?", opts: ["Long-term hold", "Assignment sale", "Not sure yet"]},
+    {q: "Do you have 20% deposit liquid over the next 18 months?", opts: ["Yes", "Most of it", "I'm working on it"]},
+    {q: "Is this your first BC presale purchase?", opts: ["Yes", "No, I own others", "No, I've assigned before"]},
+    {q: "Are you familiar with the 7-day Rescission Period?", opts: ["Yes", "I've heard of it", "No"]},
+    {q: "Do you have a preferred developer in the Fraser Valley?", opts: ["Yes", "I need recommendations", "Doesn't matter"]},
+    {q: "Is your goal cash-flow or capital appreciation?", opts: ["Appreciation", "Cash-flow", "Both"]},
+    {q: "Are you aware of the new 2026 BC Flipping Tax rules?", opts: ["Yes", "Vaguely", "Tell me more"]},
+    {q: "Do you need a mortgage pre-approval for completion?", opts: ["Yes", "I'm a cash buyer", "Not yet"]},
+    {q: "Are you looking for a condo or a townhouse?", opts: ["Condo", "Townhouse", "Detached (Presale)"]},
+    {q: "Do you have a lawyer who reviews Disclosure Statements?", opts: ["Yes", "No", "I use my Realtor"]},
+    {q: "Are you an out-of-province investor?", opts: ["Yes", "No, I'm local", "International"]},
+    {q: "Is the project completion date critical for you?", opts: ["Yes, soon", "No, 2-3 years out", "Doesn't matter"]},
+    {q: "Are you looking for a 'Mortgage Helper' suite?", opts: ["Yes", "No", "Maybe"]},
+    {q: "Do you understand 'Estimated Completion' vs 'Firm'?", opts: ["Yes", "No"]},
+    {q: "Are you looking to use your RRSP for the deposit?", opts: ["Yes", "No", "Is that possible?"]},
+    {q: "Do you have an accountant for GST rebate strategy?", opts: ["Yes", "No", "I need one"]},
+    {q: "Are you buying under a personal name or corporation?", opts: ["Personal", "Corporation", "Holding Co"]},
+    {q: "Do you want access to Platinum VIP 'First Access' lists?", opts: ["Yes, please", "Not necessary", "Maybe"]},
+    {q: "Are you worried about interest rates at completion?", opts: ["Yes", "A little", "No, I'm prepared"]},
+    {q: "Have you ever walked away from a deposit?", opts: ["No", "Yes", "I'm worried about it"]},
+    {q: "Do you want a strategist to find the 'Value Gap' for you?", opts: ["Yes, definitely", "Just the listings", "No"]}
+]
+        };
+
+        function startAssessment(persona) {
+            currentPersona = persona;
+            currentStep = 0;
+            score = 0;
+            document.getElementById('persona-selection').classList.add('hidden');
+            document.getElementById('hero-copy').classList.add('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('question-wrapper').classList.remove('hidden');
+            renderStep();
+        }
+
+        function renderStep() {
+            const personaSet = questionsDB[currentPersona];
+            if (currentStep < 21) {
+                const item = personaSet[currentStep];
+                document.getElementById('step-counter').innerText = `Question ${currentStep + 1} of 21`;
+                document.getElementById('question-container').innerHTML = `
+                    <div class="animate-reveal">
+                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">${currentPersona} Readiness</span>
+                        <h2 class="text-2xl md:text-3xl font-serif text-white mb-8 leading-tight">${item.q}</h2>
+                        <div class="space-y-3">
+                            ${item.opts.map((opt, idx) => `
+    <button type="button" 
+            onclick="handleAnswer(${idx === 0 ? 1 : 0}, '${opt.replace(/'/g, "\\'")}')" 
+            class="w-full text-left p-6 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-[#97B99D] transition-all group">
+        <div class="flex items-center justify-between">
+            <span class="group-hover:text-white transition-colors text-sm font-medium">${opt}</span>
+            <div class="w-2 h-2 rounded-full border border-white/20 group-hover:bg-[#97B99D] transition-all"></div>
+        </div>
+    </button>
+`).join('')}
+                        </div>
+                    </div>
+                `;
+                document.getElementById('progress-bar').style.width = `${((currentStep + 1) / 21) * 100}%`;
+                document.getElementById('prev-btn').classList.toggle('invisible', currentStep === 0);
+            } else {
+                renderLeadForm();
+            }
+        }
+
+        function handleAnswer(val, optionText) {
+    const questionText = questionsDB[currentPersona][currentStep].q;
+    
+    // Store the data for GHL Notes
+    qaSummary.push(`${questionText} -> ${optionText}`);
+    
+    score += val; 
+    currentStep++; 
+    renderStep(); 
+}
+
+        async function finalize() {
+    const nameInput = document.getElementById('user-name');
+    const emailInput = document.getElementById('user-email');
+    const btn = document.getElementById('submit-btn');
+    const debug = document.getElementById('debug-log');
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if (!name || !email) {
+        alert("Please provide your name and email.");
+        return;
+    }
+
+    // 1. UI LOCK
+    btn.innerText = "GENERATING YOUR PATHWAY...";
+    btn.disabled = true;
+
+    // 2. DATA PACKAGING
+    const ghlUrl = 'https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-';
+    const fullNote = `ASSESSMENT RESULTS:\n\n` + qaSummary.join('\n');
+
+    const leadData = {
+        first_name: name,
+        email: email,
+        persona: currentPersona,
+        score: score,
+        tag: `persona-${currentPersona}`,
+        notes: fullNote
+    };
+
+    // 3. THE GHL SYNC (Fetch Method)
+    try {
+        const response = await fetch(ghlUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData)
+        });
+
+        if (response.ok) {
+            console.log("GHL Sync Successful");
+            window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+        } else {
+            throw new Error(`GHL Error: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Critical Error:', error);
+        debug.classList.remove('hidden');
+        debug.innerText = "CRM Error: Data failed to send. Checking connection...";
+
+        // Force redirect after failure so user isn't stuck
+        setTimeout(() => {
+            window.location.href = `report.html?name=${encodeURIComponent(name)}&score=${score}&persona=${currentPersona}`;
+        }, 3000);
+    }
+}
+
+// Ensure the back button still functions correctly
+document.getElementById('prev-btn').onclick = () => { 
+    if (currentStep > 0) { 
+        currentStep--; 
+        renderStep(); 
+    } 
+};
+    </script>
+</body>
+</html>
