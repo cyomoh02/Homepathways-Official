@@ -485,67 +485,59 @@
             }
         }
 
-        async function finalizeSubmission() {
-            const name = document.getElementById('fname').value;
-            const email = document.getElementById('femail').value;
-            const phone = document.getElementById('fphone').value || "Not Provided";
+        // --- UPDATED FINAL SUBMISSION LOGIC ---
+async function finalizeSubmission() {
+    const name = document.getElementById('fname').value;
+    const email = document.getElementById('femail').value;
+    const phone = document.getElementById('fphone').value || "Not Provided";
 
-            if (!name || !email) {
-                alert("Please provide your name and email to view the report.");
-                return;
-            }
+    if (!name || !email) {
+        alert("Please provide your name and email to view the report.");
+        return;
+    }
 
-            // 1. Generate Transcript for GHL
-            let transcript = `--- NEW STRATEGIC AUDIT: ${persona.toUpperCase()} ---\n`;
-            for (let i = 1; i < 22; i++) {
-                transcript += `Q${i}: ${answers[i]}\n`;
-            }
+    // 1. Get the Dynamic Report Content
+    const data = auditLibrary[persona] || auditLibrary["Rightsizing Senior"];
+    const outcome = data.outcomes[0];
 
-            const payload = {
-                first_name: name,
-                email: email,
-                phone: phone,
-                notes: transcript,
-                source: `Audit: ${persona}`
-            };
-
-            // 2. BRUTE FORCE GHL SYNC
-            try {
-                // REPLACE THIS URL WITH YOUR ACTUAL GHL WEBHOOK
-                await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b9724a07', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            } catch (err) {
-                console.error("GHL Error: ", err);
-            }
-
-            // 3. Render Dynamic Report UI
-            renderDynamicReport(name);
+    // 2. Bundle the Full Transcript + The Strategic Roadmap for GHL Notes
+    let combinedNotes = `--- MASTER STRATEGIC AUDIT: ${persona.toUpperCase()} ---\n\n`;
+    combinedNotes += `CLIENT ROADMAP GIVEN:\n`;
+    combinedNotes += `STRENGTH: ${outcome.strength}\n`;
+    combinedNotes += `REALITY: ${outcome.stand}\n`;
+    combinedNotes += `PROCESS: ${outcome.process}\n\n`;
+    combinedNotes += `--- FULL QUESTION TRANSCRIPT ---\n`;
+    
+    for (let i = 1; i < 22; i++) {
+        if (answers[i]) {
+            combinedNotes += `Q${i}: ${answers[i]}\n`;
         }
+    }
 
-        function renderDynamicReport(name) {
-            const data = auditLibrary[persona];
-            const outcome = data.outcomes[0]; // Logic could be expanded here for 14 variants
+    const payload = {
+        first_name: name,
+        email: email,
+        phone: phone,
+        notes: combinedNotes, // This now contains the roadmap AND the questions
+        source: `Audit: ${persona}`
+    };
 
-            document.getElementById('assessment-container').classList.add('hidden');
-            document.getElementById('report-container').classList.remove('hidden');
+    // 3. BRUTE FORCE GHL SYNC
+    try {
+        // USE YOUR URL FROM THE SCREENSHOT: 
+        // https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97
+        await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+    } catch (err) {
+        console.error("GHL Sync Error:", err);
+    }
 
-            document.getElementById('report-name-header').innerHTML = `${name}, Your <span class='italic text-brand-mint'>Pathway Roadmap.</span>`;
-            document.getElementById('report-strength').innerText = outcome.strength;
-            document.getElementById('report-stand').innerText = outcome.stand;
-            document.getElementById('report-process').innerText = outcome.process;
-
-            window.scrollTo(0, 0);
-        }
-
-        function updateUI() {
-            const prog = (currentStep / 22) * 100;
-            document.getElementById('bar').style.width = `${prog}%`;
-            document.getElementById('progress-text').innerText = `Question ${currentStep} of 22`;
-            document.getElementById('back-btn').classList.toggle('invisible', currentStep === 1);
-        }
+    // 4. Render Dynamic Report UI
+    renderDynamicReport(name);
+}
     </script>
 
     <!--Footer-->
