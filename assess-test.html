@@ -1,125 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic Roadmap Audit | Homepathways</title>
+    <title>Master Frame Test | Homepathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 'navy': '#050b1a', 'brand-mint': '#97B99D' },
-                    fontFamily: { 'serif': ['"Playfair Display"', 'serif'], 'sans': ['"Inter"', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .hidden { display: none !important; }
-        .animate-reveal { animation: reveal 0.5s ease-out forwards; }
-        @keyframes reveal { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
+        .font-serif { font-family: 'DM+Serif+Display', serif; }
         
-        .option-card { border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s ease; cursor: pointer; }
-        .option-card:hover { border-color: #97B99D; background: rgba(151,185,157,0.05); }
-        .selected-option { border-color: #97B99D !important; background: rgba(151,185,157,0.15) !important; color: white !important; }
-        .progress-bar-fill { transition: width 0.4s ease-in-out; }
+        /* Dropdown Hover Logic */
+        .dropdown:hover .dropdown-menu { display: block; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
 </head>
+
 <body>
+    <!--Header-->
+    <header>
+        <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
+            <div class="max-w-[1440px] mx-auto px-12">
+                <div class="flex items-center justify-between relative h-12">
+                    
+                    <div class="hidden lg:flex items-center space-x-10 w-[38%]">
+                        <a href="index.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Home</a>
+                        
+                        <div class="relative dropdown group py-4"> <button class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                                Who We Serve <svg class="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                                <a href="serve-probate.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Probate Support</a>
+                                <a href="serve-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Retiring Rightsizer</a>
+                                <a href="serve-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Aging In Place</a>
+                                <a href="serve-investor.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Presale Investor</a>
+                                <a href="serve-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Relocation Hub</a>
+                                <a href="serve-buyer.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">First-Time Buyer</a>
+                            </div>
+                        </div>
 
-    <section id="selection-screen" class="relative pt-48 pb-32 text-center animate-reveal">
-        <div class="max-w-4xl mx-auto px-6 mb-16">
-            <span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Homepathways Strategy Audit</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-serif text-white mb-4 leading-tight">Every Journey is <span class="text-brand-mint">unique.</span></h1>
-            <h2 class="text-2xl md:text-3xl font-light text-gray-400 mb-8 italic">Which path are you on?</h2>
-            <p class="text-gray-500 font-light text-lg max-w-2xl mx-auto leading-relaxed">Choose your focus below to unlock a tailored roadmap, providing the <strong>absolute joy</strong> of a managed transition.</p>
-        </div>
+                        <div class="relative dropdown group py-4"> <button class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                                Guides <svg class="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                                <a href="guide-buying.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Home Buying Guide</a>
+                                <a href="guide-selling.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Home Selling Guide</a>
+                                <a href="guide-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Relocation Guide</a>
+                                <a href="guide-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Rightsizing Guide</a>
+                                <a href="guide-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Aging In Place Guide</a>
+                            </div>
+                        </div>
 
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-            <div onclick="initAudit('Probate Family')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Probate Family</h3>
-                <p class="text-gray-500 text-sm">Handling a loved one's house and the paperwork.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-            <div onclick="initAudit('Rightsizing Senior')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Rightsizing Senior</h3>
-                <p class="text-gray-500 text-sm">Moving from a big home into a smaller place.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-            <div onclick="initAudit('Aging In Place')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Aging In Place</h3>
-                <p class="text-gray-500 text-sm">Fixing your current home so you can stay there safely.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-            <div onclick="initAudit('Relocation Family')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[2.5rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Relocation</h3>
-                <p class="text-gray-500 text-sm">Moving your family to a new neighborhood.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-            <div onclick="initAudit('First-Time Buyer')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">First Time Buyer</h3>
-                <p class="text-gray-500 text-sm">Buying your first home and stopping rent payments.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-            <div onclick="initAudit('Presale Investor')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center text-center">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Presale Investor</h3>
-                <p class="text-gray-500 text-sm">Buying property before it is built to build wealth.</p>
-                <div class="mt-8"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
-            </div>
-        </div>
-    </section>
+                        <a href="about.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">About</a>
+                    </div>
 
-    <section id="assessment-container" class="hidden pt-40 pb-32 px-6">
-        <div class="max-w-3xl mx-auto">
-            <div class="mb-12">
-                <div class="flex justify-between text-[10px] uppercase font-bold text-gray-500 mb-4 tracking-widest">
-                    <span id="audit-title">Strategy Audit</span>
-                    <span id="progress-text">Question 1 of 22</span>
-                </div>
-                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                    <div id="bar" class="h-full bg-brand-mint progress-bar-fill shadow-[0_0_15px_#97B99D]" style="width: 5%"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
+                        <a href="index.html" class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tighter block whitespace-nowrap hover:text-[#97B99D] transition-all duration-500 transform hover:scale-[1.02]">
+                            Homepathways
+                        </a>
+                    </div>
+
+                    <div class="hidden lg:flex items-center justify-end space-x-10 w-[38%]">
+                        <a href="inner-circle.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Trusted Partners</a>
+                        <a href="blog.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Blog</a>
+                        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all shadow-xl">Contact</a>
+                    </div>
                 </div>
             </div>
-            <div id="question-card" class="bg-[#0a101e] border border-white/5 p-10 md:p-16 rounded-[3rem] shadow-2xl min-h-[450px] flex flex-col justify-center"></div>
-            <div class="mt-12 flex justify-between items-center">
-                <button id="back-btn" onclick="prevStep()" class="invisible text-gray-600 text-[10px] uppercase font-bold tracking-widest">← Back</button>
-                <button id="next-btn" onclick="processStep()" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest">(ACT) NEXT STEP</button>
-            </div>
-        </div>
-    </section>
+        </nav>
 
-    <section id="report-container" class="hidden pt-40 pb-32 px-6 animate-reveal">
-        <div class="max-w-4xl mx-auto">
-            <h2 id="report-name-header" class="text-4xl md:text-6xl font-serif text-white mb-12 text-center leading-tight">Your <span class="italic text-brand-mint">Pathway Roadmap.</span></h2>
-            <div class="bg-[#0a101e] border border-white/5 p-12 md:p-16 rounded-[4rem] space-y-12">
-                <div><h4 class="text-brand-mint uppercase tracking-widest text-[10px] font-bold mb-4">01. Your Strategic Strength</h4><p id="report-strength" class="text-white text-2xl md:text-3xl font-serif italic"></p></div>
-                <div><h4 class="text-brand-mint uppercase tracking-widest text-[10px] font-bold mb-4">02. Where You Stand</h4><p id="report-stand" class="text-gray-400 text-lg font-light leading-relaxed"></p></div>
-                <div class="p-8 bg-white/[0.02] rounded-2xl border-l-4 border-brand-mint"><h4 class="text-white uppercase tracking-widest text-[10px] font-bold mb-4">03. The Soft Pathway (Our Process)</h4><p id="report-process" class="text-gray-400 text-lg font-light leading-relaxed"></p></div>
-            </div>
-            <div class="mt-16 text-center">
-                <a href="https://calendly.com/homepathways" class="bg-brand-mint text-navy px-14 py-6 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-xl hover:bg-white transition-all inline-block transform hover:scale-105">Discuss This Roadmap With Sean</a>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        
 import React, { useState } from 'react';
 
 const lib = {
@@ -290,10 +238,23 @@ const personaTypes = [
     { name: 'Presale Investor', shortName: 'Investor', description: "Buying property before it is built to build wealth." }
 ];
 
-const AuditPage: React.FC = () => {
-    const [screen, setScreen] = useState<'selection' | 'assessment' | 'report'>('selection');
-    const [currentPersona, setCurrentPersona] = useState<keyof typeof lib | ''>('');
-    const [fullPersonaName, setFullPersonaName] = useState('');
+interface AuditPageProps {
+    initialPersona?: {
+        fullName: string;
+        shortName: string;
+    };
+}
+
+const AuditPage: React.FC<AuditPageProps> = ({ initialPersona }) => {
+    const [screen, setScreen] = useState<'selection' | 'assessment' | 'report'>(
+        initialPersona ? 'assessment' : 'selection'
+    );
+    const [currentPersona, setCurrentPersona] = useState<keyof typeof lib | ''>(
+        initialPersona ? initialPersona.shortName as keyof typeof lib : ''
+    );
+    const [fullPersonaName, setFullPersonaName] = useState(
+        initialPersona ? initialPersona.fullName : ''
+    );
     const [step, setStep] = useState(1);
     const [answers, setAnswers] = useState<{ [key: number]: string }>({});
     const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '' });
@@ -486,6 +447,110 @@ const AuditPage: React.FC = () => {
 
 export default AuditPage;
 
-    </script>
+<!--Footer-->
+<footer class="bg-[#050b1a] border-t border-white/5 pt-24 pb-12">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-serif text-white mb-6">Homepathways</h2>
+            <p class="text-gray-400 font-light max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
+                Guided by clarity, comfort, and care. Mapping out custom pathways for every stage of your home ownership journey across the <strong>Lower Mainland and Fraser Valley.</strong>
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <a href="pathway-assessment.html" class="border border-[#97B99D] text-[#97B99D] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#97B99D] hover:text-[#050b1a] transition-all">
+                    Take the Readiness Audit
+                </a>
+                <a href="https://calendly.com/your-link" class="bg-[#97B99D] text-[#050b1a] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all">
+                    Book a Call
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            
+            <div class="flex flex-col space-y-3">
+                <span class="text-white text-[10px] font-bold uppercase tracking-widest mb-4">The Pathways</span>
+                <a href="serve-probate.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Probate Support</a>
+                <a href="serve-rightsizing.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Retiring Rightsizer</a>
+                <a href="serve-aging.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Aging In Place</a>
+                <a href="serve-investor.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Presale Investor</a>
+                <a href="serve-relocation.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Relocation Hub</a>
+                <a href="serve-buyer.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">First-Time Buyer</a>
+                <a href="serve-upmover.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Up-Mover Strategy</a>
+            </div>
+
+            <div class="flex flex-col space-y-3">
+                <span class="text-white text-[10px] font-bold uppercase tracking-widest mb-4">Regional Reach</span>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Langley & Walnut Grove</a>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Abbotsford & Mission</a>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Chilliwack & Hope</a>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Surrey & South Surrey</a>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Coquitlam & Tri-Cities</a>
+            </div>
+
+            <div class="flex flex-col space-y-3">
+                <span class="text-white text-[10px] font-bold uppercase tracking-widest mb-4">Expert Resources</span>
+                <a href="fraser-valley-strategy.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Fraser Valley Market Report</a>
+                <a href="inner-circle.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">The Inner Circle Network</a>
+                <a href="blog.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">The Pathway Journal</a>
+                <a href="guide-buying.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Home Buying Guide</a>
+                <a href="guide-selling.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Home Selling Guide</a>
+                <a href="guide-relocation.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Relocation Guide</a>
+                <a href="guide-rightsizing.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Rightsizing Guide</a>
+                <a href="guide-aging.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Aging In Place Guide</a>
+                <a href="partners.html" class="text-gray-500 hover:text-[#97B99D] text-xs transition-colors">Vetted Partner Directory</a>
+            </div>
+
+            <div class="flex flex-col space-y-4">
+                <span class="text-white text-[10px] font-bold uppercase tracking-widest mb-4">Connect</span>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    <strong>Sean Omoh - Homepathways</strong><br>
+                    1126 Austin Avenue, Coquitlam, BC<br>
+                    +1-778-949-9889
+                </p>
+                
+                <div class="flex flex-wrap gap-5 py-4">
+                    <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="LinkedIn">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Instagram">
+                        <svg class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Facebook">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="Pinterest">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.397 2.965 7.397 6.93 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[#97B99D] transition-all" aria-label="YouTube">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+
+                <div class="pt-2">
+                    <p class="text-[9px] text-gray-500 uppercase font-bold tracking-[0.2em] mb-3">Newsletter</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email Address" class="bg-white/5 border border-white/10 px-4 py-2 text-xs text-white rounded-l-lg outline-none focus:border-[#97B99D] w-full">
+                        <button class="bg-[#97B99D] text-[#050b1a] px-4 py-2 text-[10px] font-bold uppercase rounded-r-lg hover:bg-white transition-all">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-[9px] text-gray-600 uppercase tracking-widest font-bold">© 2026 Homepathways. All Rights Reserved.</span>
+            <div class="flex space-x-8 text-[9px] text-gray-600 uppercase tracking-widest font-bold">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">REBGV Disclosure</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
