@@ -19,21 +19,22 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; scroll-behavior: smooth; }
         .font-serif { font-family: 'Playfair Display', serif; }
         .hidden { display: none !important; }
         .animate-reveal { animation: reveal 0.5s ease-out forwards; }
         @keyframes reveal { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
-        .option-card { border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s ease; cursor: pointer; }
+        .option-card { border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; cursor: pointer; }
         .option-card:hover { border-color: #97B99D; background: rgba(151,185,157,0.05); }
         .selected-option { border-color: #97B99D !important; background: rgba(151,185,157,0.15) !important; color: white !important; }
         .progress-bar-fill { transition: width 0.4s ease-in-out; }
     </style>
 </head>
 <body>
-<!--Header-->
-<header>
+
+    <!--Header Section-->
+    <header>
         <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
             <div class="max-w-[1440px] mx-auto px-12">
                 <div class="flex items-center justify-between relative h-12">
@@ -83,46 +84,38 @@
                 </div>
             </div>
         </nav>
+
     <section id="selection-screen" class="relative pt-48 pb-32 text-center animate-reveal">
         <div class="max-w-4xl mx-auto px-6 mb-16">
-            <span class="text-brand-mint font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Homepathways Strategy Audit</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-serif text-white mb-4">Every Journey is <span class="text-brand-mint">unique.</span></h1>
-            <h2 class="text-3xl md:text-4xl font-bold font-serif text-white mb-8">Which Path are You On?</h2>
-            <p class="text-gray-400 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-16 italic">
-                Transition is hard. Guessing is harder. Choose your focus below to unlock a tailored roadmap.
-            </p>
+            <span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Homepathways Strategy Audit</span>
+            <h1 class="text-4xl md:text-6xl font-bold font-serif text-white mb-4 leading-tight">Every Journey is <span class="text-brand-mint">unique.</span></h1>
+            <h2 class="text-2xl md:text-3xl font-light text-gray-400 mb-8 italic">Which path are you on?</h2>
         </div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-            <div onclick="initAudit('Probate Family')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">Probate Family</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Protecting legacy through legal transitions.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('Probate Family')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">Probate Family</h3>
+                <p class="text-gray-500 text-sm mt-4">Legacy & Estate Management.</p>
             </div>
-            <div onclick="initAudit('Rightsizing Senior')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">Rightsizing Senior</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Trading square footage for total freedom.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('Rightsizing Senior')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">Rightsizing Senior</h3>
+                <p class="text-gray-500 text-sm mt-4">Lifestyle Freedom.</p>
             </div>
-            <div onclick="initAudit('Aging In Place')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">Aging In Place</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Modifying your sanctuary for independence.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('Aging In Place')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">Aging In Place</h3>
+                <p class="text-gray-600 text-sm mt-4">Safe Independence.</p>
             </div>
-            <div onclick="initAudit('Relocation Family')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">Relocation</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Navigating community trends with local eyes.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('Relocation Family')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">Relocation</h3>
+                <p class="text-gray-600 text-sm mt-4">Community Discovery.</p>
             </div>
-            <div onclick="initAudit('First-Time Buyer')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">First Time Buyer</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Building a foundation for future equity.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('First-Time Buyer')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">First-Time Buyer</h3>
+                <p class="text-gray-600 text-sm mt-4">Equity Foundations.</p>
             </div>
-            <div onclick="initAudit('Presale Investor')" class="group relative bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] transition-all duration-500 cursor-pointer overflow-hidden min-h-[350px] flex flex-col justify-center text-center hover:border-brand-mint">
-                <h3 class="text-white font-serif text-2xl font-bold mb-4 italic group-hover:opacity-10 transition-opacity">Presale Investor</h3>
-                <p class="text-gray-500 text-sm group-hover:opacity-10 transition-opacity">Precision mapping for assignment exits.</p>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"><span class="bg-brand-mint text-navy px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Take Assessment</span></div>
+            <div onclick="initAudit('Presale Investor')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint flex flex-col justify-center min-h-[350px]">
+                <h3 class="text-white font-serif text-3xl italic">Presale Investor</h3>
+                <p class="text-gray-600 text-sm mt-4">ROI Equity Mapping.</p>
             </div>
         </div>
     </section>
@@ -138,293 +131,293 @@
                     <div id="bar" class="h-full bg-brand-mint progress-bar-fill shadow-[0_0_15px_#97B99D]" style="width: 5%"></div>
                 </div>
             </div>
-            <div id="question-card" class="bg-[#0a101e] border border-white/5 p-10 md:p-16 rounded-[3rem] shadow-2xl min-h-[400px] flex flex-col justify-center"></div>
+            <div id="question-card" class="bg-[#0a101e] border border-white/5 p-10 md:p-16 rounded-[3rem] shadow-2xl min-h-[450px] flex flex-col justify-center"></div>
             <div class="mt-12 flex justify-between items-center">
-                <button id="back-btn" onclick="prevStep()" class="invisible text-gray-600 font-bold uppercase tracking-widest text-[10px] hover:text-white transition-all">← Back</button>
-                <button id="next-btn" onclick="processStep()" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl hover:bg-white transition-all transform hover:scale-105 active:scale-95">(ACT) NEXT STEP</button>
+                <button id="back-btn" onclick="prevStep()" class="invisible text-gray-600 text-[10px] uppercase font-bold tracking-widest">← Back</button>
+                <button id="next-btn" onclick="processStep()" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest">(ACT) NEXT STEP</button>
             </div>
         </div>
     </section>
 
     <section id="report-container" class="hidden pt-40 pb-32 px-6 animate-reveal">
         <div class="max-w-4xl mx-auto">
-            <h2 id="report-name-header" class="text-4xl md:text-6xl font-serif text-white mb-12 text-center">Your <span class="italic text-brand-mint">Pathway Roadmap.</span></h2>
-            <div class="bg-[#0a101e] border border-white/5 p-12 md:p-16 rounded-[3rem] space-y-12">
-                <div><h4 class="text-brand-mint uppercase tracking-widest text-[10px] font-bold mb-4">01. Your Strategic Strength</h4><p id="report-strength" class="text-white text-2xl font-serif italic"></p></div>
+            <h2 id="report-name-header" class="text-4xl md:text-6xl font-serif text-white mb-12 text-center leading-tight">Your <span class="italic text-brand-mint">Pathway Roadmap.</span></h2>
+            <div class="bg-[#0a101e] border border-white/5 p-12 md:p-16 rounded-[4rem] space-y-12">
+                <div><h4 class="text-brand-mint uppercase tracking-widest text-[10px] font-bold mb-4">01. Your Strategic Strength</h4><p id="report-strength" class="text-white text-2xl md:text-3xl font-serif italic"></p></div>
                 <div><h4 class="text-brand-mint uppercase tracking-widest text-[10px] font-bold mb-4">02. The Reality Check (Where You Stand)</h4><p id="report-stand" class="text-gray-400 font-light leading-relaxed"></p></div>
-                <div class="p-8 bg-white/5 rounded-2xl border-l-4 border-brand-mint"><h4 class="text-white uppercase tracking-widest text-[10px] font-bold mb-4">03. The Soft Process</h4><p id="report-process" class="text-gray-400 font-light leading-relaxed"></p></div>
+                <div class="p-8 bg-white/[0.02] rounded-2xl border-l-4 border-brand-mint"><h4 class="text-white uppercase tracking-widest text-[10px] font-bold mb-4">03. The Soft Process</h4><p id="report-process" class="text-gray-400 font-light leading-relaxed"></p></div>
             </div>
-            <div class="mt-12 text-center"><a href="https://calendly.com/homepathways" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-xl hover:bg-white transition-all inline-block">Discuss With Sean</a></div>
+            <div class="mt-16 text-center">
+                <a href="https://calendly.com/homepathways" class="bg-brand-mint text-navy px-14 py-6 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-xl hover:bg-white transition-all inline-block transform hover:scale-105">Discuss This Roadmap With Sean</a>
+            </div>
         </div>
     </section>
 
     <script>
-        // THE MASTER LIBRARY - ALL 6 PERSONAS, ALL 21 QUESTIONS EACH
-        const lib = {
+        // MASTER DATA - PREVENTING OVERLOAD
+        const auditData = {
             "Probate Family": {
                 questions: [
-                    { q: "Primary goal for the estate?", options: ["Maximize Sale Price", "Quick Settlement", "Rental Portfolio", "Family Transfer"] },
-                    { q: "Current legal milestone?", options: ["Searching for Will", "Probate Applied For", "Grant Received", "No Will Found"] },
-                    { q: "Beneficiary dynamic?", options: ["Sole Decision Maker", "Consensus Group (2-3)", "Large Group (4+)", "Legal Conflict"] },
-                    { q: "Occupancy status?", options: ["Vacant", "Family Occupied", "Tenanted", "Maintenance Issues"] },
-                    { q: "Familiarity with BC Probate?", options: ["Experienced", "Researching", "Unsure", "Overwhelmed"] },
-                    { q: "Estimated Property Value?", options: ["Under $1M", "$1M - $2M", "$2M - $5M", "Over $5M"] },
-                    { q: "Top Tax Concern?", options: ["Capital Gains", "Probate Fees", "Residence Exemption", "Foreign Tax"] },
-                    { q: "Interior Condition?", options: ["Pristine", "Needs Cosmetic", "Major Repairs", "Lot Value"] },
-                    { q: "Is liquidation urgent?", options: ["No: Cash Ready", "Yes: Sell Contents", "Needs Audit", "Urgent Funds Needed"] },
-                    { q: "Communication Preference?", options: ["Daily Detail", "Weekly Summary", "Problem-Solve only", "Full Delegate"] },
-                    { q: "Title structural concerns?", options: ["Clear Title", "Active Liens", "Encroachments", "Unsure"] },
-                    { q: "Have specialized lawyer?", options: ["Yes", "Need Referral", "Generalist only", "Searching"] },
-                    { q: "Speed vs Quality priority?", options: ["Urgent Speed", "High Quality Price", "Wait for Market", "Undecided"] },
-                    { q: "Best describes your role?", options: ["Executor", "Administrator", "Beneficiary", "Advisor"] },
-                    { q: "If no sale in 30 days?", options: ["Price Drop", "Rental Pivot", "Hold Market", "Contingency Plan"] },
-                    { q: "Insurance status?", options: ["Active", "Vacancy Permit", "Lapsed", "Unsure"] },
-                    { q: "Primary Driving Emotion?", options: ["Duty", "Fear of Error", "Closure", "Exhaustion"] },
-                    { q: "Sweat Equity available?", options: ["None (Full Service)", "Minor Help", "High Involvement", "Need Audit"] },
-                    { q: "Home's structural condition?", options: ["Excellent", "Standard Age", "Major Fixes", "Teardown"] },
-                    { q: "Ready for Strategic Listing?", options: ["Yes: Ready", "Soon: 1-2 Months", "Researching", "Not yet"] },
-                    { q: "Ready for Strategy Call?", options: ["Yes: Priority", "Maybe", "Report First", "No"] }
+                    { q: "What is the primary goal for the estate?", options: ["Maximize Sale Price", "Settlement Liquidation", "Rental Strategy", "Family Transfer"] },
+                    { q: "Which legal stage have you reached?", options: ["Grant Received", "Application Filed", "Will Found", "No Will/Searching"] },
+                    { q: "Beneficiary group size?", options: ["Sole Decision Maker", "Consensus Group (2-3)", "Large Group (4+)", "Legal Conflict"] },
+                    { q: "Home's occupancy status?", options: ["Vacant", "Family Occupied", "Active Tenancy", "Squatter/Maintenance Issue"] },
+                    { q: "Executor duty familiarity?", options: ["Experienced", "Researching", "Need Guidance", "Total Delegate"] },
+                    { q: "Estimated property value?", options: ["Under $1M", "$1M - $2M", "$2M - $5M", "Over $5M"] },
+                    { q: "Primary tax concern?", options: ["Capital Gains", "Probate Fees", "Primary Exemption", "Foreign/Spec Tax"] },
+                    { q: "Interior condition?", options: ["Pristine", "Needs Cosmetic", "Major Repairs", "Lot Value Teardown"] },
+                    { q: "Is liquidation urgent?", options: ["Urgent Funds Needed", "Standard Market Timing", "Strategic Planning", "Hold Market Improvement"] },
+                    { q: "Family communication style?", options: ["unified/Strategic", "Stressed but Civil", "Fragmented", "Conflict Resolution Needed"] },
+                    { q: "Update frequency?", options: ["Daily Detail", "Weekly Strategic", "Problem-Solve Only", "Total Delegate"] },
+                    { q: "Title condition status?", options: ["Clear Title", "Liens/Debts", "Encroachments", "Unsure/Audit Needed"] },
+                    { q: "Specialized legal help?", options: ["Yes: In-place", "Need Referral", "Generalist only", "Doing it solo"] },
+                    { q: "Speed vs Price priority?", options: ["Critical Speed", "High Value Quality", "Market Sensitive", "Need Insight"] },
+                    { q: "Which role do you hold?", options: ["Named Executor", "Administrator", "Beneficiary Advocate", "Interested Family"] },
+                    { q: "If no sale in 30 days?", options: ["Price Shift", "Rental Pivot", "Hold/Wait", "Sean's Contingency"] },
+                    { q: "Insurance permit status?", options: ["Active Homeowner", "Vacancy Permit Active", "Lapsed Policy", "Unsure/Audit"] },
+                    { q: "Driving emotion today?", options: ["Sense of Duty", "Fear of Error", "Need for Closure", "Deep Exhaustion"] },
+                    { q: "Physical sweat equity?", options: ["Full Service Needed", "Minor Tasks", "High Involvement", "Logistical Audit Needed"] },
+                    { q: "Long-term legacy goal?", options: ["Maximize Inheritance", "Honor Legacy", "Finality/Closure", "Market Winning Result"] },
+                    { q: "Strategy Session ready?", options: ["Yes: Priority", "Maybe: Soon", "Report First", "No"] }
                 ],
-                outcome: { strength: "Duty-driven legacy preservation.", stand: "You are navigating the Compliance quadrant. Balancing family expectations with 2026 legal shifts.", process: "We coordinate with your legal team while managing the physical logistics and market positioning of the estate." }
+                res: { str: "You are acting with remarkable duty.", stand: "You are in the Compliance quadrant, balancing 2026 legal shifts with family legacy.", pro: "We coordinate with your lawyer while managing the physical property logistics quietly." }
             },
             "Rightsizing Senior": {
                 questions: [
-                    { q: "Main home struggle?", options: ["Upkeep/Yard", "Financial Weight", "Empty Rooms", "Isolation"] },
-                    { q: "Years in current home?", options: ["10-20 Years", "20-30 Years", "30+ Years", "Inherited"] },
-                    { q: "Dream landing?", options: ["Luxury Condo", "Master-on-Main", "Rented Freedom", "Small Rancher"] },
-                    { q: "Main hurdle today?", options: ["Item Logistics", "Market Fear", "Emotional Attachment", "Finding 'The One'"] },
-                    { q: "Family involvement?", options: ["Supportive", "Neutral", "Resistant", "Solo"] },
-                    { q: "Mobility Needs?", options: ["Full", "Future Proofing", "Stairs are Tough", "1-Level Mandatory"] },
-                    { q: "Equity Goal?", options: ["Cash Out $500k+", "Trade Up", "Break Even", "Unsure"] },
-                    { q: "Volume of belongings?", options: ["Minimalist", "Manageable", "Needs Purge", "Overwhelming"] },
-                    { q: "Neighborhood Vibe?", options: ["Quiet Suburban", "Urban Walkable", "Nature/Trees", "Near Amenities"] },
-                    { q: "Deferment Knowledge?", options: ["Planning it", "Need Explanation", "Researching", "Not Interested"] },
-                    { q: "Guest Suite Importance?", options: ["Mandatory", "Den is Enough", "Not needed", "Flexible"] },
-                    { q: "Move-out date?", options: ["6 Months", "1 Year", "Exploring", "Life Event"] },
-                    { q: "Major System Condition?", options: ["Pristine", "Minor Maintenance", "Needs Updates", "Teardown"] },
-                    { q: "Strata Living View?", options: ["Excited", "Cautious", "Resistant", "Open"] },
-                    { q: "Listing Style?", options: ["Discreet", "Full Market", "Quick Sale", "Need Advice"] },
-                    { q: "Need Bridge Finance?", options: ["No", "Yes", "Need Audit", "Unsure"] },
-                    { q: "Main Hobby?", options: ["Travel", "Grandkids", "Social/Garden", "Quiet Art"] },
-                    { q: "Stress Level?", options: ["Low", "Moderate", "High", "Critical"] },
-                    { q: "Goal Outcome?", options: ["Travel Freedom", "Closeness", "Financial Security", "Safety"] },
-                    { q: "Furniture Plan?", options: ["Take All", "Start Fresh", "Minimalist", "Unsure"] },
-                    { q: "Freedom Call Ready?", options: ["Book Now", "Next Month", "Report First", "Browsing"] }
+                    { q: "Primary home struggle?", options: ["Physical Upkeep", "Financial Weight", "Ghost Rooms", "Isolation"] },
+                    { q: "Years in property?", options: ["10-20 Yrs", "20-30 Yrs", "30+ Yrs", "Inherited"] },
+                    { q: "Dream landing home?", options: ["Luxury Condo", "Master-on-Main", "Freedom Rental", "Single Rancher"] },
+                    { q: "Main logistical hurdle?", options: [" Belongings/Stuff", "Market Fear", "Attachment", "Location Choice"] },
+                    { q: "Family involvement?", options: ["Supportive", "Neutral", "Resistant", "Solo decision"] },
+                    { q: "Mobility Needs?", options: ["Future Proofing", "Stairs are Tough", "1-Level Mandatory", "No concerns"] },
+                    { q: "Equity Goal?", options: ["Cash Out $500k+", "Break-Even", "Trade Up", "Unsure"] },
+                    { q: "Purge volume?", options: ["Minimalist", "A few weekends", "Needs Purge Team", "Overwhelming History"] },
+                    { q: "Neighborhood Vibe?", options: ["Quiet Suburban", "Urban Walkable", "Nature/Trees", "Close to Amenities"] },
+                    { q: "Property Tax Deferment?", options: ["Already planning", "Need Explanation", "Researching", "Not Interested"] },
+                    { q: "Guest Suite importance?", options: ["Mandatory", "Den is enough", "Not needed", "Flexible"] },
+                    { q: "Target move-out date?", options: ["6 Months", "1 Year", "Exploring", "Life event"] },
+                    { q: "Major System Condition?", options: ["Pristine", "Minor Maintenance", "Major Updates", "Teardown"] },
+                    { q: "Strata Living view?", options: ["Excited (No mowing)", "Cautious (Fees)", "Resistant (Detached)", "Open (Quiet)"] },
+                    { q: "Listing preference?", options: ["Off-Market Discreet", "Full Exposure", "Quick Sale", "Advice Needed"] },
+                    { q: "Need Bridge Finance?", options: ["Cash Ready", "Yes", "Need Audit", "How works?"] },
+                    { q: "Primary Joy Hobby?", options: ["Travel", "Grandkids", "Social/Garden", "Art/Quiet"] },
+                    { q: "Current Stress Level?", options: ["Low", "Moderate", "High", "Critical Paralyzed"] },
+                    { q: "Ultimate Goal?", options: ["Travel Freedom", "Family Closeness", "Financial Security", "Safety"] },
+                    { q: "Moving Furniture plan?", options: ["Take all", "Start Fresh", "Minimalist", "Floor-plan audit"] },
+                    { q: "Strategy Call ready?", options: ["Priority Now", "Next Month", "Report First", "Browsing"] }
                 ],
-                outcome: { strength: "Courageous choice for freedom over chores.", stand: "You are house-rich but look to become lifestyle-wealthy. You're in the Logistical Purge phase.", process: "We follow the Soft Purge protocol. We coordinate the organizers and move-managers so you only touch what you love." }
+                res: { str: "You are choosing freedom over burden.", stand: "You are house-rich but look to become lifestyle-wealthy in the 2026 rightsizing market.", pro: "We use the Soft Purge protocol. We bring in the managers so you only touch what you love." }
             },
             "Aging In Place": {
                 questions: [
-                    { q: "Stair safety today?", options: ["Very Safe", "Cautious", "Scary", "Unusable"] },
-                    { q: "Master on Main floor?", options: ["Yes", "Room for it", "Upstairs only", "Elevator"] },
-                    { q: "Medical proximity?", options: ["<10 Mins", "10-20 Mins", ">20 Mins", "Need Transit"] },
-                    { q: "Home lighting quality?", options: ["Bright", "Standard", "Dark spots", "Unsafe"] },
-                    { q: "Tripping hazards?", options: ["None", "Minor", "Major", "Had a fall"] },
-                    { q: "Bathroom accessibility?", options: ["Modified", "Standard Tub", "Difficult", "Need Reno"] },
-                    { q: "Smart security in use?", options: ["Fully monitored", "Want one", "No trust", "Partial"] },
-                    { q: "Social network status?", options: ["Strong/Daily", "Weekly", "Isolated", "Far Family"] },
-                    { q: "Roof/HVAC age?", options: ["New", "Needs work", "Critical", "Unsure"] },
-                    { q: "Neighborhood walking?", options: ["Excellent", "Okay", "Poor", "Home-bound"] },
+                    { q: "Stair safety status?", options: ["Very Safe", "Cautious", "Scary", "Unusable"] },
+                    { q: "Master on Main?", options: ["Yes", "Conversion Room", "Upstairs only", "Elevator"] },
+                    { q: "Care proximity?", options: ["<10 Mins", "10-20 Mins", ">20 Mins", "Transit needed"] },
+                    { q: "Home lighting status?", options: ["Bright", "Standard", "Dark spots", "Unsafe"] },
+                    { q: "Fall risks present?", options: ["None", "Minor", "Major", "Fall occurred"] },
+                    { q: "Bathroom accessible?", options: ["Yes (Modified)", "Standard Tub", "Difficult", "Need Reno"] },
+                    { q: "Smart home in use?", options: ["Monitored", "Want one", "Partial", "No trust"] },
+                    { q: "Nearby network?", options: ["Strong/Daily", "Weekly", "Isolated", "Family far"] },
+                    { q: "HVAC/Roof condition?", options: ["New", "Needs work", "Critical", "Unsure"] },
+                    { q: "Walkability level?", options: ["Excellent", "Okay", "Poor", "Home-bound"] },
                     { q: "Sanctuary room?", options: ["Kitchen", "Living", "Garden", "Bedroom"] },
-                    { q: "Kitchen Ergonomics?", options: ["Modern", "Dated/High", "Needs work", "Unusable"] },
-                    { q: "SOS/Life-line user?", options: ["Yes", "Need one", "Phone only", "Family monitor"] },
-                    { q: "Air quality?", options: ["Clean", "Standard", "Dusty", "Concerned"] },
-                    { q: "Plan for care?", options: ["Professional", "Family", "Care home", "No plan"] },
-                    { q: "Doorway width?", options: ["Wide", "Most", "Some", "Narrow"] },
+                    { q: "Kitchen ergonomics?", options: ["Modern", "Dated", "Hard reach", "Unusable"] },
+                    { q: "SOS button plan?", options: ["Yes", "Need one", "Phone only", "Family monitor"] },
+                    { q: "Air/Ventilation?", options: ["Clean", "Standard", "Concerned", "Dusty"] },
+                    { q: "Care plan ready?", options: ["Professional", "Family", "Care Home", "None"] },
+                    { q: "Doorway width?", options: ["Wide", "Standard", "Some narrow", "None/Tight"] },
                     { q: "Chore management?", options: ["DIY", "Family help", "Pro Help", "Piling up"] },
                     { q: "Step-free entry?", options: ["Flat", "1-3 steps", "Major stairs", "Garage only"] },
-                    { q: "Joy of staying?", options: ["Memories", "Financial", "Stability", "Privacy"] },
-                    { q: "Budget for modifications?", options: ["<$10k", "$10k-$50k", "$50k+", "Unsure"] },
-                    { q: "Audit Call Ready?", options: ["Book Now", "Soon", "Report First", "No"] }
+                    { q: "Financial comfort?", options: ["Stable", "High Taxes", "Leveraging Equity", "Undecided"] },
+                    { q: "Reno Budget?", options: ["<$10k", "$10k-$50k", "$50k+", "Unsure"] },
+                    { q: "Longevity audit ready?", options: ["Priority", "Soon", "Report First", "No"] }
                 ],
-                outcome: { strength: "Proactive stand for safe independence.", stand: "You are in the Sanctuary Preservation phase. Your home needs to evolve with your needs.", process: "We perform a 50-point Longevity Audit to identify modifications that fund your long-term comfort." }
+                res: { str: "Proactive stand for independence.", stand: "You are in the Sanctuary Preservation phase. Your home must evolve with you.", pro: "We perform a 50-point Longevity Audit to identify safety fixes that protect your lifestyle." }
             },
             "Relocation Family": {
                 questions: [
-                    { q: "Primary move driver?", options: ["Career", "Family", "Lifestyle", "Cost"] },
-                    { q: "Neighborhood vibe?", options: ["Suburban", "Transit-Hub", "Nature", "Luxury Strata"] },
-                    { q: "Ideal commute?", options: ["<20 Mins", "20-45 Mins", "Remote", "Transit"] },
-                    { q: "School importance?", options: ["Critical", "Important", "Flexible", "Private"] },
-                    { q: "Home to sell first?", options: ["No/Cash ready", "Listed", "Planning", "Renting"] },
+                    { q: "Move driver?", options: ["Career", "Family", "Lifestyle", "Cost"] },
+                    { q: "Neighborhood DNA?", options: ["Suburban", "Transit Hub", "Nature focus", "Strata Amenity"] },
+                    { q: "Commute max?", options: ["<20 Mins", "20-45 Mins", "Remote", "Transit focus"] },
+                    { q: "School importance?", options: ["Critical", "Important", "Flexible", "Private only"] },
+                    { q: "Sale before purchase?", options: ["No/Cash ready", "Listed", "Planning", "Renting now"] },
                     { q: "2026 Budget?", options: ["<$800k", "$800k-$1.3M", "$1.3M-$2M", ">$2M"] },
-                    { q: "Area familiarity?", options: ["Local", "Visited", "Newcomer", "Online only"] },
-                    { q: "Must-have feature?", options: ["Suite", "Backyard", "Open Layout", "Home Office"] },
-                    { q: "Biggest fear?", options: ["Wrong area", "Overpaying", "Scarcity", "Community fit"] },
-                    { q: "Mandatory bedrooms?", options: ["2", "3", "4", "5+"] },
-                    { q: "Transit line focus?", options: ["SkyTrain", "Hwy 1", "Golden Ears", "No transit"] },
-                    { q: "Move-in month?", options: ["<3 Months", "4-6 Months", "6-12 Months", "Flexible"] },
-                    { q: "New Construction focus?", options: ["Exclusively", "Open", "Established", "Presale"] },
-                    { q: "Parking needs?", options: ["1 Car", "2 Cars", "3 Cars", "RV Space"] },
-                    { q: "Weekend hobby?", options: ["Hiking", "Dining", "Sports", "Quiet Home"] },
-                    { q: "Local lender status?", options: ["Approved", "Need referral", "Out-of-area", "Cash"] },
-                    { q: "Fixer-Upper tolerance?", options: ["Pristine", "Minor Paint", "Major Sweat", "Teardown"] },
-                    { q: "Hold timeframe?", options: ["3-5 Yrs", "5-10 Yrs", "Forever", "Unsure"] },
-                    { q: "Workspace needs?", options: ["Studio", "Desk", "No", "Shop"] },
-                    { q: "Joy of moving?", options: ["Fresh Start", "Better Life", "Family Roots", "Growth"] },
-                    { q: "Local Scout Call?", options: ["Priority", "Soon", "Report First", "No"] }
+                    { q: "Area familiarity?", options: ["Local", "Visited", "Newcomer", "Online Research"] },
+                    { q: "Non-negotiable?", options: ["Suite", "Backyard", "Open Layout", "Home Office"] },
+                    { q: "Core fear?", options: ["Wrong area", "Overpaying", "Scarcity", "Communtiy fit"] },
+                    { q: "Bedroom count?", options: ["2", "3", "4", "5+"] },
+                    { q: "SkyTrain focus?", options: ["Evergreen/Expo", "Hwy 1 Access", "Golden Ears", "Not needed"] },
+                    { q: "Move-in window?", options: ["<3 Months", "4-6 Months", "6-12 Months", "Flexible"] },
+                    { q: "Construction type?", options: ["New", "Established", "Open", "Presale"] },
+                    { q: "Parking spots?", options: ["1", "2", "3", "RV Space"] },
+                    { q: "Typical weekend?", options: ["Nature/Hike", "Urban/Dining", "Sports/Kids", "Quiet Home"] },
+                    { q: "Lender status?", options: ["Pre-Approved", "Need referral", "Bank only", "Cash buyer"] },
+                    { q: "Sweat equity level?", options: ["Pristine only", "Minor Paint", "Fixer-Upper", "Total Gut"] },
+                    { q: "Hold duration?", options: ["<5 Yrs", "5-10 Yrs", "Forever", "Unsure"] },
+                    { q: "Studio/Desk needs?", options: ["Dedicated Studio", "Small desk", "No", "Big Garage"] },
+                    { q: "Move Joy?", options: ["Fresh Start", "Better Lifestyle", "Building Roots", "Career"] },
+                    { q: "Scout call ready?", options: ["Priority", "Soon", "Report First", "No"] }
                 ],
-                outcome: { strength: "Strategic family landing planning.", stand: "You are in the Community Discovery phase. You need neighborhoood DNA, not just listings.", process: "We act as your local scouts, auditing school catchments and future transit impacts." }
+                res: { str: "Strategic family landing planning.", stand: "You are in the Discovery phase. You need neighborhood DNA and school intelligence.", pro: "We act as local scouts, auditing school catchments and future development plans for your family." }
             },
             "First-Time Buyer": {
                 questions: [
                     { q: "Savings duration?", options: ["1-2 Yrs", "2-5 Yrs", "5+ Yrs", "Gifted"] },
-                    { q: "Buying motivation?", options: ["Stop Renting", "Build Equity", "Stability", "Investment"] },
+                    { q: "Motivation?", options: ["Stop Rent", "Equity", "Stability", "Future Investment"] },
                     { q: "Grant knowledge?", options: ["Researched", "No idea", "Somewhat", "Unsure"] },
-                    { q: "Monthly carry target?", options: ["<$2.8k", "$2.8k-$4k", "$4k+", "Unsure"] },
+                    { q: "Monthly budget?", options: ["<$2.8k", "$2.8k-$4k", "$4k+", "Unsure"] },
                     { q: "Target price?", options: ["<$600k", "$600k-$850k", "$850k+", "Detached"] },
-                    { q: "Broker status?", options: ["Approved", "Need referral", "Bank only", "Cash"] },
-                    { q: "Suite Importance?", options: ["Mandatory", "Preferred", "None", "Condo"] },
-                    { q: "Reno tolerance?", options: ["Move-in ready", "Paint only", "Fixer-Upper", "Total Gut"] },
+                    { q: "Broker status?", options: ["Approved", "Referral needed", "Bank only", "Cash"] },
+                    { q: "Suite needed?", options: ["Mandatory", "Preferred", "None", "Condo focus"] },
+                    { q: "Reno comfort?", options: ["Pristine", "Cosmetic", "Fixer", "Total Gut"] },
                     { q: "Hold timeframe?", options: ["<5 Yrs", "5-10 Yrs", "Forever", "Unsure"] },
-                    { q: "Area focus?", options: ["Langley", "Tri-Cities", "Surrey", "Maple Ridge"] },
-                    { q: "Biggest fear?", options: ["Maintenance", "Market Drop", "Rates", "House Poor"] },
-                    { q: "Buying with partner?", options: ["Solo", "Partner", "Family", "Co-sign"] },
+                    { q: "Sub-market?", options: ["Langley", "Tri-Cities", "Surrey", "Maple Ridge"] },
+                    { q: "Core fear?", options: ["Maint costs", "Market drop", "Rates", "House Poor"] },
+                    { q: "Buying group?", options: ["Solo", "Partner", "Family", "Co-sign"] },
                     { q: "Must-have?", options: ["Laundry", "Balcony", "Parking", "Amenities"] },
-                    { q: "Open to Presale?", options: ["Yes", "Maybe", "No", "How works?"] },
-                    { q: "Credit standing?", options: ["750+", "650-750", "Needs work", "Unknown"] },
-                    { q: "Rental status?", options: ["Paying now", "Family home", "Month-to-month", "Other"] },
-                    { q: "SkyTrain focus?", options: ["Mandatory", "Preferred", "Not important", "I drive"] },
+                    { q: "Open to presale?", options: ["Yes", "Maybe", "No", "Explain it"] },
+                    { q: "Credit standing?", options: ["Excellent", "Good", "Needs work", "Unknown"] },
+                    { q: "Rental status?", options: ["Paying high rent", "Family", "Month-to-month", "Other"] },
+                    { q: "Transit focus?", options: ["Mandatory", "Preferred", "Not important", "I drive"] },
                     { q: "Primary hobby?", options: ["Fitness", "Social", "Creative", "Gaming"] },
-                    { q: "2026 interest?", options: ["Density", "Energy Efficient", "Smart Tech", "Garden"] },
-                    { q: "Joy of owning?", options: ["Security", "Independence", "Building Wealth", "Freedom"] },
-                    { q: "Foundation Call?", options: ["Book now", "Soon", "Report First", "No"] }
+                    { q: "Trend interest?", options: ["Density", "Energy Eff", "Smart Tech", "Garden"] },
+                    { q: "Ownership joy?", options: ["Security", "Independence", "Wealth", "Control"] },
+                    { q: "Foundation call?", options: ["Book Now", "Soon", "Report First", "No"] }
                 ],
-                outcome: { strength: "Building a wealth-generating foundation.", stand: "You are in the Equity Entry quadrant. You need to stop renting but ladder up safely.", process: "We stress-test your first move. We audit strata health and resale velocity so your first home isn't a trap." }
+                res: { str: "Building a powerful wealth foundation.", stand: "You are in the Equity Entry quadrant. You need to stop renting but ladder up safely.", pro: "We stress-test your first move. We audit strata health and resale speed so your home is a ladder." }
             },
             "Presale Investor": {
                 questions: [
-                    { q: "Acquisition Strategy?", options: ["Assignment Flip", "Rental Yield", "Future use", "Land Banking"] },
-                    { q: "Deposit position?", options: ["Liquid Cash", "HELOC/Equity", "Liquidation needed", "Gifted"] },
-                    { q: "Rate tolerance?", options: ["Low", "Moderate", "High", "Aggressive"] },
-                    { q: "Top ROI metric?", options: ["Cash-on-Cash", "Cap Rate", "Appreciation", "Tax Shelter"] },
-                    { q: "Portfolio goal?", options: ["1 Door", "2-3 Doors", "5+ Doors", "Institutional"] },
-                    { q: "Primary Exit concern?", options: ["Assignment gates", "Vacancy", "Gains Tax", "Closing Costs"] },
-                    { q: "TOD Law knowledge?", options: ["Buying near hubs", "Need area audit", "Need maps", "Rural focus"] },
-                    { q: "Developer Brand vet?", options: ["Tier 1 only", "Boutique okay", "Trust agent", "Price only"] },
+                    { q: "Strategy?", options: ["Assignment Flip", "Rental Yield", "Family future", "Land Bank"] },
+                    { q: "Deposit status?", options: ["Cash Ready", "HELOC/Equity", "Portfolio Liquidation", "Gifted"] },
+                    { q: "Rate tolerance?", options: ["Low (Hold)", "Moderate", "High (Float)", "Aggressive"] },
+                    { q: "Top ROI metric?", options: ["Cash-on-Cash", "Cap Rate", "Appreciation", "Tax Shield"] },
+                    { q: "Portfolio goal?", options: ["1 Door", "2-3 Doors", "5+ Doors", "Commercial"] },
+                    { q: "Exit concern?", options: ["Assignment Gate", "Vacancy", "Gains Tax", "Closing Costs"] },
+                    { q: "TOD knowledge?", options: ["Buying near hubs", "Need area audit", "Need maps", "Rural focus"] },
+                    { q: "Developer brand?", options: ["Tier 1 only", "Boutique okay", "Trust Agent", "Price only"] },
                     { q: "Completion year?", options: ["2026-27", "2028-29", "2030+", "Flexible"] },
-                    { q: "Best configuration?", options: ["Studio/1BR", "2BR/Den", "Townhome", "Commercial"] },
-                    { q: "Management style?", options: ["Passive (Pro)", "Active (DIY)", "Flip before", "Unsure"] },
-                    { q: "Presale Lawyer status?", options: ["Working with", "Need Referral", "Generalist", "DIY"] },
-                    { q: "Leverage limit?", options: ["<60% LTV", "Standard 80%", "Max Leverage", "All-Cash"] },
-                    { q: "Research time?", options: ["Daily", "Weekly", "Minimal", "Starting"] },
-                    { q: "Market Golden Zone?", options: ["Burquitlam", "Langley City", "Surrey City", "Outside LM"] },
-                    { q: "Outcome of Outcome?", options: ["Retirement", "Tax Wealth", "Diversification", "Family housing"] },
-                    { q: "EV Readiness?", options: ["Mandatory", "Preferred", "Not factor", "Value only"] },
-                    { q: "Rescission knowledge?", options: ["Audit every line", "What is that?", "Trust Agent", "Somewhat"] },
-                    { q: "Market drop strategy?", options: ["Hold/Rent", "Sell fast", "Buy more", "Need Sean's Plan"] },
-                    { q: "Investment joy?", options: ["Equity Growth", "Rental Checks", "The Deal", "Quality housing"] },
-                    { q: "Disclosure Audit?", options: ["Book Now", "Soon", "Report First", "No"] }
+                    { q: "Configuration?", options: ["Studio/1BR", "2BR/Den", "Townhome", "Mixed Use"] },
+                    { q: "Management style?", options: ["Passive", "Active", "Flip focus", "Unsure"] },
+                    { q: "Lawyer status?", options: ["Working with", "Need referral", "Generalist", "DIY"] },
+                    { q: "LTV Limit?", options: ["<60%", "Standard 80%", "Max Leverage", "All-Cash"] },
+                    { q: "Research time?", options: ["Daily", "Weekly", "Minimal", "Starting out"] },
+                    { q: "Golden Zone?", options: ["Burquitlam", "Langley City", "Surrey City", "Outside LM"] },
+                    { q: "Outcome goal?", options: ["Retirement", "Tax Wealth", "Diversity", "Family housing"] },
+                    { q: "EV readiness?", options: ["Mandatory", "Preferred", "Not factor", "Value add"] },
+                    { q: "Rescission knowledge?", options: ["Deep Audit", "What is that?", "Trust Agent", "Somewhat"] },
+                    { q: "Market Drop plan?", options: ["Hold/Rent", "Sell fast", "Buy more", "Contingency"] },
+                    { q: "Investment joy?", options: ["Equity Growth", "Rentals", "The Deal", "Housing quality"] },
+                    { q: "Disclosure Audit?", options: ["Book now", "Soon", "Report First", "No"] }
                 ],
-                outcome: { strength: "Data-driven equity identification.", stand: "You are in the High-Growth quadrant. You understand the potential but need to navigate 2026 exit gates.", process: "We perform Disclosure Audits. We vet developer reputation and assignment windows before you sign." }
+                res: { str: "Data-driven equity identification.", stand: "You are in the High-Growth quadrant. You understand ROI but need to navigate 2026 disclosure gates.", pro: "We vet developer reputation and assignment windows before you ever sign your deposit." }
             }
         };
 
-        // THE ENGINE LOGIC
-        let persona = "";
-        let step = 1;
-        let answers = {};
+        let activePersona = "";
+        let currentStep = 1;
+        let selectedAnswers = {};
 
         function initAudit(p) {
-            persona = p;
+            activePersona = p;
             document.getElementById('selection-screen').classList.add('hidden');
             document.getElementById('assessment-container').classList.remove('hidden');
-            document.getElementById('audit-title').innerText = `${persona} Strategy Audit`;
+            document.getElementById('audit-title').innerText = `${p} Audit`;
             renderStep();
         }
 
         function renderStep() {
             const card = document.getElementById('question-card');
-            if (step === 22) { renderLeadGate(); return; }
+            if (currentStep === 22) { renderLeadGate(); return; }
 
-            const data = lib[persona];
-            const qData = data.questions[step - 1];
+            const personaSet = auditData[activePersona];
+            const qObj = personaSet.questions[currentStep - 1];
 
             card.innerHTML = `
-                <div class="mb-6"><span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[9px] mb-2 block">Analysis ${step} of 21</span>
-                <h3 class="text-2xl md:text-3xl font-serif text-white mb-10 italic leading-snug">${qData.q}</h3></div>
+                <span class="text-brand-mint font-bold uppercase tracking-widest text-[9px] mb-4 block">Point ${currentStep} of 21</span>
+                <h3 class="text-2xl md:text-3xl font-serif text-white mb-10 italic leading-snug">${qObj.q}</h3>
                 <div class="grid gap-4">
-                    ${qData.options.map(opt => `
-                        <div onclick="selectOption(this, ${step}, '${opt}')" 
+                    ${qObj.options.map(opt => `
+                        <div onclick="pickOption(this, ${currentStep}, '${opt}')" 
                              class="option-card p-6 md:p-8 rounded-2xl text-gray-400 font-light flex items-center group
-                             ${answers[step] === opt ? 'selected-option' : ''}">
-                            <div class="w-2 h-2 rounded-full border border-white/20 mr-4 group-hover:border-brand-mint"></div>
+                             ${selectedAnswers[currentStep] === opt ? 'selected-option' : ''}">
+                            <div class="w-1.5 h-1.5 rounded-full border border-white/20 mr-4 group-hover:border-brand-mint"></div>
                             ${opt}
                         </div>
                     `).join('')}
                 </div>
             `;
-            updateUI();
+            updateProgress();
         }
 
         function renderLeadGate() {
             const card = document.getElementById('question-card');
-            document.getElementById('next-btn').innerText = "(ACT) GENERATE AUDIT REPORT";
+            document.getElementById('next-btn').innerText = "(ACT) GENERATE REPORT";
             card.innerHTML = `
-                <div class="text-center mb-10"><span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[9px] mb-4 block">Final Step</span>
-                <h3 class="text-3xl font-serif text-white mb-4 italic">Ready for the Resolution?</h3>
-                <p class="text-gray-500 text-sm font-light">Enter your details to generate your tailored 2026 Strategic Roadmap.</p></div>
-                <div class="space-y-4 max-w-md mx-auto w-full">
-                    <input type="text" id="fname" placeholder="Full Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
-                    <input type="email" id="femail" placeholder="Email Address" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
-                    <input type="tel" id="fphone" placeholder="Phone (Optional)" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
+                <div class="text-center mb-10"><h3 class="text-3xl font-serif text-white italic">Ready for your Roadmap?</h3></div>
+                <div class="space-y-4 max-w-sm mx-auto w-full">
+                    <input type="text" id="user_name" placeholder="Full Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
+                    <input type="email" id="user_email" placeholder="Email Address" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
+                    <input type="tel" id="user_phone" placeholder="Phone (Optional)" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-brand-mint text-white">
                 </div>
             `;
-            updateUI();
         }
 
-        function selectOption(el, s, v) {
+        function pickOption(el, s, v) {
             document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected-option'));
             el.classList.add('selected-option');
-            answers[s] = v;
+            selectedAnswers[s] = v;
         }
 
         function processStep() {
-            if (step < 22) {
-                if (!answers[step]) { alert("Please pick an option to proceed."); return; }
-                step++; renderStep();
-            } else { finalize(); }
+            if (currentStep < 22) {
+                if (!selectedAnswers[currentStep]) { alert("Please select an option."); return; }
+                currentStep++; renderStep();
+            } else { finalizeAudit(); }
         }
 
-        function prevStep() { if (step > 1) { step--; renderStep(); } }
+        function prevStep() { if (currentStep > 1) { currentStep--; renderStep(); } }
 
-        async function finalize() {
-            const name = document.getElementById('fname').value;
-            const email = document.getElementById('femail').value;
-            const phone = document.getElementById('fphone').value || "Not Provided";
+        async function finalizeAudit() {
+            const name = document.getElementById('user_name').value;
+            const email = document.getElementById('user_email').value;
+            const phone = document.getElementById('user_phone').value || "Not Provided";
             if (!name || !email) { alert("Required info missing."); return; }
 
-            const outcome = lib[persona].outcome;
-            let notes = `--- STRATEGIC AUDIT: ${persona.toUpperCase()} ---\n\n`;
-            notes += `STRENGTH: ${outcome.strength}\nSTAND: ${outcome.stand}\nPROCESS: ${outcome.process}\n\n`;
-            notes += `--- TRANSCRIPT ---\n`;
-            for (let i = 1; i < 22; i++) { notes += `Q${i}: ${answers[i]}\n`; }
+            const meta = auditData[activePersona].res;
+            let reportNotes = `--- STRATEGIC AUDIT: ${activePersona.toUpperCase()} ---\n\n`;
+            reportNotes += `ADVICE GIVEN:\nStrength: ${meta.str}\nStand: ${meta.stand}\nProcess: ${meta.pro}\n\n`;
+            reportNotes += `--- CLIENT ANSWERS ---\n`;
+            for (let i = 1; i < 22; i++) { reportNotes += `Q${i}: ${selectedAnswers[i]}\n`; }
 
-            const payload = { first_name: name, email: email, phone: phone, notes: notes, source: `Audit: ${persona}` };
-
+            const hookUrl = 'https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97';
+            
             try {
-                await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97', {
+                // BRUTE FORCE POST
+                await fetch(hookUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ first_name: name, email: email, phone: phone, notes: reportNotes })
                 });
-            } catch (err) { console.error(err); }
+            } catch (err) {}
 
             document.getElementById('assessment-container').classList.add('hidden');
             document.getElementById('report-container').classList.remove('hidden');
             document.getElementById('report-name-header').innerHTML = `${name}, Your <span class='italic text-brand-mint'>Pathway Roadmap.</span>`;
-            document.getElementById('report-strength').innerText = outcome.strength;
-            document.getElementById('report-stand').innerText = outcome.stand;
-            document.getElementById('report-process').innerText = outcome.process;
+            document.getElementById('report-strength').innerText = meta.str;
+            document.getElementById('report-stand').innerText = meta.stand;
+            document.getElementById('report-process').innerText = meta.pro;
             window.scrollTo(0, 0);
         }
 
-        function updateUI() {
-            const prog = (step / 22) * 100;
-            document.getElementById('bar').style.width = `${prog}%`;
-            document.getElementById('progress-text').innerText = `Analysis ${step} of 22`;
-            document.getElementById('back-btn').classList.toggle('invisible', step === 1);
+        function updateProgress() {
+            const p = (currentStep / 22) * 100;
+            document.getElementById('bar').style.width = `${p}%`;
+            document.getElementById('progress-text').innerText = `Analysis ${currentStep} of 22`;
+            document.getElementById('back-btn').classList.toggle('invisible', currentStep === 1);
         }
     </script>
+
     <!--Footer Section-->
     <footer class="bg-[#050b1a] border-t border-white/5 pt-24 pb-12">
     <div class="max-w-7xl mx-auto px-6">
