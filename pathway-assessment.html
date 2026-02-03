@@ -119,7 +119,7 @@
             <div class="mb-16">
                 <span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Strategic Readiness Audit</span>
                 <h1 class="text-4xl md:text-6xl font-serif mb-4 leading-tight">Every Journey is <span class="italic text-brand-mint">unique.</span></h1>
-                <p class="text-gray-400 text-lg italic max-w-2xl mx-auto leading-relaxed">I’m so glad you’re here. To give you a roadmap that truly fits, I’d love to understand the path you're on. Which pathway feels most like yours today?</p>
+                <p class="text-gray-400 text-lg italic max-w-2xl mx-auto leading-relaxed">I’m so glad you’re here. To give you a roadmap that truly fits, which pathway feels most like yours today?</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="persona-grid"></div>
         </section>
@@ -156,12 +156,12 @@
         const AuditLibrary = {
             "Probate Family": {
                 desc: "I am helping handle a loved one's home and paperwork. I'd value some clear, supportive steps during this time.",
-                res: { str: "You are being an incredible anchor for your family right now.", stand: "The paperwork can feel like a heavy fog. You are balancing the weight of grief with precise legal timelines.", pro: "Our 'Quiet Transition' handles all property logistics so you can focus on what matters—your family." },
+                res: { str: "You are acting as a wonderful anchor for your family right now.", stand: "The paperwork can feel like a heavy fog. You are balancing grief with precise legal timelines.", pro: "Our 'Quiet Transition' handles all property logistics so you can focus on family." },
                 q: [
-                    { q: "Thinking about the house, what would you most like to see happen?", opts: ["I’d like to sell it for the best price possible for the beneficiaries", "I’d like to settle things as quickly as possible", "I’m thinking about keeping the house as a long-term rental", "I want to fix it up so someone in the family can call it home"] },
+                    { q: "What would you most like to see happen with the home?", opts: ["I’d like to sell it for the best price possible for the beneficiaries", "I’d like to settle the estate quickly to find closure", "I’m thinking about keeping the house as a rental", "I want to fix it up so someone in the family can call it home"] },
                     { q: "How is the legal paperwork coming along with the court?", opts: ["I have the 'Grant of Probate' ready to go right now", "I have applied for it and I'm just waiting to hear back", "I just found the Will and I'm learning the next steps", "I don't have a Will yet and I could use some guidance"] },
                     { q: "Is the house currently being lived in by anyone?", opts: ["No, the house is currently empty and waiting", "A family member is staying there for the time being", "There is a renter currently living in the home", "I’m actually not exactly sure what the situation is"] },
-                    { q: "How are the family conversations going lately?", opts: ["We are all supporting each other and agreeing on steps", "It’s a bit stressful, but we're communicating kindly", "We aren’t communicating as much as we probably should", "We are having some difficult disagreements that need resolving"] },
+                    { q: "How are the family conversations going regarding the property?", opts: ["We are all supporting each other and agreeing on steps", "It’s a bit stressful, but we're communicating kindly", "We aren’t communicating as much as we probably should", "We are having some difficult disagreements that need resolving"] },
                     { q: "What is your best guess for the value of the home today?", opts: ["I think it is likely worth under $1 Million today", "I’d guess it is between $1 Million and $2 Million", "I think it is likely between $2 Million and $5 Million", "It is a very large estate worth over $5 Million"] },
                     { q: "Which part of the 'Executor' role feels heaviest to you?", opts: ["Understanding all of my legal responsibilities", "Dealing with the physical 'stuff' inside the house", "Keeping all family members happy and informed", "I’d really prefer to have a professional handle details"] },
                     { q: "Are there any specific taxes that you are worried about?", opts: ["I’m quite concerned about how Capital Gains tax applies", "I’m thinking about the legal Probate fees to be paid", "I want to ensure we get the Primary Home rule right", "I’m a bit worried about the Empty Home tax rules"] },
@@ -181,36 +181,9 @@
                     { q: "Are you ready to see your custom roadmap?", opts: ["Yes, I’m ready, show it to me right now!", "Maybe in a week or two", "Just send the report to my email", "No, I am just browsing for now"] }
                 ]
             },
-            "Rightsizing Senior": {
-                desc: "I’m moving from my big family home to a place that’s smaller and easier to enjoy. I’m ready for a fresh, lighter chapter.",
-                res: { str: "You are choosing a lighter, more vibrant way of living.", stand: "You are currently 'house rich' but 'time poor.' Taking care of a large property is taking energy away from the things you love.", pro: "Our 'Soft Purge' handles the sorting and packing. You only touch what you love while we manage the rest." },
-                q: [
-                    { q: "What feels like the biggest chore at home lately?", opts: ["Keeping up with the yard work and the stairs is too much", "The bills and taxes are just getting too high for me", "There are too many empty rooms to clean and maintain", "I feel too far away from my family and the local shops"] },
-                    { q: "How long has this property been your 'home base'?", opts: ["Between 10 and 20 years of living in this house", "Between 20 and 30 years of wonderful memories", "I have lived here for more than 30 years now", "I actually moved into this home fairly recently"] },
-                    { q: "Where would you love to land for your next chapter?", opts: ["A nice new condo near the shops and cafes", "A smaller townhouse with a nice private deck", "A luxury rental suite with no chores at all", "A small rancher with no stairs to worry about"] },
-                    { q: "What part of moving makes you most nervous?", opts: ["Sorting through all my 'stuff' and lifetime belongings", "What the housing market is doing right now in BC", "Leaving all the memories behind in this family home", "Picking the right neighborhood for my lifestyle"] },
-                    { q: "Is your family supporting this new chapter for you?", opts: ["Yes, they’re very supportive and helping me out", "They’re okay with whatever I choose to do for myself", "They’d actually prefer it if I stayed put in this house", "I’m making this big life choice all on my own"] },
-                    { q: "How do your knees feel about the stairs today?", opts: ["I’m doing fine with them for the time being", "I’m starting to think about the future with stairs", "They hurt a little bit sometimes when I use them", "I really need a home with no stairs at all right now"] },
-                    { q: "Would you like some extra cash after you move?", opts: ["Yes, I’d love to have extra savings in the bank after", "I’d like a much nicer home for the same price as this one", "I just want to simplify my life and have less stress", "I haven’t really thought about the money side of it yet"] },
-                    { q: "How much 'history' is currently in your closets?", opts: ["Not much at all, I’m quite a minimalist person", "Just a few boxes here and there for me to sort through", "I’d love a professional team to help me sort it all", "It’s 40 years of history—it’s quite a lot of things!"] },
-                    { q: "What kind of neighborhood feels most like 'you'?", opts: ["Quiet and peaceful with very friendly neighbors", "Walkable and right near the local shops and paths", "Near the water or surrounded by beautiful trees", "Close to my family and my regular doctors"] },
-                    { q: "Have you heard of property tax deferment?", opts: ["Yes, I’m already planning to use that program", "No, I’d love for you to explain it simply", "I’ve heard of it, but need more information", "I’m not really interested in that right now"] },
-                    { q: "Do you need a dedicated space for grandkids to stay?", opts: ["Yes, it’s a mandatory must-have for my next home", "A small den or pull-out couch would be enough for me", "No, they can stay in a hotel nearby if they visit", "The building has a guest suite I can use for them"] },
-                    { q: "When would you like to be settled into your new home?", opts: ["In less than 6 months if possible", "In about a year from now feels like a good plan", "I’m just exploring my options for the future right now", "When the perfect place finally pops up on the market"] },
-                    { q: "Are your roof and furnace in good shape today?", opts: ["Yes, they’re both brand new and working well", "They probably need work quite soon", "They definitely need replacing very soon", "The house is getting old and needs a full audit"] },
-                    { q: "How do you feel about the idea of condo living?", opts: ["I’m excited to have no more yard work or chores!", "I’m a bit worried about the monthly strata fees", "I’d much prefer a very small detached house to a condo", "I’m okay with it if the building is very quiet and safe"] },
-                    { q: "Do you want your neighbors to know you are selling?", opts: ["Let’s keep it private and quiet at first if we can", "Yes, put it on the market right away for everyone", "I’d like a very fast sale if that is possible for you", "I’d love your professional advice on this specific part"] },
-                    { q: "Do you need to sell your home before you can buy?", opts: ["No, I have the cash ready to move right now", "Yes, I might need a bridge loan to help me through", "Maybe, let’s look at my money situation together", "I’m not exactly sure how that process works today"] },
-                    { q: "What is your favorite way to spend a Saturday?", opts: ["Traveling or going on a brand new adventure", "Spending quality time with my grandkids and family", "Working in a small garden and being outside", "Reading a good book and having some quiet time"] },
-                    { q: "How much stress are you feeling about moving today?", opts: ["I’m not feeling stressed at all, I am ready to go", "Just a little bit of nerves and excitement for me", "I’m starting to feel quite stressed about the transition", "I feel a bit paralyzed by all the choices I have to make"] },
-                    { q: "What is the #1 goal for this entire move?", opts: ["Being able to travel more and see the world", "Being much closer to my family members and friends", "Having more money for my retirement years ahead", "Feeling safe and comfortable in my next home"] },
-                    { q: "Are you planning on taking your current furniture?", opts: ["Yes, I want to take everything with me to the new place", "Only a few special pieces that I truly love and need", "No, I want a fresh start with all new furniture", "I need to see if it will fit in the new space first"] },
-                    { q: "Ready for your custom strategic roadmap?", opts: ["Yes, I'm ready, show it to me right now!", "Maybe in a month or two", "Just send the report to my email", "No, I am just browsing for now"] }
-                ]
-            },
             "Aging In Place": {
-                desc: "I love my home and want to stay. I'm looking for a plan to make it safe and comfortable for the long term.",
-                res: { str: "Your commitment to your independence and community is inspiring.", stand: "Your home is your sanctuary, but it needs to evolve with you. Making proactive changes ensures you stay on your own terms.", pro: "We perform a 'Sanctuary Safety Audit' to identify invisible hurdles—like lighting or stair risks—making your home fit you perfectly." },
+                desc: "I truly love my home and want to stay. I'm looking for a plan to make it safe and comfortable for the long term.",
+                res: { str: "Your commitment to your independence and community is inspiring.", stand: "Your home is your sanctuary, but it needs to evolve with you. Making proactive changes ensures you stay on your own terms.", pro: "We perform a 'Sanctuary Safety Audit' to identify and fix invisible hurdles—like lighting or stair risks—making your home fit you perfectly." },
                 q: [
                     { q: "How do the stairs feel for you today?", opts: ["I feel very safe and confident on them", "I'm being a little careful on them lately", "They're starting to feel a bit scary or difficult", "I can't really use them safely anymore"] },
                     { q: "Is your bedroom on the main floor of the house?", opts: ["Yes, it is perfectly positioned on the main level", "No, but we could probably move it downstairs", "No, it is strictly on the upper floor of the home", "I have an elevator installed to help me move around"] },
@@ -231,8 +204,8 @@
                     { q: "Who handles the cleaning and chores?", opts: ["I do absolutely everything myself for now", "My family comes by to help me every week", "I pay a professional cleaner to help me out", "The chores are starting to pile up on me"] },
                     { q: "Is there a no-step entry into the house?", opts: ["Yes, it is a flat entry into the home", "There are only 1 to 3 small steps to climb", "There are many stairs to get inside the house", "Only through the garage entrance is flat"] },
                     { q: "What is the biggest reason you want to stay?", opts: ["I love all my memories in this house", "It is much cheaper for me to stay here", "I like the stability and the routine", "I value my privacy and independence here"] },
-                    { q: "How much can you spend on safety fixes?", opts: ["Under $10,000 for some small safety tasks", "Between $10,000 and $50,000 for upgrades", "More than $50,000 for major safety work", "I'm not exactly sure about my budget yet"] },
-                    { q: "Ready for your home safety check?", opts: ["Yes, I'd like to book it right now!", "Yes, very soon in the near future please", "Just send the report to me first to read", "No, not quite yet, I am just curious"] }
+                    { q: "How much can you spend on safety fixes?", opts: ["Under $10,000 for small safety tasks", "Between $10,000 and $50,000 for upgrades", "More than $50,000 for major safety work", "I'm not exactly sure about my budget yet"] },
+                    { q: "Ready for your custom roadmap?", opts: ["Yes, I'd like to book it right now!", "Yes, very soon in the future please", "Just send the report to me first to read", "No, not quite yet, I am just curious"] }
                 ]
             },
             "Relocation": {
@@ -262,9 +235,9 @@
                     { q: "Ready for a 'Local Eyes' chat?", opts: ["Yes, I'd like you to call me today please!", "Yes, very soon in the future please", "Just send the report to my email for now", "No, not quite yet, I am just looking"] }
                 ]
             },
-            "Buyer": {
-                desc: "I’m ready to stop paying rent and start owning my own space. I want a solid and smart foundation.",
-                res: { str: "You are building a powerful foundation for your future.", stand: "Stop renting and start owning. You need a 'ladder' home strategy that ensures your first purchase is a win.", pro: "We perform an 'Equity Stress-Test.' We find homes with high resale potential and audit strata health so you don't get trapped." },
+            "First Time Buyer": {
+                desc: "I’m ready to stop paying rent and start owning my own space. I want to build my future on a solid foundation.",
+                res: { str: "You are building a powerful foundation for your future.", stand: "Stop renting and start owning. You need a 'ladder' home strategy that ensures your first purchase is a win.", pro: "We find homes with high resale potential and audit strata health so you don't get trapped." },
                 q: [
                     { q: "How long have you been saving for your home?", opts: ["For about 1 to 2 years now as a start", "Between 2 and 5 years of steady saving", "I've been saving for over 5 years now", "I just started / It's a family gift for me"] },
                     { q: "Why is now the right time to buy for you?", opts: ["I want to stop paying my landlord rent", "I want to start growing my own equity", "I really want to have a stable home for me", "It’s an investment for my long-term future"] },
@@ -286,12 +259,12 @@
                     { q: "What do you do for fun on the weekends?", opts: ["Go to the gym or be outside in nature", "Go out and see my friends and family", "Stay home and be creative or cook", "Play video games and be quiet at home"] },
                     { q: "What 2026 trend interests you the most?", opts: ["Small eco-friendly modern homes for all", "Smart home tech built into the walls", "Community gardens and local parks", "Living very close to where I work today"] },
                     { q: "What would make you the most happy?", opts: ["Feeling secure and very stable at home", "Being totally independent in my space", "Building my own personal wealth for life", "Having my own private sanctuary to live"] },
-                    { q: "Are you ready to chat about your first home?", opts: ["Yes, let’s talk this week please!", "Yes, in about a month or so from now", "Just send the report to my email please", "No, I am just browsing for info today"] }
+                    { q: "Ready for your custom roadmap?", opts: ["Yes, let’s talk this week please!", "Yes, in about a month or so from now", "Just send the report to my email please", "No, I am just browsing for info today"] }
                 ]
             },
-            "Investor": {
-                desc: "I want to grow my wealth by buying property before it’s built. I’m looking for a smart plan for 2026.",
-                res: { str: "You have a great eye for identifying value gaps.", stand: "You are in the exit strategy stage. You know the potential, but the 2026 rules require a defensible plan for assignment exits.", pro: "We perform a 'Disclosure Audit.' We vet developer reputation and the assignment window before you sign." },
+            "Presale Investor": {
+                desc: "I want to grow my wealth by buying property before it’s even built. I’m looking for a smart plan for 2026.",
+                res: { str: "You have a great eye for identifying value gaps.", stand: "You are in the exit strategy stage. You know the potential, but the 2026 rules require a defensible plan for assignment exits.", pro: "We vet developer reputation and the assignment window before you sign." },
                 q: [
                     { q: "What is your main goal for this investment?", opts: ["I want to sell it before it's finished", "I want to rent it out for a long time", "It's for my family to use later on in life", "I just want to hold the total land value"] },
                     { q: "Is your deposit money ready in the bank?", opts: ["Yes, it’s ready and waiting in the bank", "I’ll be using my home equity for this", "I need to sell an asset first for funds", "Someone is gifting the funds to me today"] },
@@ -313,7 +286,34 @@
                     { q: "Do you know about the 7-day rule?", opts: ["Yes, I read every single line of it now", "No, what exactly is that specific rule?", "I let my agent handle all of that for me", "I know a little bit about that rule now"] },
                     { q: "What if the market prices go down soon?", opts: ["I’ll just rent it out and wait it out", "I’ll likely sell it very quickly to exit", "I’ll buy even more property at that time", "I need your specific plan for that case"] },
                     { q: "What is the best part of investing?", opts: ["Watching my money grow safely for life", "Getting a regular rental check for cash", "The excitement of finding the right deal", "Providing a good home for a family here"] },
-                    { q: "Ready for a 'Disclosure Audit'?", opts: ["Yes, let's book it for this week please!", "Yes, very soon in the future for me", "Just send the report to my email first", "No, not quite yet, I am just looking"] }
+                    { q: "Ready for your custom roadmap?", opts: ["Yes, let's book it for this week please!", "Yes, very soon in the future for me", "Just send the report to my email first", "No, not quite yet, I am just looking"] }
+                ]
+            },
+            "Rightsizing Senior": {
+                desc: "I’m moving from my big family home to a place that’s smaller and easier to enjoy. I’m ready for a fresh chapter.",
+                res: { str: "You are choosing a lighter, more vibrant way of living.", stand: "You are currently 'house rich' but 'time poor.' Taking care of a large property is taking energy away from the things you love.", pro: "Our 'Soft Purge' handles the sorting and packing. You only touch what you love while we manage the rest." },
+                q: [
+                    { q: "What feels like the biggest chore at home lately?", opts: ["Keeping up with the yard work and the stairs is too much", "The bills and taxes are just getting too high for me", "There are too many empty rooms to clean and maintain", "I feel too far away from my family and the local shops"] },
+                    { q: "How long has this property been your 'home base'?", opts: ["Between 10 and 20 years of living in this house", "Between 20 and 30 years of wonderful memories", "I have lived here for more than 30 years now", "I actually moved into this home fairly recently"] },
+                    { q: "Where would you love to land for your next chapter?", opts: ["A nice new condo right near the local shops and cafes", "A smaller townhouse with a nice private deck", "A luxury rental suite where I have no chores at all", "A small rancher with no stairs for me to worry about"] },
+                    { q: "What part of moving makes you the most nervous?", opts: ["Sorting through all my 'stuff' and lifetime belongings", "What the housing market is doing right now in BC", "Leaving all the memories behind in this family home", "Picking the right neighborhood for my lifestyle"] },
+                    { q: "Is your family supporting this new chapter for you?", opts: ["Yes, they’re very supportive and helping me out", "They’re okay with whatever I choose to do for myself", "They’d actually prefer it if I stayed put in this house", "I’m making this big life choice all on my own"] },
+                    { q: "How do your knees feel about the stairs today?", opts: ["I’m doing fine with them for the time being", "I’m starting to think about the future with stairs", "They hurt a little bit sometimes when I use them", "I really need a home with no stairs at all right now"] },
+                    { q: "Would you like some extra cash after you move?", opts: ["Yes, I’d love to have extra savings in the bank after", "I’d like a much nicer home for the same price as this one", "I just want to simplify my life and have less stress", "I haven’t really thought about the money side of it yet"] },
+                    { q: "How much 'history' is currently in your closets?", opts: ["Not much at all, I’m quite a minimalist person", "Just a few boxes here and there for me to sort through", "I’d love a professional team to help me sort it all", "It’s 40 years of history—it’s quite a lot of things!"] },
+                    { q: "What kind of neighborhood feels most like 'you'?", opts: ["Quiet and peaceful with very friendly neighbors", "Walkable and right near the local shops and paths", "Near the water or surrounded by beautiful trees", "Close to my family and my regular doctors"] },
+                    { q: "Have you heard of property tax deferment?", opts: ["Yes, I’m already planning to use that program", "No, I’d love for you to explain it simply", "I’ve heard of it, but need more information", "I’m not really interested in that right now"] },
+                    { q: "Do you need a dedicated space for grandkids to stay?", opts: ["Yes, it’s a mandatory must-have for my next home", "A small den or pull-out couch would be enough for me", "No, they can stay in a hotel nearby if they visit", "The building has a guest suite I can use for them"] },
+                    { q: "When would you like to be settled into your new home?", opts: ["In less than 6 months if possible", "In about a year from now feels like a good plan", "I’m just exploring my options for the future right now", "When the perfect place finally pops up on the market"] },
+                    { q: "Are your roof and furnace in good shape today?", opts: ["Yes, they’re both brand new and working well", "They probably need work quite soon", "They definitely need replacing very soon", "The house is getting old and needs a full audit"] },
+                    { q: "How do you feel about the idea of condo living?", opts: ["I’m excited to have no more yard work or chores!", "I’m a bit worried about the monthly strata fees", "I’d much prefer a very small detached house to a condo", "I’m okay with it if the building is quiet and safe"] },
+                    { q: "Do you want your neighbors to know you are selling?", opts: ["Let’s keep it private and quiet at first if we can", "Yes, put it on the market right away for everyone", "I’d like a very fast sale if that is possible for you", "I’d love your professional advice on this specific part"] },
+                    { q: "Do you need to sell your home before you can buy?", opts: ["No, I have the cash ready to move now", "Yes, I might need a bridge loan to help me through", "Maybe, let’s look at my money situation together", "I’m not exactly sure how that works today"] },
+                    { q: "What is your favorite way to spend a Saturday?", opts: ["Traveling or going on a brand new adventure", "Spending quality time with my grandkids and family", "Working in a small garden and being outside", "Reading a good book and having some quiet time"] },
+                    { q: "How much stress are you feeling about moving today?", opts: ["I’m not feeling stressed at all, I am ready to go", "Just a little bit of nerves and excitement for me", "I’m starting to feel quite stressed about the transition", "I feel a bit paralyzed by all the choices I have to make"] },
+                    { q: "What is the #1 goal for this entire move?", opts: ["Being able to travel more and see the world", "Being much closer to my family members and friends", "Having more money for my retirement years ahead", "Feeling safe and comfortable in my next home"] },
+                    { q: "Are you planning on taking your current furniture?", opts: ["Yes, I want to take everything with me to the new place", "Only a few special pieces that I truly love and need", "No, I want a fresh start with all new furniture", "I need to see if it will fit in the new space first"] },
+                    { q: "Ready for your custom strategic roadmap?", opts: ["Yes, I'm ready, show it to me right now!", "Maybe in a month or two", "Just send the report to my email", "No, I am just browsing for now"] }
                 ]
             }
         };
