@@ -55,6 +55,44 @@
   }
 }
 </script>
+
+<!--Page Schema-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "The Pathway Journal | Strategic Real Estate Insights",
+  "description": "Expert analysis on BC Probate, Presale Investment, Rightsizing, and Relocation strategies for the 2026 Vancouver and Fraser Valley market.",
+  "url": "https://homepathways.ca/blog.html",
+  "publisher": {
+    "@type": "RealEstateAgent",
+    "name": "Homepathways | Sean Omoh"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Probate Estate Strategy Insights",
+        "url": "https://homepathways.ca/blog.html?filter=probate"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Presale Investment Equity Mapping",
+        "url": "https://homepathways.ca/blog.html?filter=investor"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Seniors Rightsizing and Aging in Place Advice",
+        "url": "https://homepathways.ca/blog.html?filter=seniors"
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -145,34 +183,71 @@
             }
         }
 
-        function renderPosts(posts) {
-            if (posts.length === 0) return;
+        // 1. Add this small helper function at the top of your script
+function getReadTime(content) {
+    const wordsPerMinute = 200;
+    // Strip HTML tags to get accurate word count
+    const text = content.replace(/<[^>]*>?/gm, '');
+    const wordCount = text.split(/\s+/).length;
+    const minutes = Math.ceil(wordCount / wordsPerMinute);
+    return `${minutes} min read`;
+}
 
-            const featuredRoot = document.getElementById('featured-post-root');
-            const gridRoot = document.getElementById('grid-posts-root');
+function renderPosts(posts) {
+    if (posts.length === 0) return;
 
-            // 1. RENDER THE FEATURED POST (THE BIG TOP ONE)
-            const feat = posts[0];
-            const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
-            
-            featuredRoot.innerHTML = `
-                <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
-                    <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
-                        <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#050b1a] to-transparent opacity-60"></div>
-                    </div>
-                    <div class="p-12 lg:w-1/2 lg:p-20">
-                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
-                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
-                        <div class="flex items-center space-x-4 mb-8">
-                            <div class="w-8 h-8 rounded-full bg-[#97B99D] flex items-center justify-center text-[#050b1a] font-bold text-[10px]">SO</div>
-                            <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">By <span class="text-white">Sean Omoh</span> &nbsp; | &nbsp; ${new Date(feat.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</p>
-                        </div>
-                        <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
-                        <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
-                    </div>
-                </a>
-            `;
+    const featuredRoot = document.getElementById('featured-post-root');
+    const gridRoot = document.getElementById('grid-posts-root');
+
+    // 2. FEATURED POST UPDATE
+    const feat = posts[0];
+    const featReadTime = getReadTime(feat.content.rendered); // Calculate here
+    const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
+    
+    featuredRoot.innerHTML = `
+        <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
+            <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
+                <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#050b1a] to-transparent opacity-60"></div>
+            </div>
+            <div class="p-12 lg:w-1/2 lg:p-20">
+                <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-8 h-8 rounded-full bg-[#97B99D] flex items-center justify-center text-[#050b1a] font-bold text-[10px]">SO</div>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+                        By <span class="text-white">Sean Omoh</span> &nbsp; | &nbsp; ${featReadTime} </p>
+                </div>
+                <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
+                <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
+            </div>
+        </a>
+    `;
+
+    // 3. GRID POSTS UPDATE
+    const gridPosts = posts.slice(1);
+    gridRoot.innerHTML = gridPosts.map(post => {
+        const img = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800';
+        const readTime = getReadTime(post.content.rendered); // Calculate here
+        
+        return `
+        <article class="group post-fade-in">
+            <a href="${post.link}">
+                <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5 overflow-hidden">
+                    <img src="${img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px]">Market Insight</span>
+                    <span class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">${readTime}</span> </div>
+                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">${post.title.rendered}</h3>
+                <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | ${new Date(post.date).toLocaleDateString()}</p>
+                <div class="text-gray-500 font-light text-sm leading-relaxed mb-6 line-clamp-3">${post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[#97B99D] transition-all pb-1">View Insight</span>
+            </a>
+        </article>
+        `;
+    }).join('');
+}
 
             // 2. RENDER THE GRID POSTS (THE ONES BELOW)
             const gridPosts = posts.slice(1);
