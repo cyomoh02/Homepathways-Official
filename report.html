@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+
     <!--Header Section-->
     <header>
         <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
@@ -104,12 +105,12 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
     </header>
-
+    
     <section id="wait-screen" class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
         <div class="max-w-md w-full">
             <h2 class="text-3xl font-serif italic mb-8">Analyzing your strategic profile...</h2>
             <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden mb-4"><div id="loader-bar" class="h-full bg-[#97B99D]"></div></div>
-            <p id="wait-subtext" class="text-gray-500 text-xs uppercase tracking-widest">Cross-referencing neighborhood trends</p>
+            <p id="wait-subtext" class="text-gray-500 text-xs uppercase tracking-widest">Reflecting on your unique journey...</p>
         </div>
     </section>
 
@@ -120,6 +121,7 @@
                 <div>
                     <h4 class="text-[#97B99D] uppercase tracking-widest text-[10px] font-bold mb-6">01. Your Strategic Strength</h4>
                     <p id="disp-str" class="text-2xl md:text-3xl font-serif italic leading-snug"></p>
+                    <p class="text-gray-500 mt-4 text-sm font-light italic">This is the personal asset we will build upon.</p>
                 </div>
                 <div>
                     <h4 class="text-[#97B99D] uppercase tracking-widest text-[10px] font-bold mb-6">02. Where You Stand Right Now</h4>
@@ -139,7 +141,7 @@
     <script>
         window.onload = () => {
             setTimeout(() => { document.getElementById('loader-bar').style.width = "100%"; }, 100);
-            const subtexts = ["Mapping legacy protections...", "Auditing mobility requirements...", "Verifying neighborhood fit...", "Finalizing your roadmap..."];
+            const subtexts = ["Understanding family needs...", "Auditing mobility requirements...", "Verifying neighborhood fit...", "Finalizing your roadmap..."];
             let i = 0;
             const timer = setInterval(() => { i++; if(i < subtexts.length) document.getElementById('wait-subtext').innerText = subtexts[i]; }, 1800);
 
