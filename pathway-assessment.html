@@ -331,6 +331,16 @@
                 </div>`).join('');
         }
 
+        // Auto-start based on URL (e.g., homepathways.ca/pathway-assessment.html?path=Relocation)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetPath = urlParams.get('path'); 
+            
+            if (targetPath && AuditLibrary[targetPath]) {
+                initAudit(targetPath);
+            }
+        });
+
         function initAudit(p) {
             currentType = p;
             document.getElementById('grid-screen').classList.add('hidden');
@@ -367,6 +377,7 @@
     localStorage.setItem('hp_str', res.str);
     localStorage.setItem('hp_stand', res.stand);
     localStorage.setItem('hp_pro', res.pro);
+    localStorage.setItem('hp_type', currentType);
 
     // We make the notes clean so they are easy to read in your CRM
     let notes = `AUDIT TYPE: ${currentType}\n\n`;
