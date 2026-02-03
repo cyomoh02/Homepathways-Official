@@ -10,10 +10,12 @@
         body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
         .hidden { display: none !important; }
         #loader-bar { transition: width 7s linear; width: 0%; }
+        .animate-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-
+    
     <!--Header Section-->
     <header>
         <nav class="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
@@ -105,53 +107,92 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
     </header>
+
     <section id="wait-screen" class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
         <div class="max-w-md w-full">
-            <h2 class="text-3xl font-serif italic mb-8">Analyzing your strategic profile...</h2>
-            <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden mb-4"><div id="loader-bar" class="h-full bg-[#97B99D]"></div></div>
-            <p id="wait-subtext" class="text-gray-500 text-xs uppercase tracking-widest">Reflecting on your unique journey...</p>
+            <h2 class="text-3xl font-serif italic mb-8">Reflecting on your unique situation...</h2>
+            <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden mb-4">
+                <div id="loader-bar" class="h-full bg-[#97B99D]"></div>
+            </div>
+            <p id="wait-subtext" class="text-gray-500 text-xs uppercase tracking-widest leading-relaxed">Cross-referencing your goals...</p>
         </div>
     </section>
 
-    <main id="report-view" class="hidden min-h-screen pt-40 pb-32 px-6">
+    <main id="report-view" class="hidden min-h-screen pt-40 pb-32 px-6 animate-in">
         <div class="max-w-4xl mx-auto">
             <h1 id="user-name-header" class="text-4xl md:text-7xl font-serif mb-12 text-center"></h1>
-            <div class="bg-[#0a101e] border border-white/5 p-12 md:p-20 rounded-[4rem] space-y-16 shadow-2xl">
-                <div>
-                    <h4 class="text-[#97B99D] uppercase tracking-widest text-[10px] font-bold mb-6">01. Your Strategic Strength</h4>
+            
+            <div class="bg-[#0a101e] border border-white/5 p-12 md:p-20 rounded-[4rem] space-y-16 shadow-2xl relative overflow-hidden">
+                
+                <div class="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+                    <svg class="w-64 h-64 text-[#97B99D]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.15 14.1H3.85L12 5.45z"/></svg>
+                </div>
+
+                <div class="relative z-10">
+                    <h4 class="text-[#97B99D] uppercase tracking-[0.3em] text-[10px] font-bold mb-6">01. Your Strategic Strength</h4>
                     <p id="disp-str" class="text-2xl md:text-3xl font-serif italic leading-snug"></p>
-                    <p class="text-gray-500 mt-4 text-sm font-light italic">This is the personal asset we will build upon.</p>
+                    <p class="text-gray-500 mt-4 text-sm font-light italic">This is the personal asset we will build your plan upon.</p>
                 </div>
-                <div>
-                    <h4 class="text-[#97B99D] uppercase tracking-widest text-[10px] font-bold mb-6">02. Where You Stand Right Now</h4>
+
+                <div class="relative z-10">
+                    <h4 class="text-[#97B99D] uppercase tracking-[0.3em] text-[10px] font-bold mb-6">02. Where You Stand Right Now</h4>
                     <p id="disp-stand" class="text-gray-400 text-lg leading-relaxed font-light"></p>
+                    <p class="text-gray-500 mt-4 text-sm font-light italic">It is completely normal to feel the weight of this transition. My job is to help carry that weight.</p>
                 </div>
-                <div class="p-10 bg-white/[0.02] rounded-[3rem] border-l-4 border-[#97B99D]">
-                    <h4 class="text-white uppercase tracking-widest text-[10px] font-bold mb-6">03. The Soft Path Forward</h4>
+
+                <div class="relative z-10 p-10 bg-white/[0.02] rounded-[3rem] border-l-4 border-[#97B99D]">
+                    <h4 class="text-white uppercase tracking-[0.3em] text-[10px] font-bold mb-6">03. The Soft Path Forward</h4>
                     <p id="disp-pro" class="text-gray-400 text-lg leading-relaxed font-light"></p>
                 </div>
             </div>
+
             <div class="mt-20 text-center">
-                <a href="https://calendly.com/homepathways" class="bg-[#97B99D] text-[#050b1a] px-14 py-6 rounded-full text-[11px] font-bold uppercase tracking-widest inline-block shadow-xl">Discuss This Roadmap With Sean</a>
+                <p class="text-gray-500 text-sm mb-10 font-light italic">"The outcome of the outcome is total peace of mind."</p>
+                <a href="https://calendly.com/homepathways" class="bg-[#97B99D] text-[#050b1a] px-14 py-6 rounded-full text-[11px] font-bold uppercase tracking-widest inline-block shadow-xl hover:bg-white transition-all transform hover:scale-105">Discuss This Roadmap With Sean</a>
             </div>
         </div>
     </main>
 
     <script>
         window.onload = () => {
+            // Start progress bar
             setTimeout(() => { document.getElementById('loader-bar').style.width = "100%"; }, 100);
-            const subtexts = ["Understanding family needs...", "Auditing mobility requirements...", "Verifying neighborhood fit...", "Finalizing your roadmap..."];
-            let i = 0;
-            const timer = setInterval(() => { i++; if(i < subtexts.length) document.getElementById('wait-subtext').innerText = subtexts[i]; }, 1800);
+            
+            // Personalized messages for the wait screen
+            const personaMessages = {
+                "Probate Family": ["Mapping legacy protections...", "Reviewing BC probate timelines...", "Auditing property security...", "Finalizing your family roadmap..."],
+                "Rightsizing Senior": ["Mapping simpler layouts...", "Reviewing equity release options...", "Auditing move-manager logistics...", "Finalizing your rightsizing roadmap..."],
+                "Aging In Place": ["Auditing home safety risks...", "Checking mobility ergonomics...", "Mapping longevity modifications...", "Finalizing your sanctuary roadmap..."],
+                "Relocation": ["Scouting neighborhood vibes...", "Checking school catchments...", "Reviewing transit density maps...", "Finalizing your relocation roadmap..."],
+                "First Time Buyer": ["Verifying grant eligibility...", "Stress-testing equity potential...", "Reviewing strata health data...", "Finalizing your foundation roadmap..."],
+                "Presale Investor": ["Calculating assignment windows...", "Vetting developer reputation...", "Reviewing TOD density laws...", "Finalizing your investment roadmap..."]
+            };
 
+            const chosenType = localStorage.getItem('hp_type') || "Relocation";
+            const subtexts = personaMessages[chosenType] || ["Analyzing your strategic profile...", "Cross-referencing 2026 data...", "Finalizing your roadmap..."];
+
+            // Rotate subtext
+            let i = 0;
+            const timer = setInterval(() => {
+                i++;
+                if(i < subtexts.length) {
+                    document.getElementById('wait-subtext').innerText = subtexts[i];
+                }
+            }, 1800);
+
+            // Final reveal after 7 seconds
             setTimeout(() => {
                 clearInterval(timer);
                 document.getElementById('wait-screen').classList.add('hidden');
                 document.getElementById('report-view').classList.remove('hidden');
-                document.getElementById('user-name-header').innerHTML = `${localStorage.getItem('hp_name')}, Your <span class='italic text-[#97B99D]'>Pathway Roadmap.</span>`;
+                
+                // Populate data
+                const userName = localStorage.getItem('hp_name') || "Friend";
+                document.getElementById('user-name-header').innerHTML = `${userName}, Your <span class='italic text-[#97B99D]'>Pathway Roadmap.</span>`;
                 document.getElementById('disp-str').innerText = localStorage.getItem('hp_str');
                 document.getElementById('disp-stand').innerText = localStorage.getItem('hp_stand');
                 document.getElementById('disp-pro').innerText = localStorage.getItem('hp_pro');
+                
                 window.scrollTo(0,0);
             }, 7000);
         };
