@@ -358,34 +358,36 @@
         }
 
         async function finalize() {
-            const n = document.getElementById('uname').value;
-            const e = document.getElementById('uemail').value;
-            if (!n || !e) { alert("Please provide your name and email."); return; }
-            
-            const res = AuditLibrary[currentType].res;
-            localStorage.setItem('hp_name', n);
-            localStorage.setItem('hp_str', res.str);
-            localStorage.setItem('hp_stand', res.stand);
-            localStorage.setItem('hp_pro', res.pro);
+    const n = document.getElementById('uname').value;
+    const e = document.getElementById('uemail').value;
+    if (!n || !e) { alert("Please provide your name and email."); return; }
+    
+    const res = AuditLibrary[currentType].res;
+    localStorage.setItem('hp_name', n);
+    localStorage.setItem('hp_str', res.str);
+    localStorage.setItem('hp_stand', res.stand);
+    localStorage.setItem('hp_pro', res.pro);
 
-            let notes = `Audit Type: ${currentType}\n\n`;
-            for (let k in selectedAnswers) { notes += `Q${k}: ${selectedAnswers[k]}\n`; }
+    // We make the notes clean so they are easy to read in your CRM
+    let notes = `AUDIT TYPE: ${currentType}\n\n`;
+    for (let k in selectedAnswers) { notes += `Point ${k}: ${selectedAnswers[k]}\n`; }
 
-            document.getElementById('ghl-name').value = n;
-            document.getElementById('ghl-email').value = e;
-            document.getElementById('ghl-notes').value = notes;
-            document.getElementById('ghl-form').submit();
+    // THE BULLETPROOF HANDSHAKE
+    document.getElementById('ghl-name').value = n;
+    document.getElementById('ghl-email').value = e;
+    document.getElementById('ghl-notes').value = notes;
+    
+    // We add the 'source' hidden input to the form dynamically so GHL sees it
+    let sourceInput = document.createElement("input");
+    sourceInput.type = "hidden";
+    sourceInput.name = "source";
+    sourceInput.value = currentType; // This tells GHL "Relocation" or "Aging In Place"
+    document.getElementById('ghl-form').appendChild(sourceInput);
 
-            setTimeout(() => { window.location.href = "report.html"; }, 600);
-        }
+    document.getElementById('ghl-form').submit();
 
-        function goBack() { if (step > 1) { step--; renderStep(); } }
-        function updateUI() {
-            document.getElementById('bar').style.width = `${(step / 22) * 100}%`;
-            document.getElementById('label-step').innerText = `Point ${step} of 21`;
-            document.getElementById('btn-back').classList.toggle('invisible', step === 1 || step > 21);
-        }
-        renderPersonas();
+    setTimeout(() => { window.location.href = "report.html"; }, 600);
+}
 
         // This looks at the URL for "?path=Relocation" and starts that specific audit instantly
 window.addEventListener('DOMContentLoaded', () => {
