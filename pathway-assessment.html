@@ -17,15 +17,11 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
-        .font-serif { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; scroll-behavior: smooth; }
         .hidden { display: none !important; }
-        .animate-reveal { animation: reveal 0.6s ease-out forwards; }
-        @keyframes reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .option-card { border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; cursor: pointer; }
-        .option-card:hover { border-color: #97B99D; background: rgba(151,185,157,0.05); }
-        .selected-option { border-color: #97B99D !important; background: rgba(151,185,157,0.15) !important; color: white !important; }
-        .progress-bar-fill { transition: width 0.5s ease-in-out; }
+        .option-box { border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s ease; cursor: pointer; margin-bottom: 12px; display: block; width: 100%; text-align: left; padding: 24px; border-radius: 1.5rem; background: rgba(255,255,255,0.01); }
+        .option-box:hover { border-color: #97B99D; background: rgba(151,185,157,0.05); }
+        .selected { border-color: #97B99D !important; background: rgba(151,185,157,0.15) !important; }
     </style>
 </head>
 <body>
@@ -122,69 +118,65 @@
 <meta name="twitter:card" content="summary_large_image">
     </header>
 
-    <main class="min-h-screen py-20 px-6">
-        
-        <section id="selection-screen" class="max-w-6xl mx-auto text-center animate-reveal">
+    <main class="min-h-screen pt-48 pb-32 px-6"> <section id="grid-screen" class="max-w-6xl mx-auto text-center">
             <div class="mb-16">
                 <span class="text-brand-mint font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Homepathways Strategy Audit</span>
-                <h1 class="text-4xl md:text-6xl font-bold font-serif text-white mb-4 leading-tight">Every Journey is <span class="italic text-brand-mint">unique.</span></h1>
+                <h1 class="text-4xl md:text-6xl font-serif mb-4 leading-tight">Every Journey is <span class="italic text-brand-mint">unique.</span></h1>
                 <h2 class="text-2xl font-light text-gray-400 italic">Which pathway are you on today?</h2>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div onclick="initAudit('Probate')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Probate Family</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I am helping handle the house and papers after a loved one has passed away.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="initAudit('Probate')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">Probate Family</h3>
+                    <p class="text-gray-500 text-sm">I am helping handle the house and papers after a loved one has passed away.</p>
                 </div>
-                <div onclick="initAudit('Rightsizing')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Rightsizing Senior</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I am moving from my big family home into a smaller, easier place to live.</p>
+                <div onclick="initAudit('Rightsizing')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">Rightsizing Senior</h3>
+                    <p class="text-gray-500 text-sm">I am moving from my big family home into a smaller, easier place to live.</p>
                 </div>
-                <div onclick="initAudit('Aging')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Aging In Place</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I want to stay in my own home and make it safe for a very long time.</p>
+                <div onclick="initAudit('Aging')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">Aging In Place</h3>
+                    <p class="text-gray-500 text-sm">I want to stay in my own home and make it safe for a very long time.</p>
                 </div>
-                <div onclick="initAudit('Relocation')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Relocation</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I am moving my family to a brand new neighborhood or a new city.</p>
+                <div onclick="initAudit('Relocation')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">Relocation</h3>
+                    <p class="text-gray-500 text-sm">I am moving my family to a brand new neighborhood or a new city.</p>
                 </div>
-                <div onclick="initAudit('Buyer')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">First Time Buyer</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I am ready to stop paying rent and buy my very first home.</p>
+                <div onclick="initAudit('Buyer')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">First Time Buyer</h3>
+                    <p class="text-gray-500 text-sm">I am ready to stop paying rent and buy my very first home.</p>
                 </div>
-                <div onclick="initAudit('Investor')" class="group bg-[#0a101e] border border-white/5 p-12 rounded-[3rem] cursor-pointer hover:border-brand-mint min-h-[350px] flex flex-col justify-center transition-all">
-                    <h3 class="text-white font-serif text-2xl font-bold mb-4 italic">Presale Investor</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">I want to buy property before it is built to grow my wealth.</p>
+                <div onclick="initAudit('Investor')" class="option-box min-h-[300px] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-serif italic mb-2 text-white">Presale Investor</h3>
+                    <p class="text-gray-500 text-sm">I want to buy property before it is built to grow my wealth.</p>
                 </div>
             </div>
         </section>
 
-        <section id="assessment-container" class="hidden max-w-3xl mx-auto">
+        <section id="audit-screen" class="hidden max-w-2xl mx-auto">
             <div class="mb-12">
-                <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-4">
-                    <span id="audit-title">Strategy Audit</span>
-                    <span id="progress-text">Point 1 of 21</span>
+                <div class="flex justify-between text-[10px] uppercase font-bold text-gray-500 mb-4 tracking-widest">
+                    <span id="label-type">Strategic Audit</span>
+                    <span id="label-count">Analysis 1 of 21</span>
                 </div>
                 <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                    <div id="bar" class="h-full bg-brand-mint progress-bar-fill shadow-[0_0_15px_#97B99D]" style="width: 5%"></div>
+                    <div id="bar" class="h-full bg-brand-mint transition-all duration-500" style="width: 5%"></div>
                 </div>
             </div>
-
-            <div id="question-card" class="bg-[#0a101e] border border-white/5 p-10 md:p-16 rounded-[3rem] shadow-2xl min-h-[500px] flex flex-col justify-center animate-reveal"></div>
-
+            <div id="q-card" class="bg-[#0a101e] border border-white/10 p-10 md:p-16 rounded-[3rem] min-h-[500px] flex flex-col justify-center"></div>
             <div class="mt-12 flex justify-between items-center">
-                <button id="back-btn" onclick="prevStep()" class="invisible text-gray-500 text-[10px] uppercase font-bold tracking-widest hover:text-white transition-all">← Back</button>
-                <button id="next-btn" onclick="processStep()" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl">(ACT) NEXT STEP</button>
+                <button id="btn-back" onclick="goBack()" class="invisible text-gray-500 text-[10px] uppercase font-bold tracking-widest">← Back</button>
+                <button id="btn-next" onclick="goNext()" class="bg-brand-mint text-navy px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl">Next Step</button>
             </div>
         </section>
 
-        <section id="report-container" class="hidden max-w-4xl mx-auto animate-reveal">
-            <h2 id="report-name-header" class="text-4xl md:text-6xl font-serif text-center mb-12">Your <span class="italic text-brand-mint">Pathway Roadmap.</span></h2>
-            <div id="report-body" class="bg-[#0a101e] border border-white/5 p-12 md:p-20 rounded-[4rem] space-y-16 shadow-2xl"></div>
+        <section id="report-screen" class="hidden max-w-4xl mx-auto">
+            <h2 id="final-name" class="text-4xl md:text-6xl font-serif text-center mb-12">Your <span class="italic text-brand-mint">Pathway Roadmap.</span></h2>
+            <div id="report-body" class="bg-[#0a101e] border border-white/5 p-12 rounded-[4rem] space-y-12 shadow-2xl"></div>
             <div class="mt-16 text-center">
                 <a href="https://calendly.com/homepathways" class="bg-brand-mint text-navy px-14 py-6 rounded-full text-[11px] font-bold uppercase tracking-widest inline-block shadow-xl">Discuss This Roadmap With Sean</a>
             </div>
         </section>
+
     </main>
 
     <script>
@@ -192,227 +184,230 @@
             "Probate": {
                 res: { str: "Helper for your family.", stand: "Clarity in the fog.", pro: "We handle the house while you handle the family." },
                 q: [
-                    { q: "What is the main goal you have for the house right now?", opts: ["I want to sell it for the best price possible for everyone", "I want to sell it quickly so we can finish the paperwork", "I want to keep the house and find a good renter for it", "I want to fix it up so someone in the family can live there"] },
+                    { q: "What is your main goal for the house right now?", opts: ["I want to sell it for the best price possible for everyone", "I want to sell it quickly so we can finish the paperwork", "I want to keep the house and find a good renter for it", "I want to fix it up so someone in the family can live there"] },
                     { q: "Have you started the legal paperwork with the court yet?", opts: ["Yes, I have the 'Grant of Probate' in my hand", "I have applied for it but I am still waiting", "I just found the Will and I am not sure what to do next", "I don't have a Will and I'm a little bit lost"] },
                     { q: "How many family members are helping you make decisions?", opts: ["It is just me making all the choices", "There are 2 or 3 of us working together", "A large family group is involved in this", "We are having some trouble agreeing on things"] },
-                    { q: "Is someone living in the house at the moment?", opts: ["No, the house is currently empty", "A family member is staying there right now", "A renter is currently living in the house", "I am not exactly sure what the situation is"] },
+                    { q: "Is someone living in the house right now?", opts: ["No, the house is currently empty", "A family member is staying there right now", "A renter is currently living in the house", "I am not exactly sure what the situation is"] },
                     { q: "Do you feel like you know what to do as an Executor?", opts: ["Yes, I have handled this before", "I am learning as I go along right now", "No, I have no idea where to start", "I would rather have someone else handle it all"] },
                     { q: "What do you think the house is worth today?", opts: ["I think it is worth less than $1 Million", "I think it is between $1 Million and $2 Million", "I think it is between $2 Million and $5 Million", "It is a very large estate worth over $5 Million"] },
-                    { q: "Which tax worries you most right now?", opts: ["I am worried about the Capital Gains tax", "I am worried about the legal Probate fees", "I am worried about missing a primary home rule", "I am worried about the Empty Home tax rules"] },
-                    { q: "How does the inside of the house look today?", opts: ["It is clean and ready for a buyer to see", "It needs some small fixes to look its best", "It needs a lot of work before anyone moves in", "It is very old and might be a knockdown house"] },
-                    { q: "Do you need help moving or selling the furniture?", opts: ["No, the house is already empty", "Yes, we need to clear everything out soon", "I need someone to tell me what items are worth", "Yes, I need a team to take away the junk for me"] },
-                    { q: "How are the family conversations going lately?", opts: ["We are all agreeing on the plan for the house", "We are stressed but we are being nice to each other", "We are not talking to each other very much", "We are having some big arguments about the house"] },
+                    { q: "Which of these taxes worries you the most right now?", opts: ["I am worried about the Capital Gains tax", "I am worried about the legal Probate fees", "I am worried about missing a primary home rule", "I am worried about the Empty Home tax rules"] },
+                    { q: "How does the inside of the house look to you today?", opts: ["It is clean and ready for a buyer to see", "It needs some small fixes to look its best", "It needs a lot of work before anyone moves in", "It is very old and might be a knockdown house"] },
+                    { q: "Do you need help moving or selling the furniture inside?", opts: ["No, the house is already empty", "Yes, we need to clear everything out soon", "I need someone to tell me what items are worth", "Yes, I need a team to take away the junk for me"] },
+                    { q: "How are the family conversations going lately?", opts: ["We are all agreeing on the plan for the house", "We are stressed but we are being nice to each other", "We are not talking to each other very much", "We are having some arguments about the house"] },
                     { q: "How often would you like me to give you updates?", opts: ["I would like to hear from you every single day", "Once a week is the perfect amount for me", "Only tell me when something very big happens", "You handle everything and just tell me when it is done"] },
-                    { q: "Are you worried about people breaking in?", opts: ["Yes, it keeps me up at night worrying", "I am only a little bit worried about it", "No, I feel the neighborhood is very safe", "The neighbors are keeping a close eye on the house"] },
+                    { q: "Are you worried about people breaking into the house?", opts: ["Yes, it keeps me up at night worrying", "I am only a little bit worried about it", "No, I feel the neighborhood is very safe", "The neighbors are keeping a close eye on the house"] },
                     { q: "Are the heater and the water still turned on?", opts: ["Yes, everything is working perfectly", "No, the utilities have been turned off", "I am actually not sure if they are on", "Only a few important things are still on"] },
                     { q: "Does the house have any big debts or loans on it?", opts: ["No, the title is completely clear", "Yes, there is still a mortgage to pay", "I think there might be a dispute over the house", "I don't know how to find that out"] },
                     { q: "Do you have a lawyer you trust helping you now?", opts: ["Yes, I have a great lawyer helping me out", "No, I need you to find me a good one", "I have a regular lawyer but not for this house", "I am trying to do this without a lawyer"] },
                     { q: "Is moving fast more important than a high price?", opts: ["Speed is the most important thing for us", "Getting the highest price is the most important", "I want a perfect balance of both things", "I am waiting for the market to change first"] },
                     { q: "What if the house does not sell in the first month?", opts: ["We should lower the price right away", "We should try to rent it out for a while", "We should just wait until the market gets better", "I need you to have a backup plan ready for me"] },
-                    { q: "Is the house insurance up to date?", opts: ["Yes, it is all covered by insurance", "I have a special permit for an empty house", "The insurance has stopped recently", "I need to check on this today"] },
+                    { q: "Is the house insurance up to date for an empty home?", opts: ["Yes, it is all covered by insurance", "I have a special permit for an empty house", "The insurance has stopped recently", "I need to check on this today"] },
                     { q: "How are you personally feeling about all of this?", opts: ["I am doing my duty for the family", "I am scared of making a big mistake", "I am just very tired and sad right now", "I am ready for this to be over and have closure"] },
                     { q: "Can you help get the house ready for a buyer?", opts: ["No, I need you to handle everything for me", "I can do the small tasks myself", "I want to do most of the work myself", "I don't know what needs to be done"] },
-                    { q: "Ready for your custom roadmap?", opts: ["Yes, show it to me now!", "Maybe in a week or so", "Send the report to my email for now", "No, I am just looking today"] }
+                    { q: "Are you ready to see your custom roadmap now?", opts: ["Yes, I'm ready to see it!", "Maybe in a week or so", "Just send the report to my email for now", "No, I am just looking today"] }
                 ]
             },
             "Rightsizing": {
-                res: { str: "Brave freedom seeker.", stand: "House rich, time poor.", pro: "We sort the belongings so you only touch what you love." },
+                res: { str: "Brave freedom seeker.", stand: "House rich, time poor stage.", pro: "We bring in helpers to handle the packing and sorting." },
                 q: [
-                    { q: "What is the hardest thing about your house today?", opts: ["Yard and stairs work", "Bills and taxes", "Empty rooms", "Distance from family"] },
-                    { q: "How long has this been your home?", opts: ["10-20 years", "20-30 years", "Over 30 years", "Recently moved"] },
-                    { q: "Where would you like to live next?", opts: ["New condo near shops", "Smaller townhouse", "Luxury rental suite", "One-level rancher"] },
-                    { q: "What makes you the most nervous about moving?", opts: ["Sorting all my 'stuff'", "The housing market", "Leaving memories", "Finding the right area"] },
-                    { q: "Is your family helping you decide?", opts: ["Very supportive", "Neutral", "Resistant", "Solo decision"] },
-                    { q: "Are stairs starting to feel like a lot of work?", opts: ["No, I'm fine", "Thinking about future", "Hurts my knees", "Need zero stairs"] },
-                    { q: "Do you want to save money after the move?", opts: ["Yes, extra cash", "Nicer home/same price", "Simplify my life", "Unsure"] },
-                    { q: "How much 'stuff' needs to be sorted?", opts: ["Minimalist", "A few boxes", "Need purge team", "40 years of history"] },
-                    { q: "What kind of neighborhood feels right?", opts: ["Quiet and peaceful", "Walkable near shops", "Near water or trees", "Near family/doctors"] },
-                    { q: "Know about BC property tax deferment?", opts: ["Planning it", "Please explain it", "Heard a little", "Not interested"] },
-                    { q: "Need a room for grandkids to visit?", opts: ["Mandatory", "Den is okay", "No, hotel nearby", "Building guest room"] },
-                    { q: "When would you like to be in your new home?", opts: ["Under 6 months", "In a year", "Exploring", "Perfect place pops up"] },
-                    { q: "Condition of roof and furnace?", opts: ["Brand new", "Minor work", "Replace soon", "House is old"] },
-                    { q: "How do you feel about condo living?", opts: ["Excited/No chores", "Worried about fees", "Prefer small house", "Okay if quiet"] },
-                    { q: "Want neighbors to know you are selling?", opts: ["Private first", "Market now", "Fast sale", "Advice needed"] },
-                    { q: "Need to sell before you buy?", opts: ["No, cash ready", "Yes, bridge loan", "Maybe/Audit first", "Unsure"] },
-                    { q: "What is your weekend hobby?", opts: ["Travel", "Grandkids", "Garden", "Quiet reading"] },
-                    { q: "How overwhelmed do you feel?", opts: ["Not at all", "A little bit", "Stressed", "Paralyzed by choice"] },
-                    { q: "Most important goal?", opts: ["Travel more", "Close to family", "Retirement money", "Safety"] },
-                    { q: "Taking your furniture?", opts: ["Take all", "Special pieces", "All new", "Check if fits"] },
-                    { q: "Ready for your roadmap?", opts: ["Show me!", "Next month", "Email report", "Browsing"] }
+                    { q: "What is the hardest thing about your house today?", opts: ["Taking care of the big yard and the stairs", "The bills and the taxes are getting too high", "There are too many empty rooms in the house now", "I feel too far away from shops and my family"] },
+                    { q: "How long has this house been your home?", opts: ["About 10 to 20 years", "About 20 to 30 years", "More than 30 years", "I moved in fairly recently"] },
+                    { q: "Where would you like to live next?", opts: ["A nice new condo near the shops", "A smaller townhouse with a deck", "A luxury rental where I have no chores", "A small house with no stairs at all"] },
+                    { q: "What makes you the most nervous about moving?", opts: ["Sorting through all my things and 'stuff'", "What the housing market is doing right now", "Leaving all my memories behind", "Finding the right new neighborhood"] },
+                    { q: "Is your family helping you make this choice?", opts: ["Yes, they are very supportive of me", "They are okay with whatever I decide", "They don't want me to move at all", "I am making this choice on my own"] },
+                    { q: "Are the stairs starting to feel like a lot of work?", opts: ["No, I am still doing fine with them", "I'm thinking about the future", "Yes, they hurt my knees sometimes", "I need a home with no stairs now"] },
+                    { q: "Do you want extra money in the bank after you move?", opts: ["Yes, I want to have extra cash", "I want a nicer home for the same price", "I just want to make my life simpler", "I haven't thought about the money yet"] },
+                    { q: "How much 'stuff' do you need to sort through?", opts: ["Not much, I'm a minimalist", "A few boxes here and there", "I need a team to help me sort it all", "It's 40 years of history—it's a lot"] },
+                    { q: "What kind of neighborhood feels right for you?", opts: ["Quiet and peaceful", "Near walking paths and shops", "Near the water or the trees", "Close to my family and doctors"] },
+                    { q: "Do you know about the BC property tax deferment?", opts: ["Yes, I am planning to do that", "No, can you explain it to me?", "I've heard a little bit but need more info", "I'm not interested in that right now"] },
+                    { q: "Do you need a room for your grandkids to visit?", opts: ["Yes, it is a must-have for me", "A small den would be okay", "No, they can stay in a hotel nearby", "The building has a guest suite I can use"] },
+                    { q: "When would you like to be in your new home?", opts: ["In less than 6 months", "In about a year", "I am just looking for now", "When the perfect place pops up"] },
+                    { q: "Is your roof and furnace in good shape today?", opts: ["Yes, they are brand new", "They need a little bit of work", "They need to be replaced very soon", "The house is quite old now"] },
+                    { q: "How do you feel about living in a condo?", opts: ["I'm excited to have no more chores!", "I'm worried about the monthly fees", "I would rather have a small house", "I'm okay with it if it's very quiet"] },
+                    { q: "Do you want your neighbors to know you are selling?", opts: ["No, let's keep it private at first", "Yes, put it on the market right now", "I want a very fast sale if possible", "I need your advice on this part"] },
+                    { q: "Do you need to sell your house before you buy?", opts: ["No, I have the cash ready to go", "Yes, I need a bridge loan to help", "Maybe, let's look at my money together", "I don't know how that works"] },
+                    { q: "What do you love doing on the weekends?", opts: ["Traveling and going on adventures", "Spending time with the grandkids", "Working in a small garden", "Reading and having quiet time"] },
+                    { q: "How overwhelmed do you feel about moving?", opts: ["I am not overwhelmed at all", "Just a little bit stressed", "I am starting to feel very stressed", "I feel paralyzed by all the choices"] },
+                    { q: "What is the most important goal for you?", opts: ["Being able to travel more", "Being closer to my family members", "Having more money for retirement", "Feeling safe and comfortable"] },
+                    { q: "Are you taking your current furniture with you?", opts: ["Yes, I want to take it all", "Only a few special pieces", "No, I want all new furniture", "I need to see if it fits first"] },
+                    { q: "Ready for your custom roadmap?", opts: ["Yes, show it to me!", "Maybe next month", "Just send the report", "No, I am just browsing"] }
                 ]
             },
             "Aging": {
-                res: { str: "Independent and safe.", stand: "Safety audit needed.", pro: "We fix the dangerous spots so you can stay home." },
+                res: { str: "Independent and safe.", stand: "Sanctuary protection stage.", pro: "We do a safety audit for dangerous stairs and bumps." },
                 q: [
-                    { q: "How do you feel on your stairs today?", opts: ["Very safe", "A little careful", "Starting to feel scary", "Can't use them"] },
-                    { q: "Bedroom on the main floor?", opts: ["Yes", "Could move it", "Upstairs strictly", "I have an elevator"] },
-                    { q: "Proximity to your doctor?", opts: ["< 10 mins", "20 mins", "Quite far", "Need ride"] },
-                    { q: "Is the house bright inside?", opts: ["Very bright", "Some dark spots", "Need better lights", "Hard to see"] },
-                    { q: "Trip hazards present?", opts: ["None", "1 or 2", "Worry about fall", "Already had fall"] },
-                    { q: "Bathroom ease?", opts: ["Grab bars ready", "Regular tub", "Getting hard", "Total reno"] },
-                    { q: "Security system?", opts: ["Monitored", "Want one", "No trust", "Cameras only"] },
-                    { q: "Social network nearby?", opts: ["Daily visits", "Weekly", "Lonely", "Family far"] },
-                    { q: "HVAC/Roof age?", opts: ["New", "Work soon", "Fix now", "Unsure"] },
-                    { q: "Walkable neighborhood?", opts: ["Flat/Nice", "Hills", "Bad sidewalks", "Home-bound"] },
-                    { q: "Favorite room?", opts: ["Kitchen", "Living room", "Garden", "Bedroom"] },
-                    { q: "Kitchen reach?", opts: ["Modern/Easy", "Too high", "Bad layout", "Can't cook"] },
-                    { q: "SOS button?", opts: ["Yes", "Need one", "Phone only", "Family monitor"] },
-                    { q: "Clean air status?", opts: ["New filter", "Standard", "Dusty", "Concerned"] },
-                    { q: "Future sick care plan?", opts: ["Nurse", "Family", "Care home", "No plan"] },
-                    { q: "Door width?", opts: ["Wide enough", "Most", "Only few", "Very tight"] },
-                    { q: "Cleaning chores?", opts: ["DIY", "Family help", "Pro cleaner", "Piling up"] },
-                    { q: "Step-free entry?", opts: ["Flat", "1-3 steps", "Many stairs", "Garage only"] },
-                    { q: "Reason to stay?", opts: ["Memories", "Cost", "Stability", "Privacy"] },
-                    { q: "Fixes budget?", opts: ["<$10k", "$10k-$50k", "$50k+", "Unsure"] },
-                    { q: "Ready for safety check?", opts: ["Now!", "Very soon", "Report first", "No"] }
+                    { q: "How do you feel on your stairs today?", opts: ["I feel very safe", "I'm a little bit careful", "They are starting to feel scary", "I can't really use them anymore"] },
+                    { q: "Is your bedroom on the main floor?", opts: ["Yes, it is", "No, but we could move it", "No, it is strictly upstairs", "I have an elevator"] },
+                    { q: "How far is your doctor from your house?", opts: ["Less than 10 minutes", "About 20 minutes away", "It is quite far away", "I need a ride to get there"] },
+                    { q: "Is your house nice and bright inside?", opts: ["Yes, very bright everywhere", "It is okay, but some dark spots", "I need better lights installed", "It is hard to see at night"] },
+                    { q: "Are there rugs or bumps you trip on?", opts: ["None at all", "Maybe one or two", "Yes, I worry about falling", "I have already had a fall"] },
+                    { q: "Is your bathroom easy for you to use?", opts: ["Yes, I have grab bars already", "I have a regular bathtub", "It is getting hard to get in", "I need a full renovation"] },
+                    { q: "Do you have a home security system?", opts: ["Yes, it's fully monitored", "No, but I would like one", "No, I don't like using them", "I just have a few cameras"] },
+                    { q: "Do you have friends or family nearby?", opts: ["Yes, they visit every day", "They visit once a week", "I feel a little bit lonely", "My family lives very far away"] },
+                    { q: "How old is your roof or your furnace?", opts: ["They are both brand new", "They need work very soon", "They need fixing right now", "I am not really sure"] },
+                    { q: "Is it easy to walk in your neighborhood?", opts: ["Yes, it is flat and very nice", "It is okay, but some hills", "No, the sidewalks are bad", "I don't walk outside alone"] },
+                    { q: "Which room is your favorite place?", opts: ["The kitchen", "The living room", "The garden", "My bedroom"] },
+                    { q: "Is it easy to reach things in your kitchen?", opts: ["Yes, it is very modern", "No, things are too high up", "I need a better layout", "I can't cook for very long"] },
+                    { q: "Do you have an emergency help button?", opts: ["Yes, I wear it all the time", "No, but I think I need one", "I just use my cell phone", "My family watches me on camera"] },
+                    { q: "Does the air in your house feel clean?", opts: ["Yes, I have a new filter", "It feels standard", "It feels a bit dusty in here", "I'm worried about mold"] },
+                    { q: "Who will help you if you get sick?", opts: ["A professional nurse", "My family will help me out", "I'll move to a care home", "I don't have a plan yet"] },
+                    { q: "Are your doors wide enough for a walker?", opts: ["Yes, plenty of room", "Most of them are wide enough", "Only a few are wide", "No, they are all very tight"] },
+                    { q: "Who does the cleaning and chores?", opts: ["I do it all by myself", "My family helps every week", "I pay a professional cleaner", "The chores are piling up"] },
+                    { q: "Can you get into your house with no steps?", opts: ["Yes, it's a flat entry", "There are only 1 to 3 steps", "There are many stairs", "Only through the garage"] },
+                    { q: "Why do you want to stay in this house?", opts: ["I love my memories here", "It's cheaper for me to stay", "I like the stability", "I like my privacy here"] },
+                    { q: "How much can you spend on safety fixes?", opts: ["Under $10,000", "Between $10k and $50k", "More than $50,000", "I'm not really sure yet"] },
+                    { q: "Ready for a safety check?", opts: ["Yes, book it now!", "Yes, very soon", "Send the report first", "No, not yet"] }
                 ]
             },
             "Relocation": {
-                res: { str: "Strategic family move.", stand: "Neighborhood DNA stage.", pro: "We act as scouts for schools and future plans." },
+                res: { str: "Strategic family move.", stand: "New neighborhood DNA stage.", pro: "We act as scouts for schools and future plans." },
                 q: [
-                    { q: "Why are you moving your family?", opts: ["New job", "Closer to family", "Lifestyle/Nature", "Save money"] },
-                    { q: "Preferred neighborhood vibe?", opts: ["Quiet street", "Near train/shops", "Mountains/Water", "Fancy/Big yards"] },
-                    { q: "Commute max?", opts: ["< 20 mins", "40 mins", "Remote", "Walk/Bus"] },
-                    { q: "School importance?", opts: ["Critical", "Flexible", "No factor", "Private focus"] },
-                    { q: "Home to sell first?", opts: ["Cash ready", "Listed", "Not started", "Renting"] },
-                    { q: "Budget range?", opts: ["<$800k", "1.3M", "2M", ">2M"] },
-                    { q: "Area knowledge?", opts: ["Grew up here", "Visited", "Brand new", "Online only"] },
-                    { q: "Must have feature?", opts: ["Suite", "Backyard", "Open kitchen", "Office"] },
-                    { q: "Relocation fear?", opts: ["Wrong area", "Overpaying", "Timing", "Right school"] },
-                    { q: "Bedrooms needed?", opts: ["2", "3", "4", "5+"] },
-                    { q: "SkyTrain focus?", opts: ["Must", "Nice", "No", "Drive"] },
-                    { q: "Move window?", opts: ["3 mo", "6 mo", "1 yr", "Flexible"] },
-                    { q: "House type?", opts: ["Brand new", "Both", "Character/Old", "Presale"] },
-                    { q: "Cars?", opts: ["1", "2", "3", "RV/Boat"] },
-                    { q: "Weekend hobby?", opts: ["Nature", "Shopping", "Sports", "Quiet"] },
-                    { q: "Local bank set?", opts: ["Ready", "Need one", "Away bank", "Cash"] },
-                    { q: "Sweat equity comfort?", opts: ["Perfect", "Paint only", "Project", "Teardown"] },
-                    { q: "Hold timeframe?", opts: ["3-5 yrs", "5-10 yrs", "Forever", "Unsure"] },
-                    { q: "Workshop/Studio?", opts: ["Big space", "Desk", "No", "Large garage"] },
-                    { q: "Source of joy?", opts: ["Fresh start", "Lifestyle", "Roots", "Career"] },
-                    { q: "Local Eyes chat?", opts: ["Today!", "Soon", "Report first", "No"] }
+                    { q: "Why are you moving your family?", opts: ["I have a new job or career", "To be closer to my family", "For a better lifestyle and nature", "To save money on my bills"] },
+                    { q: "What kind of neighborhood do you want?", opts: ["A quiet street with no traffic", "Close to the train and shops", "Near the mountains or water", "A fancy area with big yards"] },
+                    { q: "How long do you want to drive to work?", opts: ["Less than 20 minutes", "About 40 minutes or so", "I work from my home", "I want to walk or use the bus"] },
+                    { q: "Is the local school very important?", opts: ["It is the most important thing", "It's important but I'm flexible", "It doesn't matter for us", "I'm looking for private schools"] },
+                    { q: "Do you have a home to sell first?", opts: ["No, I have the money ready", "Yes, it is already for sale", "Yes, but I haven't started", "I am currently renting a place"] },
+                    { q: "How much do you want to spend?", opts: ["Under $800,000", "Between $800k and $1.3M", "$1.3M to $2 Million", "More than $2 Million"] },
+                    { q: "Do you know the area here very well?", opts: ["Yes, I actually grew up here", "I have visited a few times", "I am brand new to the area", "I have only seen it online"] },
+                    { q: "What is the one thing you MUST have?", opts: ["A suite I can rent out", "A very big backyard", "A modern open kitchen", "A private home office"] },
+                    { q: "What are you the most worried about?", opts: ["Picking the wrong neighborhood", "Paying way too much money", "Not finding a house in time", "Finding the right school"] },
+                    { q: "How many bedrooms do you need?", opts: ["At least 2 bedrooms", "3 bedrooms is perfect", "4 bedrooms", "5 or more bedrooms"] },
+                    { q: "Do you need to be near the SkyTrain?", opts: ["Yes, it's a must-have", "It would be very nice to have", "No, I don't really need it", "I drive my car everywhere"] },
+                    { q: "When do you need to move in?", opts: ["In less than 3 months", "In about 4 to 6 months", "In about one year", "I am very flexible on time"] },
+                    { q: "Do you want a brand new house?", opts: ["Yes, only brand new for me", "I am open to both new and old", "No, I like character homes", "I want a presale home"] },
+                    { q: "How many cars does your family have?", opts: ["Just 1 car", "We have 2 cars", "We have 3 cars", "I have an RV or a Boat"] },
+                    { q: "What do you do on the weekends?", opts: ["Go hiking and be outside", "Go shopping and eating out", "Watch the kids play sports", "Stay at home and be quiet"] },
+                    { q: "Do you have a local bank yet?", opts: ["Yes, I am all set up", "No, I definitely need one", "I'm using a bank far away", "I am paying with all cash"] },
+                    { q: "Are you okay with fixing a house up?", opts: ["No, it must be perfect", "I can do a little painting", "I'm okay with a big project", "I want a teardown house"] },
+                    { q: "How long will you live in this home?", opts: ["About 3 to 5 years", "About 5 to 10 years", "This is our forever home", "I am not really sure yet"] },
+                    { q: "Do you need a workshop or studio?", opts: ["Yes, I need a big work space", "A small desk is okay for me", "No, I don't need that space", "I need a very big garage"] },
+                    { q: "What is the best part of this move?", opts: ["A fresh start for my family", "A much better lifestyle", "Being near my family roots", "Growing my own career"] },
+                    { q: "Ready for a 'Local Eyes' chat?", opts: ["Yes, call me today please", "Yes, very soon", "Just send the report first", "No, not yet"] }
                 ]
             },
             "Buyer": {
                 res: { str: "Wealth building start.", stand: "Ladder home stage.", pro: "We check the strata health so your first home is a win." },
                 q: [
-                    { q: "Saving duration?", opts: ["1-2 yrs", "2-5 yrs", "Over 5 yrs", "Gifted"] },
-                    { q: "Why buy now?", opts: ["Stop rent", "Equity", "Stability", "Invest"] },
-                    { q: "Know about grants?", opts: ["Yes well", "Explain please", "Heard a bit", "Don't qualify"] },
-                    { q: "Monthly target?", opts: ["<$2,800", "$4,000", ">$4,000", "Check for me"] },
-                    { q: "Home price goal?", opts: ["<$600k", "850k", ">850k", "Detached"] },
-                    { q: "Approved mortgage?", opts: ["Yes", "Need referral", "Bank only", "Cash"] },
-                    { q: "Suite needed?", opts: ["Must", "Nice", "No", "Condo focus"] },
-                    { q: "Reno comfort?", opts: ["Ready", "Paint only", "Fixer-upper", "Gut project"] },
-                    { q: "Years to keep?", opts: ["< 5", "5-10", "Forever", "Unsure"] },
-                    { q: "Location focus?", opts: ["Langley", "Coquitlam", "Surrey", "Maple Ridge"] },
-                    { q: "Homebuyer fear?", opts: ["Fixing costs", "Market drop", "Rates", "House poor"] },
-                    { q: "Buying group?", opts: ["Solo", "Partner", "Friend", "Co-sign"] },
-                    { q: "Must have?", opts: ["Laundry", "Balcony", "Parking", "Gym"] },
-                    { q: "Presale interest?", opts: ["Yes", "Maybe", "No", "How works?"] },
-                    { q: "Credit status?", opts: ["Excellent", "Good", "Work needed", "Unknown"] },
-                    { q: "Rent status?", opts: ["High", "Family", "Fair", "Other"] },
-                    { q: "Transit focus?", opts: ["Must", "Nice", "No", "Drive"] },
-                    { q: "Fun hobby?", opts: ["Gym/Social", "Creative", "Quiet", "Other"] },
-                    { q: "2026 trend?", opts: ["Eco", "Smart", "Garden", "Near work"] },
-                    { q: "Ownership joy?", opts: ["Security", "Independence", "Wealth", "Space"] },
-                    { q: "Ready to talk?", opts: ["This week!", "Soon", "Report first", "No"] }
+                    { q: "How long have you been saving money?", opts: ["About 1 to 2 years", "About 2 to 5 years", "More than 5 years", "I just started / It's a gift"] },
+                    { q: "Why do you want to buy a house now?", opts: ["To stop paying my landlord rent", "To grow my own equity", "To have a stable home", "As an investment for my future"] },
+                    { q: "Do you know about the government grants?", opts: ["Yes, I know them very well", "No, please tell me about them", "I've heard a little bit about it", "I don't think I qualify"] },
+                    { q: "How much can you pay every month?", opts: ["Under $2,800 a month", "$2,800 to $4,000 a month", "More than $4,000 a month", "I need you to check for me"] },
+                    { q: "What is your target home price?", opts: ["Under $600,000", "Between $600k and $850k", "More than $850,000", "I want a detached house"] },
+                    { q: "Are you working with a mortgage person?", opts: ["Yes, I'm already approved", "No, I need a referral", "I've only talked to my bank", "I am an all-cash buyer"] },
+                    { q: "Do you need a suite to rent out?", opts: ["It is a must-have for me", "It would be nice to have", "No, I don't need a suite", "I'm only looking at condos"] },
+                    { q: "Are you okay with a house that needs work?", opts: ["It must be move-in ready", "Only small fixes like paint", "I can handle a fixer-upper", "I want a total gut-project"] },
+                    { q: "How many years will you keep this home?", opts: ["Less than 5 years", "About 5 to 10 years", "A very long time for me", "I am not really sure yet"] },
+                    { q: "Where exactly do you want to buy?", opts: ["Langley or Cloverdale", "Coquitlam or Port Coq", "Surrey or North Delta", "Maple Ridge or Mission"] },
+                    { q: "What are you the most afraid of?", opts: ["The cost of fixing big things", "The housing market going down", "Interest rates going up more", "Having no money left for fun"] },
+                    { q: "Are you buying alone or with someone?", opts: ["I am buying by myself", "I am buying with a partner", "With a friend or family member", "I need a co-signer for the loan"] },
+                    { q: "What's the one thing you really want?", opts: ["Laundry inside my own unit", "A big balcony or a yard", "A secure parking spot", "A gym inside the building"] },
+                    { q: "Would you buy a home before it's built?", opts: ["Yes, I like that idea a lot", "Maybe, I need to see more", "No, I need to move in now", "I don't know how that works"] },
+                    { q: "How is your credit score today?", opts: ["It's very good (over 700)", "It's pretty good", "It needs some work soon", "I honestly don't know it"] },
+                    { q: "Are you paying a lot of rent now?", opts: ["Yes, my rent is very high", "I'm living with my parents", "I pay a fair amount of rent", "I have a different situation"] },
+                    { q: "Do you need the SkyTrain nearby?", opts: ["Yes, it's a must-have", "It would be very nice to have", "No, it doesn't matter to me", "I drive my own car everywhere"] },
+                    { q: "What do you do for fun on weekends?", opts: ["Go to the gym or be outside", "Go out with my friends", "Stay home and be creative", "Play games and be quiet"] },
+                    { q: "What 2026 trend do you like most?", opts: ["Small eco-friendly homes", "Smart home technology", "Community gardens", "Living very close to work"] },
+                    { q: "What would make you the most happy?", opts: ["Feeling secure and stable", "Being totally independent", "Building my own wealth", "Having my own private space"] },
+                    { q: "Ready to talk?", opts: ["Yes, this week!", "Yes, in a month", "Just send the report", "No, I am just looking"] }
                 ]
             },
             "Investor": {
                 res: { str: "Wealth growth focus.", stand: "Exit strategy stage.", pro: "Disclosure audit to check rules before you sign." },
                 q: [
-                    { q: "Main investment goal?", opts: ["Sell before finish", "Rent long term", "Family use", "Land hold"] },
-                    { q: "Deposit ready?", opts: ["Liquid cash", "HELOC/Equity", "Selling asset", "Gift"] },
-                    { q: "Rate worry?", opts: ["Rate hold needed", "A bit", "Okay", "Cash"] },
-                    { q: "Important metric?", opts: ["Monthly cash", "Total Price Up", "Tax Save", "Safe Asset"] },
-                    { q: "Properties goal?", opts: ["1", "2-3", "5+", "Pro"] },
-                    { q: "Exit concern?", opts: ["Assignment rules", "Vacancy", "Taxes", "End costs"] },
-                    { q: "Transit density knowledge?", opts: ["Hub focus", "Show me", "Seen maps", "Quiet areas"] },
-                    { q: "Developer brand focus?", opts: ["Tier 1 only", "Open to boutique", "Audit trust", "Price focus"] },
-                    { q: "Finish year?", opts: ["2026-27", "2028-29", "2030+", "Flexible"] },
-                    { q: "Unit size?", opts: ["Studio/1BR", "2BR/Den", "Townhome", "Mix"] },
-                    { q: "Manager choice?", opts: ["Pro Company", "Self", "Flip first", "Unsure"] },
-                    { q: "Lawyer status?", opts: ["Specialized", "Need one", "Regular", "Self"] },
-                    { q: "Leverage limit?", opts: ["< 60%", "80%", "Max", "Cash"] },
-                    { q: "Study time?", opts: ["Daily", "Weekly", "Advisor trust", "Start"] },
-                    { q: "Fav Hub?", opts: ["Burquitlam", "Langley", "Surrey", "Out"] },
-                    { q: "Purpose?", opts: ["Retire", "Less tax", "Diverse", "Kids"] },
-                    { q: "EV charging?", opts: ["Mandatory", "Nice", "No", "Value add"] },
-                    { q: "7-day rule?", opts: ["Know it", "What's that?", "Agent", "Bit"] },
-                    { q: "Drop plan?", opts: ["Wait/Rent", "Sell fast", "Buy more", "Need plan"] },
-                    { q: "Joy source?", opts: ["Growth", "Rent checks", "The Deal", "Housing"] },
-                    { q: "Ready for audit?", opts: ["Now!", "Soon", "Report first", "No"] }
+                    { q: "What is your main goal for this money?", opts: ["Sell it before it's finished", "Rent it out for a long time", "Use it for my family later", "Just hold onto the land value"] },
+                    { q: "Is your deposit money ready in the bank?", opts: ["Yes, it's ready to go now", "I'll use my home equity", "I need to sell something else", "Someone is gifting it to me"] },
+                    { q: "Are you worried about interest rates?", opts: ["Yes, I need a long rate hold", "I am a little bit worried", "No, I'm okay with the rates", "I am paying with all cash"] },
+                    { q: "What is most important to you?", opts: ["The monthly cash flow", "The total price going up", "Saving money on my taxes", "Having a very safe asset"] },
+                    { q: "How many properties do you want to own?", opts: ["Just this one for now", "Maybe 2 or 3 of them", "A big group of 5 or more", "I want to be a professional"] },
+                    { q: "What is your biggest fear?", opts: ["Rules on selling the contract", "Not finding a renter", "Taxes on my final profit", "Hidden costs at the end"] },
+                    { q: "Do you know the new transit laws?", opts: ["Yes, I'm buying near trains", "I need you to show me", "I've seen some of the maps", "I prefer quiet areas anyway"] },
+                    { q: "Do you only buy from famous developers?", opts: ["Yes, only the big names", "I'm open to smaller ones", "I trust your professional audit", "I only buy based on the price"] },
+                    { q: "When do you want it to be finished?", opts: ["In 2026 or 2027", "In 2028 or 2029", "Sometime after 2030", "I am very flexible on the date"] },
+                    { q: "What size of home do you want?", opts: ["A studio or 1-bedroom", "A 2-bedroom or a Den", "A larger townhouse", "A commercial or mixed space"] },
+                    { q: "Who will manage the rental?", opts: ["A professional company", "I will do it all by myself", "I'll sell it before it's done", "I'm not really sure yet"] },
+                    { q: "Do you have a specialized lawyer?", opts: ["Yes, I already have one", "No, I definitely need one", "I use my regular lawyer", "I'm doing the papers myself"] },
+                    { q: "How much of the price are you borrowing?", opts: ["Less than 60% of the price", "The standard 80% amount", "As much as the bank allows", "I'm paying for it with cash"] },
+                    { q: "How much time do you spend researching?", opts: ["Every single day", "Maybe once a week", "Not much, I trust you", "I'm just starting out"] },
+                    { q: "Which city is your favorite for growth?", opts: ["Coquitlam or Burquitlam", "The Langley City Hub", "The Surrey City Centre", "Somewhere outside the area"] },
+                    { q: "What will this money help you do?", opts: ["Retire much earlier", "Pay less in yearly taxes", "Have a diverse group of assets", "Help my kids out later"] },
+                    { q: "Is an Electric Car charger important?", opts: ["It is a mandatory must-have", "It would be very nice to have", "It doesn't matter to me", "Only if it adds more value"] },
+                    { q: "Do you know about the 7-day rule?", opts: ["Yes, I read everything", "No, what exactly is that?", "I let my agent handle that", "I know a little bit about it"] },
+                    { q: "What if the market prices go down?", opts: ["I'll rent it out and just wait", "I'll sell it very quickly", "I'll buy even more property", "I need your plan for that"] },
+                    { q: "What is the best part of investing?", opts: ["Watching my money grow", "Getting a rental check", "The excitement of the deal", "Providing a good home"] },
+                    { q: "Ready for an audit?", opts: ["Yes, this week!", "Yes, very soon", "Just send the report", "No, not yet"] }
                 ]
             }
         };
 
-        let currentPersona = "";
-        let step = 1;
-        let answers = {};
+        let currentType = "";
+        let currentStep = 1;
+        let selectedAnswers = {};
 
         function initAudit(p) {
-            currentPersona = p;
-            document.getElementById('selection-screen').classList.add('hidden');
-            document.getElementById('assessment-container').classList.remove('hidden');
-            renderStep();
+            currentType = p;
+            document.getElementById('grid-screen').classList.add('hidden');
+            document.getElementById('audit-screen').classList.remove('hidden');
+            document.getElementById('label-type').innerText = `${p} Audit`;
+            render();
         }
 
-        function renderStep() {
-            const card = document.getElementById('question-card');
-            if (step === 22) { renderLeadGate(); return; }
+        function render() {
+            const card = document.getElementById('q-card');
+            if (currentStep === 22) { renderGate(); return; }
 
-            const qSet = library[currentPersona].q[step - 1];
+            const qSet = library[currentType].q[currentStep - 1];
             card.innerHTML = `
-                <h3 class="text-2xl md:text-3xl font-serif text-white mb-10 italic leading-snug">${qSet.q}</h3>
+                <h3 class="text-2xl md:text-3xl font-serif text-white mb-10 italic leading-tight">${qSet.q}</h3>
                 <div class="grid gap-3">
                     ${qSet.opts.map(opt => `
-                        <div onclick="pick(this, ${step}, '${opt.replace(/'/g, "\\'")}')" class="option-card p-6 rounded-2xl text-gray-400 ${answers[step] === opt ? 'selected-option' : ''}">
-                            ${opt}
+                        <div onclick="pick(this, ${currentStep}, '${opt.replace(/'/g, "\\'")}')" 
+                             class="option-box ${selectedAnswers[currentStep] === opt ? 'selected' : ''}">
+                             ${opt}
                         </div>
                     `).join('')}
                 </div>
             `;
-            updateUI();
+            update();
         }
 
         function pick(el, s, v) {
-            document.querySelectorAll('.option-card').forEach(b => b.classList.remove('selected-option'));
-            el.classList.add('selected-option');
-            answers[s] = v;
+            document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedAnswers[s] = v;
         }
 
-        function renderLeadGate() {
-            document.getElementById('next-btn').innerText = "GENERATE MY REPORT";
-            document.getElementById('question-card').innerHTML = `
+        function renderGate() {
+            document.getElementById('btn-next').innerText = "GENERATE MY REPORT";
+            document.getElementById('q-card').innerHTML = `
                 <h3 class="text-3xl font-serif text-white mb-8 italic text-center">Ready for your Roadmap?</h3>
                 <div class="space-y-4 max-w-sm mx-auto">
                     <input type="text" id="uname" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-brand-mint">
-                    <input type="email" id="uemail" placeholder="Your Email Address" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-brand-mint">
+                    <input type="email" id="uemail" placeholder="Email Address" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-brand-mint">
                 </div>
             `;
         }
 
-        function processStep() {
-            if (step <= 21) {
-                if (!answers[step]) { alert("Please pick an option to continue."); return; }
-                step++; renderStep();
-            } else { finalize(); }
+        function goNext() {
+            if (currentStep <= 21) {
+                if (!selectedAnswers[currentStep]) { alert("Please pick an option to continue."); return; }
+                currentStep++; render();
+            } else { finish(); }
         }
 
-        function prevStep() { if (step > 1) { step--; renderStep(); } }
+        function goBack() { if (currentStep > 1) { currentStep--; render(); } }
 
-        async function finalize() {
+        async function finish() {
             const n = document.getElementById('uname').value;
             const e = document.getElementById('uemail').value;
-            if (!n || !e) { alert("Name and Email required."); return; }
+            if (!n || !e) { alert("Missing info."); return; }
             
-            document.getElementById('next-btn').innerText = "SYNCING WITH CRM...";
-            const resData = library[currentPersona].res;
-            let note = `Audit: ${currentPersona}\n`;
-            for (let k in answers) { note += `Q${k}: ${answers[k]}\n`; }
+            document.getElementById('btn-next').innerText = "SYNCING WITH CRM...";
+            const res = library[currentType].res;
+            let note = `Audit: ${currentType}\n`;
+            for (let k in selectedAnswers) { note += `Q${k}: ${selectedAnswers[k]}\n`; }
 
             try {
+                // FIXED WEBHOOK URL
                 await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -420,17 +415,17 @@
                 });
             } catch(err) {}
 
-            document.getElementById('assessment-container').classList.add('hidden');
-            document.getElementById('report-container').classList.remove('hidden');
-            document.getElementById('report-name-header').innerHTML = `${n}, Your <span class='italic text-brand-mint'>Pathway Roadmap.</span>`;
-            document.getElementById('report-body').innerHTML = `<div><h4 class="text-brand-mint text-[10px] mb-4 uppercase font-bold tracking-widest">Strength</h4><p class="text-2xl font-serif italic">${resData.str}</p></div><div><h4 class="text-brand-mint text-[10px] mb-4 uppercase font-bold tracking-widest">Where You Stand</h4><p class="text-gray-400 leading-relaxed">${resData.stand}</p></div><div><h4 class="text-brand-mint text-[10px] mb-4 uppercase font-bold tracking-widest">Process</h4><p class="text-gray-400 leading-relaxed">${resData.pro}</p></div>`;
+            document.getElementById('audit-screen').classList.add('hidden');
+            document.getElementById('report-screen').classList.remove('hidden');
+            document.getElementById('report-body').innerHTML = `<div><h4 class="text-brand-mint text-xs mb-4 uppercase">Strategic Strength</h4><p class="text-2xl font-serif italic">${res.str}</p></div><div><h4 class="text-brand-mint text-xs mb-4 uppercase">Where You Stand</h4><p class="text-gray-400 leading-relaxed">${res.stand}</p></div><div><h4 class="text-brand-mint text-xs mb-4 uppercase">The Soft Process</h4><p class="text-gray-400 leading-relaxed">${res.pro}</p></div>`;
             window.scrollTo(0,0);
         }
 
-        function updateUI() {
-            document.getElementById('bar').style.width = `${(step / 22) * 100}%`;
-            document.getElementById('progress-text').innerText = `Point ${step} of 21`;
-            document.getElementById('back-btn').classList.toggle('invisible', step === 1);
+        function update() {
+            const p = (currentStep / 22) * 100;
+            document.getElementById('bar').style.width = `${p}%`;
+            document.getElementById('label-step').innerText = `Point ${currentStep} of 21`;
+            document.getElementById('btn-back').classList.toggle('invisible', currentStep === 1);
         }
     </script>
 
