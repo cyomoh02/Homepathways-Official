@@ -386,6 +386,17 @@
             document.getElementById('btn-back').classList.toggle('invisible', step === 1 || step > 21);
         }
         renderPersonas();
+
+        // This looks at the URL for "?path=Relocation" and starts that specific audit instantly
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetPath = urlParams.get('path'); 
+    
+    // If the URL has a valid path, skip the grid and start the audit
+    if (targetPath && AuditLibrary[targetPath]) {
+        initAudit(targetPath);
+    }
+});
     </script>
 
     <!--Footer Section-->
