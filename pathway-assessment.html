@@ -233,7 +233,8 @@
             const n = document.getElementById('uname').value;
             const e = document.getElementById('uemail').value;
             if (!n || !e) { alert("Please enter your name and email."); return; }
-            document.getElementById('btn-finalize').innerText = "SYNCING WITH CRM...";
+            
+            document.getElementById('btn-finalize').innerText = "PREPARING ROADMAP...";
             
             const res = AuditLibrary[currentPersona].res;
             localStorage.setItem('hp_name', n);
@@ -241,23 +242,29 @@
             localStorage.setItem('hp_stand', res.stand);
             localStorage.setItem('hp_pro', res.pro);
 
-            let notes = `Audit: ${currentPersona}\n`;
-            for (let k in answers) { notes += `Q${k}: ${answers[k]}\n`; }
+            let notesTranscript = `AUDIT TYPE: ${currentPersona}\n\n`;
+            for (let k in answers) { notesTranscript += `Q${k}: ${answers[k]}\n`; }
 
-            try {
-                // Mandatory wait for CRM handshake
-                const response = await fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ first_name: n, email: e, notes: notes, source: "Homepathways Audit" })
-                });
-                if (response.ok) { window.location.href = "report.html"; }
-            } catch(err) { window.location.href = "report.html"; }
+            // THE HANDSHAKE (Updated for GHL Compatibility)
+            const payload = {
+                first_name: n,
+                email: e,
+                notes: notesTranscript,
+                source: "Website Audit"
+            };
+
+            fetch('https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b97', {
+                method: 'POST',
+                mode: 'no-cors', // Forces the browser to send the data regardless of security headers
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+
+            // Redirect after a small delay to ensure the fetch starts
+            setTimeout(() => {
+                window.location.href = "report.html";
+            }, 500);
         }
-
-        function goBack() { if (step > 1) { step--; renderStep(); } }
-        function updateUI() { document.getElementById('bar').style.width = `${(step / (AuditLibrary[currentPersona].q.length + 1)) * 100}%`; document.getElementById('label-step').innerText = `Point ${step} of ${AuditLibrary[currentPersona].q.length}`; document.getElementById('btn-back').classList.toggle('invisible', step === 1); }
-        renderPersonas();
     </script>
 
     <!--Footer Section-->
