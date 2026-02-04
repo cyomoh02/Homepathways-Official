@@ -400,11 +400,25 @@
             let notesTranscript = `Audit Type: ${currentType}\n\n`;
             for (let k in selectedAnswers) { notesTranscript += `Point ${k}: ${selectedAnswers[k]}\n`; }
 
-            // GHL HANDSHAKE - FINAL VERSION
+            // GHL HANDSHAKE - ROBUST VERSION
 document.getElementById('ghl-name').value = n;
 document.getElementById('ghl-email').value = e;
 document.getElementById('ghl-notes').value = notesTranscript;
 document.getElementById('ghl-source').value = currentType;
+
+// Use 'score' if 'totalScore' is missing to prevent the freeze
+try {
+    document.getElementById('ghl-score').value = (typeof totalScore !== 'undefined') ? totalScore : 0;
+} catch (err) {
+    document.getElementById('ghl-score').value = 0;
+}
+
+document.getElementById('ghl-persona').value = currentType;
+document.getElementById('ghl-form').submit();
+
+setTimeout(() => { 
+    window.location.href = "report.html"; 
+}, 800); // Increased to 800ms for safety
 
 // INJECTING THE MISSING INTEL
 document.getElementById('ghl-score').value = totalScore; 
