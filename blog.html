@@ -129,89 +129,84 @@
     </footer>
 
     <script>
-        const WP_DOMAIN = "https://homepathways.ca/blog"; 
-        const API_URL = `${WP_DOMAIN}/wp-json/wp/v2/posts?_embed&per_page=10`;
+    const WP_DOMAIN = "https://homepathways.ca/blog"; 
+    const API_URL = `${WP_DOMAIN}/wp-json/wp/v2/posts?_embed&per_page=10`;
 
-        function getReadTime(content) {
-            const wordsPerMinute = 200;
-            const text = content.replace(/<[^>]*>?/gm, '');
-            const wordCount = text.split(/\s+/).length;
-            const minutes = Math.ceil(wordCount / wordsPerMinute);
-            return `${minutes} min read`;
+    function getReadTime(content) {
+        const wordsPerMinute = 200;
+        const text = content.replace(/<[^>]*>?/gm, '');
+        const wordCount = text.split(/\s+/).length;
+        const minutes = Math.ceil(wordCount / wordsPerMinute);
+        return `${minutes} min read`;
+    }
+
+    async function fetchJournal() {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) throw new Error('Network response was not ok');
+            const posts = await response.json();
+            renderPosts(posts);
+        } catch (err) {
+            console.error("API Error:", err);
+            document.getElementById('featured-post-root').innerHTML = `
+                <div class="text-center py-20 border border-white/5 rounded-[3rem] bg-[#0a101e]">
+                    <p class="text-gray-500 font-serif italic text-xl mb-4">The Journal is synchronizing with Hostinger.</p>
+                    <p class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px]">Ready to view in 10-15 minutes</p>
+                </div>`;
+        }
+    }
+
+    function renderPosts(posts) {
+        const featuredRoot = document.getElementById('featured-post-root');
+        const gridRoot = document.getElementById('grid-posts-root');
+
+        if (!posts || posts.length === 0) {
+            featuredRoot.innerHTML = `<div class="text-center py-20"><p class="text-gray-500">The Journal is being prepared.</p></div>`;
+            return;
         }
 
-        async function fetchJournal() {
-            try {
-                const response = await fetch(API_URL);
-                const posts = await response.json();
-                renderPosts(posts);
-            } catch (err) {
-                console.error("API Error:", err);
-                document.getElementById('featured-post-root').innerHTML = `<p class="text-gray-500 italic">Connection error. Please check WordPress.</p>`;
-            }
-        }
-
-        function renderPosts(posts) {
-            const featuredRoot = document.getElementById('featured-post-root');
-            const gridRoot = document.getElementById('grid-posts-root');
-
-            if (!posts || posts.length === 0) {
-                featuredRoot.innerHTML = `
-                    <div class="text-center py-20 border border-white/5 rounded-[3rem] bg-[#0a101e]">
-                        <p class="text-gray-500 font-serif italic text-2xl mb-4">The Journal is being prepared.</p>
-                        <p class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px]">Initial Insights Launching Shortly</p>
-                    </div>`;
-                gridRoot.innerHTML = "";
-                return;
-            }
-
-            // RENDER FEATURED
-            const feat = posts[0];
-            const featReadTime = getReadTime(feat.content.rendered);
-            const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
-            
-            featuredRoot.innerHTML = `
-                <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
-                    <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
-                        <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
+        // Render Featured Post
+        const feat = posts[0];
+        const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
+        featuredRoot.innerHTML = `
+            <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
+                <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
+                    <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="p-12 lg:w-1/2 lg:p-20">
+                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
+                    <div class="flex items-center space-x-4 mb-8">
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">By Sean Omoh | ${getReadTime(feat.content.rendered)}</p>
                     </div>
-                    <div class="p-12 lg:w-1/2 lg:p-20">
-                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
-                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
-                        <div class="flex items-center space-x-4 mb-8">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">By Sean Omoh &nbsp; | &nbsp; ${featReadTime}</p>
-                        </div>
-                        <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
-                        <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
+                    <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
+                    <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
+                </div>
+            </a>`;
+
+        // Render Grid (posts 2-10)
+        const gridPosts = posts.slice(1);
+        gridRoot.innerHTML = gridPosts.map(post => {
+            const img = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800';
+            return `
+            <article class="group post-fade-in">
+                <a href="${post.link}">
+                    <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5 overflow-hidden">
+                        <img src="${img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
                     </div>
-                </a>`;
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px]">Market Insight</span>
+                        <span class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">${getReadTime(post.content.rendered)}</span>
+                    </div>
+                    <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">${post.title.rendered}</h3>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[#97B99D] transition-all pb-1">View Insight</span>
+                </a>
+            </article>`;
+        }).join('');
+    }
 
-            // RENDER GRID
-            const gridPosts = posts.slice(1);
-            gridRoot.innerHTML = gridPosts.map(post => {
-                const img = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800';
-                const readTime = getReadTime(post.content.rendered);
-                return `
-                <article class="group post-fade-in">
-                    <a href="${post.link}">
-                        <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5 overflow-hidden">
-                            <img src="${img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        </div>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px]">Market Insight</span>
-                            <span class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">${readTime}</span>
-                        </div>
-                        <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">${post.title.rendered}</h3>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | ${new Date(post.date).toLocaleDateString()}</p>
-                        <div class="text-gray-500 font-light text-sm leading-relaxed mb-6 line-clamp-3">${post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[#97B99D] transition-all pb-1">View Insight</span>
-                    </a>
-                </article>`;
-            }).join('');
-        }
-
-        window.onload = fetchJournal;
-    </script>
+    window.onload = fetchJournal;
+</script>
 
     <!--Footer Section-->
     <footer class="bg-[#050b1a] border-t border-white/5 pt-24 pb-12">
