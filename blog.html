@@ -10,89 +10,54 @@
         body { font-family: 'Inter', sans-serif; background-color: #050b1a; color: white; margin: 0; }
         .font-serif { font-family: 'DM Serif Display', serif; }
         .dropdown:hover .dropdown-menu { display: block; opacity: 1; visibility: visible; }
-        /* Smooth fade for dynamic content */
         .post-fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .active-filter { color: #97B99D !important; border-bottom: 2px solid #97B99D; }
         .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        /* Hide scrollbar for category line */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 
-    <!--Master Schema-->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "name": "Homepathways | Sean Omoh",
-  "description": "Strategic Real Estate Advisory specializing in complex transitions: Probate, Rightsizing, Aging in Place, and Presale Investment in the Lower Mainland & Fraser Valley.",
-  "url": "https://homepathways.com",
-  "telephone": "+1-778-949-9889",
-  "image": "https://homepathways.com/images/sean-omoh-authority.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1126 Austin Avenue",
-    "addressLocality": "Coquitlam",
-    "addressRegion": "BC",
-    "postalCode": "V3K 3P5",
-    "addressCountry": "CA"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "49.2485", 
-    "longitude": "-122.8611"
-  },
-  "areaServed": ["Coquitlam", "Langley", "Surrey", "Abbotsford", "Burnaby", "Vancouver"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "The Six Homepathway Strategies",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Probate Estate Strategy" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seniors Rightsizing Advisory" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aging in Place Longevity Audit" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Presale Investor Equity Mapping" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BC Relocation Strategy" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "First-Time Buyer Wealth Building" } }
-    ]
-  }
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Homepathways | Sean Omoh",
+      "description": "Strategic Real Estate Advisory specializing in complex transitions: Probate, Rightsizing, Aging in Place, and Presale Investment in the Lower Mainland & Fraser Valley.",
+      "url": "https://homepathways.ca",
+      "telephone": "+1-778-949-9889",
+      "image": "https://homepathways.ca/images/sean-omoh-authority.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1126 Austin Avenue",
+        "addressLocality": "Coquitlam",
+        "addressRegion": "BC",
+        "postalCode": "V3K 3P5",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.2485", 
+        "longitude": "-122.8611"
+      },
+      "areaServed": ["Coquitlam", "Langley", "Surrey", "Abbotsford", "Burnaby", "Vancouver"]
+    }
+    </script>
 
-<!--Page Schema-->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "The Pathway Journal | Strategic Real Estate Insights",
-  "description": "Expert analysis on BC Probate, Presale Investment, Rightsizing, and Relocation strategies for the 2026 Vancouver and Fraser Valley market.",
-  "url": "https://homepathways.ca/blog.html",
-  "publisher": {
-    "@type": "RealEstateAgent",
-    "name": "Homepathways | Sean Omoh"
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Probate Estate Strategy Insights",
-        "url": "https://homepathways.ca/blog.html?filter=probate"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Presale Investment Equity Mapping",
-        "url": "https://homepathways.ca/blog.html?filter=investor"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Seniors Rightsizing and Aging in Place Advice",
-        "url": "https://homepathways.ca/blog.html?filter=seniors"
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "The Pathway Journal | Strategic Real Estate Insights",
+      "description": "Expert analysis on BC Probate, Presale Investment, Rightsizing, and Relocation strategies for the 2026 Vancouver and Fraser Valley market.",
+      "url": "https://homepathways.ca/blog.html",
+      "publisher": {
+        "@type": "RealEstateAgent",
+        "name": "Homepathways | Sean Omoh"
       }
-    ]
-  }
-}
-</script>
+    }
+    </script>
 </head>
 <body>
 
@@ -104,26 +69,22 @@
                         <a href="index.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Home</a>
                         <div class="relative dropdown group py-4">
                             <button class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
-                                Who We Serve <svg class="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                Who We Serve <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
-                                <a href="serve-probate.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Probate Support</a>
-                                <a href="serve-rightsizing.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Retiring Rightsizer</a>
-                                <a href="serve-aging.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Aging In Place</a>
-                                <a href="serve-investor.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Presale Investor</a>
-                                <a href="serve-relocation.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">Relocation Hub</a>
-                                <a href="serve-buyer.html" class="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] transition-all">First-Time Buyer</a>
+                            <div class="dropdown-menu hidden group-hover:block absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100]">
+                                <a href="serve-probate.html" class="block px-6 py-3 text-[10px] uppercase text-gray-400 hover:text-[#97B99D]">Probate Support</a>
+                                <a href="serve-investor.html" class="block px-6 py-3 text-[10px] uppercase text-gray-400 hover:text-[#97B99D]">Presale Investor</a>
                             </div>
                         </div>
                         <a href="about.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">About</a>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
-                        <a href="index.html" class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tighter block hover:text-[#97B99D] transition-all duration-500 transform hover:scale-[1.02]">Homepathways</a>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 text-center">
+                        <a href="index.html" class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tighter">Homepathways</a>
                     </div>
                     <div class="hidden lg:flex items-center justify-end space-x-10 w-[38%]">
-                        <a href="inner-circle.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Trusted Partners</a>
-                        <a href="blog.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-[#97B99D] transition-colors">Blog</a>
-                        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all shadow-xl">Contact</a>
+                        <a href="inner-circle.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Partners</a>
+                        <a href="blog.html" class="text-[12px] font-bold uppercase tracking-[0.3em] text-[#97B99D]">Blog</a>
+                        <a href="#contact" class="bg-[#97B99D] text-[#050b1a] px-10 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-[0.3em]">Contact</a>
                     </div>
                 </div>
             </div>
@@ -131,22 +92,22 @@
     </header>
 
     <section class="relative pt-64 pb-16 bg-[#050b1a] text-center">
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Market Intelligence & Strategic Insights</span>
-        <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">The <span class="italic text-[#97B99D]">Pathway Journal.</span></h1>
-        <p class="text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-12">Deep dives into BC probate laws, market shifts, and the <strong>art of the transition</strong>. Insight over noise.</p>
-        
-        <div id="filter-container" class="flex flex-nowrap md:justify-center items-center gap-6 md:gap-10 pt-8 border-t border-white/5 overflow-x-auto pb-4 no-scrollbar">
-            <button onclick="fetchJournal()" class="filter-btn active-filter whitespace-nowrap text-[10px] font-bold uppercase tracking-widest">All Insights</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Probate Support</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Presale Investing</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Rightsizing</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Relocation</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">First Time Buyer</button>
-            <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Aging In Place</button>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <span class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Market Intelligence & Strategic Insights</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">The <span class="italic text-[#97B99D]">Pathway Journal.</span></h1>
+            <p class="text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-12">Deep dives into BC probate laws, market shifts, and the <strong>art of the transition</strong>.</p>
+            
+            <div id="filter-container" class="flex flex-nowrap md:justify-center items-center gap-6 md:gap-10 pt-8 border-t border-white/5 overflow-x-auto pb-4 no-scrollbar">
+                <button onclick="fetchJournal()" class="filter-btn active-filter whitespace-nowrap text-[10px] font-bold uppercase tracking-widest">All Insights</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">Probate Support</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">Presale Investing</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">Rightsizing</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">Relocation</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">First Time Buyer</button>
+                <button class="filter-btn whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">Aging In Place</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="py-24 bg-[#050b1a]">
         <div class="max-w-7xl mx-auto px-6" id="featured-post-root">
@@ -156,23 +117,28 @@
 
     <section class="py-24 bg-[#0a101e]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12" id="grid-posts-root">
-                </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12" id="grid-posts-root"></div>
         </div>
     </section>
 
     <footer class="bg-[#050b1a] border-t border-white/5 pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-serif text-white mb-6">Homepathways</h2>
-            <p class="text-gray-400 font-light max-w-2xl mx-auto mb-10 text-sm leading-relaxed">Mapping out custom pathways across the Lower Mainland and Fraser Valley.</p>
-            <span class="text-[9px] text-gray-600 uppercase tracking-widest font-bold">© 2026 Homepathways. All Rights Reserved.</span>
+            <p class="text-gray-400 font-light max-w-2xl mx-auto mb-10 text-sm">© 2026 Homepathways. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // THE COMMAND CENTER
         const WP_DOMAIN = "https://homepathways.ca/blog"; 
         const API_URL = `${WP_DOMAIN}/wp-json/wp/v2/posts?_embed&per_page=10`;
+
+        function getReadTime(content) {
+            const wordsPerMinute = 200;
+            const text = content.replace(/<[^>]*>?/gm, '');
+            const wordCount = text.split(/\s+/).length;
+            const minutes = Math.ceil(wordCount / wordsPerMinute);
+            return `${minutes} min read`;
+        }
 
         async function fetchJournal() {
             try {
@@ -181,110 +147,69 @@
                 renderPosts(posts);
             } catch (err) {
                 console.error("API Error:", err);
-                document.getElementById('featured-post-root').innerHTML = `<p class="text-gray-500 italic">Journal sync in progress. Please refresh in a moment.</p>`;
+                document.getElementById('featured-post-root').innerHTML = `<p class="text-gray-500 italic">Connection error. Please check WordPress.</p>`;
             }
         }
 
-        // 1. Add this small helper function at the top of your script
-function getReadTime(content) {
-    const wordsPerMinute = 200;
-    // Strip HTML tags to get accurate word count
-    const text = content.replace(/<[^>]*>?/gm, '');
-    const wordCount = text.split(/\s+/).length;
-    const minutes = Math.ceil(wordCount / wordsPerMinute);
-    return `${minutes} min read`;
-}
+        function renderPosts(posts) {
+            const featuredRoot = document.getElementById('featured-post-root');
+            const gridRoot = document.getElementById('grid-posts-root');
 
-function renderPosts(posts) {
-    const featuredRoot = document.getElementById('featured-post-root');
-    const gridRoot = document.getElementById('grid-posts-root');
+            if (!posts || posts.length === 0) {
+                featuredRoot.innerHTML = `
+                    <div class="text-center py-20 border border-white/5 rounded-[3rem] bg-[#0a101e]">
+                        <p class="text-gray-500 font-serif italic text-2xl mb-4">The Journal is being prepared.</p>
+                        <p class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px]">Initial Insights Launching Shortly</p>
+                    </div>`;
+                gridRoot.innerHTML = "";
+                return;
+            }
 
-    // If there are no posts yet, show a professional "Coming Soon" message
-    if (!posts || posts.length === 0) {
-        featuredRoot.innerHTML = `
-            <div class="text-center py-20 border border-white/5 rounded-[3rem] bg-[#0a101e]">
-                <p class="text-gray-500 font-serif italic text-2xl mb-4">The Journal is being prepared.</p>
-                <p class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px]">Initial Insights Launching Shortly</p>
-            </div>
-        `;
-        return;
-    }
+            // RENDER FEATURED
+            const feat = posts[0];
+            const featReadTime = getReadTime(feat.content.rendered);
+            const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
+            
+            featuredRoot.innerHTML = `
+                <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
+                    <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
+                        <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    </div>
+                    <div class="p-12 lg:w-1/2 lg:p-20">
+                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
+                        <div class="flex items-center space-x-4 mb-8">
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">By Sean Omoh &nbsp; | &nbsp; ${featReadTime}</p>
+                        </div>
+                        <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
+                        <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
+                    </div>
+                </a>`;
 
-    // ... (Keep the rest of your rendering logic here for Featured and Grid posts)
-}
-
-    // 2. FEATURED POST UPDATE
-    const feat = posts[0];
-    const featReadTime = getReadTime(feat.content.rendered); // Calculate here
-    const featImg = feat._embedded['wp:featuredmedia'] ? feat._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2000';
-    
-    featuredRoot.innerHTML = `
-        <a href="${feat.link}" class="group block relative rounded-[3rem] overflow-hidden bg-[#0a101e] border border-white/5 lg:flex items-center post-fade-in">
-            <div class="lg:w-1/2 h-96 lg:h-[600px] bg-slate-900 relative">
-                <img src="${featImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#050b1a] to-transparent opacity-60"></div>
-            </div>
-            <div class="p-12 lg:w-1/2 lg:p-20">
-                <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-6 block">Latest Analysis</span>
-                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight group-hover:text-[#97B99D] transition-colors">${feat.title.rendered}</h2>
-                <div class="flex items-center space-x-4 mb-8">
-                    <div class="w-8 h-8 rounded-full bg-[#97B99D] flex items-center justify-center text-[#050b1a] font-bold text-[10px]">SO</div>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
-                        By <span class="text-white">Sean Omoh</span> &nbsp; | &nbsp; ${featReadTime} </p>
-                </div>
-                <div class="text-gray-400 font-light text-lg mb-8 leading-relaxed line-clamp-3">${feat.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
-                <span class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-[#97B99D] pb-2">Read Full Insight</span>
-            </div>
-        </a>
-    `;
-
-    // 3. GRID POSTS UPDATE
-    const gridPosts = posts.slice(1);
-    gridRoot.innerHTML = gridPosts.map(post => {
-        const img = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800';
-        const readTime = getReadTime(post.content.rendered); // Calculate here
-        
-        return `
-        <article class="group post-fade-in">
-            <a href="${post.link}">
-                <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5 overflow-hidden">
-                    <img src="${img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                </div>
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px]">Market Insight</span>
-                    <span class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">${readTime}</span> </div>
-                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">${post.title.rendered}</h3>
-                <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | ${new Date(post.date).toLocaleDateString()}</p>
-                <div class="text-gray-500 font-light text-sm leading-relaxed mb-6 line-clamp-3">${post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[#97B99D] transition-all pb-1">View Insight</span>
-            </a>
-        </article>
-        `;
-    }).join('');
-}
-
-            // 2. RENDER THE GRID POSTS (THE ONES BELOW)
+            // RENDER GRID
             const gridPosts = posts.slice(1);
             gridRoot.innerHTML = gridPosts.map(post => {
                 const img = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800';
+                const readTime = getReadTime(post.content.rendered);
                 return `
                 <article class="group post-fade-in">
                     <a href="${post.link}">
                         <div class="aspect-[4/5] bg-slate-900 rounded-[2.5rem] mb-8 border border-white/5 overflow-hidden">
                             <img src="${img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
                         </div>
-                        <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] mb-4 block">Market Insight</span>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#97B99D] font-bold uppercase tracking-widest text-[10px]">Market Insight</span>
+                            <span class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">${readTime}</span>
+                        </div>
                         <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#97B99D] transition-colors">${post.title.rendered}</h3>
                         <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-6">By Sean Omoh | ${new Date(post.date).toLocaleDateString()}</p>
                         <div class="text-gray-500 font-light text-sm leading-relaxed mb-6 line-clamp-3">${post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-white border-b border-white/10 group-hover:border-[#97B99D] transition-all pb-1">View Insight</span>
                     </a>
-                </article>
-                `;
+                </article>`;
             }).join('');
         }
 
-        // Start the engine
         window.onload = fetchJournal;
     </script>
 
