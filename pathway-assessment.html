@@ -141,13 +141,22 @@
         </section>
     </main>
 
-    <form id="ghl-form" action="https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b9724a07" method="POST" target="ghl-hidden-frame" style="display:none;">
-        <input type="text" name="first_name" id="ghl-name">
-        <input type="email" name="email" id="ghl-email">
-        <input type="text" name="notes" id="ghl-notes">
-        <input type="text" name="source" id="ghl-source">
-    </form>
-    <iframe name="ghl-hidden-frame" style="display:none;"></iframe>
+    <form id="ghl-form" 
+      action="https://services.leadconnectorhq.com/hooks/WigtheaBiF6HeC2gHv8c/webhook-trigger/7a599eed-1374-4b3c-a154-0567b9724a07" 
+      method="POST" 
+      target="ghl-hidden-frame" 
+      style="display:none;">
+    
+    <input type="text" name="first_name" id="ghl-name">
+    <input type="email" name="email" id="ghl-email">
+    <input type="text" name="notes" id="ghl-notes">
+    <input type="text" name="source" id="ghl-source">
+    
+    <input type="text" name="pathway_score" id="ghl-score"> 
+    <input type="text" name="pathway_persona" id="ghl-persona">
+</form>
+
+<iframe name="ghl-hidden-frame" style="display:none;"></iframe>
 
     <div id="footer-container">
         </div>
@@ -391,17 +400,23 @@
             let notesTranscript = `Audit Type: ${currentType}\n\n`;
             for (let k in selectedAnswers) { notesTranscript += `Point ${k}: ${selectedAnswers[k]}\n`; }
 
-            // GHL HANDSHAKE
-            // GHL HANDSHAKE - UPDATED
+            // GHL HANDSHAKE - FINAL VERSION
 document.getElementById('ghl-name').value = n;
 document.getElementById('ghl-email').value = e;
 document.getElementById('ghl-notes').value = notesTranscript;
 document.getElementById('ghl-source').value = currentType;
-document.getElementById('ghl-score').value = totalScore; // ADD THIS LINE
-document.getElementById('ghl-persona').value = currentType; // ADD THIS LINE
+
+// INJECTING THE MISSING INTEL
+document.getElementById('ghl-score').value = totalScore; 
+document.getElementById('ghl-persona').value = currentType;
+
+// SUBMIT TO THE HIDDEN IFRAME
 document.getElementById('ghl-form').submit();
 
-            setTimeout(() => { window.location.href = "report.html"; }, 600);
+// WAIT 600ms FOR THE DATA TO LEAVE, THEN SHOW THE REPORT
+setTimeout(() => { 
+    window.location.href = "report.html"; 
+}, 600);
         }
 
         function goBack() { if (step > 1) { step--; renderStep(); } }
