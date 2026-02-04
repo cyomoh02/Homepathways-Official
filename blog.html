@@ -196,10 +196,22 @@ function getReadTime(content) {
 }
 
 function renderPosts(posts) {
-    if (posts.length === 0) return;
-
     const featuredRoot = document.getElementById('featured-post-root');
     const gridRoot = document.getElementById('grid-posts-root');
+
+    // If there are no posts yet, show a professional "Coming Soon" message
+    if (!posts || posts.length === 0) {
+        featuredRoot.innerHTML = `
+            <div class="text-center py-20 border border-white/5 rounded-[3rem] bg-[#0a101e]">
+                <p class="text-gray-500 font-serif italic text-2xl mb-4">The Journal is being prepared.</p>
+                <p class="text-[#97B99D] font-bold uppercase tracking-[0.3em] text-[10px]">Initial Insights Launching Shortly</p>
+            </div>
+        `;
+        return;
+    }
+
+    // ... (Keep the rest of your rendering logic here for Featured and Grid posts)
+}
 
     // 2. FEATURED POST UPDATE
     const feat = posts[0];
