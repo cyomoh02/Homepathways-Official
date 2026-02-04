@@ -392,11 +392,14 @@
             for (let k in selectedAnswers) { notesTranscript += `Point ${k}: ${selectedAnswers[k]}\n`; }
 
             // GHL HANDSHAKE
-            document.getElementById('ghl-name').value = n;
-            document.getElementById('ghl-email').value = e;
-            document.getElementById('ghl-notes').value = notesTranscript;
-            document.getElementById('ghl-source').value = currentType;
-            document.getElementById('ghl-form').submit();
+            // GHL HANDSHAKE - UPDATED
+document.getElementById('ghl-name').value = n;
+document.getElementById('ghl-email').value = e;
+document.getElementById('ghl-notes').value = notesTranscript;
+document.getElementById('ghl-source').value = currentType;
+document.getElementById('ghl-score').value = totalScore; // ADD THIS LINE
+document.getElementById('ghl-persona').value = currentType; // ADD THIS LINE
+document.getElementById('ghl-form').submit();
 
             setTimeout(() => { window.location.href = "report.html"; }, 600);
         }
