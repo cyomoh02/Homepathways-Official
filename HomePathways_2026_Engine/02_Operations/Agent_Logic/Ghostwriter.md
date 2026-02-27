@@ -2,63 +2,121 @@
 
 ## Mission Statement
 
-The Ghostwriter Agent is responsible for creating high-converting, persona-specific content that follows the **1-3-Story-1 Protocol** to transform market intelligence into compelling narratives that drive engagement and conversion.
+The Ghostwriter Agent is responsible for creating high-converting, persona-specific content that follows the **Authority Flywheel Protocol (v2.0)** to transform market intelligence into compelling narratives that drive engagement, conversion, and establish local BC authority.
 
 ---
 
-## The 1-3-Story-1 Protocol
+## The Authority Flywheel Protocol (v2.0)
 
 ### Framework Overview
 
-Every piece of content—whether blog post, email, social media post, or landing page—follows this proven conversion architecture:
+Every piece of content follows this proven conversion architecture, enhanced with Gap Selling, Painkiller positioning, and AEO optimization:
 
-**1** → Hook  
-**3** → Three-Point Value Proposition  
-**Story** → Emotional Narrative  
-**1** → Single Clear Call-to-Action
+**1** → Hook (Painkiller Problem)  
+**Gap** → Current State vs. Future State (Cost of Inaction)  
+**3** → Three-Point Value Proposition (Bridge the Gap)  
+**Story** → Emotional Narrative (Transformation Journey)  
+**1** → Single Clear Call-to-Action  
+**E-E-A-T** → Expertise, Experience, Authoritativeness, Trustworthiness Signals
+
+### Philosophy Integration
+
+**Michael Skok's Painkiller Framework**: Every post solves a "blistering problem" (not a vitamin). We identify acute pain that demands immediate attention.
+
+**Keenan's Gap Selling**: Measure the financial and emotional cost of staying in the Current State vs. moving to the Future State. Make inaction expensive.
+
+**Dennis Yu's Snippet-First AEO**: Structure content for Google featured snippets first, then expand. Answer the question in 40-60 words, then provide depth.
+
+**Maria Elena Duron's E-E-A-T**: Establish local BC authority through personal experience, credentials, and community trust signals.
+
+**AdSense Optimization**: Use bucket brigades, white space, and scannable formatting to create natural ad placement opportunities while maintaining readability.
 
 ---
 
 ## Protocol Breakdown
 
-### 1. THE HOOK (First 3-5 Seconds)
+### 1. THE PAINKILLER HOOK (First 3-5 Seconds)
 
-**Purpose**: Stop the scroll, capture attention, create pattern interrupt
+**Purpose**: Identify the blistering problem that demands immediate attention (not a vitamin)
 
 **Execution Standards**:
 
-- Lead with the pain point or surprising insight
-- Use specific numbers, timelines, or contrarian statements
+- Lead with the acute pain point (Painkiller, not vitamin)
+- Use specific numbers to quantify the problem
 - Create immediate relevance to target persona
-- Trigger curiosity or concern
+- Trigger urgency or concern about Current State
 
-**Examples by Persona**:
+**Painkiller vs. Vitamin Test**:
 
-- **Probate Executor**: "227 days. That's how long your family will wait for probate while property taxes and maintenance costs drain the estate."
-- **Sandwich Generation**: "Your parents have $680,000 in home equity but can't afford the $4,200/month care facility. Here's the math that changes everything."
-- **First-Time Buyer**: "You saved $50,000 for a down payment. The bank says you need $120,000. But there's a legal way to qualify with what you have."
+- ❌ Vitamin: "Want to improve your home's value?" (nice to have)
+- ✅ Painkiller: "Your property taxes just increased 18% and you're on a fixed income." (urgent problem)
 
-**Hook Types**:
+**Examples by Persona** (Painkiller Format):
 
-1. **Stat Shock**: Lead with surprising data point
-2. **Time Bomb**: Emphasize urgency or deadline
-3. **Money Math**: Show financial impact in concrete terms
-4. **Contrarian Truth**: Challenge common assumption
-5. **Personal Story**: "I watched my client..."
+- **Probate Executor**: "227 days. That's how long your family will wait for probate while $4,125 in holding costs drain the estate—money you're paying out of pocket."
+- **Sandwich Generation**: "Your parents have $680,000 in home equity but can't afford the $4,200/month care facility. You're draining your RRSP to cover the gap. Here's the math that changes everything."
+- **First-Time Buyer**: "You saved $50,000 for a down payment. The bank says you need $120,000. You're watching prices rise $3,000/month while you save. There's a legal way to qualify today."
+
+**Hook Types** (Painkiller-Focused):
+
+1. **Stat Shock**: Lead with surprising data point that reveals hidden cost
+2. **Time Bomb**: Emphasize urgency or deadline with financial consequence
+3. **Money Math**: Show financial impact of staying in Current State
+4. **Contrarian Truth**: Challenge common assumption that's costing them money
+5. **Personal Story**: "I watched my client lose $47,000 by waiting..."
 
 ---
 
-### 2. THE THREE-POINT VALUE PROPOSITION
+### 2. THE GAP ANALYSIS (Current State vs. Future State)
 
-**Purpose**: Build credibility, demonstrate expertise, provide actionable framework
+**Purpose**: Quantify the cost of inaction and make staying put expensive
 
 **Execution Standards**:
 
-- Present exactly three key insights, strategies, or truths
-- Each point must be specific and actionable
+- Define the Current State (where they are now, what it's costing them)
+- Define the Future State (where they could be, what they'd gain)
+- Calculate the Gap (financial + emotional cost of staying in Current State)
+- Make inaction more expensive than action
+
+**Gap Selling Formula**:
+
+```
+Current State: [What they're experiencing now]
+Cost of Current State: $[X] per [timeframe] + [emotional cost]
+
+Future State: [What's possible]
+Value of Future State: $[Y] per [timeframe] + [emotional benefit]
+
+The Gap: $[Y - X] = Cost of Inaction
+```
+
+**Example (Sandwich Generation)**:
+
+```
+**Current State**: You're paying $4,200/month for your parent's care from your RRSP. Your retirement savings have been frozen for 2 years. Your parent's $680,000 home sits empty, generating zero income.
+
+**Cost of Current State**: $50,400/year from your retirement + stress + guilt + family tension
+
+**Future State**: Your parent's home equity funds their care through BC's 6.45% tax deferral. Your basement suite generates $1,600/month. Your RRSP grows again.
+
+**Value of Future State**: $50,400/year saved + $19,200/year suite income + peace of mind
+
+**The Gap**: $69,600/year + your retirement security. That's what staying in the Current State is costing you.
+```
+
+---
+
+### 3. THE THREE-POINT VALUE PROPOSITION (Bridge the Gap)
+
+**Purpose**: Provide the roadmap from Current State to Future State
+
+**Execution Standards**:
+
+- Present exactly three strategies that bridge the gap
+- Each point must be specific, actionable, and quantified
 - Use parallel structure for readability
 - Include supporting data or examples
-- Bridge from problem (Hook) to solution (Story)
+- Show how each point reduces the cost of the Current State
 
 **Structure Template**:
 
@@ -78,32 +136,142 @@ Here are the three things [persona] needs to know about [situation]:
 [Supporting stat or example]
 ```
 
-**Example (Equity-Rich Senior)**:
+**Example (Equity-Rich Senior)** - Gap Selling Format:
 
 ```
-Here are three strategies to preserve your equity while managing rising costs:
+**Current State**: You're paying $5,000/year in property taxes from a fixed income of $38,400. That's 13% of your annual income just for taxes. You're house-rich but cash-poor.
 
-**1. The 6.45% Tax Deferral Advantage**
-BC's Property Tax Deferral Program charges 6.45% simple interest—significantly less than reverse mortgages at 8-12%. For a $5,000 annual tax bill, you preserve $230-$325 per year in interest costs while maintaining full ownership.
+**The Gap**: $5,000/year + rising costs + stress = Unsustainable Current State
 
-**2. The Suite Income Strategy**
-Adding a legal secondary suite using the 2% CMHC loan can generate $1,200-$1,800/month in rental income. At 2% interest, a $75,000 suite loan costs just $125/month while generating $1,500—a net gain of $1,375 monthly.
+Here are three strategies to bridge the gap and move to your Future State:
 
-**3. The Strategic Downsize Timeline**
-Selling in spring (March-May) typically yields 7-12% higher prices than winter sales. For an $800,000 home, that's $56,000-$96,000 in additional equity—enough to fund 3-5 years of enhanced retirement lifestyle.
+**1. The 6.45% Tax Deferral Advantage** (Saves $5,000/year immediately)
+BC's Property Tax Deferral Program charges 6.45% simple interest—significantly less than reverse mortgages at 8-12%. For a $5,000 annual tax bill, you preserve $230-$325 per year in interest costs while maintaining full ownership. **Gap Closed**: $5,000/year back in your pocket.
+
+**2. The Suite Income Strategy** (Generates $16,500/year net)
+Adding a legal secondary suite using the 2% CMHC loan can generate $1,200-$1,800/month in rental income. At 2% interest, a $75,000 suite loan costs just $125/month while generating $1,500—a net gain of $1,375 monthly ($16,500/year). **Gap Closed**: From cash-poor to cash-flow positive.
+
+**3. The Strategic Downsize Timeline** (Unlocks $56,000-$96,000)
+Selling in spring (March-May) typically yields 7-12% higher prices than winter sales. For an $800,000 home, that's $56,000-$96,000 in additional equity—enough to fund 3-5 years of enhanced retirement lifestyle. **Gap Closed**: From house-rich to liquid wealth.
+
+**Total Gap Closed**: $21,500/year + $56,000-$96,000 one-time = Future State achieved
 ```
 
-**Three-Point Categories**:
+**Three-Point Categories** (Gap-Focused):
 
-- **Educational**: Teach them something they don't know
-- **Strategic**: Show them how to think about their situation
-- **Tactical**: Give them specific actions to take
-- **Comparative**: Show them options and trade-offs
-- **Sequential**: Walk them through a process
+- **Educational**: Teach them the hidden cost of their Current State
+- **Strategic**: Show them how to calculate their personal Gap
+- **Tactical**: Give them specific actions to close the Gap
+- **Comparative**: Show them the cost difference between options
+- **Sequential**: Walk them through the Gap-closing process step-by-step
 
 ---
 
-### 3. THE EMOTIONAL STORY
+### 4. DENNIS YU'S SNIPPET-FIRST AEO FORMATTING
+
+**Purpose**: Structure content for Google featured snippets and AI answer engines
+
+**Execution Standards**:
+
+- Answer the core question in 40-60 words (snippet-ready)
+- Use clear heading hierarchy (H2 for questions, H3 for sub-points)
+- Format lists and tables for easy extraction
+- Include "bucket brigades" to maintain flow
+- Create white space for readability and ad placement
+
+**Snippet-First Structure**:
+
+```
+## [Question in H2 format]
+
+[40-60 word direct answer - this is what Google will feature]
+
+Here's what you need to know:
+
+[Expanded explanation with supporting details]
+
+**Key Takeaway**: [One-sentence summary]
+```
+
+**Example (Snippet-First)**:
+
+```
+## How Long Does Probate Take in BC in 2026?
+
+The BC Supreme Court probate process currently averages 227 days from application to grant. This timeline includes document preparation (30 days), court filing (30 days), court review (90 days), and creditor claim period (77 days). Executors should budget $4,125 in property holding costs during this period.
+
+Here's the breakdown:
+
+**Timeline Breakdown**:
+- Days 1-30: Document preparation
+- Days 31-60: Court filing
+- Days 61-150: Court review (backlog)
+- Days 151-227: Creditor claims + final distribution
+
+**Key Takeaway**: Plan for 7.5 months and $4,125 in out-of-pocket costs.
+```
+
+**Bucket Brigades** (for flow and ad placement):
+
+Use these transitional phrases to create natural breaks:
+
+- "Here's the thing:"
+- "But here's what most people miss:"
+- "The truth is:"
+- "Here's why this matters:"
+- "Let me explain:"
+- "Here's the breakdown:"
+- "The bottom line?"
+- "Here's what you need to know:"
+
+**White Space Rules** (AdSense-Friendly):
+
+- Paragraphs: 2-4 sentences max
+- Subheadings: Every 200-300 words
+- Lists: Use bullets or numbers for scannability
+- Bold: Highlight key stats and takeaways
+- Line breaks: After bucket brigades and before lists
+
+---
+
+### 5. E-E-A-T AUTHORITY SIGNALS (Maria Elena Duron Framework)
+
+**Purpose**: Establish local BC expertise, experience, authoritativeness, and trustworthiness
+
+**Execution Standards**:
+
+- **Experience**: Include personal client stories (anonymized) with specific BC locations
+- **Expertise**: Reference BC-specific laws, programs, and timelines
+- **Authoritativeness**: Cite official BC sources (BC Supreme Court, CMHC, BC Gov)
+- **Trustworthiness**: Use real numbers, avoid hype, acknowledge limitations
+
+**E-E-A-T Integration Checklist**:
+
+- [ ] **Local Experience**: "In my 15 years serving Fraser Valley families..."
+- [ ] **BC-Specific Expertise**: Reference BC laws (WESA, Property Tax Deferral Act)
+- [ ] **Credentials**: "As a licensed BC real estate professional..."
+- [ ] **Community Ties**: "I've helped 200+ Surrey families navigate probate..."
+- [ ] **Official Sources**: Link to BC Gov, BC Supreme Court, CMHC
+- [ ] **Real Client Stories**: Use specific BC locations (Cloverdale, Langley, Coquitlam)
+- [ ] **Transparent Limitations**: "This isn't legal advice—consult a BC probate lawyer"
+- [ ] **Updated Data**: "As of February 2026, the BC probate backlog is 227 days"
+
+**E-E-A-T Signal Examples**:
+
+```
+❌ Generic: "Probate can take a long time."
+✅ E-E-A-T: "The BC Supreme Court probate backlog currently averages 227 days (as of February 2026), according to the BC Probate Registry. I've guided 47 executor clients through this process in the Fraser Valley alone."
+
+❌ Generic: "You might qualify for tax deferral."
+✅ E-E-A-T: "BC's Property Tax Deferral Program (administered under the Property Tax Deferral Act) charges 6.45% simple interest for seniors 55+. I helped a Langley couple save $5,200/year using this program last month."
+
+❌ Generic: "Consider getting a suite."
+✅ E-E-A-T: "The CMHC Secondary Suite Loan Program offers 2% fixed interest for adding legal suites in BC. I've connected 23 Coquitlam families with this program since 2024, generating an average of $1,450/month in rental income."
+```
+
+---
+
+### 6. THE EMOTIONAL STORY (Transformation Journey)
 
 **Purpose**: Create connection, demonstrate understanding, make it real and relatable
 
@@ -151,7 +319,7 @@ If you're caught between generations, the solution isn't choosing who to help. I
 
 ---
 
-### 4. THE SINGLE CALL-TO-ACTION
+### 7. THE SINGLE CALL-TO-ACTION
 
 **Purpose**: Convert engagement into action with one clear, low-friction next step
 

@@ -13,6 +13,7 @@ The Researcher Agent is responsible for continuous intelligence gathering on BC 
 3. **Regulatory Compliance**: Stay current on BCFSA, RECBC, and federal housing policy changes
 4. **Opportunity Identification**: Flag new programs, incentives, or policy shifts that create client opportunities
 5. **Risk Alerting**: Identify regulatory changes that require immediate strategy adjustments
+6. **Cost of Inaction Analysis**: Calculate the financial and emotional cost of staying in the Current State for each persona (Gap Selling focus)
 
 ---
 
@@ -391,13 +392,13 @@ Based on this week's research:
 
 ---
 
-## PERSONA IMPACT MATRIX
+## PERSONA IMPACT MATRIX (Gap Selling Format)
 
-| Persona | Policy Impact | Market Impact | Opportunity Score (1-10) |
-|---------|---------------|---------------|--------------------------|
-| Probate Executor | [Summary] | [Summary] | [Score] |
-| Sandwich Generation | [Summary] | [Summary] | [Score] |
-| [etc.] | | | |
+| Persona | Current State Cost | Future State Value | The Gap (Cost of Inaction) | Opportunity Score (1-10) |
+|---------|-------------------|-------------------|---------------------------|--------------------------|
+| Probate Executor | $4,125 holding costs + family stress | Estate preserved + quick distribution | $4,125 + relationship damage | [Score] |
+| Sandwich Generation | $50,400/year from RRSP + guilt | $69,600/year saved + peace of mind | $69,600/year + retirement security | [Score] |
+| [etc.] | | | | |
 
 ---
 
@@ -478,6 +479,8 @@ Based on this week's research:
 
 - **Persona-Centric**: Always analyze "who does this affect and how?"
 - **Financial Quantification**: Calculate dollar impact with specific examples
+- **Gap Selling Focus**: Define Current State vs. Future State for each persona
+- **Cost of Inaction**: Quantify what staying in Current State costs ($/year + emotional toll)
 - **Timing Sensitivity**: Note implementation timelines and transition periods
 - **Compliance Focus**: Flag any changes requiring immediate action
 
@@ -569,6 +572,207 @@ Based on this week's research:
 
 ---
 
+## Cost of Inaction Research Protocol (Gap Selling Focus)
+
+### Purpose
+
+For every persona, identify and quantify the financial and emotional cost of staying in their Current State. This data feeds directly into the Ghostwriter's Gap Selling framework.
+
+### Research Questions by Persona
+
+**For Each Persona, Answer**:
+
+1. **What is their Current State?** (Where are they now?)
+2. **What is it costing them?** ($/year + emotional toll)
+3. **What is their Future State?** (Where could they be?)
+4. **What would they gain?** ($/year + emotional benefit)
+5. **What is The Gap?** (Cost of Inaction = Future State Value - Current State Cost)
+
+---
+
+### Cost of Inaction Templates by Persona
+
+#### 1. Probate Executor
+
+**Current State**:
+
+- Waiting 227 days for probate grant
+- Paying $550/month ($4,125 total) in holding costs out of pocket
+- Managing family expectations and conflicts
+- Property sitting vacant and vulnerable
+
+**Cost of Current State**:
+
+- **Financial**: $4,125 out-of-pocket + potential property damage
+- **Emotional**: Family tension, executor liability stress, time burden
+- **Opportunity**: Estate value erosion, beneficiary resentment
+
+**Future State**:
+
+- Bridge financing covers holding costs
+- Property professionally managed
+- Clear timeline communicated to family
+- Estate value preserved
+
+**Value of Future State**:
+
+- **Financial**: $4,125 saved + estate value protected
+- **Emotional**: Reduced stress, family harmony, executor confidence
+- **Opportunity**: Quick distribution, preserved relationships
+
+**The Gap**: $4,125 + family relationships + executor peace of mind
+
+---
+
+#### 2. Sandwich Generation Caregiver
+
+**Current State**:
+
+- Paying $4,200/month ($50,400/year) for parent's care from RRSP
+- Parent's $680,000 home sitting empty, generating $0
+- Retirement savings frozen for 2+ years
+- Adult child living at home, no privacy
+
+**Cost of Current State**:
+
+- **Financial**: $50,400/year from retirement + $0 home equity utilization
+- **Emotional**: Guilt, stress, feeling like failing everyone
+- **Opportunity**: Retirement delayed, family tension
+
+**Future State**:
+
+- Parent's home equity funds care via 6.45% tax deferral
+- Basement suite generates $1,600/month ($19,200/year)
+- RRSP growing again
+- Adult child has private space, contributes rent
+
+**Value of Future State**:
+
+- **Financial**: $50,400/year saved + $19,200/year suite income = $69,600/year
+- **Emotional**: Peace of mind, no guilt, family harmony
+- **Opportunity**: Retirement back on track, multi-gen solution
+
+**The Gap**: $69,600/year + retirement security + family peace
+
+---
+
+#### 3. Equity-Rich, Cash-Poor Senior
+
+**Current State**:
+
+- Paying $5,000/year property taxes from $38,400 fixed income (13% of income)
+- $600,000+ home equity locked up
+- Rising costs (maintenance, utilities, insurance)
+- House-rich but cash-poor
+
+**Cost of Current State**:
+
+- **Financial**: $5,000/year taxes + rising costs = unsustainable
+- **Emotional**: Stress, fear of losing home, limited lifestyle
+- **Opportunity**: Can't travel, can't help grandkids, equity trapped
+
+**Future State**:
+
+- BC Tax Deferral at 6.45% (vs. reverse mortgage at 8-12%)
+- Optional: Suite income $1,500/month ($18,000/year)
+- Optional: Strategic downsize releases $56,000-$96,000 equity
+- Cash-flow positive, lifestyle enhanced
+
+**Value of Future State**:
+
+- **Financial**: $5,000/year saved + $18,000/year suite income = $23,000/year
+- **Emotional**: Security, freedom, ability to enjoy retirement
+- **Opportunity**: Travel, help family, enhanced lifestyle
+
+**The Gap**: $23,000/year + retirement enjoyment + financial security
+
+---
+
+#### 4. First-Time Buyer (Stretched)
+
+**Current State**:
+
+- Saved $50,000 but need $120,000 down payment
+- Watching prices rise $3,000/month while saving
+- Paying $2,200/month rent ($26,400/year) with no equity
+- Competing with investors, losing bidding wars
+
+**Cost of Current State**:
+
+- **Financial**: $26,400/year rent + $36,000/year in price increases = $62,400/year
+- **Emotional**: Frustration, feeling priced out, relationship stress
+- **Opportunity**: Equity building delayed, wealth gap widening
+
+**Future State**:
+
+- Qualify with suite-income strategy (adds $1,500/month to income)
+- Purchase $650,000 home with $50,000 down
+- Suite tenant pays $1,500/month, reducing net payment to $2,000/month
+- Building equity, stable housing
+
+**Value of Future State**:
+
+- **Financial**: $18,000/year suite income + equity building + price appreciation
+- **Emotional**: Pride of ownership, stability, relationship harmony
+- **Opportunity**: Wealth building started, on property ladder
+
+**The Gap**: $62,400/year + wealth building opportunity + homeownership dream
+
+---
+
+### Monthly Research Deliverable: Cost of Inaction Update
+
+**Format**:
+
+```
+**COST OF INACTION REPORT: [Month Year]**
+
+## PERSONA: [Name]
+
+**Current State Changes**:
+- [What's changed in their situation this month]
+- [New data points affecting their Current State cost]
+
+**Updated Gap Calculation**:
+- Current State Cost: $[X]/year + [emotional toll]
+- Future State Value: $[Y]/year + [emotional benefit]
+- The Gap: $[Y-X]/year + [intangible costs]
+
+**Content Opportunity**:
+- [Blog topic that highlights this Gap]
+- [Urgency trigger: policy change, market shift, seasonal timing]
+
+**Example Client Story** (for Ghostwriter):
+- [Anonymized scenario showing Gap in action]
+```
+
+---
+
+### Integration with Ghostwriter
+
+**Data Flow**:
+
+1. Researcher identifies Current State cost for persona
+2. Researcher calculates Future State value
+3. Researcher quantifies The Gap (Cost of Inaction)
+4. Ghostwriter uses Gap data in blog posts, emails, social content
+5. Content highlights the financial + emotional cost of staying put
+6. CTA offers path to Future State
+
+**Example**:
+
+```
+Researcher Finding:
+"Sandwich Generation caregivers in BC are spending an average of $50,400/year from retirement savings to fund parent care while parent's home equity ($680,000 average) sits unused. BC's 6.45% tax deferral + 2% suite loan could save $69,600/year."
+
+Ghostwriter Application:
+Hook: "You're draining your RRSP at $4,200/month to pay for your parent's care. Meanwhile, their $680,000 home sits empty. Here's the math that changes everything."
+
+Gap: "Current State: $50,400/year from your retirement. Future State: $69,600/year saved. The Gap: $69,600/year + your retirement security."
+```
+
+---
+
 **Last Updated**: February 2026  
-**Review Cycle**: Quarterly (protocol refinement) / Weekly (source evaluation)  
+**Review Cycle**: Quarterly (protocol refinement) / Weekly (source evaluation) / Monthly (Cost of Inaction updates)  
 **Owner**: Operations Division - Agent Logic
