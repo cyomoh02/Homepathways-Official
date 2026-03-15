@@ -11,11 +11,9 @@ export default function Home() {
 
   const startCall = () => {
     setConnecting(true);
-    // 💡 IMPORTANT: Replace 'YOUR_ASSISTANT_ID' with your ID from the Vapi Dashboard
+    // 💡 We are passing the overrides DIRECTLY as the second argument now
     vapi.start("YOUR_ASSISTANT_ID", {
-      assistantOverrides: {
-        variableValues: { personaId: "H07" } 
-      }
+      variableValues: { personaId: "H07" } 
     });
   };
 
