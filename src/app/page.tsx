@@ -10,12 +10,14 @@ export default function Home() {
   const [connected, setConnected] = useState(false);
 
   const startCall = () => {
-    setConnecting(true);
-    // 💡 We are passing the overrides DIRECTLY as the second argument now
-    vapi.start("YOUR_ASSISTANT_ID", {
-      variableValues: { personaId: "H07" } 
-    });
-  };
+  setConnecting(true);
+  // Directly using the ID from your Vapi dashboard
+  vapi.start("595d847e-a102-4ea9-b1c9-3bbc5a5f59b1")
+  .catch((err) => {
+    console.error("Vapi Connection Failed:", err);
+    setConnecting(false);
+  });
+};
 
   useEffect(() => {
     vapi.on("call-start", () => {
