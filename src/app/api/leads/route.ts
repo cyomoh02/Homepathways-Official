@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { findIntelRecord, createLead } from "@/lib/airtable";
+import {
+  findIntelRecord,
+  createLead,
+  isAirtableConfigured,
+} from "@/lib/airtable";
+import { validateOrigin } from "@/lib/api-security";
 
 /**
  * POST /api/leads
@@ -7,20 +12,19 @@ import { findIntelRecord, createLead } from "@/lib/airtable";
  * Accepts lead data from the client (captured during/after a Vapi call),
  * resolves the 01_INTEL record for attribution, and writes to 05_CONCIERGE_LEADS.
  *
- * Body:
- *   - name?: string
- *   - email?: string
- *   - phone?: string
- *   - articleTitle?: string   (from the page where the call was initiated)
- *   - sourceUrl?: string      (page URL)
- *   - callDuration?: number   (seconds)
- *   - urgencyScore?: number   (from article frontmatter)
- *   - hubTitle?: string       (parent hub name)
- *   - notes?: string          (transcript summary or call notes)
- *   - agitation?: string      (user's primary pain point)
- *   - proposedOutcome?: string (what they need)
+ * Graceful degradation: if Airtable keys are missing, returns a simulated success
+ * so the UI doesn't crash.
  */
 export async function POST(req: NextRequest) {
+  // Origin validation
+  const originError = validateOrigin(req);
+  if (originError) {
+    return NextResponse.json(
+      { success: false, error: "Forbidden" },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json();
     const {
@@ -37,6 +41,16 @@ export async function POST(req: NextRequest) {
       proposedOutcome,
     } = body;
 
+    // Graceful degradation if Airtable is not configured
+    if (!isAirtableConfigured()) {
+      return NextResponse.json({
+        success: true,
+        recordId: "SIMULATED_NO_AIRTABLE",
+        linkedToIntel: false,
+        note: "Airtable credentials not configured. Lead captured in simulation mode.",
+      });
+    }
+
     // Resolve the 01_INTEL record for this article
     let entryPoint: string[] | undefined;
     if (articleTitle) {
@@ -46,33 +60,32 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Build 3-sentence executive summary
+    // Build 3-sentence triage note
     const topic = articleTitle || "an equity concern";
-    const pain = agitation || "systemic barriers affecting their transition in BC";
+    const pain =
+      agitation || "systemic barriers affecting their transition in BC";
     const outcome =
-      proposedOutcome || "a clear pathway through relevant programs and resources";
-    const summary =
+      proposedOutcome ||
+      "a clear pathway through relevant programs and resources";
+    const triageNote =
       notes ||
       `Lead originated from the forensic audit on "${topic}" (Urgency: ${urgencyScore || "N/A"}/10, Hub: ${hubTitle || "General"}). ` +
         `Primary agitation: ${pain}. ` +
-        `Proposed outcome: ${outcome}.`;
+        `Proposed outcome: ${outcome}. ` +
+        `Call duration: ${callDuration || 0}s. Source: ${sourceUrl || "direct"}.`;
 
-    // Build the lead record
-    const leadFields: Record<string, unknown> = {
-      Captured_At: new Date().toISOString(),
-      Status: "New",
-      Notes: summary,
-    };
+    // Build contact info string
+    const contactParts: string[] = [];
+    if (email) contactParts.push(email);
+    if (phone) contactParts.push(phone);
 
-    if (name) leadFields.Name = name;
-    if (email) leadFields.Email = email;
-    if (phone) leadFields.Phone = phone;
-    if (sourceUrl) leadFields.Source_URL = sourceUrl;
-    if (articleTitle) leadFields.Article_Title = articleTitle;
-    if (entryPoint) leadFields.Entry_Point = entryPoint;
-    if (callDuration) leadFields.Call_Duration = callDuration;
-
-    const result = await createLead(leadFields);
+    const result = await createLead({
+      name: name || "Anonymous Lead",
+      entryPoint,
+      stage: "Lead Captured",
+      originStory: `Engaged via Claire voice assistant while reading "${topic}" on HomePathways. Urgency: ${urgencyScore || "N/A"}/10.`,
+      triageNote,
+    });
 
     return NextResponse.json({
       success: true,

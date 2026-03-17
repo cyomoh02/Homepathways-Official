@@ -1,23 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
-import { findIntelRecord, createLead } from "@/lib/airtable";
+import { findIntelRecord, createLead, isAirtableConfigured } from "@/lib/airtable";
 import {
   checkAvailability,
   bookAppointment,
   type SlotPreference,
 } from "@/lib/scheduler";
 import { initiateBriefing, type BriefingResult } from "@/lib/briefing";
+import { validateVapiSecret } from "@/lib/api-security";
 
 /**
  * POST /api/vapi
  *
  * Vapi server-side function handler. Claire invokes these tools mid-conversation.
- * Vapi sends a JSON body with:
- *   - message.type: "function-call"
- *   - message.functionCall.name: the tool name
- *   - message.functionCall.parameters: the tool args
- *   - call.metadata: the metadata we injected at call start
+ * Secured via x-vapi-secret header validation (when VAPI_WEBHOOK_SECRET is set).
  */
 export async function POST(req: NextRequest) {
+  // Validate Vapi webhook secret
+  if (!validateVapiSecret(req)) {
+    return NextResponse.json(
+      { result: JSON.stringify({ error: "Unauthorized" }) },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { message } = body;
@@ -94,28 +99,20 @@ export async function POST(req: NextRequest) {
             if (intelId) entryPoint = [intelId];
           }
 
-          // Build the 3-sentence executive summary
-          const summary = buildLeadSummary(
+          // Build the 3-sentence triage note
+          const triageNote = buildLeadSummary(
             articleTitle,
             params.agitation,
             params.proposedOutcome
           );
 
-          const leadFields: Record<string, unknown> = {
-            Captured_At: new Date().toISOString(),
-            Status: "New",
-            Notes: summary,
-          };
-
-          if (params.name) leadFields.Name = params.name;
-          if (params.email) leadFields.Email = params.email;
-          if (params.phone) leadFields.Phone = params.phone;
-          if (metadata.sourceUrl) leadFields.Source_URL = metadata.sourceUrl;
-          if (articleTitle) leadFields.Article_Title = articleTitle;
-          if (entryPoint) leadFields.Entry_Point = entryPoint;
-          if (params.callDuration) leadFields.Call_Duration = params.callDuration;
-
-          const result = await createLead(leadFields);
+          const result = await createLead({
+            name: params.name || "Anonymous Lead (Voice)",
+            entryPoint,
+            stage: "Lead Captured",
+            originStory: `Voice call via Claire on "${articleTitle || "HomePathways"}". Urgency: ${metadata.urgencyScore || "N/A"}/10.`,
+            triageNote,
+          });
 
           return NextResponse.json({
             result: JSON.stringify({
