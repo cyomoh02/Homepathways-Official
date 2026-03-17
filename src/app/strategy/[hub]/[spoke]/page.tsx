@@ -14,6 +14,7 @@ import TableOfContents from "@/components/TableOfContents";
 import RelatedCards from "@/components/RelatedCards";
 import AdSlot from "@/components/AdSlot";
 import InlineClaireCard from "@/components/InlineClaireCard";
+import ArticleContextSetter from "@/components/ArticleContextSetter";
 
 interface SpokePageProps {
   params: Promise<{ hub: string; spoke: string }>;
@@ -24,7 +25,6 @@ export default async function SpokePage({ params }: SpokePageProps) {
   const dirName = hubSlugToDir(hub);
   if (!dirName) notFound();
 
-  // Find the matching markdown file
   const spokes = getSpokesForHub(hub);
   const spokeEntry = spokes.find((s) => s.slug === spoke);
   if (!spokeEntry) notFound();
@@ -40,7 +40,6 @@ export default async function SpokePage({ params }: SpokePageProps) {
   const headings = extractHeadings(htmlWithIds);
   const hubTitle = HUB_LABELS[hub] || hub;
 
-  // Pick 3 related spokes (excluding current)
   const otherSpokes = spokes.filter((s) => s.slug !== spoke);
   const relatedArticles = otherSpokes.slice(0, 3).map((s) => ({
     slug: s.slug,
@@ -49,8 +48,20 @@ export default async function SpokePage({ params }: SpokePageProps) {
     hubSlug: hub,
   }));
 
+  // Extract urgency score from frontmatter
+  const urgencyScore = data.urgency_score || data.urgencyScore || 7;
+  const articleTitle = data.title || spokeEntry.title;
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      {/* Register article context with Vapi so Claire knows what we're reading */}
+      <ArticleContextSetter
+        title={articleTitle}
+        urgencyScore={urgencyScore}
+        hubTitle={hubTitle}
+        slug={spoke}
+      />
+
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
         <Link href="/" className="hover:text-white">
@@ -61,7 +72,7 @@ export default async function SpokePage({ params }: SpokePageProps) {
           {hubTitle}
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-gray-300">{data.title || spoke}</span>
+        <span className="text-gray-300">{articleTitle}</span>
       </nav>
 
       {/* Contextual Nav — sticky sub-header */}
@@ -77,7 +88,6 @@ export default async function SpokePage({ params }: SpokePageProps) {
       </div>
 
       <div className="flex gap-10">
-        {/* Main content */}
         <article className="min-w-0 flex-1">
           <div
             className="prose max-w-none"
@@ -85,16 +95,14 @@ export default async function SpokePage({ params }: SpokePageProps) {
           />
 
           <AdSlot variant="horizontal" label="Ad — Article Bottom" />
-
           <RelatedCards articles={relatedArticles} />
 
           <InlineClaireCard
-            heading={`Have questions about ${data.title || "this topic"}?`}
+            heading={`Have questions about ${articleTitle}?`}
             description="Claire can help you navigate this issue and connect you with relevant BC programs and resources."
           />
         </article>
 
-        {/* Sidebar */}
         <aside className="hidden w-56 shrink-0 lg:block">
           <TableOfContents headings={headings} />
           <div className="mt-8">

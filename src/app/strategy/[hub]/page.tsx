@@ -14,6 +14,7 @@ import TableOfContents from "@/components/TableOfContents";
 import RelatedCards from "@/components/RelatedCards";
 import AdSlot from "@/components/AdSlot";
 import InlineClaireCard from "@/components/InlineClaireCard";
+import ArticleContextSetter from "@/components/ArticleContextSetter";
 
 interface HubPageProps {
   params: Promise<{ hub: string }>;
@@ -31,7 +32,6 @@ export default async function HubPage({ params }: HubPageProps) {
   const headings = extractHeadings(htmlWithIds);
   const hubTitle = data.title || HUB_LABELS[hub] || hub;
 
-  // Pick 3 spokes for related cards
   const relatedArticles = spokes.slice(0, 3).map((s) => ({
     slug: s.slug,
     title: s.title,
@@ -39,8 +39,19 @@ export default async function HubPage({ params }: HubPageProps) {
     hubSlug: hub,
   }));
 
+  // Hub urgency is the average across spokes (encoded in frontmatter or default)
+  const spokeCount = data.spoke_count || spokes.length;
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      {/* Register hub context with Vapi */}
+      <ArticleContextSetter
+        title={hubTitle}
+        urgencyScore={8}
+        hubTitle={hubTitle}
+        slug={hub}
+      />
+
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
         <Link href="/" className="hover:text-white">
@@ -62,7 +73,6 @@ export default async function HubPage({ params }: HubPageProps) {
       </div>
 
       <div className="flex gap-10">
-        {/* Main content */}
         <article className="min-w-0 flex-1">
           <div
             className="prose max-w-none"
@@ -70,16 +80,14 @@ export default async function HubPage({ params }: HubPageProps) {
           />
 
           <AdSlot variant="horizontal" label="Ad — Hub Bottom" />
-
           <RelatedCards articles={relatedArticles} />
 
           <InlineClaireCard
             heading="Need personalized guidance?"
-            description="Claire can walk you through the issues in this hub and connect you with BC-specific resources."
+            description={`Claire can walk you through the ${spokeCount} issues in this hub and connect you with BC-specific resources.`}
           />
         </article>
 
-        {/* Sidebar */}
         <aside className="hidden w-56 shrink-0 lg:block">
           <TableOfContents headings={headings} />
           <div className="mt-8">

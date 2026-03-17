@@ -14,7 +14,11 @@ import { findIntelRecord, createLead } from "@/lib/airtable";
  *   - articleTitle?: string   (from the page where the call was initiated)
  *   - sourceUrl?: string      (page URL)
  *   - callDuration?: number   (seconds)
+ *   - urgencyScore?: number   (from article frontmatter)
+ *   - hubTitle?: string       (parent hub name)
  *   - notes?: string          (transcript summary or call notes)
+ *   - agitation?: string      (user's primary pain point)
+ *   - proposedOutcome?: string (what they need)
  */
 export async function POST(req: NextRequest) {
   try {
@@ -26,7 +30,11 @@ export async function POST(req: NextRequest) {
       articleTitle,
       sourceUrl,
       callDuration,
+      urgencyScore,
+      hubTitle,
       notes,
+      agitation,
+      proposedOutcome,
     } = body;
 
     // Resolve the 01_INTEL record for this article
@@ -38,10 +46,22 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // Build 3-sentence executive summary
+    const topic = articleTitle || "an equity concern";
+    const pain = agitation || "systemic barriers affecting their transition in BC";
+    const outcome =
+      proposedOutcome || "a clear pathway through relevant programs and resources";
+    const summary =
+      notes ||
+      `Lead originated from the forensic audit on "${topic}" (Urgency: ${urgencyScore || "N/A"}/10, Hub: ${hubTitle || "General"}). ` +
+        `Primary agitation: ${pain}. ` +
+        `Proposed outcome: ${outcome}.`;
+
     // Build the lead record
     const leadFields: Record<string, unknown> = {
       Captured_At: new Date().toISOString(),
       Status: "New",
+      Notes: summary,
     };
 
     if (name) leadFields.Name = name;
@@ -51,7 +71,6 @@ export async function POST(req: NextRequest) {
     if (articleTitle) leadFields.Article_Title = articleTitle;
     if (entryPoint) leadFields.Entry_Point = entryPoint;
     if (callDuration) leadFields.Call_Duration = callDuration;
-    if (notes) leadFields.Notes = notes;
 
     const result = await createLead(leadFields);
 

@@ -12,14 +12,23 @@ import {
 import { usePathname } from "next/navigation";
 import Vapi from "@vapi-ai/web";
 
-type CallStatus = "idle" | "connecting" | "active";
+type CallStatus = "idle" | "connecting" | "active" | "hold";
 type MicStatus = "unknown" | "granted" | "denied" | "prompt";
+
+interface ArticleContext {
+  title: string;
+  urgencyScore: number;
+  hubTitle: string;
+  slug: string;
+}
 
 interface VapiContextValue {
   callStatus: CallStatus;
   micStatus: MicStatus;
   toggleCall: () => void;
   buttonLabel: string;
+  /** Set by hub/spoke pages so Claire knows what the user is reading */
+  setArticleContext: (ctx: ArticleContext | null) => void;
 }
 
 const VapiContext = createContext<VapiContextValue>({
@@ -27,17 +36,50 @@ const VapiContext = createContext<VapiContextValue>({
   micStatus: "unknown",
   toggleCall: () => {},
   buttonLabel: "Speak with Claire",
+  setArticleContext: () => {},
 });
+
+// ── Contextual Opener Builder ──
+// Claire NEVER uses generic greetings. She opens with a forensic hook.
+function buildForensicOpener(ctx: ArticleContext | null): string {
+  if (!ctx) {
+    return (
+      "Welcome to HomePathways. I'm Claire, your forensic equity concierge. " +
+      "I see you're exploring our audit library. Which issue are you navigating right now — " +
+      "housing, healthcare, legal barriers, or something else entirely?"
+    );
+  }
+
+  return (
+    `I see you're currently examining our forensic audit on ${ctx.title}. ` +
+    `Given the ${ctx.urgencyScore} out of 10 urgency level for this issue in BC, ` +
+    `I wanted to jump in. What is the biggest hurdle you're facing with this ` +
+    `specific situation right now?`
+  );
+}
+
+// ── Server URL for Vapi function calls ──
+function getServerUrl(): string {
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/api/vapi`;
+  }
+  return "/api/vapi";
+}
 
 export function VapiProvider({ children }: { children: ReactNode }) {
   const vapiRef = useRef<Vapi | null>(null);
   const [callStatus, setCallStatus] = useState<CallStatus>("idle");
   const [micStatus, setMicStatus] = useState<MicStatus>("unknown");
+  const articleContextRef = useRef<ArticleContext | null>(null);
   const pathname = usePathname();
 
   // Track call start time and originating page for lead attribution
   const callStartRef = useRef<number>(0);
   const callPageRef = useRef<string>("");
+
+  const setArticleContext = useCallback((ctx: ArticleContext | null) => {
+    articleContextRef.current = ctx;
+  }, []);
 
   // Initialize Vapi once
   useEffect(() => {
@@ -60,7 +102,8 @@ export function VapiProvider({ children }: { children: ReactNode }) {
         (Date.now() - callStartRef.current) / 1000
       );
       const page = callPageRef.current;
-      captureLead(page, duration);
+      const ctx = articleContextRef.current;
+      captureLead(page, duration, ctx);
     });
 
     vapi.on("error", () => setCallStatus("idle"));
@@ -85,7 +128,7 @@ export function VapiProvider({ children }: { children: ReactNode }) {
     const vapi = vapiRef.current;
     if (!vapi) return;
 
-    if (callStatus === "active" || callStatus === "connecting") {
+    if (callStatus === "active" || callStatus === "connecting" || callStatus === "hold") {
       vapi.stop();
       setCallStatus("idle");
       return;
@@ -106,9 +149,27 @@ export function VapiProvider({ children }: { children: ReactNode }) {
     setCallStatus("connecting");
 
     const assistantId = process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID;
-    if (assistantId) {
-      vapi.start(assistantId);
-    }
+    if (!assistantId) return;
+
+    const ctx = articleContextRef.current;
+
+    // ── I. CONTEXTUAL OPENER: Inject article intelligence into the call ──
+    // Pass assistant overrides with the forensic hook + server URL for function tools
+    vapi.start(assistantId, {
+      // Override the first message with contextual forensic hook
+      firstMessage: buildForensicOpener(ctx),
+      // Metadata passed to server-side function handlers
+      metadata: {
+        articleTitle: ctx?.title || null,
+        urgencyScore: ctx?.urgencyScore || null,
+        hubTitle: ctx?.hubTitle || null,
+        articleSlug: ctx?.slug || null,
+        sourceUrl: typeof window !== "undefined" ? window.location.href : pathname,
+        calendarUrl: "https://calendar.app.google/Ng9V2fAzkb4msyHc8",
+      },
+      // Server URL for Vapi function tool execution
+      server: { url: getServerUrl() },
+    });
   }, [callStatus, pathname]);
 
   const buttonLabel =
@@ -116,13 +177,15 @@ export function VapiProvider({ children }: { children: ReactNode }) {
       ? "Connecting to Claire..."
       : callStatus === "active"
         ? "Claire is Listening..."
-        : micStatus === "denied"
-          ? "Microphone Blocked — Check Permissions"
-          : "Speak with Claire";
+        : callStatus === "hold"
+          ? "On Hold — Sean is Briefing Claire..."
+          : micStatus === "denied"
+            ? "Microphone Blocked — Check Permissions"
+            : "Speak with Claire";
 
   return (
     <VapiContext.Provider
-      value={{ callStatus, micStatus, toggleCall, buttonLabel }}
+      value={{ callStatus, micStatus, toggleCall, buttonLabel, setArticleContext }}
     >
       {children}
     </VapiContext.Provider>
@@ -135,30 +198,34 @@ export function useVapi() {
 
 /**
  * Send lead data to /api/leads for Airtable attribution.
- * Extracts article title from the pathname (e.g. /strategy/hub-slug/spoke-slug).
- * Fire-and-forget — errors are logged but don't block the UI.
+ * Includes article context for precise 01_INTEL linking.
  */
-function captureLead(page: string, callDuration: number) {
-  // Derive article title from URL path
-  const segments = page.split("/").filter(Boolean);
-  let articleTitle: string | undefined;
-
-  // /strategy/{hub}/{spoke} → spoke is the article
-  if (segments.length >= 3 && segments[0] === "strategy") {
-    articleTitle = segments[segments.length - 1]
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  } else if (segments.length === 2 && segments[0] === "strategy") {
-    // Hub page
-    articleTitle = segments[1]
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
+function captureLead(
+  page: string,
+  callDuration: number,
+  ctx: ArticleContext | null
+) {
+  // Derive article title from context or URL path
+  let articleTitle = ctx?.title;
+  if (!articleTitle) {
+    const segments = page.split("/").filter(Boolean);
+    if (segments.length >= 3 && segments[0] === "strategy") {
+      articleTitle = segments[segments.length - 1]
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+    } else if (segments.length === 2 && segments[0] === "strategy") {
+      articleTitle = segments[1]
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+    }
   }
 
   const payload = {
     articleTitle,
     sourceUrl: typeof window !== "undefined" ? window.location.href : page,
     callDuration,
+    urgencyScore: ctx?.urgencyScore,
+    hubTitle: ctx?.hubTitle,
   };
 
   fetch("/api/leads", {
