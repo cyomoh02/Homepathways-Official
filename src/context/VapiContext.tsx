@@ -11,6 +11,7 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import Vapi from "@vapi-ai/web";
+import { buildAssistantOverrides } from "@/lib/vapi-config";
 
 type CallStatus = "idle" | "connecting" | "active" | "hold";
 type MicStatus = "unknown" | "granted" | "denied" | "prompt";
@@ -56,14 +57,6 @@ function buildForensicOpener(ctx: ArticleContext | null): string {
     `I wanted to jump in. What is the biggest hurdle you're facing with this ` +
     `specific situation right now?`
   );
-}
-
-// ── Server URL for Vapi function calls ──
-function getServerUrl(): string {
-  if (typeof window !== "undefined") {
-    return `${window.location.origin}/api/vapi`;
-  }
-  return "/api/vapi";
 }
 
 export function VapiProvider({ children }: { children: ReactNode }) {
@@ -153,23 +146,22 @@ export function VapiProvider({ children }: { children: ReactNode }) {
 
     const ctx = articleContextRef.current;
 
-    // ── I. CONTEXTUAL OPENER: Inject article intelligence into the call ──
-    // Pass assistant overrides with the forensic hook + server URL for function tools
-    vapi.start(assistantId, {
-      // Override the first message with contextual forensic hook
-      firstMessage: buildForensicOpener(ctx),
-      // Metadata passed to server-side function handlers
-      metadata: {
+    // ── CONTEXTUAL OPENER + FULL ASSISTANT CONFIG ──
+    // Injects: 90s silence timeout, system prompt with lead-first logic,
+    // forensic hook opener, metadata, and server URL for function tools.
+    const overrides = buildAssistantOverrides(
+      buildForensicOpener(ctx),
+      {
         articleTitle: ctx?.title || null,
         urgencyScore: ctx?.urgencyScore || null,
         hubTitle: ctx?.hubTitle || null,
         articleSlug: ctx?.slug || null,
         sourceUrl: typeof window !== "undefined" ? window.location.href : pathname,
         calendarUrl: "https://calendar.app.google/Ng9V2fAzkb4msyHc8",
-      },
-      // Server URL for Vapi function tool execution
-      server: { url: getServerUrl() },
-    });
+      }
+    );
+
+    vapi.start(assistantId, overrides);
   }, [callStatus, pathname]);
 
   const buttonLabel =

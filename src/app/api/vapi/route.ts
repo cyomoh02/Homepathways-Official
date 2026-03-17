@@ -38,18 +38,40 @@ export async function POST(req: NextRequest) {
       const metadata = body.call?.metadata || {};
 
       switch (fnName) {
-        // ── TRANSFER TO SEAN (Path B) ──
+        // ── TRANSFER TO SEAN (Path B) — Lead-First Guard ──
         case "transferCall": {
+          // GUARD: Transfer is FORBIDDEN until a lead has been captured.
+          // The system prompt enforces this on Claire's side, but we double-check here.
+          if (!params.leadCaptured) {
+            return NextResponse.json({
+              result: JSON.stringify({
+                transferred: false,
+                destination: null,
+                instruction:
+                  "TRANSFER BLOCKED: You must capture the user's phone number or email " +
+                  "BEFORE transferring. Ask: 'What's the best mobile number to send this " +
+                  "forensic audit to?' Then invoke captureLead. Only after successful " +
+                  "capture can you invoke transferCall with leadCaptured: true.",
+              }),
+            });
+          }
+
           return NextResponse.json({
             result: JSON.stringify({
+              transferred: true,
               destination: SEAN_TRANSFER_NUMBER,
               destinationFormatted: "778-386-2334",
               transferType: "warm",
               instruction:
                 'Say: "Sean is available right now and can walk you through this directly. ' +
-                'I\'m connecting you now — one moment." Then execute the transfer to ' +
+                "I'm connecting you now — one moment.\" Then execute the transfer to " +
                 SEAN_TRANSFER_NUMBER +
-                ". Claire remains on standby for Path C return.",
+                ". Claire remains on standby for Path C return. " +
+                "CRITICAL FALLBACK: If the transfer fails or Sean does not answer, " +
+                "DO NOT HANG UP. Stay on the line and say: " +
+                "\"It looks like Sean is tied up with another triage right now. " +
+                "Let's get you scheduled on his calendar instead so you have his full attention.\" " +
+                "Then invoke checkAvailability to start the Recursive Scheduling Protocol.",
             }),
           });
         }
