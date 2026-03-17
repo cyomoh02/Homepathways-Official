@@ -14,9 +14,14 @@
  *
  * Three Handover Paths:
  *   A — The Informant: Claire relays Sean's intel, Sean disconnects
- *   B — The Direct Expert: User transferred to Sean live
+ *   B — The Direct Expert: User transferred to Sean live at 778-386-2334
  *   C — The Closer: Sean consults, transfers back to Claire for scheduling
+ *
+ * Sean's Primary Transfer Number: 778-386-2334
  */
+
+/** Sean's direct line — all transfers route here */
+export const SEAN_TRANSFER_NUMBER = "+17783862334";
 
 export interface BriefingRequest {
   topic: string;
@@ -29,6 +34,7 @@ export interface BriefingResult {
   seanResponse: string;
   recommendedPath: "A" | "B" | "C";
   holdDuration: number; // estimated seconds
+  transferNumber: string; // Sean's number for Path B
   audioConfig: {
     holdMusicUrl: string;
     userVolume: number; // 0-100
@@ -46,17 +52,16 @@ export interface BriefingResult {
 export async function initiateBriefing(
   request: BriefingRequest
 ): Promise<BriefingResult> {
-  const { topic, urgencyScore, userQuery } = request;
+  const { topic, urgencyScore } = request;
   const score = urgencyScore || 5;
 
-  // ── Sean's Intel Resolution ──
-  // Determine the response and handover path based on complexity
-  const { response, path } = resolveSeanIntel(topic, score, userQuery);
+  const { response, path } = resolveSeanIntel(topic, score);
 
   return {
     seanResponse: response,
     recommendedPath: path,
     holdDuration: path === "A" ? 8 : path === "B" ? 5 : 12,
+    transferNumber: SEAN_TRANSFER_NUMBER,
     audioConfig: {
       holdMusicUrl: "/assets/audio/hold-music.mp3",
       userVolume: 100, // User hears hold music at full volume
@@ -71,16 +76,15 @@ export async function initiateBriefing(
  */
 function resolveSeanIntel(
   topic: string,
-  urgency: number,
-  userQuery?: string
+  urgency: number
 ): { response: string; path: "A" | "B" | "C" } {
   const topicLower = topic.toLowerCase();
 
-  // High urgency (8+) or complex legal/financial → Path B or C (live Sean)
+  // High urgency (8+) or complex legal/financial → Path B (live Sean transfer)
   if (urgency >= 9) {
     return {
       response: buildHighUrgencyResponse(topicLower),
-      path: "B", // Direct expert — Sean handles live
+      path: "B",
     };
   }
 
@@ -88,14 +92,14 @@ function resolveSeanIntel(
   if (urgency >= 6) {
     return {
       response: buildMediumResponse(topicLower),
-      path: "A", // Informant — Claire relays Sean's intel
+      path: "A",
     };
   }
 
   // Lower urgency but user needs scheduling → Path C
   return {
     response: buildGeneralResponse(topicLower),
-    path: "C", // Closer — Sean consults briefly, Claire schedules
+    path: "C",
   };
 }
 

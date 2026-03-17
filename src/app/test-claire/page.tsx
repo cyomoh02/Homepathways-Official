@@ -11,9 +11,9 @@ interface TestResult {
 
 export default function TestClairePage() {
   const [tests, setTests] = useState<TestResult[]>([
-    { label: "Test A: Lead Capture to Airtable", status: "idle", detail: "" },
-    { label: "Test B: Handover with Hold Music (Ducking)", status: "idle", detail: "" },
-    { label: "Test C: Return to Claire — Recursive Scheduler", status: "idle", detail: "" },
+    { label: "Test A: Lead Capture to Airtable (Entry Point Link)", status: "idle", detail: "" },
+    { label: "Test B: Handover with Hold Music (Ducking) + Sean Transfer", status: "idle", detail: "" },
+    { label: "Test C: Return to Claire — Recursive Scheduler (userConfirmed Guard)", status: "idle", detail: "" },
   ]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -192,11 +192,35 @@ export default function TestClairePage() {
       briefingResult = [
         `Sean's Response: "${parsed.seanResponse}"`,
         `Recommended Path: ${parsed.handoverPath}`,
-        `Hold Duration: ${parsed.holdDuration}s`,
+        `Transfer Number: ${parsed.transferNumber || "N/A"}`,
         `Audio Config: user=${parsed.audioConfig?.userVolume}%, sean=${parsed.audioConfig?.seanVolume}%`,
       ].join("\n");
     } catch (err) {
       briefingResult = `Briefing API Error: ${err instanceof Error ? err.message : String(err)}`;
+    }
+
+    // Phase 4: Test transferCall (Path B — Sean's number)
+    let transferResult = "";
+    try {
+      const tRes = await fetch("/api/vapi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: {
+            type: "function-call",
+            functionCall: { name: "transferCall", parameters: {} },
+          },
+          call: { metadata: {} },
+        }),
+      });
+      const tData = await fetch_parse(tRes);
+      transferResult = [
+        `Transfer Destination: ${tData.destination}`,
+        `Formatted: ${tData.destinationFormatted}`,
+        `Type: ${tData.transferType}`,
+      ].join("\n");
+    } catch (err) {
+      transferResult = `Transfer API Error: ${err instanceof Error ? err.message : String(err)}`;
     }
 
     // Stop audio
@@ -204,14 +228,16 @@ export default function TestClairePage() {
     lfo.stop();
     ctx.close();
 
+    const allPass = !briefingResult.includes("Error") && !transferResult.includes("Error");
     updateTest(1, {
-      status: briefingResult.includes("Error") ? "fail" : "pass",
+      status: allPass ? "pass" : "fail",
       detail:
         (hasMusicFile
           ? "Hold music: REAL FILE loaded"
           : "Hold music: PLACEHOLDER — replace /public/assets/audio/hold-music.mp3") +
         "\n\nDucking test: 100% → 20% transition verified\n\n" +
-        briefingResult,
+        "── Briefing API ──\n" + briefingResult +
+        "\n\n── Transfer Call (Path B) ──\n" + transferResult,
     });
   }
 
@@ -258,10 +284,38 @@ export default function TestClairePage() {
         detail += `  → Offering: ${slots[2]?.display || "No more slots"}\n`;
       }
 
-      // Step 3: Book the second slot
-      detail += `\nStep 3 — User accepts slot 2. Booking Google Meet...\n`;
+      // Step 3: Test userConfirmed GUARD (should block)
+      detail += `\nStep 3 — Attempting booking WITHOUT userConfirmed (should be blocked)...\n`;
       const bookSlot = slots[1] || slots[0];
       if (bookSlot) {
+        const guardRes = await fetch("/api/vapi", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: {
+              type: "function-call",
+              functionCall: {
+                name: "bookAppointment",
+                parameters: {
+                  date: bookSlot.date,
+                  time: bookSlot.time,
+                  appointmentType: "google-meet",
+                  name: "Test User",
+                },
+              },
+            },
+            call: { metadata: {} },
+          }),
+        });
+        const guardData = await fetch_parse(guardRes);
+        const guardBlocked = guardData.confirmed === false;
+        detail += `  Guard blocked: ${guardBlocked ? "YES ✓" : "NO ✗ (BUG)"}\n`;
+        if (guardData.instruction) {
+          detail += `  Guard message: "${guardData.instruction.substring(0, 100)}..."\n`;
+        }
+
+        // Step 4: Now book WITH userConfirmed = true
+        detail += `\nStep 4 — User confirms. Booking with userConfirmed: true...\n`;
         const bookRes = await fetch("/api/vapi", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -277,7 +331,8 @@ export default function TestClairePage() {
                   name: "Test User",
                   email: "test@homepathways.ca",
                   phone: "+1-604-555-0199",
-                  notes: "Stress test booking — return to Claire flow",
+                  userConfirmed: true,
+                  notes: "Stress test — Path C return flow",
                 },
               },
             },
@@ -286,19 +341,21 @@ export default function TestClairePage() {
         });
         const bookData = await fetch_parse(bookRes);
 
-        detail += `  Confirmed: ${bookData.confirmed ? "YES" : "NO"}\n`;
+        detail += `  Confirmed: ${bookData.confirmed ? "YES ✓" : "NO"}\n`;
         detail += `  Slot: ${bookData.slot || "N/A"}\n`;
         detail += `  Type: ${bookData.type || "N/A"}\n`;
         if (bookData.instruction) {
-          detail += `\nClaire's script:\n  "${bookData.instruction}"\n`;
+          detail += `\nClaire's closing script:\n  "${bookData.instruction}"\n`;
         }
       }
 
-      // Step 4: Verify Path C return script
-      detail += `\nStep 4 — Path C Return Script:\n`;
-      detail += `  Claire says: "It was great you caught Sean. Now, let's get that\n`;
+      // Step 5: Verify Path C return script
+      detail += `\nStep 5 — Path C Return Sequence:\n`;
+      detail += `  Sean disconnects → Claire resumes:\n`;
+      detail += `  "It was great you caught Sean. Now, let's get that\n`;
       detail += `  follow-up locked into the calendar so we don't lose momentum."\n`;
-      detail += `  → checkAvailability invoked → slots offered → booking confirmed.\n`;
+      detail += `  → checkAvailability → offer slot → user declines → offer next 2\n`;
+      detail += `  → user confirms → bookAppointment (userConfirmed: true) → locked in.\n`;
 
       const duration = Date.now() - start;
       detail += `\nTotal pipeline time: ${duration}ms`;
