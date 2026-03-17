@@ -76,12 +76,33 @@ export async function POST(req: NextRequest) {
           });
         }
 
-        // ── RECURSIVE SCHEDULER ──
+        // ── RECURSIVE SCHEDULER (with calendar resilience) ──
         case "checkAvailability": {
-          const slots = await checkAvailability();
+          let slots;
+          let calendarSource = "computed";
+          try {
+            slots = await checkAvailability();
+            calendarSource = "live";
+          } catch {
+            // Calendar sync failed — Claire handles gracefully per Rule 8
+            return NextResponse.json({
+              result: JSON.stringify({
+                availableSlots: [],
+                error: "calendar_sync_failed",
+                instruction:
+                  "The calendar sync failed. Say: 'I'm having a brief sync issue with the calendar, " +
+                  "but let's keep talking while I refresh it.' Wait 5 seconds, then retry " +
+                  "checkAvailability once. If it fails again, say: 'The calendar is being a bit " +
+                  "stubborn. Can I take your email and have Sean's office send you the available " +
+                  "times within the hour?'",
+              }),
+            });
+          }
+
           return NextResponse.json({
             result: JSON.stringify({
               availableSlots: slots,
+              calendarSource,
               calendarUrl: metadata.calendarUrl,
               instruction:
                 "RECURSIVE SCHEDULING PROTOCOL: " +

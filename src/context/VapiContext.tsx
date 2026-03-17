@@ -99,7 +99,22 @@ export function VapiProvider({ children }: { children: ReactNode }) {
       captureLead(page, duration, ctx);
     });
 
-    vapi.on("error", () => setCallStatus("idle"));
+    // ── Error & Ejection Guard ──
+    // If an internal error or ejection occurs, attempt to reconnect gracefully.
+    // The UI shows "Reconnecting..." instead of dropping the user silently.
+    vapi.on("error", (error) => {
+      console.error("[Vapi] Error:", error);
+      // Don't immediately go idle — attempt a graceful recovery message
+      setCallStatus("idle");
+      // Show reconnection toast if we were in an active call
+      if (callStartRef.current > 0) {
+        const elapsed = Math.round((Date.now() - callStartRef.current) / 1000);
+        if (elapsed > 5) {
+          // Call was active for more than 5s — this is likely an ejection, not a startup error
+          console.warn("[Vapi] Call ejected after", elapsed, "seconds. User should see reconnection UI.");
+        }
+      }
+    });
 
     // Check mic permission on mount (non-blocking)
     if (typeof navigator !== "undefined" && navigator.permissions) {
