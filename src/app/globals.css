@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-mint: #00FF88;
+  --color-mint-dark: #00cc6a;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Prose styles for rendered markdown */
+.prose {
+  line-height: 1.75;
+}
+.prose {
+  color: #d1d5db;
+}
+.prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.prose p {
+  margin-bottom: 1rem;
+}
+.prose a {
+  color: #00FF88;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a:hover {
+  opacity: 0.8;
+}
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+.prose ul {
+  list-style-type: disc;
+}
+.prose ol {
+  list-style-type: decimal;
+}
+.prose li {
+  margin-bottom: 0.25rem;
+  color: #d1d5db;
+}
+.prose blockquote {
+  border-left: 3px solid #00FF88;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+.prose hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.prose th,
+.prose td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+.prose details {
+  margin: 0.75rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+.prose details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.prose details summary::-webkit-details-marker {
+  display: none;
+}
+.prose details summary::marker {
+  display: none;
+  content: "";
+}
+.prose details summary::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #00FF88;
+  border-bottom: 2px solid #00FF88;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+.prose details[open] summary::after {
+  transform: rotate(-135deg);
+}
+.prose details[open] summary {
+  margin-bottom: 0.5rem;
+}
+.prose strong {
+  font-weight: 700;
+}
+.prose code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Line-clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Scrollbar styling for sidebar nav */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
