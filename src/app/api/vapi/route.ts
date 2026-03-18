@@ -38,6 +38,17 @@ export async function POST(req: NextRequest) {
       const metadata = body.call?.metadata || {};
 
       switch (fnName) {
+          // --- REGISTER LEAD (Airtable) ---
+      case "registerLead": {
+        console.log("Registering lead to Airtable:", params);
+        const lead = await createLead(params);
+        return NextResponse.json({
+          result: JSON.stringify({ 
+            success: true, 
+            message: "Lead successfully registered in Airtable 05_CONCIERGE_LEADS." 
+          })
+        });
+      }
         // ── TRANSFER TO SEAN (Path B) — Lead-First Guard ──
         case "transferCall": {
           // GUARD: Transfer is FORBIDDEN until a lead has been captured.
