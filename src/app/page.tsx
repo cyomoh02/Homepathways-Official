@@ -1,125 +1,125 @@
-import Link from "next/link";
-import { getAllHubs } from "@/lib/markdown";
-import AdSlot from "@/components/AdSlot";
-import ClaireButton from "@/components/ClaireButton";
+'use client';
 
-const HUB_ICONS: Record<string, string> = {
-  "housing-infrastructure": "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1",
-  "health-wellbeing": "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
-  "economic-equity": "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1",
-  "legal-immigration": "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
-  "cultural-identity": "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-  "community-social": "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
-  "crisis-safety-environment": "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.962-.833-2.732 0L4.07 16.5c-.77.833.192 2.5 1.732 2.5z",
-  "education-digital-access": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-};
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+
+// Testimonial Data from your original script
+const testimonials = [
+  { id: 't1', name: "Sarah & Mark", type: "First Time Home Buyer", stars: 5, short: "We felt like guests in someone else's investment. Every rent hike felt like a weight on our shoulders until Sean sat us down..." },
+  { id: 't2', name: "The Miller Family", type: "Up-Mover", stars: 4.5, short: "Our starter home had become a storage unit for our past. Coming home felt like a return to a cramped reality until the Excellence Audit..." },
+  { id: 't3', name: "David L.", type: "Out Of Town Relocator", stars: 5, short: "Moving 1,000 miles for work was terrifying. I felt like I was moving my entire life support system into the dark until Sean became my guide..." },
+  { id: 't4', name: "Robert & Lisa", type: "Probate", stars: 4, short: "Losing our parents was hard, but being business partners with my siblings to settle the estate was tearing us apart. Sean saved our unity..." },
+  { id: 't5', name: "Margaret H.", type: "Aging In Place Adults", stars: 5, short: "I was scared of losing my autonomy or becoming a burden because of my stairs. Sean didn't tell me to leave; he showed me how to stay strong..." },
+  { id: 't6', name: "Eleanor & James", type: "Retiring Rightsizer", stars: 5, short: "We were living in a monument to the past. Chores were stealing our travel years until Sean helped us pivot from Management to Freedom..." },
+  { id: 't7', name: "Kevin & Jen", type: "Up-Mover", stars: 5, short: "We were playing small because we were comfortable, but we were burnt out. Sean showed us our home should be a win for our family brand..." },
+];
 
 export default function HomePage() {
-  const hubs = getAllHubs();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/30 via-black to-black" />
-        <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:py-32">
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Forensic Equity Audits for{" "}
-            <span className="text-mint">British Columbia</span>
+    <div className="bg-light-bg text-light-text dark:bg-navy dark:text-gray-200 font-sans antialiased overflow-x-hidden">
+      
+      {/* --- HEADER --- */}
+      <header>
+        <nav className="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
+          <div className="max-w-[1440px] mx-auto px-12">
+            <div className="flex items-center justify-between relative h-12">
+              <div className="hidden lg:flex items-center space-x-10 w-[38%]">
+                <Link href="/" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Home</Link>
+                <div className="relative group py-4">
+                    <button className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                        Who We Serve <svg className="w-3 h-3 ml-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+                <Link href="/about" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">About</Link>
+              </div>
+
+              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
+                <Link href="/" className="text-3xl md:text-4xl font-serif font-bold text-white tracking-tighter block whitespace-nowrap hover:text-[#97B99D] transition-all">
+                  Homepathways
+                </Link>
+              </div>
+
+              <div className="hidden lg:flex items-center justify-end space-x-10 w-[38%]">
+                <Link href="/inner-circle" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Trusted Partners</Link>
+                <Link href="#contact" className="bg-[#97B99D] text-[#050b1a] px-10 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all shadow-xl">Contact</Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative h-screen flex items-center justify-center text-center text-white">
+        <div className="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Luxurious Home" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-navy bg-opacity-60 dark:bg-opacity-70"></div>
+        </div>
+        <div className="relative z-10 p-4 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">
+            Guiding Every Home Journey With Clarity, Comfort, and Care.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400">
-            Data-driven pathways to systemic change for displaced communities.
-            95+ forensic audits across 8 critical hubs. Evidence-based.
-            Action-oriented.
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-200">
+            From first homes to life transitions, we help you understand your options and move forward with confidence.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <ClaireButton
-              label="Speak with Claire — Our AI Assistant"
-              className="px-8 py-3.5 shadow-lg shadow-mint/25"
-            />
-            <a
-              href="#hubs"
-              className="rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-gray-300 transition-colors hover:border-white/40 hover:text-white"
-            >
-              Explore the Audits
-            </a>
+          <Link href="/pathway-assessment" className="inline-block bg-mint text-navy font-bold text-lg px-10 py-4 rounded hover:scale-105 transition-transform">
+            Start Your Home Pathway
+          </Link>
+        </div>
+      </section>
+
+      {/* --- TESTIMONIAL MARQUEE --- */}
+      <section className="py-32 bg-navy border-t border-gray-900 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 uppercase tracking-tight">Real Stories From Our Clients</h2>
+        </div>
+
+        <div className="flex overflow-hidden group">
+          <div className="flex gap-8 animate-marquee-seamless-left hover:[animation-play-state:paused] whitespace-nowrap">
+            {testimonials.map((t) => (
+              <div key={t.id} className="w-[450px] bg-[#0a101e] border border-gray-800 p-8 rounded-[32px] whitespace-normal flex flex-col justify-between h-[360px]">
+                <div>
+                  <div className="text-amber-400 text-lg mb-4">★★★★★</div>
+                  <div className="text-mint font-bold text-[10px] uppercase tracking-widest mb-2">{t.type}</div>
+                  <h4 className="text-xl text-white font-bold mb-4 font-serif italic leading-relaxed line-clamp-2">"{t.short}"</h4>
+                </div>
+                <p className="text-slate-500 text-sm font-bold uppercase">— {t.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <AdSlot variant="horizontal" label="Ad — Homepage Top" />
-
-      {/* Hubs Grid */}
-      <section id="hubs" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
-            8 Content Hubs. 95+ Forensic Audits.
-          </h2>
-          <p className="mt-3 text-gray-400">
-            Each hub is a forensic equity investigation across BC. Click to explore.
-          </p>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {hubs.map((hub) => {
-            const iconPath = HUB_ICONS[hub.slug] || HUB_ICONS["housing-infrastructure"];
-            return (
-              <Link
-                key={hub.slug}
-                href={`/strategy/${hub.slug}`}
-                className="group rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:border-mint/40 hover:bg-white/[0.06]"
-              >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-mint/15">
-                  <svg
-                    className="h-5 w-5 text-mint"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d={iconPath}
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-sm font-semibold text-white group-hover:text-mint">
-                  {hub.title}
-                </h3>
-                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-gray-500">
-                  {hub.description}
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-xs text-gray-500">
-                  <span className="rounded bg-mint/15 px-2 py-0.5 text-mint">
-                    {hub.spokeCount} articles
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+      {/* --- FAQ SECTION --- */}
+      <section id="faq" className="py-24 bg-[#050b1a] border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Common Questions</h2>
+          </div>
+          <div className="space-y-4">
+            {[
+              { q: "What qualifies you as a first-time home buyer in Canada?", a: "In Canada, you qualify if you have not occupied a home that you or your current spouse owned in the last four years." },
+              { q: "Who is eligible for the First Time Home Buyers’ Program in BC?", a: "To skip the Property Transfer Tax, you must be a Canadian citizen/PR and have lived in BC for 12 consecutive months." }
+            ].map((faq, idx) => (
+              <div key={idx} className="border-b border-white/10">
+                <button 
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full py-6 flex justify-between items-center text-left text-gray-200 hover:text-mint transition-colors"
+                >
+                  <span className="text-lg">{faq.q}</span>
+                  <svg className={`w-5 h-5 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+                {openFaq === idx && <div className="pb-6 text-gray-400 font-light">{faq.a}</div>}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <AdSlot variant="horizontal" label="Ad — Homepage Mid" />
-
-      {/* Bottom Claire CTA */}
-      <section className="mx-auto max-w-3xl px-4 py-20 text-center">
-        <h2 className="text-2xl font-bold text-white sm:text-3xl">
-          Need Help Navigating the System?
-        </h2>
-        <p className="mt-4 text-gray-400">
-          Claire is our AI voice assistant. She can connect you with BC-specific
-          programs, eligibility criteria, and advocacy resources. No phone
-          numbers. No hold times. Just answers.
-        </p>
-        <div className="mt-8">
-          <ClaireButton
-            label="Click Here To Speak with Claire"
-            className="px-10 py-4 shadow-lg shadow-mint/25"
-          />
-        </div>
-      </section>
+      <footer className="bg-[#050b1a] border-t border-white/5 py-12 text-center text-[9px] text-gray-600 uppercase tracking-widest font-bold">
+        © 2026 Homepathways. All Rights Reserved.
+      </footer>
     </div>
   );
 }
