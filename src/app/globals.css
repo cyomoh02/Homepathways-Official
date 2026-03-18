@@ -174,3 +174,12 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
 }
+
+@keyframes marquee-seamless-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee-seamless-left {
+  animation: marquee-seamless-left 60s linear infinite;
+}
