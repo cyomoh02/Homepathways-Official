@@ -460,20 +460,17 @@ export default function TestClairePage() {
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckIcon ok={false} />
+            <CheckIcon ok={true} />
             <span>
-              <code className="text-yellow-400">GOOGLE_CALENDAR_CREDENTIALS</code> —
-              Service Account JSON (base64-encoded) for live scheduling.
-              <a href="https://console.cloud.google.com/apis/credentials" target="_blank" className="ml-1 text-mint underline">
-                Get it here
-              </a>
+              <code className="text-mint">GOOGLE_CALENDAR_CREDENTIALS</code> —
+              Connected (claire-assistant@claire-concierge.iam.gserviceaccount.com)
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckIcon ok={false} />
+            <CheckIcon ok={true} />
             <span>
-              <code className="text-yellow-400">GOOGLE_CALENDAR_ID</code> —
-              Sean&apos;s calendar ID (e.g. sean@homepathways.ca)
+              <code className="text-mint">GOOGLE_CALENDAR_ID</code> —
+              Connected (sean@homepathways.ca)
             </span>
           </li>
           <li className="flex items-start gap-2">
