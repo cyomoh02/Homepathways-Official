@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { VapiProvider } from "@/context/VapiContext";
 import Script from "next/script";
 
@@ -19,16 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HomePathways — Forensic Equity Audits for BC Communities",
+  title: "Homepathways — Guiding Every Home Journey",
   description:
-    "Data-driven pathways to systemic change for displaced communities across British Columbia. Speak with Claire, our AI voice assistant.",
-  openGraph: {
-    title: "HomePathways — Forensic Equity Audits for BC",
-    description: "95+ forensic audits across 8 critical hubs. Evidence-based. Action-oriented.",
-    url: "https://homepathways.ca",
-    siteName: "HomePathways",
-    type: "website",
-  },
+    "Supporting first-time buyers, relocating families, downsizing retirees, probate estates, and aging-in-place homeowners across British Columbia.",
 };
 
 export default function RootLayout({
@@ -39,18 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-black text-white min-h-screen flex flex-col`}
+        className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#050b1a] text-gray-200 min-h-screen`}
       >
         <VapiProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          {children}
         </VapiProvider>
 
-        {/* ── Global Vapi Web Widget ──
-             Stays active across all pages without restarting.
-             The VapiProvider handles programmatic calls via ClaireButton.
-             This script tag loads the Vapi widget as a persistent global overlay. */}
+        {/* Global Vapi Widget — stays active across all pages */}
         <Script
           id="vapi-widget"
           strategy="afterInteractive"
@@ -60,7 +46,6 @@ export default function RootLayout({
                 var vapiKey = "${process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || ""}";
                 var assistantId = "${process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID || ""}";
                 if (!vapiKey || !assistantId) return;
-
                 window.__VAPI_CONFIG__ = {
                   publicKey: vapiKey,
                   assistantId: assistantId,

@@ -1,258 +1,252 @@
-import Link from "next/link";
-import { getAllHubs } from "@/lib/markdown";
-import ClaireButton from "@/components/ClaireButton";
+'use client';
 
-const PERSONAS = [
-  { name: "First Time Home Buyer", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1", desc: "Navigate your first purchase with confidence. Claire walks you through every step." },
-  { name: "Relocation To BC", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z", desc: "Moving to British Columbia? Get matched with the right programs and pathways." },
-  { name: "Up Mover", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", desc: "Ready to upgrade? We find the equity bridge between your current home and your next." },
-  { name: "Retiring Rightsizer", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", desc: "Downsize with dignity. Preserve your wealth while simplifying your life." },
-  { name: "Relocation To UAE", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064", desc: "International relocation expertise for BC families moving to the UAE." },
-  { name: "Presale Investor", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1", desc: "Strategic presale analysis. Know the numbers before anyone else." },
-  { name: "Probate Families", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", desc: "Sensitive estate transitions handled with care and legal precision." },
-  { name: "Aging In Place", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Modify your home. Stay where you belong. Claire connects you with BC grants." },
-  { name: "Wealth Transfer", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", desc: "Intergenerational wealth planning with forensic equity intelligence." },
-];
-
-const HUB_ICONS: Record<string, string> = {
-  "housing-infrastructure": "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1",
-  "health-wellbeing": "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
-  "economic-equity": "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1",
-  "legal-immigration": "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
-  "cultural-identity": "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-  "community-social": "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
-  "crisis-safety-environment": "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.962-.833-2.732 0L4.07 16.5c-.77.833.192 2.5 1.732 2.5z",
-  "education-digital-access": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-};
-
-const MARQUEE_ITEMS = [
-  "Metro Vancouver",
-  "Fraser Valley",
-  "Vancouver Island",
-  "Okanagan",
-  "Kamloops",
-  "Prince George",
-  "Kelowna",
-  "Victoria",
-  "Surrey",
-  "Burnaby",
-  "Richmond",
-  "Langley",
-  "Abbotsford",
-  "Nanaimo",
-  "Chilliwack",
-];
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function HomePage() {
-  const hubs = getAllHubs();
+  const [isWhoServeOpen, setIsWhoServeOpen] = useState(false);
+  const [isGuidesOpen, setIsGuidesOpen] = useState(false);
+
+  const testimonials = [
+    { id: 't1', name: "Sarah & Mark", type: "First Time Home Buyer", stars: 5, short: "We felt like guests in someone else's investment. Every rent hike felt like a weight on our shoulders until Sean sat us down..." },
+    { id: 't2', name: "The Miller Family", type: "Up-Mover", stars: 4.5, short: "Our starter home had become a storage unit for our past. Coming home felt like a return to a cramped reality until the Excellence Audit..." },
+    { id: 't3', name: "David L.", type: "Out Of Town Relocator", stars: 5, short: "Moving 1,000 miles for work was terrifying. I felt like I was moving my entire life support system into the dark until Sean became my guide..." },
+    { id: 't4', name: "Robert & Lisa", type: "Probate", stars: 4, short: "Losing our parents was hard, but being business partners with my siblings to settle the estate was tearing us apart. Sean saved our unity..." },
+    { id: 't5', name: "Margaret H.", type: "Aging In Place Adults", stars: 5, short: "I was scared of losing my autonomy or becoming a burden because of my stairs. Sean didn't tell me to leave; he showed me how to stay strong..." },
+    { id: 't6', name: "Eleanor & James", type: "Retiring Rightsizer", stars: 5, short: "We were living in a monument to the past. Chores were stealing our travel years until Sean helped us pivot from Management to Freedom..." },
+    { id: 't7', name: "Kevin & Jen", type: "Up-Mover", stars: 5, short: "We were playing small because we were comfortable, but we were burnt out. Sean showed us our home should be a win for our family brand..." },
+  ];
+
+  const personas = [
+    { title: "First Time Buyer", desc: "Ready to stop paying rent and start owning my own space.", path: "buyer" },
+    { title: "Up-Mover", desc: "Our family has outgrown this home. It's time for a space that fits our ambition.", path: "upmover" },
+    { title: "Relocating to BC", desc: "Moving from out of province or country and need a trusted local guide.", path: "relocation" },
+    { title: "Retiring Rightsizer", desc: "The kids are gone. It's time to trade square footage for freedom.", path: "rightsizer" },
+    { title: "Probate Families", desc: "We've inherited a property and need help navigating the estate process.", path: "probate" },
+    { title: "Aging In Place", desc: "I want to stay in my home safely. Show me how to adapt, not relocate.", path: "aging" },
+    { title: "Presale Investor", desc: "I want to get into the presale market with a data-driven strategy.", path: "presale" },
+    { title: "Relocating to UAE", desc: "Moving internationally and need cross-border real estate expertise.", path: "uae" },
+    { title: "Wealth Transfer", desc: "Planning intergenerational wealth through strategic property ownership.", path: "wealth" },
+  ];
+
+  const marqueeItems = [
+    "Metro Vancouver", "Fraser Valley", "Vancouver Island", "Okanagan", "Kamloops",
+    "Prince George", "Kelowna", "Victoria", "Surrey", "Burnaby", "Richmond",
+    "Langley", "Abbotsford", "Nanaimo", "Chilliwack",
+  ];
 
   return (
-    <div>
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/30 via-black to-black" />
-        <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:py-32">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-mint/70">
-            Forensic Equity Intelligence
-          </p>
-          <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Your Pathway Home in{" "}
-            <span className="text-mint">British Columbia</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400">
-            95+ forensic audits across 8 critical hubs. Data-driven pathways
-            to systemic change for displaced communities. Evidence-based.
-            Action-oriented.
-          </p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <ClaireButton
-              label="Speak with Claire — Our AI Concierge"
-              className="px-8 py-3.5 shadow-lg shadow-mint/25"
-            />
-            <a
-              href="#who-we-serve"
-              className="rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-gray-300 transition-colors hover:border-white/40 hover:text-white"
-            >
-              Who We Serve
-            </a>
+    <div className="bg-[#050b1a] text-gray-200 font-sans antialiased overflow-x-hidden">
+
+      {/* --- FIXED HEADER --- */}
+      <header>
+        <nav className="fixed top-0 w-full z-50 bg-[#050b1a]/95 backdrop-blur-md border-b border-white/5 py-10">
+          <div className="max-w-[1440px] mx-auto px-12">
+            <div className="flex items-center justify-between relative h-12">
+
+              {/* Left Nav */}
+              <div className="hidden lg:flex items-center space-x-10 w-[38%]">
+                <Link href="/" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Home</Link>
+
+                {/* Who We Serve Dropdown */}
+                <div className="relative group py-4" onMouseEnter={() => setIsWhoServeOpen(true)} onMouseLeave={() => setIsWhoServeOpen(false)}>
+                  <button className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                    Who We Serve
+                    <svg className={`w-3 h-3 ml-2 transition-transform ${isWhoServeOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {isWhoServeOpen && (
+                    <div className="absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100]">
+                      <Link href="/serve-probate" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Probate Support</Link>
+                      <Link href="/serve-rightsizing" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Retiring Rightsizer</Link>
+                      <Link href="/serve-relocation" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Relocation Hub</Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Guides Dropdown */}
+                <div className="relative group py-4" onMouseEnter={() => setIsGuidesOpen(true)} onMouseLeave={() => setIsGuidesOpen(false)}>
+                  <button className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors flex items-center outline-none">
+                    Guides
+                    <svg className={`w-3 h-3 ml-2 transition-transform ${isGuidesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {isGuidesOpen && (
+                    <div className="absolute left-0 top-full w-64 bg-[#0a101e] border border-white/10 rounded-xl shadow-2xl py-4 z-[100]">
+                      <Link href="/strategy/housing-infrastructure" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Housing & Infrastructure</Link>
+                      <Link href="/strategy/legal-immigration" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Legal & Immigration</Link>
+                      <Link href="/strategy/economic-equity" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#97B99D] hover:bg-white/5 transition-all">Economic Equity</Link>
+                    </div>
+                  )}
+                </div>
+
+                <Link href="/about" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">About</Link>
+              </div>
+
+              {/* Center Logo */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 text-center">
+                <Link href="/" className="text-3xl md:text-4xl font-serif font-bold text-white tracking-tighter block whitespace-nowrap hover:text-[#97B99D] transition-all">
+                  Homepathways
+                </Link>
+              </div>
+
+              {/* Right Nav */}
+              <div className="hidden lg:flex items-center justify-end space-x-10 w-[38%]">
+                <Link href="/inner-circle" className="text-[12px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#97B99D] transition-colors">Trusted Partners</Link>
+                <Link href="#contact" className="bg-[#97B99D] text-[#050b1a] px-10 py-3.5 rounded-full text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all shadow-xl">Contact</Link>
+              </div>
+            </div>
           </div>
+        </nav>
+      </header>
+
+      {/* --- HERO --- */}
+      <section className="relative h-screen flex items-center justify-center text-center text-white">
+        <div className="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Hero" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-[#050b1a]/70"></div>
+        </div>
+        <div className="relative z-10 p-4 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">Guiding Every Home Journey With Clarity, Comfort, and Care.</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-200">Supporting first-time buyers, relocating families, downsizing retirees, probate estates, and aging-in-place homeowners.</p>
+          <Link href="/assessment" className="inline-block bg-[#97B99D] text-[#050b1a] font-bold text-lg px-10 py-4 rounded hover:bg-white transition-all">Start Your Home Pathway</Link>
         </div>
       </section>
 
-      {/* ── Marquee ── */}
-      <div className="overflow-hidden border-y border-white/10 bg-white/[0.02] py-3">
-        <div className="animate-marquee flex whitespace-nowrap">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-            <span
-              key={`${item}-${i}`}
-              className="mx-6 text-xs font-semibold uppercase tracking-widest text-mint/50"
-            >
+      {/* --- MARQUEE --- */}
+      <div className="overflow-hidden border-y border-white/5 bg-[#080e1a] py-4">
+        <div className="animate-marquee-seamless-left flex whitespace-nowrap">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span key={`${item}-${i}`} className="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-[#97B99D]/40">
               {item}
-              <span className="ml-6 text-white/20">|</span>
+              <span className="ml-8 text-white/10">|</span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── Who We Serve (Personas) ── */}
-      <section id="who-we-serve" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mint/70">
-            Tailored Pathways
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl">
-            Who We Serve
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-            Every journey is different. Claire matches you with the right
-            expertise for your specific situation.
-          </p>
-        </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PERSONAS.map((persona) => (
-            <div
-              key={persona.name}
-              className="group rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:border-mint/30 hover:bg-white/[0.06]"
-            >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-mint/10">
-                <svg
-                  className="h-5 w-5 text-mint"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d={persona.icon}
-                  />
-                </svg>
-              </div>
-              <h3 className="text-sm font-bold text-white group-hover:text-mint">
-                {persona.name}
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-gray-500">
-                {persona.desc}
-              </p>
+      {/* --- ROADMAP --- */}
+      <section className="py-32">
+        <div className="mx-auto max-w-7xl px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-24">
+            <div className="lg:sticky lg:top-32 text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">A Clear, Supportive Path – No Matter Where You&apos;re Starting.</h2>
+              <p className="mt-10 text-lg leading-8 text-slate-300">We&apos;ve designed a simple, three-step process to bring clarity to your unique situation.</p>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ── Forensic Audit Hubs ── */}
-      <section id="hubs" className="border-t border-white/10 bg-white/[0.01]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mint/70">
-              Intelligence Library
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl">
-              8 Hubs. 95+ Forensic Audits.
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              Each hub is a forensic equity investigation across BC. Click to explore.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {hubs.map((hub) => {
-              const iconPath =
-                HUB_ICONS[hub.slug] || HUB_ICONS["housing-infrastructure"];
-              return (
-                <Link
-                  key={hub.slug}
-                  href={`/strategy/${hub.slug}`}
-                  className="group rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:border-mint/40 hover:bg-white/[0.06]"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-mint/15">
-                    <svg
-                      className="h-5 w-5 text-mint"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d={iconPath}
-                      />
-                    </svg>
+            <div className="mt-20 lg:mt-0 space-y-12">
+              <div className="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 text-[#97B99D] shrink-0">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-mint">
-                    {hub.title}
-                  </h3>
-                  <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-gray-500">
-                    {hub.description}
-                  </p>
-                  <div className="mt-4">
-                    <span className="rounded bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-mint">
-                      {hub.spokeCount} articles
-                    </span>
+                  <div>
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#97B99D]">Step 1</p>
+                    <h3 className="text-3xl font-serif font-bold text-white mt-1">Start With Clarity</h3>
                   </div>
-                </Link>
-              );
-            })}
+                </div>
+                <p className="mt-6 text-slate-300">Our journey begins with a comprehensive consultation to understand your goals, timeline, and financial picture. No pressure — just honest, data-driven guidance.</p>
+              </div>
+
+              <div className="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 text-[#97B99D] shrink-0">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#97B99D]">Step 2</p>
+                    <h3 className="text-3xl font-serif font-bold text-white mt-1">The Excellence Audit</h3>
+                  </div>
+                </div>
+                <p className="mt-6 text-slate-300">We conduct a forensic analysis of your situation — market conditions, equity position, legal considerations, and timing. You receive a custom strategy built around your life, not a template.</p>
+              </div>
+
+              <div className="rounded-2xl bg-slate-900/70 p-8 border border-slate-700 backdrop-blur-sm">
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 text-[#97B99D] shrink-0">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#97B99D]">Step 3</p>
+                    <h3 className="text-3xl font-serif font-bold text-white mt-1">Your Pathway Home</h3>
+                  </div>
+                </div>
+                <p className="mt-6 text-slate-300">We execute the plan together — negotiations, paperwork, timelines, and transitions — with full concierge support from Claire and Sean every step of the way.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Book With Sean ── */}
-      <section id="book" className="border-t border-white/10">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mint/70">
-              Direct Access
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-bold text-white sm:text-4xl">
-              Book a Call with Sean
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-gray-400">
-              Skip the queue. Book a direct consultation with Sean for a
-              deep-dive into your specific case. Phone or Google Meet — your
-              choice.
-            </p>
+      {/* --- PERSONA GRID --- */}
+      <section className="py-32 bg-[#080e1a] border-y border-gray-900">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-6xl font-serif font-bold text-white mb-6">Which Path Are You On?</h2>
           </div>
-
-          {/* Google Calendar Booking Iframe */}
-          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
-            <iframe
-              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-cxGXn9Y6pTHKsJGOGSFcPLvMFvnpyB_9Ygk_Xd-8oG2P7eKjZlZ4vnXhpQ5?gv=true"
-              style={{ border: 0 }}
-              width="100%"
-              height="600"
-              title="Book a call with Sean"
-              className="bg-white"
-            />
-          </div>
-
-          <p className="mt-4 text-center text-xs text-gray-600">
-            Powered by Google Calendar &middot; All times in Pacific Time (PST)
-          </p>
-        </div>
-      </section>
-
-      {/* ── Claire CTA (Bottom) ── */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-          <h2 className="font-serif text-3xl font-bold text-white sm:text-4xl">
-            Need Help Navigating the System?
-          </h2>
-          <p className="mt-4 text-gray-400">
-            Claire is our AI voice concierge. She connects you with BC-specific
-            programs, eligibility criteria, and advocacy resources. No phone
-            numbers. No hold times. Just answers.
-          </p>
-          <div className="mt-8">
-            <ClaireButton
-              label="Click Here To Speak with Claire"
-              className="px-10 py-4 shadow-lg shadow-mint/25"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {personas.map((p) => (
+              <div key={p.title} className="bg-[#0a101e] border border-white/5 p-10 rounded-[3rem] hover:border-[#97B99D] transition-all group">
+                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-[#97B99D]">{p.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-8">{p.desc}</p>
+                <Link href={`/assessment?path=${p.path}`} className="text-[#97B99D] font-bold uppercase tracking-widest text-[10px] border-b border-[#97B99D]/20 pb-1">Start Analysis →</Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* --- TESTIMONIALS --- */}
+      <section className="py-32 bg-[#050b1a]">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Real Journeys. Real Results.</h2>
+            <p className="text-gray-400 text-lg">Hear from families who found their pathway home.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((t) => (
+              <div key={t.id} className="bg-[#0a101e] border border-white/5 rounded-2xl p-8">
+                <div className="flex items-center gap-1 mb-4">
+                  {Array.from({ length: Math.floor(t.stars) }).map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-[#97B99D]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
+                  {t.stars % 1 !== 0 && (
+                    <svg className="w-4 h-4 text-[#97B99D]/50" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  )}
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">&ldquo;{t.short}&rdquo;</p>
+                <div className="border-t border-white/5 pt-4">
+                  <p className="text-white font-bold text-sm">{t.name}</p>
+                  <p className="text-[#97B99D] text-[10px] font-bold uppercase tracking-widest">{t.type}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- BOOKING SECTION (THE IFRAME) --- */}
+      <section id="contact" className="py-32 bg-[#050b1a]">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Book Your Consultation</h2>
+            <p className="text-gray-400 text-lg">Schedule a private call with Sean. No obligation. Just clarity.</p>
+          </div>
+          <div className="max-w-4xl mx-auto rounded-[40px] bg-slate-900/50 border border-slate-700 p-4 md:p-8">
+            <div className="relative min-h-[600px] rounded-[30px] overflow-hidden bg-white border-4 border-slate-800">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/YwaPtUtvGbMDsSNF6Iwl"
+                style={{ width: '100%', border: 'none', overflow: 'hidden' }}
+                className="h-[600px] md:h-[700px]"
+                title="Book a consultation with Sean"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="bg-[#050b1a] border-t border-white/5 pt-24 pb-12 text-center text-gray-500 text-[10px] uppercase font-bold tracking-[0.2em]">
+        © 2026 Homepathways. All Rights Reserved.
+      </footer>
     </div>
   );
 }
