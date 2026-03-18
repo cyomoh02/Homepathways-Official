@@ -11,7 +11,7 @@ export default function Header() {
         {/* Center — Logo */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 text-xl font-bold tracking-[0.25em] text-white sm:text-2xl"
+          className="absolute left-1/2 -translate-x-1/2 font-serif text-xl font-bold tracking-[0.25em] text-white sm:text-2xl"
         >
           HOMEPATHWAYS
         </Link>

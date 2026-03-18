@@ -22,7 +22,7 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              className="text-lg font-bold tracking-[0.2em] text-white"
+              className="font-serif text-lg font-bold tracking-[0.2em] text-white"
             >
               HOMEPATHWAYS
             </Link>
