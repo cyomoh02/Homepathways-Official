@@ -36,26 +36,33 @@ export default function RootLayout({
           {children}
         </VapiProvider>
 
-        {/* Global Vapi Widget — stays active across all pages */}
-        <Script
-          id="vapi-widget"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var vapiKey = "${process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || ""}";
-                var assistantId = "${process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID || ""}";
-                if (!vapiKey || !assistantId) return;
-                window.__VAPI_CONFIG__ = {
-                  publicKey: vapiKey,
-                  assistantId: assistantId,
-                  position: "bottom-right",
-                  offset: "20px",
-                };
-              })();
-            `,
-          }}
-        />
+        {/* Global Vapi Widget - Stays active across all pages */}
+        <Script id="vapi-widget" strategy="afterInteractive">
+          {`
+            var vapiInstance = null;
+            const assistant = "595d847e-a102-4ea9-b1c9-3bbc5a5f59b1";
+            const apiKey = "497975b8-38f7-4501-8ee9-a6c4a2462a9e";
+            (function (d, t) {
+              var g = document.createElement(t), s = d.getElementsByTagName(t)[0];
+              g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+              g.defer = true;
+              g.async = true;
+              s.parentNode.insertBefore(g, s);
+              g.onload = function () {
+                vapiInstance = window.vapiSDK.run({
+                  apiKey: apiKey,
+                  assistant: assistant,
+                  config: { 
+                    position: "bottom-right",
+                    offset: "40px",
+                    width: "60px",
+                    height: "60px"
+                  }
+                });
+              };
+            })(document, "script");
+          `}
+        </Script>
       </body>
     </html>
   );
